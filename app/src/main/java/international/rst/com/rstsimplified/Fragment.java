@@ -2,12 +2,19 @@ package international.rst.com.rstsimplified;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Created by ashish on 13/1/17.
  */
 
 public class Fragment extends android.support.v4.app.Fragment{
+    TextView tv1;
+    String title;
+    View view;
 
     public Fragment() {
     }
@@ -22,5 +29,26 @@ public class Fragment extends android.support.v4.app.Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_main, container, false);
+        tv1 = (TextView)view.findViewById(R.id.text1);
+        title = getArguments().getString("title");
+        if(title.equalsIgnoreCase("visa")){
+            tv1.setText("Hello");
+        }
+        else if(title.equalsIgnoreCase("hotel")){
+            tv1.setText("World");
+        }
+        else {
+            tv1.setText("Yo");
+        }
+
+
+        return view;
+    }
+
 }

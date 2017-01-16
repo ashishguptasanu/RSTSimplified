@@ -98,17 +98,20 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.visa_services) {
+            mViewPager.setCurrentItem(0);
+        } else if (id == R.id.airport_services) {
+            mViewPager.setCurrentItem(1);
+        } else if (id == R.id.hotel_services) {
+            mViewPager.setCurrentItem(2);
+        } else if (id == R.id.meet_greet) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.sight_seeing) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.car_parking) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        }
+        else if (id == R.id.launge_booking) {
 
         }
 
@@ -147,12 +150,12 @@ public class HomeActivity extends AppCompatActivity
         public android.support.v4.app.Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return PlaceholderFragment.newInstance(0,"visa");
+                    return Fragment.newInstance("visa");
 
                 case 1:
-                    return PlaceholderFragment.newInstance(1,"airport");
+                    return Fragment.newInstance("airport");
                 case 2:
-                    return PlaceholderFragment.newInstance(2,"hotel");
+                    return Fragment.newInstance("hotel");
                 default:
                     return  PlaceholderFragment.newInstance(1, "");
             }
