@@ -38,13 +38,13 @@ public class Fragment extends android.support.v4.app.Fragment{
         tv1 = (TextView)view.findViewById(R.id.text1);
         title = getArguments().getString("title");
         if(title.equalsIgnoreCase("visa")){
-            tv1.setText("Hello");
+            tv1.setText("Title: Visa Services");
         }
         else if(title.equalsIgnoreCase("hotel")){
-            tv1.setText("World");
+            tv1.setText("Title: Hotel Services");
         }
         else {
-            tv1.setText("Yo");
+            tv1.setText("Title: Airport Services");
         }
 
 
