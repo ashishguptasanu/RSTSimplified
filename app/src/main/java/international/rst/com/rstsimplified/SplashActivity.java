@@ -1,7 +1,9 @@
 package international.rst.com.rstsimplified;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,7 +27,7 @@ public class SplashActivity extends AppCompatActivity {
                 yourView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
             }
         }
-        /*new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent mainIntent = new Intent(SplashActivity.this, HomeActivity.class);
@@ -34,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
             }
 
         }, SPLASH_DISPLAY_LENGTH);
-        */
+
 
 
 

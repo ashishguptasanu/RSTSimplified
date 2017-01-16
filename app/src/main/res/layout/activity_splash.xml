@@ -5,4 +5,18 @@
     android:background="@mipmap/splash_background"
     tools:context="international.rst.com.rstsimplified.SplashActivity">
 
+    <TextView
+        android:text="RST Simplified"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="#fff"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textStyle="bold"
+        android:layout_marginTop="25dp"
+        android:background="#455a64"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
 </FrameLayout>
