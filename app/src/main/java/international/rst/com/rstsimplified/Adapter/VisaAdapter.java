@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -23,9 +24,11 @@ public class VisaAdapter extends RecyclerView.Adapter<VisaAdapter.MyViewHolder> 
         this.context = context;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder{
+        public ImageView imgv;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            imgv = (ImageView)itemView.findViewById(R.id.img_background);
             //findViewById();
 
         }
@@ -39,7 +42,6 @@ public class VisaAdapter extends RecyclerView.Adapter<VisaAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(VisaAdapter.MyViewHolder holder, int position) {
-        //mTV.setText("HBHJBHJ");
     }
 
     @Override
