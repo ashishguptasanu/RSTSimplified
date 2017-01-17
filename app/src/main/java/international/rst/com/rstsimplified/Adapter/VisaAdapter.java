@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import international.rst.com.rstsimplified.R;
+
 /**
  * Created by ashish on 17/1/17.
  */
@@ -24,14 +26,14 @@ public class VisaAdapter extends RecyclerView.Adapter<VisaAdapter.MyViewHolder> 
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            //findViewById()
+            //findViewById();
 
         }
     }
     @Override
     public VisaAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //View v = LayoutInflater.from(parent.getContext()).inflate(cardView,parent,false);
-        RecyclerView.ViewHolder vh = new RecyclerView.ViewHolder(v);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.visa_card,parent,false);
+        MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }
 

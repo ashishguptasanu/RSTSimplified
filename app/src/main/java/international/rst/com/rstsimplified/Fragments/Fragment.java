@@ -2,12 +2,15 @@ package international.rst.com.rstsimplified.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import international.rst.com.rstsimplified.Adapter.VisaAdapter;
 import international.rst.com.rstsimplified.R;
 
 /**
@@ -18,6 +21,10 @@ public class Fragment extends android.support.v4.app.Fragment{
     TextView tv1;
     String title;
     View view;
+    LinearLayoutManager linearLayoutManager1, linearLayoutManager2, linearLayoutManager3;
+    RecyclerView recyclerView;
+    VisaAdapter visaAdapter;
+    String[] mDataset1;
 
     public Fragment() {
     }
@@ -39,11 +46,21 @@ public class Fragment extends android.support.v4.app.Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_main, container, false);
         tv1 = (TextView)view.findViewById(R.id.text1);
+        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
         ImageView img = (ImageView)view.findViewById(R.id.img_background);
         title = getArguments().getString("title");
         if(title.equalsIgnoreCase("visa")){
             tv1.setText("Title: Visa Services");
             img.setImageResource(R.mipmap.visa_background);
+            mDataset1 = new String[]{"Visa","Airport","Hotel"};
+            visaAdapter = new VisaAdapter(getContext(),mDataset1);
+            recyclerView.setAdapter(visaAdapter);
+            linearLayoutManager1 = new LinearLayoutManager(getActivity());
+            recyclerView.setHasFixedSize(true);
+            tv1.setVisibility(View.GONE);
+            img.setVisibility(View.GONE);
+            recyclerView.setLayoutManager(linearLayoutManager1);
+
 
         }
         else if(title.equalsIgnoreCase("hotel")){
