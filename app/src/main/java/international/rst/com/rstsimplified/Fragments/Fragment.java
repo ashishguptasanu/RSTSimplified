@@ -25,6 +25,7 @@ public class Fragment extends android.support.v4.app.Fragment{
     RecyclerView recyclerView;
     VisaAdapter visaAdapter;
     String[] mDataset1;
+    int[] mImageSet;
 
     public Fragment() {
     }
@@ -52,8 +53,9 @@ public class Fragment extends android.support.v4.app.Fragment{
         if(title.equalsIgnoreCase("visa")){
             tv1.setText("Title: Visa Services");
             img.setImageResource(R.mipmap.visa_background);
-            mDataset1 = new String[]{"Visa","Airport","Hotel"};
-            visaAdapter = new VisaAdapter(getContext(),mDataset1);
+            mDataset1 = new String[]{"Singapore Visa", "Oman Visa"};
+            mImageSet = new int[]{R.drawable.card_background, R.drawable.oman };
+            visaAdapter = new VisaAdapter(getContext(),mDataset1, mImageSet);
             recyclerView.setAdapter(visaAdapter);
             linearLayoutManager1 = new LinearLayoutManager(getActivity());
             recyclerView.setHasFixedSize(true);
