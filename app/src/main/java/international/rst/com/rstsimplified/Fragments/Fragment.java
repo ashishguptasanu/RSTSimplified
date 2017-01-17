@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import international.rst.com.rstsimplified.R;
@@ -38,15 +39,20 @@ public class Fragment extends android.support.v4.app.Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_main, container, false);
         tv1 = (TextView)view.findViewById(R.id.text1);
+        ImageView img = (ImageView)view.findViewById(R.id.img_background);
         title = getArguments().getString("title");
         if(title.equalsIgnoreCase("visa")){
             tv1.setText("Title: Visa Services");
+            img.setImageResource(R.mipmap.visa_background);
+
         }
         else if(title.equalsIgnoreCase("hotel")){
             tv1.setText("Title: Hotel Services");
+            img.setImageResource(R.mipmap.hotel_background);
         }
         else {
             tv1.setText("Title: Airport Services");
+            img.setImageResource(R.mipmap.airport_background);
         }
 
 
