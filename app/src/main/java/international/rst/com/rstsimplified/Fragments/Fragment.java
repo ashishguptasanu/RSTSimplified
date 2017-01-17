@@ -1,4 +1,4 @@
-package international.rst.com.rstsimplified;
+package international.rst.com.rstsimplified.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import international.rst.com.rstsimplified.R;
 
 /**
  * Created by ashish on 13/1/17.

@@ -1,4 +1,4 @@
-package international.rst.com.rstsimplified;
+package international.rst.com.rstsimplified.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +18,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import international.rst.com.rstsimplified.Fragments.Fragment;
+import international.rst.com.rstsimplified.R;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

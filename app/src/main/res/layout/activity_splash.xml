@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/splash_background"
-    tools:context="international.rst.com.rstsimplified.SplashActivity">
+    tools:context="international.rst.com.rstsimplified.Activities.SplashActivity">
 
     <TextView
         android:text="@string/app_name"

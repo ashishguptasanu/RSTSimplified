@@ -1,4 +1,4 @@
-package international.rst.com.rstsimplified;
+package international.rst.com.rstsimplified.Activities;
 
 import android.content.Intent;
 import android.os.Build;
@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import international.rst.com.rstsimplified.R;
 
 public class SplashActivity extends AppCompatActivity {
 
