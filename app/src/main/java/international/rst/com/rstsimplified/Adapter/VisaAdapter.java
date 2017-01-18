@@ -19,19 +19,21 @@ import international.rst.com.rstsimplified.R;
 
 public class VisaAdapter extends RecyclerView.Adapter<VisaAdapter.MyViewHolder> {
     public String[] mDataSet;
-    public int[] mimageSet;
+    public int[] mimageSet, mImageSet2;
     private Context context;
-    public VisaAdapter(Context context, String[] mDataSet, int[] mimageSet){
+    public VisaAdapter(Context context, String[] mDataSet, int[] mimageSet, int[] mImageSet2){
         this.mDataSet = mDataSet;
         this.context = context;
         this.mimageSet = mimageSet;
+        this.mImageSet2 = mImageSet2;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        public ImageView imgv;
+        public ImageView imgv, imgv2;
         TextView tv;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            imgv2 = (ImageView)itemView.findViewById(R.id.flag_image);
             imgv = (ImageView)itemView.findViewById(R.id.visa_image);
             tv = (TextView)itemView.findViewById(R.id.tv_visa);
             //findViewById();
@@ -49,6 +51,7 @@ public class VisaAdapter extends RecyclerView.Adapter<VisaAdapter.MyViewHolder> 
     public void onBindViewHolder(VisaAdapter.MyViewHolder holder, int position) {
         holder.imgv.setImageResource(mimageSet[position]);
         holder.tv.setText(mDataSet[position]);
+        holder.imgv2.setImageResource(mImageSet2[position]);
     }
 
     @Override

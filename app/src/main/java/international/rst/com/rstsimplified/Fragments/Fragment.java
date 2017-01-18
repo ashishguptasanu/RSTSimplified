@@ -27,7 +27,7 @@ public class Fragment extends android.support.v4.app.Fragment{
     RecyclerView recyclerView;
     VisaAdapter visaAdapter;
     String[] mDataset1;
-    int[] mImageSet;
+    int[] mImageSet, mImageSet2;
 
     public Fragment() {
     }
@@ -49,14 +49,7 @@ public class Fragment extends android.support.v4.app.Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_main, container, false);
         tv1 = (TextView)view.findViewById(R.id.text1);
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
         ImageView img = (ImageView)view.findViewById(R.id.img_background);
         title = getArguments().getString("title");
@@ -65,7 +58,8 @@ public class Fragment extends android.support.v4.app.Fragment{
             img.setImageResource(R.mipmap.visa_background);
             mDataset1 = new String[]{"Singapore Visa", "Oman Visa"};
             mImageSet = new int[]{R.drawable.card_background, R.drawable.oman };
-            visaAdapter = new VisaAdapter(getContext(),mDataset1, mImageSet);
+            mImageSet2 = new int[] {R.drawable.singapore_flag, R.drawable.oman_flag};
+            visaAdapter = new VisaAdapter(getContext(),mDataset1, mImageSet,mImageSet2);
             recyclerView.setAdapter(visaAdapter);
             linearLayoutManager1 = new LinearLayoutManager(getActivity());
             recyclerView.setHasFixedSize(true);
