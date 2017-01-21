@@ -34,6 +34,8 @@ public class ServicesActivity extends AppCompatActivity
         setContentView(R.layout.activity_services);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Bundle b=getIntent().getExtras();
+        int tab = b.getInt("tab");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -49,7 +51,7 @@ public class ServicesActivity extends AppCompatActivity
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mViewPager);
         mSectionsPagerAdapter.setCustomIconsFortabs();
-        mViewPager.setCurrentItem(1);
+        mViewPager.setCurrentItem(tab);
     }
 
     @Override

@@ -61,9 +61,9 @@ public class Fragment extends android.support.v4.app.Fragment{
         ImageView img = (ImageView)view.findViewById(R.id.img_background);
         title = getArguments().getString("title");
         if(title.equalsIgnoreCase("visa")){
-            tv1.setText("Title: Visa Services");
+            tv1.setText("Title: visa Services");
             img.setImageResource(R.mipmap.visa_background);
-            mDataset1 = new String[]{"Singapore Visa", "Oman Visa"};
+            mDataset1 = new String[]{"Singapore visa", "Oman visa"};
             mImageSet = new int[]{R.drawable.card_background, R.drawable.oman };
             mImageSet2 = new int[] {R.drawable.singapore_flag, R.drawable.oman_flag};
             visaAdapter = new VisaAdapter(getContext(),mDataset1, mImageSet,mImageSet2);

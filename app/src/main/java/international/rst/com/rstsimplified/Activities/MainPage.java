@@ -1,10 +1,12 @@
 package international.rst.com.rstsimplified.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -24,8 +26,10 @@ import international.rst.com.rstsimplified.R;
 import me.relex.circleindicator.CircleIndicator;
 
 public class MainPage extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-    private static ViewPager imageviewPager, contentViewPager;
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+    private static ViewPager imageviewPager;
+    Bundle b;
+    CardView cardView1, cardView2,cardView3,cardView4;
     Menu menu;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
@@ -40,6 +44,14 @@ public class MainPage extends AppCompatActivity
         setSupportActionBar(toolbar);
         imageviewPager = (ViewPager)findViewById(R.id.viewpager1);
         init();
+        cardView1 = (CardView)findViewById(R.id.card1);
+        cardView2 = (CardView)findViewById(R.id.card2);
+        cardView3 = (CardView)findViewById(R.id.card3);
+        cardView4 = (CardView)findViewById(R.id.card4);
+        cardView1.setOnClickListener(this);
+        cardView2.setOnClickListener(this);
+        cardView3.setOnClickListener(this);
+        cardView4.setOnClickListener(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -141,11 +153,23 @@ public class MainPage extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.visa_services) {
-            // Handle the camera action
+            Intent intent1=new Intent(this,ServicesActivity.class);
+            b=new Bundle();
+            b.putInt("tab",0);
+            intent1.putExtras(b);
+            startActivity(intent1);
         } else if (id == R.id.airport_services) {
-
+            Intent intent2=new Intent(this,ServicesActivity.class);
+            b=new Bundle();
+            b.putInt("tab",1);
+            intent2.putExtras(b);
+            startActivity(intent2);
         } else if (id == R.id.hotel_services) {
-
+            Intent intent3=new Intent(this,ServicesActivity.class);
+            b=new Bundle();
+            b.putInt("tab",2);
+            intent3.putExtras(b);
+            startActivity(intent3);
         } else if (id == R.id.meet_greet) {
 
         } else if (id == R.id.sight_seeing) {
@@ -159,4 +183,33 @@ public class MainPage extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.card1:
+                Intent intent1=new Intent(this,ServicesActivity.class);
+                b=new Bundle();
+                b.putInt("tab",0);
+                intent1.putExtras(b);
+                startActivity(intent1);
+                break;
+            case R.id.card2:
+                Intent intent2=new Intent(this,ServicesActivity.class);
+                b=new Bundle();
+                b.putInt("tab",1);
+                intent2.putExtras(b);
+                startActivity(intent2);
+                break;
+            case R.id.card3:
+                Intent intent3=new Intent(this,ServicesActivity.class);
+                b=new Bundle();
+                b.putInt("tab",2);
+                intent3.putExtras(b);
+                startActivity(intent3);
+                break;
+            case R.id.card4:
+                break;
+        }
+
+    }
 }
