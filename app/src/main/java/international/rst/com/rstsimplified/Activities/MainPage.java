@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -73,7 +74,7 @@ public class MainPage extends AppCompatActivity
     }
 
     private void init() {
-            for (Integer IMAGE : IMAGES) ImagesArray.add(IMAGE);
+        Collections.addAll(ImagesArray, IMAGES);
 
             imageviewPager = (ViewPager) findViewById(R.id.viewpager1);
 
@@ -171,6 +172,11 @@ public class MainPage extends AppCompatActivity
             intent3.putExtras(b);
             startActivity(intent3);
         } else if (id == R.id.meet_greet) {
+            Intent intent4=new Intent(this,ServicesActivity.class);
+            b=new Bundle();
+            b.putInt("tab",3);
+            intent4.putExtras(b);
+            startActivity(intent4);
 
         } else if (id == R.id.sight_seeing) {
 
@@ -208,6 +214,11 @@ public class MainPage extends AppCompatActivity
                 startActivity(intent3);
                 break;
             case R.id.card4:
+                Intent intent4=new Intent(this,ServicesActivity.class);
+                b=new Bundle();
+                b.putInt("tab",3);
+                intent4.putExtras(b);
+                startActivity(intent4);
                 break;
         }
 

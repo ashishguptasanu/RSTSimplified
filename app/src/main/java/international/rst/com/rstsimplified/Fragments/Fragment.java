@@ -80,6 +80,10 @@ public class Fragment extends android.support.v4.app.Fragment{
             tv1.setText("Title: Hotel Services");
             img.setImageResource(R.mipmap.hotel_background);
         }
+        else if(title.equalsIgnoreCase("meet")){
+            tv1.setText("Title: Meet & Greet");
+            img.setImageResource(R.mipmap.meet_gray);
+        }
         else {
             tv1.setText("Title: Airport Services");
             img.setImageResource(R.mipmap.airport_background);

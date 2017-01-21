@@ -5,9 +5,11 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -34,10 +36,12 @@ public class ServicesActivity extends AppCompatActivity
         setContentView(R.layout.activity_services);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
         Bundle b=getIntent().getExtras();
         int tab = b.getInt("tab");
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_services);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
@@ -56,7 +60,7 @@ public class ServicesActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_services);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -92,7 +96,7 @@ public class ServicesActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.visa_services) {
+        if (id == R.id.visa) {
             mViewPager.setCurrentItem(0);
         } else if (id == R.id.airport_services) {
             mViewPager.setCurrentItem(1);
@@ -109,7 +113,9 @@ public class ServicesActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_services);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -134,7 +140,7 @@ public class ServicesActivity extends AppCompatActivity
         }
     }
     public class PagerAdapter extends FragmentPagerAdapter {
-        int[] selectors = {R.drawable.selector_tab_one, R.drawable.selector_tab_two, R.drawable.selector_tab_three};
+        int[] selectors = {R.drawable.selector_tab_one, R.drawable.selector_tab_two, R.drawable.selector_tab_three,R.drawable.selector_tab_four};
 
         public PagerAdapter(FragmentManager fm) {
             super(fm);
@@ -150,6 +156,8 @@ public class ServicesActivity extends AppCompatActivity
                     return Fragment.newInstance("airport");
                 case 2:
                     return Fragment.newInstance("hotel");
+                case 3:
+                    return Fragment.newInstance("meet");
                 default:
                     return  PlaceholderFragment.newInstance(1, "");
             }
@@ -165,7 +173,7 @@ public class ServicesActivity extends AppCompatActivity
 
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
     }
 }
