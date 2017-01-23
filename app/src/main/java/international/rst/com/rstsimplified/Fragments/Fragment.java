@@ -1,5 +1,6 @@
 package international.rst.com.rstsimplified.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -9,9 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import international.rst.com.rstsimplified.Activities.FormActivity;
 import international.rst.com.rstsimplified.Adapter.VisaAdapter;
 import international.rst.com.rstsimplified.R;
 
@@ -19,7 +22,7 @@ import international.rst.com.rstsimplified.R;
  * Created by ashish on 13/1/17.
  */
 
-public class Fragment extends android.support.v4.app.Fragment{
+public class Fragment extends android.support.v4.app.Fragment {
     TextView tv1;
     String title;
     View view;
@@ -88,6 +91,7 @@ public class Fragment extends android.support.v4.app.Fragment{
             tv1.setText("Title: Airport Services");
             img.setImageResource(R.mipmap.airport_background);
         }
+
 
 
         return view;

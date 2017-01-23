@@ -39,6 +39,7 @@
                 android:layout_height="30dp"
                 android:layout_weight=".4"
                 android:text="Apply"
+                android:id="@+id/apply"
                 android:shadowColor="#949494"
                 android:shadowRadius="5"
                 android:textColor="#FFFFFF"

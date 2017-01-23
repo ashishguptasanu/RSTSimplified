@@ -1,16 +1,19 @@
 package international.rst.com.rstsimplified.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import international.rst.com.rstsimplified.Activities.FormActivity;
 import international.rst.com.rstsimplified.R;
 
 /**
@@ -27,16 +30,30 @@ public class VisaAdapter extends RecyclerView.Adapter<VisaAdapter.MyViewHolder> 
         this.mimageSet = mimageSet;
         this.mImageSet2 = mImageSet2;
     }
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView imgv, imgv2;
         TextView tv;
+        Button btn;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            btn = (Button)itemView.findViewById(R.id.apply);
             imgv2 = (ImageView)itemView.findViewById(R.id.flag_image);
             imgv = (ImageView)itemView.findViewById(R.id.visa_image);
             tv = (TextView)itemView.findViewById(R.id.tv_visa);
+            btn.setOnClickListener(this);
             //findViewById();
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.apply:
+                    Intent intent = new Intent(context, FormActivity.class);
+                    context.startActivity(intent);
+                    break;
+            }
 
         }
     }

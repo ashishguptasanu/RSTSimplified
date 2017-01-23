@@ -59,7 +59,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
-                android:src="@drawable/visa_icon"
+                android:src="@mipmap/visa_icon"
                 android:id="@+id/card_image1"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
-                android:src="@drawable/airport"
+                android:src="@mipmap/airport"
                 android:id="@+id/card_image2"/>
             <TextView
                 android:layout_width="wrap_content"
