@@ -21,7 +21,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
     AlertDialog.Builder dialogBuilder;
     Context context;
     Button btnSavePref;
-    String date1;
+    String date1,date2;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPreferences;
     AlertDialog b;
@@ -36,9 +36,9 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         edtDate1.setOnClickListener(this);
         edtDate2 = (EditText)findViewById(R.id.edt_departure);
         edtDate2.setOnClickListener(this);
-        edtIssue = (EditText)findViewById(R.id.edt_issue);
+        edtIssue = (EditText)findViewById(R.id.edt_issue_date);
         edtIssue.setOnClickListener(this);
-        edtExpiry = (EditText)findViewById(R.id.edt_expire);
+        edtExpiry = (EditText)findViewById(R.id.edt_expiry_date);
         edtExpiry.setOnClickListener(this);
 
     }
@@ -52,17 +52,19 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.edt_departure:
                 datePicker(edtDate2);
                 break;
-            case R.id.edt_issue:
+            case R.id.edt_issue_date:
                 datePicker(edtIssue);
                 break;
-            case R.id.edt_expire:
+            case R.id.edt_expiry_date:
                 datePicker(edtExpiry);
                 break;
             case R.id.btn_save:
                 Toast.makeText(getApplicationContext(),"Your Submission has been saved",Toast.LENGTH_SHORT).show();
                 sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
                 date1 = edtDate1.getText().toString();
-                sharedPreferences.edit().putString("arrival", date1).commit();
+                date2 = edtDate2.getText().toString();
+                sharedPreferences.edit().putString("arrival", date1).apply();
+                sharedPreferences.edit().putString("departure",date2).apply();
 
 
 
@@ -166,6 +168,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
         sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
         edtDate1.setText(sharedPreferences.getString("arrival", ""));
+        edtDate2.setText(sharedPreferences.getString("departure",""));
 
 
     }
