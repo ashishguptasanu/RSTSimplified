@@ -1,17 +1,12 @@
 package international.rst.com.rstsimplified.Activities;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -19,7 +14,6 @@ import international.rst.com.rstsimplified.R;
 
 public class FormActivity extends AppCompatActivity implements View.OnClickListener {
     EditText edtDate1,edtDate2, edtIssue, edtExpiry;
-    ProgressBar progressBar;
     AlertDialog.Builder dialogBuilder;
     AlertDialog b;
     @Override
