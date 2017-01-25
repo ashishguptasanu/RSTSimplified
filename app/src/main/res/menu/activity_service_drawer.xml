@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/visa"
+            android:id="@+id/visa2"
             android:icon="@mipmap/visa_gray"
             android:title="Visa Services" />
         <item
-            android:id="@+id/airport_services"
+            android:id="@+id/airport_services2"
             android:icon="@mipmap/airport_gray"
             android:title="Airport Services" />
         <item
-            android:id="@+id/hotel_services"
+            android:id="@+id/hotel_services2"
             android:icon="@mipmap/hotel_gray"
             android:title="Hotel Services" />
         <item
-            android:id="@+id/meet_greet"
+            android:id="@+id/meet_greet2"
             android:icon="@mipmap/meet"
             android:title="Meet &amp; Greet " />
     </group>
@@ -22,15 +22,15 @@
     <item android:title="Services">
         <menu>
             <item
-                android:id="@+id/sight_seeing"
+                android:id="@+id/sight_seeing2"
                 android:icon="@mipmap/city_sight"
                 android:title="City Sight Seeing" />
             <item
-                android:id="@+id/car_parking"
+                android:id="@+id/car_parking2"
                 android:icon="@mipmap/parking"
                 android:title="Car Parking" />
             <item
-                android:id="@+id/launge_booking"
+                android:id="@+id/launge_booking2"
                 android:icon="@mipmap/launge"
                 android:title="Launge Booking" />
         </menu>

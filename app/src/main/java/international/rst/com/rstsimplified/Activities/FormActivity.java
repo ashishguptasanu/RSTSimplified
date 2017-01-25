@@ -1,12 +1,16 @@
 package international.rst.com.rstsimplified.Activities;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -15,12 +19,20 @@ import international.rst.com.rstsimplified.R;
 public class FormActivity extends AppCompatActivity implements View.OnClickListener {
     EditText edtDate1,edtDate2, edtIssue, edtExpiry;
     AlertDialog.Builder dialogBuilder;
+    Context context;
+    Button btnSavePref;
+    String date1;
+    SharedPreferences.Editor editor;
+    SharedPreferences sharedPreferences;
     AlertDialog b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
+        sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
         edtDate1 = (EditText)findViewById(R.id.edt_arrival);
+        btnSavePref = (Button)findViewById(R.id.btn_save);
+        btnSavePref.setOnClickListener(this);
         edtDate1.setOnClickListener(this);
         edtDate2 = (EditText)findViewById(R.id.edt_departure);
         edtDate2.setOnClickListener(this);
@@ -28,6 +40,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         edtIssue.setOnClickListener(this);
         edtExpiry = (EditText)findViewById(R.id.edt_expire);
         edtExpiry.setOnClickListener(this);
+
     }
 
     @Override
@@ -45,6 +58,12 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.edt_expire:
                 datePicker(edtExpiry);
                 break;
+            case R.id.btn_save:
+                Toast.makeText(getApplicationContext(),"Your Submission has been saved",Toast.LENGTH_SHORT).show();
+                sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
+                date1 = edtDate1.getText().toString();
+                sharedPreferences.edit().putString("arrival", date1).commit();
+
 
 
 
@@ -141,4 +160,13 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         b.getWindow().setTitleColor(R.drawable.oman);
         b.show();
     }*/
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
+        edtDate1.setText(sharedPreferences.getString("arrival", ""));
+
+
+    }
 }

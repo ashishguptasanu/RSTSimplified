@@ -25,6 +25,7 @@ import international.rst.com.rstsimplified.R;
 public class ServicesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private ActionBarDrawerToggle mDrawerToggle;
+    int tab;
     ViewPager mViewPager;
     TabLayout tabLayout;
     PagerAdapter mSectionsPagerAdapter;
@@ -39,7 +40,7 @@ public class ServicesActivity extends AppCompatActivity
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         Bundle b=getIntent().getExtras();
-        int tab = b.getInt("tab");
+        tab = b.getInt("tab");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_services);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -96,20 +97,20 @@ public class ServicesActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.visa) {
+        if (id == R.id.visa2) {
             mViewPager.setCurrentItem(0);
-        } else if (id == R.id.airport_services) {
+        } else if (id == R.id.airport_services2) {
             mViewPager.setCurrentItem(1);
-        } else if (id == R.id.hotel_services) {
+        } else if (id == R.id.hotel_services2) {
             mViewPager.setCurrentItem(2);
-        } else if (id == R.id.meet_greet) {
+        } else if (id == R.id.meet_greet2) {
 
-        } else if (id == R.id.sight_seeing) {
+        } else if (id == R.id.sight_seeing2) {
 
-        } else if (id == R.id.car_parking) {
+        } else if (id == R.id.car_parking2) {
 
         }
-        else if (id == R.id.launge_booking) {
+        else if (id == R.id.launge_booking2) {
 
         }
 

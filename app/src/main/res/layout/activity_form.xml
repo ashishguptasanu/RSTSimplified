@@ -19,27 +19,36 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp">
-            <EditText
-                android:id="@+id/edt_arrival"
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="Arrival Date"
-                android:clickable="true"
-                android:focusable="false"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"/>
-            <EditText
-                android:id="@+id/edt_departure"
+                android:layout_weight="1">
+                <EditText
+                    android:id="@+id/edt_arrival"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:hint="Arrival Date"
+                    android:clickable="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="5dp"
-                android:focusable="false"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="Departure Date"
-                android:layout_weight="1"/>
+                android:layout_weight="1">
+                <EditText
+                    android:id="@+id/edt_departure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:hint="Departure Date"
+                    android:clickable="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"/>
+            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
@@ -51,34 +60,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <EditText
-                android:id="@+id/edt_name1"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="First Name"
-                android:clickable="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"/>
-            <EditText
-                android:id="@+id/edt_name2"
+                android:layout_weight="1">
+                <EditText
+                    android:id="@+id/edt_name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:hint="First Name"
+                    android:clickable="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="5dp"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="Last Name"
-                android:layout_weight="1"/>
+                android:layout_weight="1">
+                <EditText
+                    android:id="@+id/edt_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:hint="Last Name"
+                    android:clickable="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"/>
+            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
-        <EditText
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:id="@+id/edt_mail"/>
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/edt_mail"/>
+        </android.support.design.widget.TextInputLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -253,18 +276,35 @@
         </LinearLayout>
 
 
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:background="@drawable/buttonshape"
-            android:text="Submit"
-            android:textColor="#fff"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="15dp"
-            android:layout_gravity="center"/>
-
-
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:id="@+id/btn_save"
+                android:layout_weight=".5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/buttonshape"
+                android:textColor="#fff"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="15dp"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:id="@+id/btn_submit"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttonshape"
+                android:text="Submit"
+                android:textColor="#fff"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="15dp" />
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
