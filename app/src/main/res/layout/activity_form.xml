@@ -182,7 +182,15 @@
         <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <EditText
+
+            <TextView
+                android:text="https://assets.materialup.com/uploads/ac456db5-455f-4723-a6e4-865cc5c7a75d/attachment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_weight="1" />
+
+            <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Address"
