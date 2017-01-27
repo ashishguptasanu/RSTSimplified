@@ -15,6 +15,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private static final long SPLASH_DISPLAY_LENGTH = 2000;
 
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
