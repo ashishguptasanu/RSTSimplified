@@ -38,6 +38,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -49,11 +50,15 @@ import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
@@ -99,7 +104,7 @@ public class MainPage extends AppCompatActivity
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},REQUEST_READ_PHONE_STATE);
         } else {
             deviceID = mngr.getDeviceId();
-            new JSONAsyncTask(MainPage.class).execute();
+
 
         }
 
@@ -261,11 +266,12 @@ public class MainPage extends AppCompatActivity
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.card1:
-                Intent intent1=new Intent(this,ServicesActivity.class);
+                /*Intent intent1=new Intent(this,ServicesActivity.class);
                 b=new Bundle();
                 b.putInt("tab",0);
                 intent1.putExtras(b);
-                startActivity(intent1);
+                startActivity(intent1);*/
+                new JSONAsyncTask(MainPage.class).execute();
                 break;
             case R.id.card2:
                 Intent intent2=new Intent(this,ServicesActivity.class);
@@ -303,11 +309,12 @@ public class MainPage extends AppCompatActivity
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
-            Toast.makeText(getApplicationContext(),"Server Response: OK",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Server Response: OK", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         protected Boolean doInBackground(Void... strings) {
+
             try {
                 URL url = new URL("http://uaevisasonline.com/api/new-device.php");
                 conn[0] = (HttpURLConnection) url.openConnection();
@@ -315,43 +322,46 @@ public class MainPage extends AppCompatActivity
                 Log.e("", "" + conn[0].getResponseMessage());
                 conn[0].connect();
                 JSONObject obj = new JSONObject();
-                data = ("Device ID" + deviceID +"/" + "IMEI No." + androidID);
-                obj.put("Marge","Simpson");
+                data = ("Device ID" + deviceID + "/" + "IMEI No." + androidID);
+                obj.put("Marge", "Simpson");
 
                 HttpClient client = new DefaultHttpClient();
 
                 StringBuilder pat = new StringBuilder();
                 HttpGet post = new HttpGet(url.toURI());
-
                 post.setHeader("json", obj.toString());
                 post.setHeader("Content-Type", "application/json");
-                post.setHeader("accept-encoding","gzip, deflate");
-                post.setHeader("accept-language","en-US,en;q=0.8");
-                post.setHeader("FormData",obj.toString());
-
+                post.setHeader("accept-encoding", "gzip, deflate");
+                post.setHeader("accept-language", "en-US,en;q=0.8");
+                post.setHeader("FormData", obj.toString());
                 HttpResponse lazy = client.execute(post);
                 HttpEntity ent = lazy.getEntity();
                 String lb = EntityUtils.toString(ent);
                 pat.append(data);
                 Log.i("Read from server", pat.toString());
 
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
-            }finally {
+            } finally {
 
                 if (conn[0] != null)
                     conn[0].disconnect();
 
-                try{
+                try {
                     if (reader != null)
                         reader.close();
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
             return null;
+
         }
     }
+
+
+
+
 
 
 
