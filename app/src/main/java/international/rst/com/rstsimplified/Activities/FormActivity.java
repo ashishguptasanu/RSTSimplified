@@ -3,6 +3,7 @@ package international.rst.com.rstsimplified.Activities;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerTabStrip;
@@ -38,6 +39,7 @@ public class FormActivity extends AppCompatActivity {
     PagerTabStrip mTabStrip;
     PagerAdapter mFormPagerAdapter;
     String[] tabDataSet;
+    int atTab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +68,7 @@ public class FormActivity extends AppCompatActivity {
         mFormPager.setOnTouchListener(new OnSwipeTouchListener(FormActivity.this) {
 
             public void onSwipeRight() {
-                int atTab = mFormPager.getCurrentItem();
+                atTab = mFormPager.getCurrentItem();
                 if(atTab == 1 || atTab == 2 || atTab == 3){
                     mFormPager.setCurrentItem(atTab - 1);
                 }
@@ -76,6 +78,14 @@ public class FormActivity extends AppCompatActivity {
 
             }
 
+        });
+        FloatingActionButton mFloatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
+        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                atTab = mFormPager.getCurrentItem();
+                mFormPager.setCurrentItem(atTab + 1);
+            }
         });
 
 

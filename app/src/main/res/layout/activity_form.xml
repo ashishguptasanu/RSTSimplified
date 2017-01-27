@@ -11,5 +11,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"/>
     </international.rst.com.rstsimplified.Custom.CustomViewPager>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@mipmap/next_arrow"
+        android:layout_marginRight="19dp"
+        android:layout_marginBottom="17dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="19dp" />
 
 </RelativeLayout>
