@@ -5,7 +5,6 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -19,7 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import international.rst.com.rstsimplified.Fragments.Fragment;
+import international.rst.com.rstsimplified.Fragments.FragmentServices;
 import international.rst.com.rstsimplified.R;
 
 public class ServicesActivity extends AppCompatActivity
@@ -136,7 +135,7 @@ public class ServicesActivity extends AppCompatActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_service, container, false);
             return rootView;
         }
     }
@@ -151,14 +150,14 @@ public class ServicesActivity extends AppCompatActivity
         public android.support.v4.app.Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return Fragment.newInstance("visa");
+                    return FragmentServices.newInstance("visa");
 
                 case 1:
-                    return Fragment.newInstance("airport");
+                    return FragmentServices.newInstance("airport");
                 case 2:
-                    return Fragment.newInstance("hotel");
+                    return FragmentServices.newInstance("hotel");
                 case 3:
-                    return Fragment.newInstance("meet");
+                    return FragmentServices.newInstance("meet");
                 default:
                     return  PlaceholderFragment.newInstance(1, "");
             }

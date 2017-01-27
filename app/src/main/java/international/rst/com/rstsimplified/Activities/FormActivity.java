@@ -3,10 +3,16 @@ package international.rst.com.rstsimplified.Activities;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerTabStrip;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -14,9 +20,12 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import international.rst.com.rstsimplified.Custom.CustomViewPager;
+import international.rst.com.rstsimplified.Custom.OnSwipeTouchListener;
+import international.rst.com.rstsimplified.Fragments.FragmentForm;
 import international.rst.com.rstsimplified.R;
 
-public class FormActivity extends AppCompatActivity implements View.OnClickListener {
+public class FormActivity extends AppCompatActivity {
     EditText edtDate1,edtDate2, edtIssue, edtExpiry;
     AlertDialog.Builder dialogBuilder;
     Context context;
@@ -24,12 +33,16 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
     String date1,date2;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPreferences;
+    CustomViewPager mFormPager;
     AlertDialog b;
+    PagerTabStrip mTabStrip;
+    PagerAdapter mFormPagerAdapter;
+    String[] tabDataSet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
-        sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
+        /*sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
         edtDate1 = (EditText)findViewById(R.id.edt_arrival);
         btnSavePref = (Button)findViewById(R.id.btn_save);
         btnSavePref.setOnClickListener(this);
@@ -40,9 +53,34 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         edtIssue.setOnClickListener(this);
         edtExpiry = (EditText)findViewById(R.id.edt_expiry_date);
         edtExpiry.setOnClickListener(this);
+        */
+        mTabStrip = (PagerTabStrip)findViewById(R.id.tab_strip);
+        mTabStrip.setTabIndicatorColorResource(R.color.colorAccent);
+        tabDataSet = new String[]{"Consult Form","Applicant Form","Upload Documents","Payment"};
+
+        mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        mFormPager = (CustomViewPager) findViewById(R.id.formViewPager);
+        mFormPager.setAdapter(mFormPagerAdapter);
+        mFormPager.setCurrentItem(3);
+
+        mFormPager.setOnTouchListener(new OnSwipeTouchListener(FormActivity.this) {
+
+            public void onSwipeRight() {
+                int atTab = mFormPager.getCurrentItem();
+                if(atTab == 1 || atTab == 2 || atTab == 3){
+                    mFormPager.setCurrentItem(atTab - 1);
+                }
+
+            }
+            public void onSwipeLeft() {
+
+            }
+
+        });
+
 
     }
-
+    /*
     @Override
     public void onClick(View view) {
         switch(view.getId()){
@@ -118,7 +156,7 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
         dialogBuilder = new AlertDialog.Builder(this);
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.visa_type_dialog, null);
 
-        /*edtDate1.setOnClickListener(new View.OnClickListener() {
+        edtDate1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar mcurrentDate=Calendar.getInstance();
@@ -166,10 +204,72 @@ public class FormActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         super.onStart();
+        /*
         sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
         edtDate1.setText(sharedPreferences.getString("arrival", ""));
         edtDate2.setText(sharedPreferences.getString("departure",""));
+        */
 
 
+    }
+    public static class PlaceholderFragment extends android.support.v4.app.Fragment {
+        private static final String ARG_SECTION_NUMBER = "section_number";
+        public PlaceholderFragment() {
+        }
+        public static PlaceholderFragment newFormInstance(int sectionNumber, String name ) {
+            PlaceholderFragment fragment = new PlaceholderFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            args.putString("name", name);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_form, container, false);
+            return rootView;
+        }
+    }
+    public class PagerAdapter extends FragmentPagerAdapter {
+        int[] selectors = {R.drawable.selector_tab_one, R.drawable.selector_tab_two, R.drawable.selector_tab_three,R.drawable.selector_tab_four};
+
+        public PagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public android.support.v4.app.Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return FragmentForm.newFormInstance("visa");
+
+                case 1:
+                    return FragmentForm.newFormInstance("airport");
+                case 2:
+                    return FragmentForm.newFormInstance("hotel");
+                case 3:
+                    return FragmentForm.newFormInstance("meet");
+                default:
+                    return  PlaceholderFragment.newFormInstance(1, "");
+            }
+        }
+
+        /*public void setCustomIconsFortabs(){
+            for (int i=0; i< getCount(); i++){
+                tabLayout.getTabAt(i).setIcon(selectors[i]);
+            }
+        }*/
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return tabDataSet[position];
+        }
+
+
+        @Override
+        public int getCount() {
+            return 4;
+        }
     }
 }

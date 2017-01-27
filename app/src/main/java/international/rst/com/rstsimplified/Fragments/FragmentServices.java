@@ -1,6 +1,5 @@
 package international.rst.com.rstsimplified.Fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -10,11 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import international.rst.com.rstsimplified.Activities.FormActivity;
 import international.rst.com.rstsimplified.Adapter.VisaAdapter;
 import international.rst.com.rstsimplified.R;
 
@@ -22,7 +19,7 @@ import international.rst.com.rstsimplified.R;
  * Created by ashish on 13/1/17.
  */
 
-public class Fragment extends android.support.v4.app.Fragment {
+public class FragmentServices extends android.support.v4.app.Fragment {
     TextView tv1;
     String title;
     View view;
@@ -32,10 +29,10 @@ public class Fragment extends android.support.v4.app.Fragment {
     String[] mDataset1;
     int[] mImageSet, mImageSet2;
 
-    public Fragment() {
+    public FragmentServices() {
     }
-    public static Fragment newInstance(String title){
-        Fragment fragment1 = new Fragment();
+    public static FragmentServices newInstance(String title){
+        FragmentServices fragment1 = new FragmentServices();
         Bundle args = new Bundle();
         args.putString("title", title);
         fragment1.setArguments(args);
@@ -50,7 +47,7 @@ public class Fragment extends android.support.v4.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_main, container, false);
+        view = inflater.inflate(R.layout.fragment_service, container, false);
         tv1 = (TextView)view.findViewById(R.id.text1);
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
