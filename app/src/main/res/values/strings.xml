@@ -11,4 +11,5 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_main_page">RST Simplified</string>
     <string name="title_activity_services">Our Services</string>
+    <string name="search_title">Search</string>
 </resources>

@@ -58,7 +58,6 @@ public class FormActivity extends AppCompatActivity {
         mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mFormPager = (CustomViewPager) findViewById(R.id.formViewPager);
         mFormPager.setAdapter(mFormPagerAdapter);
-        mFormPager.setCurrentItem(3);
 
         mFormPager.setOnTouchListener(new OnSwipeTouchListener(FormActivity.this) {
 
@@ -248,14 +247,14 @@ public class FormActivity extends AppCompatActivity {
         public android.support.v4.app.Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return FragmentForm.newFormInstance("visa");
+                    return FragmentForm.newFormInstance("consult");
 
                 case 1:
-                    return FragmentForm.newFormInstance("airport");
+                    return FragmentForm.newFormInstance("applicant");
                 case 2:
-                    return FragmentForm.newFormInstance("hotel");
+                    return FragmentForm.newFormInstance("docs");
                 case 3:
-                    return FragmentForm.newFormInstance("meet");
+                    return FragmentForm.newFormInstance("payment");
                 default:
                     return  PlaceholderFragment.newFormInstance(1, "");
             }

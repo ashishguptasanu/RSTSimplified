@@ -36,7 +36,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         title = getArguments().getString("title");
-        if (title.equalsIgnoreCase("visa")) {
+        if (title.equalsIgnoreCase("consult")) {
             view = inflater.inflate(R.layout.fragment_form, container, false);
 
         }
