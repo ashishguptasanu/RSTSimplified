@@ -235,25 +235,25 @@ public class MainPage extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.visa_services) {
-            Intent intent1=new Intent(this,ServicesActivity.class);
+            Intent intent1=new Intent(this,ActivityServices.class);
             b=new Bundle();
             b.putInt("tab",0);
             intent1.putExtras(b);
             startActivity(intent1);
         } else if (id == R.id.airport_services) {
-            Intent intent2=new Intent(this,ServicesActivity.class);
+            Intent intent2=new Intent(this,ActivityServices.class);
             b=new Bundle();
             b.putInt("tab",1);
             intent2.putExtras(b);
             startActivity(intent2);
         } else if (id == R.id.hotel_services) {
-            Intent intent3=new Intent(this,ServicesActivity.class);
+            Intent intent3=new Intent(this,ActivityServices.class);
             b=new Bundle();
             b.putInt("tab",2);
             intent3.putExtras(b);
             startActivity(intent3);
         } else if (id == R.id.meet_greet) {
-            Intent intent4=new Intent(this,ServicesActivity.class);
+            Intent intent4=new Intent(this,ActivityServices.class);
             b=new Bundle();
             b.putInt("tab",3);
             intent4.putExtras(b);
@@ -282,21 +282,21 @@ public class MainPage extends AppCompatActivity
                 new PostData();
                 break;
             case R.id.card2:
-                Intent intent2=new Intent(this,ServicesActivity.class);
+                Intent intent2=new Intent(this,ActivityServices.class);
                 b=new Bundle();
                 b.putInt("tab",1);
                 intent2.putExtras(b);
                 startActivity(intent2);
                 break;
             case R.id.card3:
-                Intent intent3=new Intent(this,ServicesActivity.class);
+                Intent intent3=new Intent(this,ActivityServices.class);
                 b=new Bundle();
                 b.putInt("tab",2);
                 intent3.putExtras(b);
                 startActivity(intent3);
                 break;
             case R.id.card4:
-                Intent intent4=new Intent(this,ServicesActivity.class);
+                Intent intent4=new Intent(this,ActivityServices.class);
                 b=new Bundle();
                 b.putInt("tab",3);
                 intent4.putExtras(b);

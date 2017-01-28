@@ -1,34 +1,35 @@
 package international.rst.com.rstsimplified.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.GravityCompat;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 
 import international.rst.com.rstsimplified.Fragments.FragmentServices;
 import international.rst.com.rstsimplified.R;
 
-public class ServicesActivity extends AppCompatActivity
+public class ActivityServices extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private ActionBarDrawerToggle mDrawerToggle;
     int tab;
     ViewPager mViewPager;
     TabLayout tabLayout;
     PagerAdapter mSectionsPagerAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +37,18 @@ public class ServicesActivity extends AppCompatActivity
         setContentView(R.layout.activity_services);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
         Bundle b=getIntent().getExtras();
         tab = b.getInt("tab");
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_services);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         mSectionsPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -60,7 +60,7 @@ public class ServicesActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_services);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -71,7 +71,7 @@ public class ServicesActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
+        getMenuInflater().inflate(R.menu.activity_services, menu);
         return true;
     }
 
@@ -96,26 +96,24 @@ public class ServicesActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.visa2) {
+        if (id == R.id.visa_services) {
             mViewPager.setCurrentItem(0);
-        } else if (id == R.id.airport_services2) {
+        } else if (id == R.id.airport_services) {
             mViewPager.setCurrentItem(1);
-        } else if (id == R.id.hotel_services2) {
+        } else if (id == R.id.hotel_services) {
             mViewPager.setCurrentItem(2);
-        } else if (id == R.id.meet_greet2) {
+        } else if (id == R.id.meet_greet) {
+            mViewPager.setCurrentItem(3);
+        } else if (id == R.id.sight_seeing) {
 
-        } else if (id == R.id.sight_seeing2) {
-
-        } else if (id == R.id.car_parking2) {
-
+        } else if (id == R.id.car_parking) {
         }
-        else if (id == R.id.launge_booking2) {
-
+        else if(id == R.id.home){
+            Intent intent = new Intent(this,MainPage.class);
+            startActivity(intent);
         }
 
-
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_services);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
