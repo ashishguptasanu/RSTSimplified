@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +15,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,17 +25,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -48,22 +37,23 @@ import me.relex.circleindicator.CircleIndicator;
 import android.provider.Settings.Secure;
 import android.widget.Toast;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
+
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
+
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
+
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ByteArrayEntity;
+
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
+
 
 public class MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+    private static final String REGISTER_URL ="http://uaevisasonline.com/api/new-device.php" ;
     private static ViewPager imageviewPager;
     public String androidID,  deviceID;
     Bundle b;
@@ -95,7 +85,6 @@ public class MainPage extends AppCompatActivity
         cardView4.setOnClickListener(this);
         androidID = Secure.getString(this.getContentResolver(),
                 Secure.ANDROID_ID);
-        Toast.makeText(getApplicationContext(),androidID,Toast.LENGTH_SHORT).show();
         mngr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
         int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
 
@@ -106,6 +95,13 @@ public class MainPage extends AppCompatActivity
             deviceID = mngr.getDeviceId();
 
 
+        }
+
+        if(isOnline() == true){
+            Toast.makeText(getApplicationContext(),"Connected",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"Check your Internet Connection",Toast.LENGTH_SHORT).show();
         }
 
 
@@ -143,6 +139,18 @@ public class MainPage extends AppCompatActivity
 
             default:
                 break;
+        }
+    }
+    private boolean isOnline()
+    {
+        try
+        {
+            ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            return cm.getActiveNetworkInfo().isConnectedOrConnecting();
+        }
+        catch (Exception e)
+        {
+            return false;
         }
     }
 
@@ -271,7 +279,7 @@ public class MainPage extends AppCompatActivity
                 b.putInt("tab",0);
                 intent1.putExtras(b);
                 startActivity(intent1);*/
-                new JSONAsyncTask(MainPage.class).execute();
+                new PostData();
                 break;
             case R.id.card2:
                 Intent intent2=new Intent(this,ServicesActivity.class);
@@ -298,73 +306,42 @@ public class MainPage extends AppCompatActivity
 
     }
 
-
-    final HttpURLConnection[] conn = {null};
-    final BufferedReader reader = null;
-    class JSONAsyncTask extends AsyncTask<Void, Void, Boolean> {
+    private void sendData() {
 
 
-        public JSONAsyncTask(Class<MainPage> mainPageClass) {
-        }
+    }
+    class PostData extends AsyncTask<Void, Void, Void> {
 
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            Toast.makeText(getApplicationContext(), "Server Response: OK", Toast.LENGTH_SHORT).show();
-        }
+        private Exception exception;
+
 
         @Override
-        protected Boolean doInBackground(Void... strings) {
+        protected Void doInBackground(Void... voids) {
+            String  msg = androidID;
+
+            HttpClient Client = new DefaultHttpClient();
+
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+            nameValuePairs.add(new BasicNameValuePair("id", msg));
+            nameValuePairs.add(new BasicNameValuePair("etc", deviceID));
 
             try {
-                URL url = new URL("http://uaevisasonline.com/api/new-device.php");
-                conn[0] = (HttpURLConnection) url.openConnection();
-                conn[0].setDoOutput(true);
-                Log.e("", "" + conn[0].getResponseMessage());
-                conn[0].connect();
-                JSONObject obj = new JSONObject();
-                data = ("Device ID" + deviceID + "/" + "IMEI No." + androidID);
-                obj.put("Marge", "Simpson");
 
-                HttpClient client = new DefaultHttpClient();
+                String SetServerString = "";
 
-                StringBuilder pat = new StringBuilder();
-                HttpGet post = new HttpGet(url.toURI());
-                post.setHeader("json", obj.toString());
-                post.setHeader("Content-Type", "application/json");
-                post.setHeader("accept-encoding", "gzip, deflate");
-                post.setHeader("accept-language", "en-US,en;q=0.8");
-                post.setHeader("FormData", obj.toString());
-                HttpResponse lazy = client.execute(post);
-                HttpEntity ent = lazy.getEntity();
-                String lb = EntityUtils.toString(ent);
-                pat.append(data);
-                Log.i("Read from server", pat.toString());
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpPost httppost = new HttpPost("http://uaevisasonline.com/api/new-device.php");
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                ResponseHandler<String> responseHandler = new BasicResponseHandler();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
+                httpclient.execute(httppost, responseHandler);
 
-                if (conn[0] != null)
-                    conn[0].disconnect();
-
-                try {
-                    if (reader != null)
-                        reader.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            }  catch(Exception ex) {
+                // failed
             }
             return null;
-
         }
     }
-
-
-
-
-
-
-
 
 
 }
