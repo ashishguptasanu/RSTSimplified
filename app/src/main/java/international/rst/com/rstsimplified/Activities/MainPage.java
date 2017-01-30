@@ -5,8 +5,6 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -38,8 +36,17 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import international.rst.com.rstsimplified.Adapter.ViewPagerAdapter;
+import international.rst.com.rstsimplified.Model.Country;
+import international.rst.com.rstsimplified.Model.CountryRes;
+import international.rst.com.rstsimplified.Model.CountryResponse;
 import international.rst.com.rstsimplified.R;
 import me.relex.circleindicator.CircleIndicator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 import android.provider.Settings.Secure;
 import android.widget.Toast;
 
@@ -64,6 +71,7 @@ public class MainPage extends AppCompatActivity
     public String androidID,  deviceID;
     Bundle b;
     String data;
+    private List<CountryRes> countries = new ArrayList<>();
     TelephonyManager mngr;
     final int REQUEST_READ_PHONE_STATE = 0;
     CardView cardView1, cardView2,cardView3,cardView4;
@@ -81,6 +89,7 @@ public class MainPage extends AppCompatActivity
         setSupportActionBar(toolbar);
         imageviewPager = (ViewPager)findViewById(R.id.viewpager1);
         init();
+        loadJSON();
         cardView1 = (CardView)findViewById(R.id.card1);
         cardView2 = (CardView)findViewById(R.id.card2);
         cardView3 = (CardView)findViewById(R.id.card3);
@@ -280,11 +289,11 @@ public class MainPage extends AppCompatActivity
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.card1:
-                /*Intent intent1=new Intent(this,ServicesActivity.class);
+                Intent intent1=new Intent(this,ActivityServices.class);
                 b=new Bundle();
                 b.putInt("tab",0);
                 intent1.putExtras(b);
-                startActivity(intent1);*/
+                startActivity(intent1);
                 new PostData();
                 break;
             case R.id.card2:
@@ -336,17 +345,46 @@ public class MainPage extends AppCompatActivity
                 String SetServerString = "";
 
                 HttpClient httpclient = new DefaultHttpClient();
-                HttpPost httppost = new HttpPost("http://uaevisasonline.com/api/new-device.php");
+                HttpPost httppost = new HttpPost("http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=new_registeration");
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
 
                 httpclient.execute(httppost, responseHandler);
+                System.out.println("Success");
+
 
             }  catch(Exception ex) {
-                // failed
+                System.out.println(ex);
             }
             return null;
         }
+    }
+    private void loadJSON(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.uaevisasonline.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        CountryResponse request = retrofit.create(CountryResponse.class);
+        Call<Country> call = request.getCountry();
+        //
+        call.enqueue(new Callback<Country>() {
+            @Override
+            public void onResponse(Call<Country> call, Response<Country> response) {
+
+
+                Country jsonResponse = response.body();
+                countries = jsonResponse.getCountry();
+                System.out.println(countries.size());
+                for(int i = 0; i<countries.size();i++){
+                    System.out.println(countries.get(i).getName());
+                }
+
+            }
+            @Override
+            public void onFailure(Call<Country> call, Throwable t) {
+                Log.d("Error",t.getMessage());
+            }
+        });
     }
 
 

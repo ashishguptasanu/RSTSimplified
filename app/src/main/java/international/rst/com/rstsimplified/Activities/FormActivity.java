@@ -73,14 +73,7 @@ public class FormActivity extends AppCompatActivity {
             }
 
         });
-        FloatingActionButton mFloatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
-        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                atTab = mFormPager.getCurrentItem();
-                mFormPager.setCurrentItem(atTab + 1);
-            }
-        });
+
 
 
     }
