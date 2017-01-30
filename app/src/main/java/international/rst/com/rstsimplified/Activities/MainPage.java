@@ -63,6 +63,8 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import static android.R.attr.name;
+
 
 public class MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -376,13 +378,13 @@ public class MainPage extends AppCompatActivity
                 countries = jsonResponse.getCountry();
                 System.out.println(countries.size());
                 for(int i = 0; i<countries.size();i++){
-                    System.out.println(countries.get(i).getName());
+                    Log.i("Name", countries.get(i).getName());
                 }
 
             }
             @Override
             public void onFailure(Call<Country> call, Throwable t) {
-                Log.d("Error",t.getMessage());
+                Log.v("Error",t.getMessage());
             }
         });
     }
