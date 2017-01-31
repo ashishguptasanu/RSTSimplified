@@ -20,9 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import international.rst.com.rstsimplified.Adapter.VisaAdapter;
-import international.rst.com.rstsimplified.Model.Country;
-import international.rst.com.rstsimplified.Model.CountryRes;
-import international.rst.com.rstsimplified.Model.CountryResponse;
 import international.rst.com.rstsimplified.Model.VisaResponse;
 import international.rst.com.rstsimplified.Model.VisaType;
 import international.rst.com.rstsimplified.Model.VisaType_;
@@ -33,16 +30,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by ashish on 13/1/17.
- */
 
 public class FragmentServices extends android.support.v4.app.Fragment {
     TextView tv1;
     String title;
     View view;
-    LinearLayoutManager linearLayoutManager1, linearLayoutManager2, linearLayoutManager3;
-    RecyclerView recyclerView;
+    LinearLayoutManager linearLayoutManager1;
     VisaAdapter visaAdapter;
     String[] mDataset1;
     int[] mImageSet, mImageSet2;
@@ -97,10 +90,6 @@ public class FragmentServices extends android.support.v4.app.Fragment {
                         visaTypes = jsonResponse.getVisaType();
                         System.out.println(visaTypes.size());
                         for(int i = 0; i<visaTypes.size();i++){
-                            Log.i("Name", String.valueOf(visaTypes.get(i).get14DaysVisa()));
-                            Log.i("Name", String.valueOf(visaTypes.get(i).get14DaysSingleEntryMinor()));
-                            Log.i("Name", String.valueOf(visaTypes.get(i).get60DaysVisa()));
-                            Log.i("Name", String.valueOf(visaTypes.get(i).get60DaysVisaMultipleEntry()));
                             Log.i("Name", String.valueOf(visaTypes.get(i).get90DaysVisaJs()));
                         }
 
@@ -143,9 +132,6 @@ public class FragmentServices extends android.support.v4.app.Fragment {
             tv1.setText("Title: Airport Services");
             img.setImageResource(R.mipmap.airport_background);
         }
-
-
-
         return view;
     }
 

@@ -77,7 +77,7 @@ public class MainPage extends AppCompatActivity
         setSupportActionBar(toolbar);
         imageviewPager = (ViewPager)findViewById(R.id.viewpager1);
         init();
-        //loadJSON();
+        loadJSON();
 
 
         if(isOnline() == true){
