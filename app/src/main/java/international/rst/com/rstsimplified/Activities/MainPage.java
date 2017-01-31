@@ -9,26 +9,38 @@ import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings.Secure;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.SearchView;
-import android.telephony.TelephonyManager;
-import android.util.Log;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,29 +53,15 @@ import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.Model.CountryResponse;
 import international.rst.com.rstsimplified.R;
 import me.relex.circleindicator.CircleIndicator;
-import retrofit2.Call;
-import retrofit2.Callback;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import android.provider.Settings.Secure;
-import android.widget.Toast;
-
-
-import org.apache.http.NameValuePair;
-
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-
-import org.apache.http.client.methods.HttpPost;
-
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
-import static android.R.attr.name;
 
 
 public class MainPage extends AppCompatActivity
@@ -80,6 +78,8 @@ public class MainPage extends AppCompatActivity
     Menu menu;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
+    private static final String BASE_URL = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=new_registeration";
+    private OkHttpClient client = new OkHttpClient();
     private static final Integer[] IMAGES= {R.drawable.card_background,R.drawable.oman,R.drawable.paris,R.drawable.usa};
     private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
 
@@ -297,12 +297,13 @@ public class MainPage extends AppCompatActivity
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.card1:
-                Intent intent1=new Intent(this,ActivityServices.class);
+                /*Intent intent1=new Intent(this,ActivityServices.class);
                 b=new Bundle();
                 b.putInt("tab",0);
                 intent1.putExtras(b);
                 startActivity(intent1);
-                new PostData();
+                new PostData();*/
+                sendData();
                 break;
             case R.id.card2:
                 Intent intent2=new Intent(this,ActivityServices.class);
@@ -330,6 +331,38 @@ public class MainPage extends AppCompatActivity
     }
 
     private void sendData() {
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("Android ID", androidID)
+                .addFormDataPart("Device ID", deviceID)
+                .build();
+        Request request = new Request.Builder().url(BASE_URL).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    String resp = response.body().string();
+//                    Log.v(TAG_REGISTER, resp);
+                    System.out.println(resp);
+                    if (response.isSuccessful()) {
+                    } else {
+
+                    }
+                } catch (IOException e) {
+                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
 
 
     }
@@ -368,7 +401,7 @@ public class MainPage extends AppCompatActivity
         }
     }
     private void loadJSON(){
-        Retrofit retrofit = new Retrofit.Builder()
+        /*Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.uaevisasonline.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -392,7 +425,7 @@ public class MainPage extends AppCompatActivity
             public void onFailure(Call<Country> call, Throwable t) {
                 Log.v("Error",t.getMessage());
             }
-        });
+        });*/
     }
 
 

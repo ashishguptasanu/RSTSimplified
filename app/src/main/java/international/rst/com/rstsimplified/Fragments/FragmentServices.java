@@ -6,14 +6,32 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import international.rst.com.rstsimplified.Adapter.VisaAdapter;
+import international.rst.com.rstsimplified.Model.Country;
+import international.rst.com.rstsimplified.Model.CountryRes;
+import international.rst.com.rstsimplified.Model.CountryResponse;
+import international.rst.com.rstsimplified.Model.VisaResponse;
+import international.rst.com.rstsimplified.Model.VisaType;
+import international.rst.com.rstsimplified.Model.VisaType_;
 import international.rst.com.rstsimplified.R;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by ashish on 13/1/17.
@@ -28,6 +46,7 @@ public class FragmentServices extends android.support.v4.app.Fragment {
     VisaAdapter visaAdapter;
     String[] mDataset1;
     int[] mImageSet, mImageSet2;
+    private List<VisaType_> visaTypes = new ArrayList<>();
 
     public FragmentServices() {
     }
@@ -53,8 +72,44 @@ public class FragmentServices extends android.support.v4.app.Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Getting Data from Server", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                loadVisaType();
+            }
+
+            private void loadVisaType() {
+                Gson gson = new GsonBuilder()
+                        .setLenient()
+                        .create();
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://www.uaevisasonline.com")
+                        .addConverterFactory(GsonConverterFactory.create(gson))
+                        .build();
+                VisaResponse request = retrofit.create(VisaResponse.class);
+                Call<VisaType> call = request.getVisaType();
+                //
+                call.enqueue(new Callback<VisaType>() {
+                    @Override
+                    public void onResponse(Call<VisaType> call, Response<VisaType> response) {
+
+
+                        VisaType jsonResponse = response.body();
+                        visaTypes = jsonResponse.getVisaType();
+                        System.out.println(visaTypes.size());
+                        for(int i = 0; i<visaTypes.size();i++){
+                            Log.i("Name", String.valueOf(visaTypes.get(i).get14DaysVisa()));
+                            Log.i("Name", String.valueOf(visaTypes.get(i).get14DaysSingleEntryMinor()));
+                            Log.i("Name", String.valueOf(visaTypes.get(i).get60DaysVisa()));
+                            Log.i("Name", String.valueOf(visaTypes.get(i).get60DaysVisaMultipleEntry()));
+                            Log.i("Name", String.valueOf(visaTypes.get(i).get90DaysVisaJs()));
+                        }
+
+                    }
+                    @Override
+                    public void onFailure(Call<VisaType> call, Throwable t) {
+                        Log.v("Error",t.getMessage());
+                    }
+                });
             }
         });
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
