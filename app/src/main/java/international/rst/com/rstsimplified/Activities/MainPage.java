@@ -92,27 +92,8 @@ public class MainPage extends AppCompatActivity
         imageviewPager = (ViewPager)findViewById(R.id.viewpager1);
         init();
         loadJSON();
-        cardView1 = (CardView)findViewById(R.id.card1);
-        cardView2 = (CardView)findViewById(R.id.card2);
-        cardView3 = (CardView)findViewById(R.id.card3);
-        cardView4 = (CardView)findViewById(R.id.card4);
-        cardView1.setOnClickListener(this);
-        cardView2.setOnClickListener(this);
-        cardView3.setOnClickListener(this);
-        cardView4.setOnClickListener(this);
-        androidID = Secure.getString(this.getContentResolver(),
-                Secure.ANDROID_ID);
-        mngr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
 
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},REQUEST_READ_PHONE_STATE);
-        } else {
-            deviceID = mngr.getDeviceId();
-
-
-        }
+        getDeviceID();
 
         if(isOnline() == true){
             Toast.makeText(getApplicationContext(),"Connected",Toast.LENGTH_SHORT).show();
@@ -144,6 +125,24 @@ public class MainPage extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
+    private void getDeviceID() {
+        androidID = Secure.getString(this.getContentResolver(),
+                Secure.ANDROID_ID);
+        mngr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
+
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},REQUEST_READ_PHONE_STATE);
+        } else {
+            deviceID = mngr.getDeviceId();
+            Log.d("Device ID", deviceID);
+
+
+        }
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
@@ -172,6 +171,14 @@ public class MainPage extends AppCompatActivity
     }
 
     private void init() {
+        cardView1 = (CardView)findViewById(R.id.card1);
+        cardView2 = (CardView)findViewById(R.id.card2);
+        cardView3 = (CardView)findViewById(R.id.card3);
+        cardView4 = (CardView)findViewById(R.id.card4);
+        cardView1.setOnClickListener(this);
+        cardView2.setOnClickListener(this);
+        cardView3.setOnClickListener(this);
+        cardView4.setOnClickListener(this);
         Collections.addAll(ImagesArray, IMAGES);
 
         imageviewPager = (ViewPager) findViewById(R.id.viewpager1);
@@ -248,7 +255,6 @@ public class MainPage extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.visa_services) {
