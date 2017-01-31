@@ -1,19 +1,42 @@
 package international.rst.com.rstsimplified.Activities;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 
+import java.io.IOException;
+
 import international.rst.com.rstsimplified.R;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class SplashActivity extends AppCompatActivity {
 
 
-    private static final long SPLASH_DISPLAY_LENGTH = 2000;
+    private static final long SPLASH_DISPLAY_LENGTH = 5000;
+    public String androidID,  deviceID;
+    private static final String BASE_URL = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=new_registeration";
+    private OkHttpClient client = new OkHttpClient();
+    TelephonyManager mngr;
+    SharedPreferences sharedPreferences;
+    final int REQUEST_READ_PHONE_STATE = 0;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -24,7 +47,8 @@ public class SplashActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash);
         View yourView = findViewById(R.id.your_view);
-
+        sharedPreferences = SplashActivity.this.getPreferences(Context.MODE_PRIVATE);
+        sendData();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (yourView != null) {
                 yourView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
@@ -45,6 +69,85 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        sharedPreferences = SplashActivity.this.getPreferences(Context.MODE_PRIVATE);
+
+
+    }
+
+    private void sendData() {
+        getDeviceID();
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("Android ID", androidID)
+                .addFormDataPart("Device ID", deviceID)
+                .build();
+        Request request = new Request.Builder().url(BASE_URL).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    String resp = response.body().string();
+//                    Log.v(TAG_REGISTER, resp);
+                    System.out.println(resp);
+                    if (response.isSuccessful()) {
+                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
+                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
+                    } else {
+
+                    }
+                } catch (IOException e) {
+                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+
+
+    }
+    private void getDeviceID() {
+        androidID = Settings.Secure.getString(this.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        mngr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
+
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},REQUEST_READ_PHONE_STATE);
+        } else {
+            deviceID = mngr.getDeviceId();
+            Log.d("Device ID", deviceID);
+
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_READ_PHONE_STATE:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    String deviceID = mngr.getDeviceId();
+
+                }
+                break;
+
+            default:
+                break;
+        }
     }
 
 

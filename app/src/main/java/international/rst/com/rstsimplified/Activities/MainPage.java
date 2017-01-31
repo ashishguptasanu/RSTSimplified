@@ -31,16 +31,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -53,12 +45,8 @@ import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.Model.CountryResponse;
 import international.rst.com.rstsimplified.R;
 import me.relex.circleindicator.CircleIndicator;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -68,18 +56,16 @@ public class MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private static final String REGISTER_URL ="http://uaevisasonline.com/api/new-device.php" ;
     private static ViewPager imageviewPager;
-    public String androidID,  deviceID;
+
     Bundle b;
     String data;
     private List<CountryRes> countries = new ArrayList<>();
-    TelephonyManager mngr;
-    final int REQUEST_READ_PHONE_STATE = 0;
+
     CardView cardView1, cardView2,cardView3,cardView4;
     Menu menu;
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
-    private static final String BASE_URL = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=new_registeration";
-    private OkHttpClient client = new OkHttpClient();
+
     private static final Integer[] IMAGES= {R.drawable.card_background,R.drawable.oman,R.drawable.paris,R.drawable.usa};
     private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
 
@@ -91,9 +77,8 @@ public class MainPage extends AppCompatActivity
         setSupportActionBar(toolbar);
         imageviewPager = (ViewPager)findViewById(R.id.viewpager1);
         init();
-        loadJSON();
+        //loadJSON();
 
-        getDeviceID();
 
         if(isOnline() == true){
             Toast.makeText(getApplicationContext(),"Connected",Toast.LENGTH_SHORT).show();
@@ -126,37 +111,7 @@ public class MainPage extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void getDeviceID() {
-        androidID = Secure.getString(this.getContentResolver(),
-                Secure.ANDROID_ID);
-        mngr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
 
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},REQUEST_READ_PHONE_STATE);
-        } else {
-            deviceID = mngr.getDeviceId();
-            Log.d("Device ID", deviceID);
-
-
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_READ_PHONE_STATE:
-                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    String deviceID = mngr.getDeviceId();
-
-                }
-                break;
-
-            default:
-                break;
-        }
-    }
     private boolean isOnline()
     {
         try
@@ -297,13 +252,12 @@ public class MainPage extends AppCompatActivity
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.card1:
-                /*Intent intent1=new Intent(this,ActivityServices.class);
+                Intent intent1=new Intent(this,ActivityServices.class);
                 b=new Bundle();
                 b.putInt("tab",0);
                 intent1.putExtras(b);
                 startActivity(intent1);
-                new PostData();*/
-                sendData();
+                //new PostData();
                 break;
             case R.id.card2:
                 Intent intent2=new Intent(this,ActivityServices.class);
@@ -330,43 +284,8 @@ public class MainPage extends AppCompatActivity
 
     }
 
-    private void sendData() {
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("Android ID", androidID)
-                .addFormDataPart("Device ID", deviceID)
-                .build();
-        Request request = new Request.Builder().url(BASE_URL).post(requestBody).build();
-        okhttp3.Call call = client.newCall(request);
-        call.enqueue(new Callback() {
 
-            @Override
-            public void onFailure(Call call, IOException e) {
-                System.out.println("Registration Error" + e.getMessage());
-            }
-
-            @Override
-            public void onResponse(Call call, okhttp3.Response response) throws IOException {
-
-                try {
-                    String resp = response.body().string();
-//                    Log.v(TAG_REGISTER, resp);
-                    System.out.println(resp);
-                    if (response.isSuccessful()) {
-                    } else {
-
-                    }
-                } catch (IOException e) {
-                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
-                    System.out.println("Exception caught" + e.getMessage());
-                }
-            }
-
-        });
-
-
-    }
-    class PostData extends AsyncTask<Void, Void, Void> {
+    /*class PostData extends AsyncTask<Void, Void, Void> {
 
         private Exception exception;
 
@@ -399,9 +318,9 @@ public class MainPage extends AppCompatActivity
             }
             return null;
         }
-    }
+    }*/
     private void loadJSON(){
-        /*Retrofit retrofit = new Retrofit.Builder()
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.uaevisasonline.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -425,7 +344,7 @@ public class MainPage extends AppCompatActivity
             public void onFailure(Call<Country> call, Throwable t) {
                 Log.v("Error",t.getMessage());
             }
-        });*/
+        });
     }
 
 
