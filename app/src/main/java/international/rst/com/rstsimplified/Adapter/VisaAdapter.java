@@ -14,6 +14,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import international.rst.com.rstsimplified.Activities.FormActivity;
+import international.rst.com.rstsimplified.Activities.VisaServicesOptions;
 import international.rst.com.rstsimplified.R;
 
 /**
@@ -50,7 +51,7 @@ public class VisaAdapter extends RecyclerView.Adapter<VisaAdapter.MyViewHolder> 
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.apply:
-                    Intent intent = new Intent(context, FormActivity.class);
+                    Intent intent = new Intent(context, VisaServicesOptions.class);
                     context.startActivity(intent);
                     break;
             }
@@ -69,6 +70,7 @@ public class VisaAdapter extends RecyclerView.Adapter<VisaAdapter.MyViewHolder> 
         holder.imgv.setImageResource(mimageSet[position]);
         holder.tv.setText(mDataSet[position]);
         holder.imgv2.setImageResource(mImageSet2[position]);
+
     }
 
     @Override

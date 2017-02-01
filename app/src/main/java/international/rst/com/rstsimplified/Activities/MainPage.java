@@ -59,7 +59,7 @@ public class MainPage extends AppCompatActivity
 
     Bundle b;
     String data;
-    private List<CountryRes> countries = new ArrayList<>();
+
 
     CardView cardView1, cardView2,cardView3,cardView4;
     Menu menu;
@@ -77,7 +77,6 @@ public class MainPage extends AppCompatActivity
         setSupportActionBar(toolbar);
         imageviewPager = (ViewPager)findViewById(R.id.viewpager1);
         init();
-        loadJSON();
 
 
         if(isOnline() == true){
@@ -319,33 +318,7 @@ public class MainPage extends AppCompatActivity
             return null;
         }
     }*/
-    private void loadJSON(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.uaevisasonline.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        CountryResponse request = retrofit.create(CountryResponse.class);
-        Call<Country> call = request.getCountry();
-        //
-        call.enqueue(new Callback<Country>() {
-            @Override
-            public void onResponse(Call<Country> call, Response<Country> response) {
 
-
-                Country jsonResponse = response.body();
-                countries = jsonResponse.getCountry();
-                System.out.println(countries.size());
-                for(int i = 0; i<countries.size();i++){
-                    Log.i("Name", countries.get(i).getName());
-                }
-
-            }
-            @Override
-            public void onFailure(Call<Country> call, Throwable t) {
-                Log.v("Error",t.getMessage());
-            }
-        });
-    }
 
 
 }

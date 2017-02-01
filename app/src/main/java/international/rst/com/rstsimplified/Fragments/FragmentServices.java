@@ -90,7 +90,7 @@ public class FragmentServices extends android.support.v4.app.Fragment {
                         visaTypes = jsonResponse.getVisaType();
                         System.out.println(visaTypes.size());
                         for(int i = 0; i<visaTypes.size();i++){
-                            Log.i("Name", String.valueOf(visaTypes.get(i).get90DaysVisaJs()));
+                            Log.i("Name", String.valueOf(visaTypes.get(i).getName()));
                         }
 
                     }

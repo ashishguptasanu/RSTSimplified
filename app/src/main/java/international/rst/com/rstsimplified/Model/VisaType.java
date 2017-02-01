@@ -7,16 +7,15 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class VisaType {
-
     @SerializedName("visaType")
     @Expose
-    private VisaType_ visaType;
+    private List<VisaType_> visaType = null;
 
     public List<VisaType_> getVisaType() {
-        return (List<VisaType_>) visaType;
+        return visaType;
     }
 
-    public void setVisaType(VisaType_ visaType) {
+    public void setVisaType(List<VisaType_> visaType) {
         this.visaType = visaType;
     }
 

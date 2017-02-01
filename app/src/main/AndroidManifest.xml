@@ -33,10 +33,14 @@
         <activity
             android:name=".Activities.FormActivity"
             android:label="Submit your details"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Activities.ActivityServices"
             android:label="@string/title_activity_services"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.VisaServicesOptions"
+            android:label="@string/title_activity_visa_services_options"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

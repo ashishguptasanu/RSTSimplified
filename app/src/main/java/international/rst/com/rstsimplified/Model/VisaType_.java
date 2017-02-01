@@ -1,121 +1,207 @@
 
 package international.rst.com.rstsimplified.Model;
 
-import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
 public class VisaType_ {
 
-    @SerializedName("14 Days Visa")
-    @Expose
-    private List<international.rst.com.rstsimplified.Model._14DaysVisa> _14DaysVisa = null;
-    @SerializedName("30 Days Visa")
-    @Expose
-    private List<international.rst.com.rstsimplified.Model._30DaysVisa> _30DaysVisa = null;
-    @SerializedName("60 Days Visa")
-    @Expose
-    private List<international.rst.com.rstsimplified.Model._60DaysVisa> _60DaysVisa = null;
-    @SerializedName("90 Days Visa")
-    @Expose
-    private List<international.rst.com.rstsimplified.Model._90DaysVisa> _90DaysVisa = null;
-    @SerializedName("90 Days Visa (Multiple Entry)")
-    @Expose
-    private List<international.rst.com.rstsimplified.Model._90DaysVisaMultipleEntry> _90DaysVisaMultipleEntry = null;
-    @SerializedName("2 Year Residency Visa")
-    @Expose
-    private List<international.rst.com.rstsimplified.Model._2YearResidencyVisa> _2YearResidencyVisa = null;
-    @SerializedName("90 Days Visa Js")
-    @Expose
-    private List<_90DaysVisaJ> _90DaysVisaJs = null;
-    @SerializedName("14 Days Single Entry Minor")
-    @Expose
-    private List<international.rst.com.rstsimplified.Model._14DaysSingleEntryMinor> _14DaysSingleEntryMinor = null;
-    @SerializedName("30 Days Visa (Multiple Entry)")
-    @Expose
-    private List<international.rst.com.rstsimplified.Model._30DaysVisaMultipleEntry> _30DaysVisaMultipleEntry = null;
-    @SerializedName("60 Days Visa (Multiple Entry)")
-    @Expose
-    private List<international.rst.com.rstsimplified.Model._60DaysVisaMultipleEntry> _60DaysVisaMultipleEntry = null;
 
-    public List<international.rst.com.rstsimplified.Model._14DaysVisa> get14DaysVisa() {
-        return _14DaysVisa;
+    private String id;
+    private String visaTypeId;
+    private String nationalityId;
+    private String livingInId;
+    private String currencyId;
+    private String govtFee;
+    private String serviceFee;
+    private String serviceFeeE;
+    private String processingTime;
+    private String processingTimeE;
+    private String isActive;
+    private String serviceFeeCs;
+    private String mngFee;
+    private String mngFeeCombo;
+    private String name;
+    private String entryType;
+    private String visaValidity;
+    private String stayValidity;
+    private String detail;
+    private String vvComments;
+    private String svComments;
+    private String priority;
+
+    public String getId() {
+        return id;
     }
 
-    public void set14DaysVisa(List<international.rst.com.rstsimplified.Model._14DaysVisa> _14DaysVisa) {
-        this._14DaysVisa = _14DaysVisa;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public List<international.rst.com.rstsimplified.Model._30DaysVisa> get30DaysVisa() {
-        return _30DaysVisa;
+    public String getVisaTypeId() {
+        return visaTypeId;
     }
 
-    public void set30DaysVisa(List<international.rst.com.rstsimplified.Model._30DaysVisa> _30DaysVisa) {
-        this._30DaysVisa = _30DaysVisa;
+    public void setVisaTypeId(String visaTypeId) {
+        this.visaTypeId = visaTypeId;
     }
 
-    public List<international.rst.com.rstsimplified.Model._60DaysVisa> get60DaysVisa() {
-        return _60DaysVisa;
+    public String getNationalityId() {
+        return nationalityId;
     }
 
-    public void set60DaysVisa(List<international.rst.com.rstsimplified.Model._60DaysVisa> _60DaysVisa) {
-        this._60DaysVisa = _60DaysVisa;
+    public void setNationalityId(String nationalityId) {
+        this.nationalityId = nationalityId;
     }
 
-    public List<international.rst.com.rstsimplified.Model._90DaysVisa> get90DaysVisa() {
-        return _90DaysVisa;
+    public String getLivingInId() {
+        return livingInId;
     }
 
-    public void set90DaysVisa(List<international.rst.com.rstsimplified.Model._90DaysVisa> _90DaysVisa) {
-        this._90DaysVisa = _90DaysVisa;
+    public void setLivingInId(String livingInId) {
+        this.livingInId = livingInId;
     }
 
-    public List<international.rst.com.rstsimplified.Model._90DaysVisaMultipleEntry> get90DaysVisaMultipleEntry() {
-        return _90DaysVisaMultipleEntry;
+    public String getCurrencyId() {
+        return currencyId;
     }
 
-    public void set90DaysVisaMultipleEntry(List<international.rst.com.rstsimplified.Model._90DaysVisaMultipleEntry> _90DaysVisaMultipleEntry) {
-        this._90DaysVisaMultipleEntry = _90DaysVisaMultipleEntry;
+    public void setCurrencyId(String currencyId) {
+        this.currencyId = currencyId;
     }
 
-    public List<international.rst.com.rstsimplified.Model._2YearResidencyVisa> get2YearResidencyVisa() {
-        return _2YearResidencyVisa;
+    public String getGovtFee() {
+        return govtFee;
     }
 
-    public void set2YearResidencyVisa(List<international.rst.com.rstsimplified.Model._2YearResidencyVisa> _2YearResidencyVisa) {
-        this._2YearResidencyVisa = _2YearResidencyVisa;
+    public void setGovtFee(String govtFee) {
+        this.govtFee = govtFee;
     }
 
-    public List<_90DaysVisaJ> get90DaysVisaJs() {
-        return _90DaysVisaJs;
+    public String getServiceFee() {
+        return serviceFee;
     }
 
-    public void set90DaysVisaJs(List<_90DaysVisaJ> _90DaysVisaJs) {
-        this._90DaysVisaJs = _90DaysVisaJs;
+    public void setServiceFee(String serviceFee) {
+        this.serviceFee = serviceFee;
     }
 
-    public List<international.rst.com.rstsimplified.Model._14DaysSingleEntryMinor> get14DaysSingleEntryMinor() {
-        return _14DaysSingleEntryMinor;
+    public String getServiceFeeE() {
+        return serviceFeeE;
     }
 
-    public void set14DaysSingleEntryMinor(List<international.rst.com.rstsimplified.Model._14DaysSingleEntryMinor> _14DaysSingleEntryMinor) {
-        this._14DaysSingleEntryMinor = _14DaysSingleEntryMinor;
+    public void setServiceFeeE(String serviceFeeE) {
+        this.serviceFeeE = serviceFeeE;
     }
 
-    public List<international.rst.com.rstsimplified.Model._30DaysVisaMultipleEntry> get30DaysVisaMultipleEntry() {
-        return _30DaysVisaMultipleEntry;
+    public String getProcessingTime() {
+        return processingTime;
     }
 
-    public void set30DaysVisaMultipleEntry(List<international.rst.com.rstsimplified.Model._30DaysVisaMultipleEntry> _30DaysVisaMultipleEntry) {
-        this._30DaysVisaMultipleEntry = _30DaysVisaMultipleEntry;
+    public void setProcessingTime(String processingTime) {
+        this.processingTime = processingTime;
     }
 
-    public List<international.rst.com.rstsimplified.Model._60DaysVisaMultipleEntry> get60DaysVisaMultipleEntry() {
-        return _60DaysVisaMultipleEntry;
+    public String getProcessingTimeE() {
+        return processingTimeE;
     }
 
-    public void set60DaysVisaMultipleEntry(List<international.rst.com.rstsimplified.Model._60DaysVisaMultipleEntry> _60DaysVisaMultipleEntry) {
-        this._60DaysVisaMultipleEntry = _60DaysVisaMultipleEntry;
+    public void setProcessingTimeE(String processingTimeE) {
+        this.processingTimeE = processingTimeE;
+    }
+
+    public String getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(String isActive) {
+        this.isActive = isActive;
+    }
+
+    public String getServiceFeeCs() {
+        return serviceFeeCs;
+    }
+
+    public void setServiceFeeCs(String serviceFeeCs) {
+        this.serviceFeeCs = serviceFeeCs;
+    }
+
+    public String getMngFee() {
+        return mngFee;
+    }
+
+    public void setMngFee(String mngFee) {
+        this.mngFee = mngFee;
+    }
+
+    public String getMngFeeCombo() {
+        return mngFeeCombo;
+    }
+
+    public void setMngFeeCombo(String mngFeeCombo) {
+        this.mngFeeCombo = mngFeeCombo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEntryType() {
+        return entryType;
+    }
+
+    public void setEntryType(String entryType) {
+        this.entryType = entryType;
+    }
+
+    public String getVisaValidity() {
+        return visaValidity;
+    }
+
+    public void setVisaValidity(String visaValidity) {
+        this.visaValidity = visaValidity;
+    }
+
+    public String getStayValidity() {
+        return stayValidity;
+    }
+
+    public void setStayValidity(String stayValidity) {
+        this.stayValidity = stayValidity;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public String getVvComments() {
+        return vvComments;
+    }
+
+    public void setVvComments(String vvComments) {
+        this.vvComments = vvComments;
+    }
+
+    public String getSvComments() {
+        return svComments;
+    }
+
+    public void setSvComments(String svComments) {
+        this.svComments = svComments;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 
 }
