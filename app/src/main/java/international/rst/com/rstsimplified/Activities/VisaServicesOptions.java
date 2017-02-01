@@ -1,5 +1,6 @@
 package international.rst.com.rstsimplified.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -37,7 +38,7 @@ public class VisaServicesOptions extends AppCompatActivity
     private List<CountryRes> livingin = new ArrayList<>();
     private List<String> livingInData = new ArrayList<>();
     private List<String> nationalityData = new ArrayList<>();
-    private static int selectedLivingIn, selectedNationality;
+    private int selectedLivingIn, selectedNationality;
 
     Spinner spnrLivingIn, spnrNationality;
 
@@ -60,6 +61,8 @@ public class VisaServicesOptions extends AppCompatActivity
                         .setAction("Action", null).show();
                 System.out.println(selectedLivingIn);
                 System.out.println(selectedNationality);
+                Intent intent = new Intent(getApplicationContext(),PaymentGateway.class);
+                startActivity(intent);
 
             }
         });
