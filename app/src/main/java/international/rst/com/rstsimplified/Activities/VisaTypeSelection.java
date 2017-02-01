@@ -1,6 +1,5 @@
 package international.rst.com.rstsimplified.Activities;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,45 +12,44 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
-
-import com.checkout.CheckoutKit;
-import com.checkout.exceptions.CardException;
-import com.checkout.exceptions.CheckoutException;
-import com.checkout.httpconnector.Response;
-import com.checkout.models.Card;
-import com.checkout.models.CardTokenResponse;
-import com.checkout.models.CustDetails;
-
-import java.io.IOException;
+import android.widget.TextView;
 
 import international.rst.com.rstsimplified.R;
 
-import static android.R.attr.publicKey;
-
-public class PaymentGateway extends AppCompatActivity
+public class VisaTypeSelection extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
-    int ammount = 100;
+    int livingID,nationalityID;
+    TextView tv1, tv2,tv3;
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment_gateway);
+        setContentView(R.layout.activity_visa_type_selection);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        tv1 = (TextView)findViewById(R.id.living_in_tv) ;
+        tv2 = (TextView)findViewById(R.id.nationality_id_tv);
+        tv3 = (TextView)findViewById(R.id.url_tv);
+        //https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID
+        Bundle bundle =  getIntent().getExtras();
+        if ( bundle!= null && bundle.containsKey("livingid") && bundle.containsKey("nationid")){
+            livingID = bundle.getInt("livingid");
+            nationalityID = bundle.getInt("nationid");
+        }
+        System.out.println(livingID);
+        System.out.println(nationalityID);
+        url = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID;
+        System.out.println("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID);
+        tv1.setText("Living In ID: " + livingID);
+        tv2.setText("Nation ID: "+ nationalityID);
+        tv3.setText(url);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                try {
-                    new ConnectionTask().execute("");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         });
 
@@ -78,7 +76,7 @@ public class PaymentGateway extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.payment_gateway, menu);
+        getMenuInflater().inflate(R.menu.visa_type_selection, menu);
         return true;
     }
 
@@ -120,38 +118,5 @@ public class PaymentGateway extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-    class ConnectionTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-            /* All the fields that need to be filled with the card information */
-            final EditText name = (EditText) findViewById(R.id.card_name);
-            final EditText number = (EditText) findViewById(R.id.card_number);
-            final EditText expMonth = (EditText) findViewById(R.id.card_month);
-            final EditText expYear = (EditText) findViewById(R.id.card_year);
-            final EditText cvv = (EditText) findViewById(R.id.card_cvv);
-
-            try {
-                /* Create the card object */
-
-                Card card = new Card(number.getText().toString(), name.getText().toString(), expMonth.getText().toString(), expYear.getText().toString(), cvv.getText().toString());
-                /* Create the CheckoutKit instance */
-                CheckoutKit ck = CheckoutKit.getInstance(publicKey);
-
-
-                final Response<CardTokenResponse> resp = ck.createCardToken(card);
-                if (resp.hasError) {
-                    /* Handle errors */
-                } else {
-                    /* The card token */
-                    String cardToken = resp.model.getCardToken();
-                }
-            } catch (final CardException | CheckoutException e1) {
-                /* Handle validation errors */
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return "";
-        }
     }
 }

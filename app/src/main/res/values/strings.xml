@@ -14,4 +14,5 @@
     <string name="search_title">Search</string>
     <string name="title_activity_visa_services_options">Enter Details</string>
     <string name="title_activity_payment_gateway">Complete Payment</string>
+    <string name="title_activity_visa_type_selection">Select Visa Type</string>
 </resources>

@@ -45,6 +45,10 @@
         <activity
             android:name=".Activities.PaymentGateway"
             android:label="@string/title_activity_payment_gateway"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.VisaTypeSelection"
+            android:label="@string/title_activity_visa_type_selection"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

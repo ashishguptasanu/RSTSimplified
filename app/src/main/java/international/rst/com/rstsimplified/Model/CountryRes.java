@@ -9,7 +9,7 @@ public class CountryRes{
 
 
         private String _0;
-        private String id;
+        private int id;
         private String _1;
         private String name;
 
@@ -21,11 +21,11 @@ public class CountryRes{
             this._0 = _0;
         }
 
-        public String getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(String id) {
+        public void setId(int id) {
             this.id = id;
         }
 

@@ -38,7 +38,7 @@ public class VisaServicesOptions extends AppCompatActivity
     private List<CountryRes> livingin = new ArrayList<>();
     private List<String> livingInData = new ArrayList<>();
     private List<String> nationalityData = new ArrayList<>();
-    private int selectedLivingIn, selectedNationality;
+    public int selectedLivingIn, selectedNationality, selectedLivingID,selectedNationalityID;
 
     Spinner spnrLivingIn, spnrNationality;
 
@@ -49,7 +49,9 @@ public class VisaServicesOptions extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         spnrLivingIn = (Spinner)findViewById(R.id.spinner_living_in);
+        spnrLivingIn.setOnItemSelectedListener(this);
         spnrNationality  = (Spinner)findViewById(R.id.spinner_nationality);
+        spnrNationality.setOnItemSelectedListener(this);
         loadLivingIn();
         loadNationality();
 
@@ -59,9 +61,11 @@ public class VisaServicesOptions extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                System.out.println(selectedLivingIn);
-                System.out.println(selectedNationality);
-                Intent intent = new Intent(getApplicationContext(),PaymentGateway.class);
+                System.out.println(selectedLivingID);
+                System.out.println(selectedNationalityID);
+                Intent intent = new Intent(getApplicationContext(),VisaTypeSelection.class);
+                intent.putExtra("livingid", selectedLivingID);
+                intent.putExtra("nationid",selectedNationalityID);
                 startActivity(intent);
 
             }
@@ -82,13 +86,12 @@ public class VisaServicesOptions extends AppCompatActivity
         switch (parent.getId()){
             case R.id.spinner_living_in:
                 selectedLivingIn = spnrLivingIn.getSelectedItemPosition();
-                spnrLivingIn.setOnItemSelectedListener(this);
-                System.out.println(selectedLivingIn);
+                selectedLivingID = livingin.get(selectedLivingIn).getId();
+
                 break;
             case R.id.spinner_nationality:
                 selectedNationality = spnrNationality.getSelectedItemPosition();
-                spnrNationality.setOnItemSelectedListener(this);
-                System.out.println(selectedNationality);
+                selectedNationalityID =nationality.get(selectedNationality).getId();
                 break;
 
 
