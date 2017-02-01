@@ -3,6 +3,7 @@ package international.rst.com.rstsimplified.Activities;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,13 +15,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import international.rst.com.rstsimplified.Model.VisaResponse;
+import international.rst.com.rstsimplified.Model.VisaType;
+import international.rst.com.rstsimplified.Model.VisaType_;
 import international.rst.com.rstsimplified.R;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class VisaTypeSelection extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     int livingID,nationalityID;
     TextView tv1, tv2,tv3;
     String url;
+    private List<VisaType_> visaTypes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +61,7 @@ public class VisaTypeSelection extends AppCompatActivity
         tv2.setText("Nation ID: "+ nationalityID);
         tv3.setText(url);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        loadVisaType();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,5 +135,35 @@ public class VisaTypeSelection extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    private void loadVisaType() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.uaevisasonline.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        VisaResponse request = retrofit.create(VisaResponse.class);
+        Call<VisaType> call = request.getVisaType(url);
+        //
+        call.enqueue(new Callback<VisaType>() {
+            @Override
+            public void onResponse(Call<VisaType> call, Response<VisaType> response) {
+
+
+                VisaType jsonResponse = response.body();
+                visaTypes = jsonResponse.getVisaType();
+                System.out.println(visaTypes.size());
+                for(int i = 0; i<visaTypes.size();i++){
+                    Log.i("Name", String.valueOf(visaTypes.get(i).getName()));
+                }
+
+            }
+            @Override
+            public void onFailure(Call<VisaType> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
     }
 }

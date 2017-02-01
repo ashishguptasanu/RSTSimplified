@@ -39,7 +39,7 @@ public class FragmentServices extends android.support.v4.app.Fragment {
     VisaAdapter visaAdapter;
     String[] mDataset1;
     int[] mImageSet, mImageSet2;
-    private List<VisaType_> visaTypes = new ArrayList<>();
+
 
     public FragmentServices() {
     }
@@ -67,39 +67,9 @@ public class FragmentServices extends android.support.v4.app.Fragment {
             public void onClick(View view) {
                 Snackbar.make(view, "Getting Data from Server", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                loadVisaType();
             }
 
-            private void loadVisaType() {
-                Gson gson = new GsonBuilder()
-                        .setLenient()
-                        .create();
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("https://www.uaevisasonline.com")
-                        .addConverterFactory(GsonConverterFactory.create(gson))
-                        .build();
-                VisaResponse request = retrofit.create(VisaResponse.class);
-                Call<VisaType> call = request.getVisaType();
-                //
-                call.enqueue(new Callback<VisaType>() {
-                    @Override
-                    public void onResponse(Call<VisaType> call, Response<VisaType> response) {
 
-
-                        VisaType jsonResponse = response.body();
-                        visaTypes = jsonResponse.getVisaType();
-                        System.out.println(visaTypes.size());
-                        for(int i = 0; i<visaTypes.size();i++){
-                            Log.i("Name", String.valueOf(visaTypes.get(i).getName()));
-                        }
-
-                    }
-                    @Override
-                    public void onFailure(Call<VisaType> call, Throwable t) {
-                        Log.v("Error",t.getMessage());
-                    }
-                });
-            }
         });
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
         ImageView img = (ImageView)view.findViewById(R.id.img_background);
