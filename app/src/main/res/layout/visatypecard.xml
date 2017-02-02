@@ -143,6 +143,7 @@
                 android:layout_height="28dp"
                 android:background="@drawable/buttonshape"
                 android:layout_weight="1"
+                android:id="@+id/button_submit"
                 android:text="Get Started"
                 android:textSize="11dp"
                 android:textColor="#fff"

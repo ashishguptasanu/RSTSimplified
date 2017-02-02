@@ -1,12 +1,16 @@
 package international.rst.com.rstsimplified.Adapter;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
+
+import international.rst.com.rstsimplified.Activities.FormActivity;
 import international.rst.com.rstsimplified.Model.VisaType_;
 import international.rst.com.rstsimplified.R;
 
@@ -15,6 +19,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
 
     Context context;
     float service, visa;
+    Button submitButton;
     private List<VisaType_> visaTypes = new ArrayList<>();
 
     public VisaTypeAdapter(Context context, List<VisaType_> visaTypes){
@@ -22,11 +27,13 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
         this.visaTypes = visaTypes;
 
     }
-    public class VisaTypeHolder extends RecyclerView.ViewHolder{
+    public class VisaTypeHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView visaName,visaType,visaValidity,stayValidity,processingTime,visaFee,serviceFee,totalFee,visaDetails;
 
         public VisaTypeHolder(View itemView) {
             super(itemView);
+            submitButton = (Button)itemView.findViewById(R.id.button_submit);
+            submitButton.setOnClickListener(this);
             visaName = (TextView)itemView.findViewById(R.id.visa_name);
             visaType = (TextView)itemView.findViewById(R.id.visa_type);
             visaValidity = (TextView)itemView.findViewById(R.id.visa_validity);
@@ -41,6 +48,14 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
         }
 
 
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(context, FormActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+
+
+        }
     }
     @Override
     public VisaTypeAdapter.VisaTypeHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -60,10 +75,10 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
 
         visa = visaTypes.get(position).getGovtFee();
         //System.out.println(service + visa);
-        holder.serviceFee.setText(String.valueOf(service));
-        holder.visaFee.setText(String.valueOf(visa));
+        holder.serviceFee.setText(String.valueOf(service) + "$");
+        holder.visaFee.setText(String.valueOf(visa)+ "$");
         float totalfee  = (service + visa);
-        holder.totalFee.setText(String.valueOf(totalfee));
+        holder.totalFee.setText(String.valueOf(totalfee) + "$");
         holder.visaDetails.setText(visaTypes.get(position).getDetail());
 
     }
