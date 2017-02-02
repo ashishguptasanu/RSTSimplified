@@ -3,6 +3,8 @@ package international.rst.com.rstsimplified.Activities;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -13,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -21,6 +24,7 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import international.rst.com.rstsimplified.Adapter.VisaTypeAdapter;
 import international.rst.com.rstsimplified.Model.VisaResponse;
 import international.rst.com.rstsimplified.Model.VisaType;
 import international.rst.com.rstsimplified.Model.VisaType_;
@@ -36,7 +40,10 @@ public class VisaTypeSelection extends AppCompatActivity
     int livingID,nationalityID;
     TextView tv1, tv2,tv3;
     String url;
+    RecyclerView recyclerView;
     private List<VisaType_> visaTypes = new ArrayList<>();
+    VisaTypeAdapter adapter;
+    ProgressBar mProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +51,10 @@ public class VisaTypeSelection extends AppCompatActivity
         setContentView(R.layout.activity_visa_type_selection);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        tv1 = (TextView)findViewById(R.id.living_in_tv) ;
-        tv2 = (TextView)findViewById(R.id.nationality_id_tv);
-        tv3 = (TextView)findViewById(R.id.url_tv);
+        mProgress = (ProgressBar)findViewById(R.id.progress_visa_type);
+
+        initViews();
+
         //https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID
         Bundle bundle =  getIntent().getExtras();
         if ( bundle!= null && bundle.containsKey("livingid") && bundle.containsKey("nationid")){
@@ -57,9 +65,6 @@ public class VisaTypeSelection extends AppCompatActivity
         System.out.println(nationalityID);
         url = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID;
         System.out.println("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID);
-        tv1.setText("Living In ID: " + livingID);
-        tv2.setText("Nation ID: "+ nationalityID);
-        tv3.setText(url);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         loadVisaType();
         fab.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +83,15 @@ public class VisaTypeSelection extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+    private void initViews() {
+
+        mProgress.setVisibility(View.VISIBLE);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_visa_type);
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        loadVisaType();
     }
 
     @Override
@@ -150,14 +164,17 @@ public class VisaTypeSelection extends AppCompatActivity
         call.enqueue(new Callback<VisaType>() {
             @Override
             public void onResponse(Call<VisaType> call, Response<VisaType> response) {
+                mProgress.setVisibility(View.GONE);
 
 
                 VisaType jsonResponse = response.body();
                 visaTypes = jsonResponse.getVisaType();
-                System.out.println(visaTypes.size());
+                /*System.out.println(visaTypes.size());
                 for(int i = 0; i<visaTypes.size();i++){
                     Log.i("Name", String.valueOf(visaTypes.get(i).getName()));
-                }
+                }*/
+                adapter = new VisaTypeAdapter(getApplicationContext(),visaTypes);
+                recyclerView.setAdapter(adapter);
 
             }
             @Override

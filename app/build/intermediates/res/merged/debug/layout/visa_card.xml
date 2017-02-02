@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="4dp"
+    app:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:id="@+id/visa_image"
+            android:src="@drawable/card_background"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_marginRight="5dp">
+            <TextView
+                android:layout_width="0dp"
+                android:id="@+id/tv_visa"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/colorPrimary"
+                android:text="Singapore Visa"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_marginLeft="5dp"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight=".4"
+                android:text="Apply"
+                android:id="@+id/apply"
+                android:shadowColor="#949494"
+                android:shadowRadius="5"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/buttonshape"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#c2c2c2"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:layout_marginLeft="5dp"
+            android:text="Available Visa"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="15dp"
+                        android:layout_weight=".2"
+                        android:src="@mipmap/regular_visa"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:background="@color/black_overlay"
+                        android:layout_weight=".01"
+                        android:layout_marginRight="15dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="11dp"
+                        android:text="Regular Visa/Single Entry/30-60 days"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="15dp"
+                        android:layout_weight=".2"
+                        android:src="@mipmap/gold_visa"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:background="@color/black_overlay"
+                        android:layout_weight=".01"
+                        android:layout_marginRight="15dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="11dp"
+                        android:text="Gold Visa/Single Entry/60-90 days"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="15dp"
+                        android:layout_weight=".2"
+                        android:src="@mipmap/express_visa"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:background="@color/black_overlay"
+                        android:layout_weight=".01"
+                        android:layout_marginRight="15dp"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="11dp"
+                        android:text="Express Visa/Single Entry/3-6 months"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight=".2"
+                android:id="@+id/flag_image"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/singapore_flag" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>
