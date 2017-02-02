@@ -10,8 +10,8 @@ public class VisaType_ {
     private String nationalityId;
     private String livingInId;
     private String currencyId;
-    private String govtFee;
-    private String serviceFee;
+    private int govtFee;
+    private int serviceFee;
     private String serviceFeeE;
     private String processingTime;
     private String processingTimeE;
@@ -68,19 +68,19 @@ public class VisaType_ {
         this.currencyId = currencyId;
     }
 
-    public String getGovtFee() {
+    public int getGovtFee() {
         return govtFee;
     }
 
-    public void setGovtFee(String govtFee) {
+    public void setGovtFee(int govtFee) {
         this.govtFee = govtFee;
     }
 
-    public String getServiceFee() {
+    public int getServiceFee() {
         return serviceFee;
     }
 
-    public void setServiceFee(String serviceFee) {
+    public void setServiceFee(int serviceFee) {
         this.serviceFee = serviceFee;
     }
 

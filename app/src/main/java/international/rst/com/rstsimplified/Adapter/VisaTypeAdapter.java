@@ -59,10 +59,12 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
         holder.visaValidity.setText(visaTypes.get(position).getStayValidity());
         holder.stayValidity.setText(visaTypes.get(position).getStayValidity());
         holder.processingTime.setText(visaTypes.get(position).getProcessingTime());
-        holder.visaFee.setText(visaTypes.get(position).getGovtFee());
-        holder.serviceFee.setText(visaTypes.get(position).getServiceFee());
-        int totalfee  = Integer.parseInt(((visaTypes.get(position).getGovtFee()) + (visaTypes.get(position).getServiceFee())));
-        holder.totalFee.setText(totalfee);
+        int visafee = visaTypes.get(position).getGovtFee();
+        int servicefee = visaTypes.get(position).getServiceFee();
+        holder.visaFee.setText(String.valueOf(visafee));
+        holder.serviceFee.setText(String.valueOf(servicefee));
+        int totalfee  = (visafee + servicefee);
+        holder.totalFee.setText(String.valueOf(totalfee));
         holder.visaDetails.setText(visaTypes.get(position).getDetail());
 
     }
