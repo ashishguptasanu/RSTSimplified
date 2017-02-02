@@ -60,10 +60,10 @@ public class VisaTypeSelection extends AppCompatActivity
             livingID = bundle.getInt("livingid");
             nationalityID = bundle.getInt("nationid");
         }
-        System.out.println(livingID);
-        System.out.println(nationalityID);
+        //System.out.println(livingID);
+        //System.out.println(nationalityID);
         url = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID;
-        System.out.println("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID);
+        //System.out.println("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         loadVisaType();
         fab.setOnClickListener(new View.OnClickListener() {
@@ -168,10 +168,10 @@ public class VisaTypeSelection extends AppCompatActivity
 
                 VisaType jsonResponse = response.body();
                 visaTypes = jsonResponse.getVisaType();
-                /*System.out.println(visaTypes.size());
+                System.out.println(visaTypes.size());
                 for(int i = 0; i<visaTypes.size();i++){
-                    Log.i("Name", String.valueOf(visaTypes.get(i).getName()));
-                }*/
+                    Log.i("Name", String.valueOf(visaTypes.get(i).getGovtFee()));
+                }
                 adapter = new VisaTypeAdapter(getApplicationContext(),visaTypes);
                 recyclerView.setAdapter(adapter);
 

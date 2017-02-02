@@ -2,30 +2,75 @@
 package international.rst.com.rstsimplified.Model;
 
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class VisaType_ {
-
-
+    @SerializedName("id")
+    @Expose
     private String id;
+    @SerializedName("visa_type_id")
+    @Expose
     private String visaTypeId;
+    @SerializedName("nationality_id")
+    @Expose
     private String nationalityId;
+    @SerializedName("living_in_id")
+    @Expose
     private String livingInId;
+    @SerializedName("currency_id")
+    @Expose
     private String currencyId;
-    private int govtFee;
-    private int serviceFee;
+    @SerializedName("govt_fee")
+    @Expose
+    private float govtFee;
+    @SerializedName("service_fee")
+    @Expose
+    private float serviceFee;
+    @SerializedName("service_fee_e")
+    @Expose
     private String serviceFeeE;
+    @SerializedName("processing_time")
+    @Expose
     private String processingTime;
+    @SerializedName("processing_time_e")
+    @Expose
     private String processingTimeE;
+    @SerializedName("isActive")
+    @Expose
     private String isActive;
+    @SerializedName("service_fee_cs")
+    @Expose
     private String serviceFeeCs;
+    @SerializedName("mng_fee")
+    @Expose
     private String mngFee;
+    @SerializedName("mng_fee_combo")
+    @Expose
     private String mngFeeCombo;
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("entryType")
+    @Expose
     private String entryType;
+    @SerializedName("visaValidity")
+    @Expose
     private String visaValidity;
+    @SerializedName("stayValidity")
+    @Expose
     private String stayValidity;
+    @SerializedName("detail")
+    @Expose
     private String detail;
+    @SerializedName("vv_comments")
+    @Expose
     private String vvComments;
+    @SerializedName("sv_comments")
+    @Expose
     private String svComments;
+    @SerializedName("priority")
+    @Expose
     private String priority;
 
     public String getId() {
@@ -68,19 +113,19 @@ public class VisaType_ {
         this.currencyId = currencyId;
     }
 
-    public int getGovtFee() {
+    public float getGovtFee() {
         return govtFee;
     }
 
-    public void setGovtFee(int govtFee) {
+    public void setGovtFee(float govtFee) {
         this.govtFee = govtFee;
     }
 
-    public int getServiceFee() {
+    public float getServiceFee() {
         return serviceFee;
     }
 
-    public void setServiceFee(int serviceFee) {
+    public void setServiceFee(float serviceFee) {
         this.serviceFee = serviceFee;
     }
 
@@ -205,3 +250,4 @@ public class VisaType_ {
     }
 
 }
+

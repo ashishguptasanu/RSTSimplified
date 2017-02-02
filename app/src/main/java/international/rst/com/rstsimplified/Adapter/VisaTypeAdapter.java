@@ -10,14 +10,11 @@ import java.util.List;
 import international.rst.com.rstsimplified.Model.VisaType_;
 import international.rst.com.rstsimplified.R;
 
-/**
- * Created by Ashish on 02-02-2017.
- */
-
 public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTypeHolder> {
 
 
     Context context;
+    float service, visa;
     private List<VisaType_> visaTypes = new ArrayList<>();
 
     public VisaTypeAdapter(Context context, List<VisaType_> visaTypes){
@@ -56,14 +53,16 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     public void onBindViewHolder(VisaTypeAdapter.VisaTypeHolder holder, int position) {
         holder.visaName.setText(visaTypes.get(position).getName());
         holder.visaType.setText(visaTypes.get(position).getEntryType());
-        holder.visaValidity.setText(visaTypes.get(position).getStayValidity());
+        holder.visaValidity.setText(visaTypes.get(position).getVisaValidity());
         holder.stayValidity.setText(visaTypes.get(position).getStayValidity());
         holder.processingTime.setText(visaTypes.get(position).getProcessingTime());
-        int visafee = visaTypes.get(position).getGovtFee();
-        int servicefee = visaTypes.get(position).getServiceFee();
-        holder.visaFee.setText(String.valueOf(visafee));
-        holder.serviceFee.setText(String.valueOf(servicefee));
-        int totalfee  = (visafee + servicefee);
+        service = visaTypes.get(position).getServiceFee();
+
+        visa = visaTypes.get(position).getGovtFee();
+        //System.out.println(service + visa);
+        holder.serviceFee.setText(String.valueOf(service));
+        holder.visaFee.setText(String.valueOf(visa));
+        float totalfee  = (service + visa);
         holder.totalFee.setText(String.valueOf(totalfee));
         holder.visaDetails.setText(visaTypes.get(position).getDetail());
 
