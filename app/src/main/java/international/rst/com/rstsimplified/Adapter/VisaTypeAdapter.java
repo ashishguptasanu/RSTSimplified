@@ -26,13 +26,19 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
 
     }
     public class VisaTypeHolder extends RecyclerView.ViewHolder{
-        TextView visaName,visaType,visaValidity;
+        TextView visaName,visaType,visaValidity,stayValidity,processingTime,visaFee,serviceFee,totalFee,visaDetails;
 
         public VisaTypeHolder(View itemView) {
             super(itemView);
             visaName = (TextView)itemView.findViewById(R.id.visa_name);
             visaType = (TextView)itemView.findViewById(R.id.visa_type);
             visaValidity = (TextView)itemView.findViewById(R.id.visa_validity);
+            stayValidity = (TextView)itemView.findViewById(R.id.visa_stay_validity);
+            visaFee = (TextView)itemView.findViewById(R.id.visa_fee);
+            serviceFee = (TextView)itemView.findViewById(R.id.service_fee);
+            totalFee = (TextView)itemView.findViewById(R.id.total_fee);
+            visaDetails = (TextView)itemView.findViewById(R.id.visa_details);
+            processingTime = (TextView)itemView.findViewById(R.id.processing_time);
             //findViewById();
 
         }
@@ -51,6 +57,13 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
         holder.visaName.setText(visaTypes.get(position).getName());
         holder.visaType.setText(visaTypes.get(position).getEntryType());
         holder.visaValidity.setText(visaTypes.get(position).getStayValidity());
+        holder.stayValidity.setText(visaTypes.get(position).getStayValidity());
+        holder.processingTime.setText(visaTypes.get(position).getProcessingTime());
+        holder.visaFee.setText(visaTypes.get(position).getGovtFee());
+        holder.serviceFee.setText(visaTypes.get(position).getServiceFee());
+        int totalfee  = Integer.parseInt(((visaTypes.get(position).getGovtFee()) + (visaTypes.get(position).getServiceFee())));
+        holder.totalFee.setText(totalfee);
+        holder.visaDetails.setText(visaTypes.get(position).getDetail());
 
     }
 

@@ -18,6 +18,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -160,9 +163,12 @@ public class VisaServicesOptions extends AppCompatActivity
         return true;
     }
     private void loadNationality(){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.uaevisasonline.com")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         NationalityResponse request = retrofit.create(NationalityResponse.class);
         Call<Country> call = request.getCountry();
@@ -191,9 +197,12 @@ public class VisaServicesOptions extends AppCompatActivity
 
 
     private void loadLivingIn(){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.uaevisasonline.com")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         CountryResponse request = retrofit.create(CountryResponse.class);
         Call<Country> call = request.getCountry();

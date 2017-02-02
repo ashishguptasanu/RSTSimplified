@@ -38,7 +38,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class VisaTypeSelection extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     int livingID,nationalityID;
-    TextView tv1, tv2,tv3;
     String url;
     RecyclerView recyclerView;
     private List<VisaType_> visaTypes = new ArrayList<>();
