@@ -6,6 +6,7 @@ import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import international.rst.com.rstsimplified.Activities.FormActivity;
 import international.rst.com.rstsimplified.Adapter.VisaAdapter;
@@ -62,6 +64,22 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                 @Override
                 public void onClick(View view) {
                     datePicker(edtDate2);
+                }
+            });
+            final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
+            FloatingActionButton mFloatingActionButton = (FloatingActionButton)getActivity().findViewById(R.id.fab);
+            mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
+                    if(edtLivingIn.getText().toString().length() != 0){
+                        int atTab = mFormPager.getCurrentItem();
+                        mFormPager.setCurrentItem(atTab + 1);
+                    }
+                    else{
+                        Toast.makeText(getContext(),"OOps! Enter all value..",Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             });
 

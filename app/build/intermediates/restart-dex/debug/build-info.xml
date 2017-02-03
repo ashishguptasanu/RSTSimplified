@@ -5,49 +5,39 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="352212308713386"
+    timestamp="358276548878506"
     token="-315265450245951108"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="173" />
+        duration="580" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="42" />
+        duration="17" />
     <task
         name="verifier"
-        duration="5" />
+        duration="2" />
 
     <artifact
-        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
+        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
         type="DEX" />
 
     <build
-        timestamp="346094627258880"
+        timestamp="357669223041280"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="350682410334720"
+        timestamp="358276548878506"
         verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
-            type="RESOURCES" />
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="352212308713386"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_4\classes.dex"
             type="DEX" />
     </build>
 
