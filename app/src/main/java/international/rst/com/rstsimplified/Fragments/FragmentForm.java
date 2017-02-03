@@ -23,12 +23,13 @@ import international.rst.com.rstsimplified.R;
 public class FragmentForm extends android.support.v4.app.Fragment {
     String title;
     View view;
-    EditText edtDate1,edtDate2;
+    EditText edtDate1, edtDate2;
 
 
     public FragmentForm() {
     }
-    public static FragmentForm newFormInstance(String title){
+
+    public static FragmentForm newFormInstance(String title) {
         FragmentForm fragmentForm = new FragmentForm();
         Bundle args = new Bundle();
         args.putString("title", title);
@@ -49,14 +50,14 @@ public class FragmentForm extends android.support.v4.app.Fragment {
         title = getArguments().getString("title");
         if (title.equalsIgnoreCase("consult")) {
             view = inflater.inflate(R.layout.fragment_form, container, false);
-            edtDate1 = (EditText)view.findViewById(R.id.edt_arrival);
+            edtDate1 = (EditText) view.findViewById(R.id.edt_arrival);
             edtDate1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     datePicker(edtDate1);
                 }
             });
-            edtDate2 = (EditText)view.findViewById(R.id.edt_departure);
+            edtDate2 = (EditText) view.findViewById(R.id.edt_departure);
             edtDate2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -64,12 +65,18 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                 }
             });
 
+        } else if (title.equalsIgnoreCase("applicant")) {
+            view = inflater.inflate(R.layout.fragment_form2, container, false);
+        } else if (title.equalsIgnoreCase("docs")) {
+
+        } else if (title.equalsIgnoreCase("payment")){
+
         }
-        else {
-            view = inflater.inflate(R.layout.fragment_form2,container,false);
-        }
+
         return view;
     }
+
+
 
     private void datePicker(final EditText edtDate1) {
         Calendar mcurrentDate=Calendar.getInstance();
