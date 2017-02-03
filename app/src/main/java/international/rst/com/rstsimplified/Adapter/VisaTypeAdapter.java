@@ -2,10 +2,12 @@ package international.rst.com.rstsimplified.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +19,10 @@ import international.rst.com.rstsimplified.R;
 public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTypeHolder> {
 
 
-    Context context;
-    float service, visa;
-    Button submitButton;
+    private Context context;
+    private Button submitButton;
     private List<VisaType_> visaTypes = new ArrayList<>();
+    private LinearLayout linearLayout1,linearLayout2;
 
     public VisaTypeAdapter(Context context, List<VisaType_> visaTypes){
         this.context = context;
@@ -32,6 +34,8 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
 
         public VisaTypeHolder(View itemView) {
             super(itemView);
+            linearLayout1 = (LinearLayout)itemView.findViewById(R.id.linear_layout_visa_combo);
+            linearLayout2  = (LinearLayout)itemView.findViewById(R.id.linear_layout_regular_visa);
             submitButton = (Button)itemView.findViewById(R.id.button_submit);
             submitButton.setOnClickListener(this);
             visaName = (TextView)itemView.findViewById(R.id.visa_name);
@@ -43,7 +47,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             totalFee = (TextView)itemView.findViewById(R.id.total_fee);
             visaDetails = (TextView)itemView.findViewById(R.id.visa_details);
             processingTime = (TextView)itemView.findViewById(R.id.processing_time);
-            //findViewById();
+
 
         }
 
@@ -71,13 +75,24 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
         holder.visaValidity.setText(visaTypes.get(position).getVisaValidity());
         holder.stayValidity.setText(visaTypes.get(position).getStayValidity());
         holder.processingTime.setText(visaTypes.get(position).getProcessingTime());
-        service = visaTypes.get(position).getServiceFee();
+        float service = visaTypes.get(position).getServiceFee();
+        linearLayout2.setVisibility(View.GONE);
 
-        visa = visaTypes.get(position).getGovtFee();
+        float visa = visaTypes.get(position).getGovtFee();
         //System.out.println(service + visa);
         holder.serviceFee.setText(String.valueOf(service) + "$");
         holder.visaFee.setText(String.valueOf(visa)+ "$");
         float totalfee  = (service + visa);
+        int currencyID = visaTypes.get(position).getCurrencyId();
+        switch (currencyID){
+            case 1:
+                Log.d("Currency ID:", String.valueOf(currencyID));
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
         holder.totalFee.setText(String.valueOf(totalfee) + "$");
         holder.visaDetails.setText(visaTypes.get(position).getDetail());
 

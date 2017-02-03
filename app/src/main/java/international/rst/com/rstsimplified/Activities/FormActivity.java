@@ -50,7 +50,17 @@ public class FormActivity extends AppCompatActivity {
         edtIssue.setOnClickListener(this);
         edtExpiry = (EditText)findViewById(R.id.edt_expiry_date);
         edtExpiry.setOnClickListener(this);
+
         */
+        FloatingActionButton mFloatingActionButton = (FloatingActionButton)findViewById(R.id.fab);
+        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                atTab = mFormPager.getCurrentItem();
+                mFormPager.setCurrentItem(atTab + 1);
+            }
+        });
         mTabStrip = (PagerTabStrip)findViewById(R.id.tab_strip);
         mTabStrip.setTabIndicatorColorResource(R.color.colorAccent);
         tabDataSet = new String[]{"Consult Form","Applicant Form","Upload Documents","Payment"};

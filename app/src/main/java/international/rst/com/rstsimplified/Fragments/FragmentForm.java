@@ -39,15 +39,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*FloatingActionButton mFloatingActionButton = (FloatingActionButton)view.findViewById(R.id.fab);
-        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                //atTab = mFormPager.getCurrentItem();
-                //mFormPager.setCurrentItem(atTab + 1);
-            }
-        });*/
     }
 
 

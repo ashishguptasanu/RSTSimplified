@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,7 +42,7 @@ public class VisaServicesOptions extends AppCompatActivity
     private List<CountryRes> livingin = new ArrayList<>();
     private List<String> livingInData = new ArrayList<>();
     private List<String> nationalityData = new ArrayList<>();
-    public int selectedLivingIn, selectedNationality, selectedLivingID,selectedNationalityID;
+    public int selectedLivingIn=0, selectedNationality=0, selectedLivingID,selectedNationalityID;
 
     Spinner spnrLivingIn, spnrNationality;
 
@@ -62,14 +63,17 @@ public class VisaServicesOptions extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                System.out.println(selectedLivingID);
-                System.out.println(selectedNationalityID);
-                Intent intent = new Intent(getApplicationContext(),VisaTypeSelection.class);
-                intent.putExtra("livingid", selectedLivingID);
-                intent.putExtra("nationid",selectedNationalityID);
-                startActivity(intent);
+                if(selectedLivingIn != 0 && selectedNationality != 0){
+                    Intent intent = new Intent(getApplicationContext(),VisaTypeSelection.class);
+                    intent.putExtra("livingid", selectedLivingID);
+                    intent.putExtra("nationid",selectedNationalityID);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Select country to countinue..", Toast.LENGTH_SHORT).show();
+
+                }
+
 
             }
         });
@@ -180,7 +184,6 @@ public class VisaServicesOptions extends AppCompatActivity
 
                 Country jsonResponse = response.body();
                 nationality = jsonResponse.getCountry();
-                System.out.println(nationality.size());
                 for(int i=0;i<nationality.size();i++){
                     nationalityData.add(nationality.get(i).getName());
                 }
@@ -214,7 +217,6 @@ public class VisaServicesOptions extends AppCompatActivity
 
                 Country jsonResponse = response.body();
                 livingin = jsonResponse.getCountry();
-                System.out.println(livingin.size());
 
                 for(int i=0;i<livingin.size();i++){
                     livingInData.add(livingin.get(i).getName());

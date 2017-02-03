@@ -20,7 +20,7 @@ public class VisaType_ {
     private String livingInId;
     @SerializedName("currency_id")
     @Expose
-    private String currencyId;
+    private int currencyId;
     @SerializedName("govt_fee")
     @Expose
     private float govtFee;
@@ -44,10 +44,10 @@ public class VisaType_ {
     private String serviceFeeCs;
     @SerializedName("mng_fee")
     @Expose
-    private String mngFee;
+    private float mngFee;
     @SerializedName("mng_fee_combo")
     @Expose
-    private String mngFeeCombo;
+    private float mngFeeCombo;
     @SerializedName("name")
     @Expose
     private String name;
@@ -105,11 +105,11 @@ public class VisaType_ {
         this.livingInId = livingInId;
     }
 
-    public String getCurrencyId() {
+    public int getCurrencyId() {
         return currencyId;
     }
 
-    public void setCurrencyId(String currencyId) {
+    public void setCurrencyId(int currencyId) {
         this.currencyId = currencyId;
     }
 
@@ -169,19 +169,19 @@ public class VisaType_ {
         this.serviceFeeCs = serviceFeeCs;
     }
 
-    public String getMngFee() {
+    public float getMngFee() {
         return mngFee;
     }
 
-    public void setMngFee(String mngFee) {
+    public void setMngFee(float mngFee) {
         this.mngFee = mngFee;
     }
 
-    public String getMngFeeCombo() {
+    public float getMngFeeCombo() {
         return mngFeeCombo;
     }
 
-    public void setMngFeeCombo(String mngFeeCombo) {
+    public void setMngFeeCombo(float mngFeeCombo) {
         this.mngFeeCombo = mngFeeCombo;
     }
 
