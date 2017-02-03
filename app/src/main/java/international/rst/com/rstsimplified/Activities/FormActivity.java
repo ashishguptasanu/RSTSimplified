@@ -1,9 +1,7 @@
 package international.rst.com.rstsimplified.Activities;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerTabStrip;
@@ -227,7 +225,7 @@ public class FormActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_form, container, false);
+            View rootView = inflater.inflate(R.layout.consult_form, container, false);
             return rootView;
         }
     }

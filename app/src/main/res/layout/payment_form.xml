@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_height="220dp"
+            android:scaleType="fitXY"
+            android:background="@drawable/creditcard"
+            android:id="@+id/imageView2" />
+    </android.support.design.widget.CoordinatorLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name on Card"
+        android:gravity="center"
+        android:id="@+id/card_name"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Card Number"
+        android:gravity="center"
+        android:id="@+id/card_number"
+        android:layout_marginBottom="5dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Expiry Month"
+            android:gravity="center"
+            android:id="@+id/card_month"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Expiry Year"
+            android:gravity="center"
+            android:id="@+id/card_year"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="CVV"
+            android:gravity="center"
+            android:id="@+id/card_cvv"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>

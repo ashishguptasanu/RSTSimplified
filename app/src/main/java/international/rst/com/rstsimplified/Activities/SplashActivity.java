@@ -30,7 +30,7 @@ import okhttp3.RequestBody;
 public class SplashActivity extends AppCompatActivity {
 
 
-    private static final long SPLASH_DISPLAY_LENGTH = 5000;
+    private static final long SPLASH_DISPLAY_LENGTH = 3000;
     public String androidID,  deviceID;
     private static final String BASE_URL = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=new_registeration";
     private OkHttpClient client = new OkHttpClient();
@@ -83,8 +83,8 @@ public class SplashActivity extends AppCompatActivity {
         getDeviceID();
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("Android ID", androidID)
-                .addFormDataPart("Device ID", deviceID)
+                .addFormDataPart("Android ID", "hasufhuuahfhafhfabkhsbk")
+                .addFormDataPart("Device ID", "65f94ef484gf9r8f4r84gfv84erg8r4e")
                 .build();
         Request request = new Request.Builder().url(BASE_URL).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
