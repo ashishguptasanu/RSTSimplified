@@ -2,18 +2,24 @@ package international.rst.com.rstsimplified.Fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.icu.util.Calendar;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
@@ -24,7 +30,10 @@ import com.checkout.httpconnector.Response;
 import com.checkout.models.Card;
 import com.checkout.models.CardTokenResponse;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import international.rst.com.rstsimplified.Activities.PaymentGateway;
 import international.rst.com.rstsimplified.R;
@@ -35,8 +44,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
+import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
+
 
 public class FragmentForm extends android.support.v4.app.Fragment {
+    private static final int FILE_SELECT_CODE =  0;
     String title;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
@@ -161,17 +174,117 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                     mFormPager.setCurrentItem(atTab + 1);
                 }
             });
+            ImageView imgV = (ImageView)view.findViewById(R.id.attach_file);
+            imgV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                    intent.setType("*/*");
+                    intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+                    try {
+                        startActivityForResult(
+                                Intent.createChooser(intent, "Select a File to Upload"),
+                                FILE_SELECT_CODE);
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        // Potentially direct the user to the Market with a Dialog
+                        Toast.makeText(getContext(), "Please install a File Manager.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
         }
 
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case FILE_SELECT_CODE:
+                if (resultCode == RESULT_OK) {
+                    // Get the Uri of the selected file
+                    Uri uri = data.getData();
+                    Log.d(TAG, "File Uri: " + uri.toString());
+                    // Get the path
+                    String path = null;
+                    try {
+                        path = getPath(getContext(), uri);
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+                    Log.d(TAG, "File Path: " + path);
+                    // Get the file instance
+                    // File file = new File(path);
+                    // Initiate the upload
+                }
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+    public static String getPath(Context context, Uri uri) throws URISyntaxException {
+        if ("content".equalsIgnoreCase(uri.getScheme())) {
+            String[] projection = { "_data" };
+            Cursor cursor = null;
+
+            try {
+                cursor = context.getContentResolver().query(uri, projection, null, null, null);
+                int column_index = cursor.getColumnIndexOrThrow("_data");
+                if (cursor.moveToFirst()) {
+                    return cursor.getString(column_index);
+                }
+            } catch (Exception e) {
+                // Eat it
+            }
+        }
+        else if ("file".equalsIgnoreCase(uri.getScheme())) {
+
+            return uri.getPath();
+        }
+        String path = uri.getPath(); // "file:///mnt/sdcard/FileName.mp3"
+        System.out.println(path);
+        return null;
     }
 
     private void sendFormData(EditText nameFirst, EditText nameLast, EditText birthDate, EditText birthPlace, EditText profession, EditText emailEdt, EditText nameFather, EditText nameMother, EditText dateIssue, EditText dateExpiry) {
 
             RequestBody requestBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
-                    .addFormDataPart("Android ID", emailEdt.getText().toString())
-
+                    .addFormDataPart("first_name", nameFirst.getText().toString())
+                    .addFormDataPart("last_name", nameLast.getText().toString())
+                    .addFormDataPart("date_of_birth", birthDate.getText().toString())
+                    .addFormDataPart("birth_place", birthPlace.getText().toString())
+                    .addFormDataPart("email", emailEdt.getText().toString())
+                    .addFormDataPart("fathers_name", nameFather.getText().toString())
+                    .addFormDataPart("mothers_name", nameMother.getText().toString())
+                    .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
+                    .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
+                    .addFormDataPart("first_name", nameFirst.getText().toString())
+                    .addFormDataPart("last_name", nameLast.getText().toString())
+                    .addFormDataPart("date_of_birth", birthDate.getText().toString())
+                    .addFormDataPart("birth_place", birthPlace.getText().toString())
+                    .addFormDataPart("email", emailEdt.getText().toString())
+                    .addFormDataPart("fathers_name", nameFather.getText().toString())
+                    .addFormDataPart("mothers_name", nameMother.getText().toString())
+                    .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
+                    .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
+                    .addFormDataPart("first_name", nameFirst.getText().toString())
+                    .addFormDataPart("last_name", nameLast.getText().toString())
+                    .addFormDataPart("date_of_birth", birthDate.getText().toString())
+                    .addFormDataPart("birth_place", birthPlace.getText().toString())
+                    .addFormDataPart("email", emailEdt.getText().toString())
+                    .addFormDataPart("fathers_name", nameFather.getText().toString())
+                    .addFormDataPart("mothers_name", nameMother.getText().toString())
+                    .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
+                    .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
+                    .addFormDataPart("birth_place", birthPlace.getText().toString())
+                    .addFormDataPart("email", emailEdt.getText().toString())
+                    .addFormDataPart("fathers_name", nameFather.getText().toString())
+                    .addFormDataPart("mothers_name", nameMother.getText().toString())
+                    .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
+                    .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
                     .build();
             Request request = new Request.Builder().url(BASE_URL).post(requestBody).build();
             okhttp3.Call call = client.newCall(request);
