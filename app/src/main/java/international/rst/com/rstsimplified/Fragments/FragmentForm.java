@@ -77,8 +77,8 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                 }
             });
             final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
-            FloatingActionButton mFloatingActionButton = (FloatingActionButton)getActivity().findViewById(R.id.fab);
-            mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            Button button1 = (Button)view.findViewById(R.id.button_consult);
+            button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
@@ -95,6 +95,16 @@ public class FragmentForm extends android.support.v4.app.Fragment {
 
         } else if (title.equalsIgnoreCase("applicant")) {
             view = inflater.inflate(R.layout.appicant_form, container, false);
+            Button button2 = (Button)view.findViewById(R.id.button_applicant);
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
+                    int atTab = mFormPager.getCurrentItem();
+                    mFormPager.setCurrentItem(atTab + 1);
+
+                }
+            });
         }  else if (title.equalsIgnoreCase("payment")){
             view = inflater.inflate(R.layout.payment_form,container,false);
             expiryMonth  = (EditText)view.findViewById(R.id.card_month);
@@ -102,8 +112,6 @@ public class FragmentForm extends android.support.v4.app.Fragment {
             cardName = (EditText)view.findViewById(R.id.card_name);
             cardNumber = (EditText)view.findViewById(R.id.card_number);
             cardCvv = (EditText)view.findViewById(R.id.card_cvv);
-            FloatingActionButton mFloatingActionButton = (FloatingActionButton)getActivity().findViewById(R.id.fab);
-            mFloatingActionButton.setVisibility(View.GONE);
             Button btnSubmit = (Button)view.findViewById(R.id.button_payment);
             btnSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -121,6 +129,18 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                 }
             });
 
+        }
+        else if(title.equalsIgnoreCase("docs")){
+            view = inflater.inflate(R.layout.docs_form, container, false);
+            Button button3 = (Button)view.findViewById(R.id.button_docs);
+            button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
+                    int atTab = mFormPager.getCurrentItem();
+                    mFormPager.setCurrentItem(atTab + 1);
+                }
+            });
         }
 
         return view;

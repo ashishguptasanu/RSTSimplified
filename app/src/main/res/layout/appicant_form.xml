@@ -231,6 +231,18 @@
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@drawable/buttonshape"
+        android:text="Submit"
+        android:textColor="#fff"
+        android:id="@+id/button_applicant"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="50dp"/>
 
 
 </LinearLayout>
