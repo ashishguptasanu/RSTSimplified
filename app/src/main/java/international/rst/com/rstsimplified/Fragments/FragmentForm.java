@@ -28,14 +28,23 @@ import java.io.IOException;
 
 import international.rst.com.rstsimplified.Activities.PaymentGateway;
 import international.rst.com.rstsimplified.R;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 
 public class FragmentForm extends android.support.v4.app.Fragment {
     String title;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
+    EditText nameFirst, nameLast, birthDate, birthPlace, profession, emailEdt, nameFather, nameMother, dateIssue, dateExpiry;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String response;
+    private OkHttpClient client = new OkHttpClient();
+    private static final String BASE_URL = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
 
 
     public FragmentForm() {
@@ -95,6 +104,16 @@ public class FragmentForm extends android.support.v4.app.Fragment {
 
         } else if (title.equalsIgnoreCase("applicant")) {
             view = inflater.inflate(R.layout.appicant_form, container, false);
+            nameFirst = (EditText)view.findViewById(R.id.name_first);
+            nameLast = (EditText)view.findViewById(R.id.name_last);
+            birthDate = (EditText)view.findViewById(R.id.edt_dob);
+            birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
+            profession = (EditText)view.findViewById(R.id.edt_profession);
+            emailEdt = (EditText)view.findViewById(R.id.edittext_email);
+            nameFather = (EditText)view.findViewById(R.id.name_father);
+            nameMother = (EditText)view.findViewById(R.id.name_mother);
+            dateIssue = (EditText)view.findViewById(R.id.edt_issue_date);
+            dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -102,6 +121,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                     ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                     int atTab = mFormPager.getCurrentItem();
                     mFormPager.setCurrentItem(atTab + 1);
+                    sendFormData(nameFirst,nameLast,birthDate,birthPlace,profession,emailEdt,nameFather,nameMother,dateIssue,dateExpiry);
 
                 }
             });
@@ -144,6 +164,47 @@ public class FragmentForm extends android.support.v4.app.Fragment {
         }
 
         return view;
+    }
+
+    private void sendFormData(EditText nameFirst, EditText nameLast, EditText birthDate, EditText birthPlace, EditText profession, EditText emailEdt, EditText nameFather, EditText nameMother, EditText dateIssue, EditText dateExpiry) {
+
+            RequestBody requestBody = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("Android ID", emailEdt.getText().toString())
+
+                    .build();
+            Request request = new Request.Builder().url(BASE_URL).post(requestBody).build();
+            okhttp3.Call call = client.newCall(request);
+            call.enqueue(new Callback() {
+
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    System.out.println("Registration Error" + e.getMessage());
+                }
+
+                @Override
+                public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                    try {
+                        String resp = response.body().string();
+//                    Log.v(TAG_REGISTER, resp);
+                        System.out.println(resp);
+                        if (response.isSuccessful()) {
+                            //sharedPreferences.edit().putString("Device ID", deviceID).apply();
+                            //sharedPreferences.edit().putString("Android ID",androidID).apply();
+                        } else {
+
+                        }
+                    } catch (IOException e) {
+                        // Log.e(TAG_REGISTER, "Exception caught: ", e);
+                        System.out.println("Exception caught" + e.getMessage());
+                    }
+                }
+
+            });
+
+
+
     }
 
     class ConnectionTask extends AsyncTask<String, Void, String> {

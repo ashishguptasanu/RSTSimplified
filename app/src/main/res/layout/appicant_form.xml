@@ -15,6 +15,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/name_first"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="First Name"/>
         </android.support.design.widget.TextInputLayout>
@@ -26,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:id="@+id/name_last"
                 android:hint="Last Name"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -47,7 +49,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:spinnerMode="dialog">
+                android:id="@+id/spnr_gender"
+                android:spinnerMode="dropdown">
             </android.support.v7.widget.AppCompatSpinner>
             <View
                 android:layout_width="match_parent"
@@ -66,7 +69,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="Date of Birth"/>
+                android:hint="Date of Birth"
+                android:id="@+id/edt_dob"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
     <LinearLayout
@@ -81,7 +85,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="Place of Birth"/>
+                android:hint="Place of Birth"
+                android:id="@+id/edt_place_birth"/>
         </android.support.design.widget.TextInputLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -96,6 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/spnr_country"
                 android:spinnerMode="dialog">
             </android.support.v7.widget.AppCompatSpinner>
             <View
@@ -120,7 +126,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="Profession"/>
+                android:hint="Profession"
+                android:id="@+id/edt_profession"/>
         </android.support.design.widget.TextInputLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -135,6 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/spnr_religion"
                 android:spinnerMode="dialog">
             </android.support.v7.widget.AppCompatSpinner>
             <View
@@ -154,7 +162,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:hint="Email Address"/>
+            android:hint="Email Address"
+            android:id="@+id/edittext_email"/>
     </android.support.design.widget.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -168,7 +177,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="Father's Name"/>
+                android:hint="Father's Name"
+                android:id="@+id/name_father"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
@@ -178,7 +188,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="Mother's Name"/>
+                android:hint="Mother's Name"
+                android:id="@+id/name_mother"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
     <LinearLayout
@@ -198,6 +209,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/spnr_country_issue"
                 android:spinnerMode="dialog">
             </android.support.v7.widget.AppCompatSpinner>
             <View
@@ -217,7 +229,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="Issuing Date"/>
+                android:hint="Issuing Date"
+                android:id="@+id/edt_issue_date"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
@@ -227,7 +240,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:hint="Expiry Date"/>
+                android:hint="Expiry Date"
+                android:id="@+id/edt_valid_till"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
