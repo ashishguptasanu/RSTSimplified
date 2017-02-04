@@ -228,6 +228,9 @@ public class FragmentForm extends android.support.v4.app.Fragment {
         if ("content".equalsIgnoreCase(uri.getScheme())) {
             String[] projection = { "_data" };
             Cursor cursor = null;
+            File myFile = new File(uri.getPath());
+            String path = myFile.getAbsolutePath();
+            System.out.println(path);
 
             try {
                 cursor = context.getContentResolver().query(uri, projection, null, null, null);
@@ -243,8 +246,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
 
             return uri.getPath();
         }
-        String path = uri.getPath(); // "file:///mnt/sdcard/FileName.mp3"
-        System.out.println(path);
+
         return null;
     }
 
@@ -252,39 +254,39 @@ public class FragmentForm extends android.support.v4.app.Fragment {
 
             RequestBody requestBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
+                    .addFormDataPart("visa_id", nameFirst.getText().toString())
                     .addFormDataPart("first_name", nameFirst.getText().toString())
                     .addFormDataPart("last_name", nameLast.getText().toString())
+                    .addFormDataPart("gender", nameLast.getText().toString())
                     .addFormDataPart("date_of_birth", birthDate.getText().toString())
-                    .addFormDataPart("birth_place", birthPlace.getText().toString())
+                    .addFormDataPart("birth_place", nameFather.getText().toString())
+                    .addFormDataPart("birth_country", birthPlace.getText().toString())
+                    .addFormDataPart("religion", birthDate.getText().toString())
                     .addFormDataPart("email", emailEdt.getText().toString())
                     .addFormDataPart("fathers_name", nameFather.getText().toString())
                     .addFormDataPart("mothers_name", nameMother.getText().toString())
+                    .addFormDataPart("marital_status", birthDate.getText().toString())
+                    .addFormDataPart("passport_number", birthPlace.getText().toString())
+                    .addFormDataPart("place_of_issue", emailEdt.getText().toString())
+                    .addFormDataPart("country_of_issue", nameFather.getText().toString())
                     .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
                     .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
-                    .addFormDataPart("first_name", nameFirst.getText().toString())
-                    .addFormDataPart("last_name", nameLast.getText().toString())
-                    .addFormDataPart("date_of_birth", birthDate.getText().toString())
-                    .addFormDataPart("birth_place", birthPlace.getText().toString())
-                    .addFormDataPart("email", emailEdt.getText().toString())
-                    .addFormDataPart("fathers_name", nameFather.getText().toString())
-                    .addFormDataPart("mothers_name", nameMother.getText().toString())
-                    .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
-                    .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
-                    .addFormDataPart("first_name", nameFirst.getText().toString())
-                    .addFormDataPart("last_name", nameLast.getText().toString())
-                    .addFormDataPart("date_of_birth", birthDate.getText().toString())
-                    .addFormDataPart("birth_place", birthPlace.getText().toString())
-                    .addFormDataPart("email", emailEdt.getText().toString())
-                    .addFormDataPart("fathers_name", nameFather.getText().toString())
-                    .addFormDataPart("mothers_name", nameMother.getText().toString())
-                    .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
-                    .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
-                    .addFormDataPart("birth_place", birthPlace.getText().toString())
-                    .addFormDataPart("email", emailEdt.getText().toString())
-                    .addFormDataPart("fathers_name", nameFather.getText().toString())
-                    .addFormDataPart("mothers_name", nameMother.getText().toString())
-                    .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
-                    .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
+                    .addFormDataPart("profession_id", nameMother.getText().toString())
+                    .addFormDataPart("insertedTimeIST", dateIssue.getText().toString())
+                    .addFormDataPart("visa_status", dateExpiry.getText().toString())
+                    .addFormDataPart("service_type", nameFirst.getText().toString())
+                    .addFormDataPart("visaRenewalDate", nameLast.getText().toString())
+                    .addFormDataPart("sponserName", birthDate.getText().toString())
+                    .addFormDataPart("arrivingFrom", birthPlace.getText().toString())
+                    .addFormDataPart("otherProfession", emailEdt.getText().toString())
+                    .addFormDataPart("port_arrival", nameFather.getText().toString())
+                    .addFormDataPart("age", nameMother.getText().toString())
+                    .addFormDataPart("person_type", dateIssue.getText().toString())
+                    .addFormDataPart("sponserType", dateExpiry.getText().toString())
+                    .addFormDataPart("sponserNationality", birthPlace.getText().toString())
+                    .addFormDataPart("sponserAdd", emailEdt.getText().toString())
+                    .addFormDataPart("sponserRelation", nameFather.getText().toString())
+                    .addFormDataPart("sponserCompanyContact", nameMother.getText().toString())
                     .build();
             Request request = new Request.Builder().url(BASE_URL).post(requestBody).build();
             okhttp3.Call call = client.newCall(request);

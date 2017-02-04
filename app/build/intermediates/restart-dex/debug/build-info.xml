@@ -5,19 +5,19 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="453064955501226"
+    timestamp="455099318029653"
     token="-315265450245951108"
     verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="593" />
+        duration="701" />
     <task
         name="instant-run-dex"
         duration="26" />
     <task
         name="instant-run-transform"
-        duration="30" />
+        duration="32" />
     <task
         name="verifier"
         duration="4" />
@@ -27,51 +27,21 @@
         type="RELOAD_DEX" />
 
     <build
-        timestamp="450412167358293"
+        timestamp="454240313213440"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="451740472048213"
-        verifier="CLASS_ADDED" >
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
-            type="RESOURCES" />
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="452534178322773"
-        verifier="METHOD_ADDED" >
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="452807576355840"
+        timestamp="454374728457386"
         verifier="COMPATIBLE" >
         <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\builds\debug\452807576355840\classes.dex"
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\builds\debug\454374728457386\classes.dex"
             type="RELOAD_DEX" />
     </build>
     <build
-        timestamp="452984806739200"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\builds\debug\452984806739200\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        timestamp="453064955501226"
+        timestamp="455099318029653"
         verifier="COMPATIBLE" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
