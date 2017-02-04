@@ -1,6 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="3dp"
+        android:elevation="6dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/outbox"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Coloured Passport Scanned Copy"
+                android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/attach"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/drive"
+                android:layout_gravity="left"
+                android:layout_weight="0.17" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="3dp"
+        android:elevation="6dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/outbox"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Proof of Residence"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/attach"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/drive"
+                android:layout_gravity="left"
+                android:layout_weight="0.17" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="3dp"
+        android:elevation="6dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/outbox"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_marginTop="5dp"
+                android:text="Return Ticket Copy"
+                android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/attach"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/drive"
+                android:layout_gravity="left"
+                android:layout_weight="0.17" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="3dp"
+        android:elevation="6dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/outbox"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Hotel Reservation Copy"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/attach"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/drive"
+                android:layout_gravity="left"
+                android:layout_weight="0.17" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="3dp"
+        android:elevation="6dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/outbox"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Employee ID Copy"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/attach"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/drive"
+                android:layout_gravity="left"
+                android:layout_weight="0.17" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="3dp"
+        android:elevation="6dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/outbox"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:text="Miscellaneous Documents"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/attach"
+                android:layout_gravity="left"
+                android:layout_weight="0.21"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:src="@drawable/drive"
+                android:layout_gravity="left"
+                android:id="@+id/imageView3"
+                android:layout_weight="0.17" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

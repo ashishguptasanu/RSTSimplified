@@ -241,7 +241,6 @@ public class FormActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     return FragmentForm.newFormInstance("consult");
-
                 case 1:
                     return FragmentForm.newFormInstance("applicant");
                 case 2:

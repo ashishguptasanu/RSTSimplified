@@ -95,10 +95,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
 
         } else if (title.equalsIgnoreCase("applicant")) {
             view = inflater.inflate(R.layout.appicant_form, container, false);
-        } else if (title.equalsIgnoreCase("docs")) {
-            view = inflater.inflate(R.layout.docs_form,container,false);
-
-        } else if (title.equalsIgnoreCase("payment")){
+        }  else if (title.equalsIgnoreCase("payment")){
             view = inflater.inflate(R.layout.payment_form,container,false);
             expiryMonth  = (EditText)view.findViewById(R.id.card_month);
             expiryYear = (EditText)view.findViewById(R.id.card_year);
@@ -106,10 +103,11 @@ public class FragmentForm extends android.support.v4.app.Fragment {
             cardNumber = (EditText)view.findViewById(R.id.card_number);
             cardCvv = (EditText)view.findViewById(R.id.card_cvv);
             FloatingActionButton mFloatingActionButton = (FloatingActionButton)getActivity().findViewById(R.id.fab);
-            mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            mFloatingActionButton.setVisibility(View.GONE);
+            Button btnSubmit = (Button)view.findViewById(R.id.button_payment);
+            btnSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                     if(expiryMonth.getText().toString().length() != 0 && expiryYear.getText().toString().length() != 0 && cardName.getText().toString().length() != 0 && cardCvv.getText().toString().length() != 0 && cardNumber.getText().toString().length() != 0 ){
                         try {
                             new ConnectionTask().execute("");
@@ -120,7 +118,6 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                     else{
                         Toast.makeText(getContext(),"OOps! Enter all value..",Toast.LENGTH_SHORT).show();
                     }
-
                 }
             });
 
@@ -155,7 +152,6 @@ public class FragmentForm extends android.support.v4.app.Fragment {
 
             } catch (IOException e) {
                 e.printStackTrace();
-                response = String.valueOf(e);
             }
             return "";
         }
@@ -163,7 +159,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Toast.makeText(getContext(),response,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
 
         }
 
