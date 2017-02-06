@@ -192,6 +192,7 @@
                 android:id="@+id/name_mother"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -199,7 +200,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.24"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
@@ -208,7 +209,7 @@
             <android.support.v7.widget.AppCompatSpinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.5"
                 android:id="@+id/spnr_country_issue"
                 android:spinnerMode="dialog">
             </android.support.v7.widget.AppCompatSpinner>

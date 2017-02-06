@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -55,18 +56,19 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
 
 
-public class FragmentForm extends android.support.v4.app.Fragment {
+public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener {
     private static final int FILE_SELECT_CODE =  0;
     String title;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
     EditText nameFirst, nameLast, birthDate, birthPlace, profession, emailEdt, nameFather, nameMother, dateIssue, dateExpiry;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
-    String response;
-    Spinner spnrAllCountries;
+    String[] gender, religion;
+    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion;
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private OkHttpClient client = new OkHttpClient();
+    int selectedCountry, selectedCountryID, selectedIssueCountry, selectedIssueCountryID, selectedGender, selectedReligion;
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
 
@@ -143,7 +145,6 @@ public class FragmentForm extends android.support.v4.app.Fragment {
             dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             loadAllCountries();
-            polpulateIssueCountry();
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -309,11 +310,11 @@ public class FragmentForm extends android.support.v4.app.Fragment {
 
                 Country jsonResponse = response.body();
                 allcountry = jsonResponse.getCountry();
-                System.out.println(allcountry.size());
                 for(int i=0;i<allcountry.size();i++){
                     allCountriesData.add(allcountry.get(i).getName());
                 }
-                populateAllCountrySpinner();
+
+                intializeSpinners();
 
 
             }
@@ -324,18 +325,44 @@ public class FragmentForm extends android.support.v4.app.Fragment {
         });
     }
 
+    private void intializeSpinners() {
+        populateAllCountrySpinner();
+        populateIssueCountrySpinner();
+        populateGenderSpinner();
+        populateReligionSpinner();
+    }
+
     private void populateAllCountrySpinner() {
         spnrAllCountries = (Spinner)view.findViewById(R.id.spnr_country);
+        spnrAllCountries.setOnItemSelectedListener(this);
         ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
         dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrAllCountries.setAdapter(dataAdapterCountries);
     }
-    private void polpulateIssueCountry() {
-        spnrAllCountries = (Spinner)view.findViewById(R.id.spnr_country_issue);
-        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
-        dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnrAllCountries.setAdapter(dataAdapterCountries);
+    private void populateIssueCountrySpinner() {
+        spnrIssueCountry = (Spinner)view.findViewById(R.id.spnr_country_issue);
+        spnrIssueCountry.setOnItemSelectedListener(this);
+        ArrayAdapter<String> issueDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
+        issueDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrIssueCountry.setAdapter(issueDataAdapter);
     }
+    private void populateGenderSpinner() {
+        spnrGender = (Spinner)view.findViewById(R.id.spnr_gender);
+        spnrGender.setOnItemSelectedListener(this);
+        gender = new String[]{"Select One","Male","Female","Other"};
+        ArrayAdapter<String> genderDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, gender);
+        genderDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrGender.setAdapter(genderDataAdapter);
+    }
+    private void populateReligionSpinner() {
+        spnrReligion = (Spinner)view.findViewById(R.id.spnr_religion);
+        spnrReligion.setOnItemSelectedListener(this);
+        religion = new String[]{"Select One","Bahai","Buddhism","Christian","Hindu","Islam","Jainism","Judaism","Parsi","Sikh","Zoroastrian","Other"};
+        ArrayAdapter<String> religionDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, religion);
+        religionDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrReligion.setAdapter(religionDataAdapter);
+    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -413,7 +440,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                     .addFormDataPart("visaRenewalDate", nameLast.getText().toString())
                     .addFormDataPart("sponserName", birthDate.getText().toString())
                     .addFormDataPart("arrivingFrom", birthPlace.getText().toString())
-                    .addFormDataPart("otherProfession", emailEdt.getText().toString())
+                    .addFormDataPart("otherProfession", "Dairy Prod Industry Supervisor")
                     .addFormDataPart("port_arrival", nameFather.getText().toString())
                     .addFormDataPart("age", nameMother.getText().toString())
                     .addFormDataPart("person_type", dateIssue.getText().toString())
@@ -454,6 +481,38 @@ public class FragmentForm extends android.support.v4.app.Fragment {
             });
 
 
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        switch (adapterView.getId()){
+            case R.id.spnr_country:
+                //selectedCountry = spnrAllCountries.getSelectedItemPosition();
+                selectedCountryID = allcountry.get(i).getId();
+                System.out.println(selectedCountryID);
+                break;
+            case R.id.spnr_country_issue:
+                //selectedIssueCountry = spnrIssueCountry.getSelectedItemPosition();
+                selectedIssueCountryID = allcountry.get(i).getId();
+                System.out.println(selectedIssueCountryID);
+                break;
+            case R.id.spnr_gender:
+                //selectedGender = spnrGender.getSelectedItemPosition();
+                String genderName = gender[i];
+                System.out.println(genderName);
+                break;
+            case R.id.spnr_religion:
+                //selectedReligion = spnrReligion.getSelectedItemPosition();
+                String religionName = religion[i];
+                System.out.println(religionName);
+                break;
+
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 
