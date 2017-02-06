@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -42,6 +43,9 @@ import java.util.List;
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
 import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
+import international.rst.com.rstsimplified.Model.Profession;
+import international.rst.com.rstsimplified.Model.ProfessionRes;
+import international.rst.com.rstsimplified.Model.ProfessionResponse;
 import international.rst.com.rstsimplified.R;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -61,13 +65,17 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String title;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
-    EditText nameFirst, nameLast, birthDate, birthPlace, profession, emailEdt, nameFather, nameMother, dateIssue, dateExpiry;
+    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion;
     Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion;
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
+    private List<ProfessionRes> professionList = new ArrayList<>();
+    private List<String> professionData = new ArrayList<>();
+
     private OkHttpClient client = new OkHttpClient();
+    AutoCompleteTextView profession;
     int selectedCountry, selectedCountryID, selectedIssueCountry, selectedIssueCountryID, selectedGender, selectedReligion;
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
@@ -87,6 +95,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadProfession();
 
 
     }
@@ -137,13 +146,15 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             nameLast = (EditText)view.findViewById(R.id.name_last);
             birthDate = (EditText)view.findViewById(R.id.edt_dob);
             birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
-            profession = (EditText)view.findViewById(R.id.edt_profession);
             emailEdt = (EditText)view.findViewById(R.id.edittext_email);
             nameFather = (EditText)view.findViewById(R.id.name_father);
             nameMother = (EditText)view.findViewById(R.id.name_mother);
             dateIssue = (EditText)view.findViewById(R.id.edt_issue_date);
             dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
+            profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
+            loadProfession();
+            intializeAutoTextProfession(profession);
             loadAllCountries();
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -574,5 +585,48 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         },mYear, mMonth, mDay);
         mDatePicker.setTitle("Select date");
         mDatePicker.show();
+    }
+    private void loadProfession() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.uaevisasonline.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        ProfessionResponse request = retrofit.create(ProfessionResponse.class);
+        retrofit2.Call<Profession> call = request.getProfession();
+        //
+        call.enqueue(new retrofit2.Callback<Profession>() {
+            @Override
+            public void onResponse(retrofit2.Call<Profession> call, retrofit2.Response<Profession> response) {
+
+
+                Profession jsonResponse = response.body();
+                professionList = jsonResponse.getProfession();
+                for(int i=0;i<professionList.size();i++){
+                    professionData.add(professionList.get(i).getName());
+                }
+
+
+
+
+
+
+
+            }
+            @Override
+            public void onFailure(retrofit2.Call<Profession> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
+
+    private void intializeAutoTextProfession(AutoCompleteTextView profession) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, professionData);
+        //Find TextView control
+        this.profession.setThreshold(1);
+        //Set the adapter
+        this.profession.setAdapter(adapter);
     }
 }

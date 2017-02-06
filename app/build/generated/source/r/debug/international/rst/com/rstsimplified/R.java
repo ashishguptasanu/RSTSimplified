@@ -2925,6 +2925,7 @@ containing a value of this type.
         public static final int apply=0x7f0d00e3;
         public static final int attach_file=0x7f0d00c0;
         public static final int auto=0x7f0d0026;
+        public static final int auto_profession=0x7f0d0085;
         public static final int beginning=0x7f0d003b;
         public static final int bottom=0x7f0d0029;
         public static final int buttonPanel=0x7f0d004e;
@@ -2984,7 +2985,6 @@ containing a value of this type.
         public static final int edt_dob=0x7f0d0082;
         public static final int edt_issue_date=0x7f0d008b;
         public static final int edt_place_birth=0x7f0d0083;
-        public static final int edt_profession=0x7f0d0085;
         public static final int edt_valid_till=0x7f0d008c;
         public static final int end=0x7f0d002f;
         public static final int end_padder=0x7f0d00de;
