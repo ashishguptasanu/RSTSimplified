@@ -154,7 +154,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
             loadProfession();
-            intializeAutoTextProfession(profession);
+
             loadAllCountries();
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -607,6 +607,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 for(int i=0;i<professionList.size();i++){
                     professionData.add(professionList.get(i).getName());
                 }
+                intializeAutoTextProfession(profession);
 
 
 
@@ -623,6 +624,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     }
 
     private void intializeAutoTextProfession(AutoCompleteTextView profession) {
+        System.out.println(professionData.size());
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, professionData);
         //Find TextView control
         this.profession.setThreshold(1);
