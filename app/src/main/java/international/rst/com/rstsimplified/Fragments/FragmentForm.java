@@ -1,7 +1,6 @@
 package international.rst.com.rstsimplified.Fragments;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,17 +9,17 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.checkout.CheckoutKit;
@@ -34,15 +33,12 @@ import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
-import international.rst.com.rstsimplified.Model.CompleteCountry;
 import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.R;
@@ -67,6 +63,8 @@ public class FragmentForm extends android.support.v4.app.Fragment {
     EditText nameFirst, nameLast, birthDate, birthPlace, profession, emailEdt, nameFather, nameMother, dateIssue, dateExpiry;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String response;
+    Spinner spnrAllCountries;
+    private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
@@ -87,6 +85,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 
@@ -111,6 +110,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                     datePicker(edtDate2);
                 }
             });
+
             final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
             Button button1 = (Button)view.findViewById(R.id.button_consult);
             button1.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +120,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                     if(edtLivingIn.getText().toString().length() != 0){
                         int atTab = mFormPager.getCurrentItem();
                         mFormPager.setCurrentItem(atTab + 1);
-                        sendCunsultData();
+                        sendConsultData();
                     }
                     else{
                         Toast.makeText(getContext(),"OOps! Enter all value..",Toast.LENGTH_SHORT).show();
@@ -143,6 +143,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
             dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             loadAllCountries();
+            polpulateIssueCountry();
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -218,7 +219,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
         return view;
     }
 
-    private void sendCunsultData() {
+    private void sendConsultData() {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("visa_id", "Testing")
@@ -309,7 +310,10 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                 Country jsonResponse = response.body();
                 allcountry = jsonResponse.getCountry();
                 System.out.println(allcountry.size());
-                //populateNationalitySpinner();
+                for(int i=0;i<allcountry.size();i++){
+                    allCountriesData.add(allcountry.get(i).getName());
+                }
+                populateAllCountrySpinner();
 
 
             }
@@ -318,6 +322,19 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                 Log.v("Error",t.getMessage());
             }
         });
+    }
+
+    private void populateAllCountrySpinner() {
+        spnrAllCountries = (Spinner)view.findViewById(R.id.spnr_country);
+        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
+        dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrAllCountries.setAdapter(dataAdapterCountries);
+    }
+    private void polpulateIssueCountry() {
+        spnrAllCountries = (Spinner)view.findViewById(R.id.spnr_country_issue);
+        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
+        dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrAllCountries.setAdapter(dataAdapterCountries);
     }
 
     @Override
