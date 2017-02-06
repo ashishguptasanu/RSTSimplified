@@ -69,7 +69,8 @@ public class FragmentForm extends android.support.v4.app.Fragment {
     String response;
     private List<CountryRes> allcountry = new ArrayList<>();
     private OkHttpClient client = new OkHttpClient();
-    private static final String BASE_URL = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
+    private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
+    private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
 
 
     public FragmentForm() {
@@ -119,6 +120,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                     if(edtLivingIn.getText().toString().length() != 0){
                         int atTab = mFormPager.getCurrentItem();
                         mFormPager.setCurrentItem(atTab + 1);
+                        sendCunsultData();
                     }
                     else{
                         Toast.makeText(getContext(),"OOps! Enter all value..",Toast.LENGTH_SHORT).show();
@@ -214,6 +216,78 @@ public class FragmentForm extends android.support.v4.app.Fragment {
         }
 
         return view;
+    }
+
+    private void sendCunsultData() {
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "Testing")
+                .addFormDataPart("start_date", "Testing")
+                .addFormDataPart("end_date", "Testing")
+                .addFormDataPart("pnrNo", "Testing")
+                .addFormDataPart("address1", "Testing")
+                .addFormDataPart("address2", "Testing")
+                .addFormDataPart("city", "Testing")
+                .addFormDataPart("country", "Testing")
+                .addFormDataPart("country_code", "Testing")
+                .addFormDataPart("mobile", "Testing")
+                .addFormDataPart("emirates_uae", "Testing")
+                .addFormDataPart("emergency_contact_name", "Testing")
+                .addFormDataPart("emergency_contact_number", "Testing")
+                .addFormDataPart("hotel_address", "Testing")
+                .addFormDataPart("contact_uae", "Testing")
+                .addFormDataPart("created_date", "Testing")
+                .addFormDataPart("order_id", "Testing")
+                .addFormDataPart("service_type", "Testing")
+                .addFormDataPart("nationality_id", "Testing")
+                .addFormDataPart("living_in_id", "Testing")
+                .addFormDataPart("currency_id", "Testing")
+                .addFormDataPart("govt_fee", "Testing")
+                .addFormDataPart("service_fee", "Testing")
+                .addFormDataPart("processing_time", "Testing")
+                .addFormDataPart("visa_type_id", "Testing")
+                .addFormDataPart("email_id", "Testing")
+                .addFormDataPart("email_varified", "Testing")
+                .addFormDataPart("comments_added", "Testing")
+                .addFormDataPart("insertedTimeIst", "Testing")
+                .addFormDataPart("agentid", "Testing")
+                .addFormDataPart("service_fee_cs", "Testing")
+                .addFormDataPart("termConditions", "Testing")
+                .addFormDataPart("mng_fee", "Testing")
+                .addFormDataPart("application_type", "Testing")
+                .addFormDataPart("agentType", "Testing")
+                .addFormDataPart("device_type", "Testing")
+                .addFormDataPart("device_os", "Testing")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    String resp = response.body().string();
+//                    Log.v(TAG_REGISTER, resp);
+                    System.out.println(resp);
+                    if (response.isSuccessful()) {
+                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
+                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
+                    } else {
+
+                    }
+                } catch (IOException e) {
+                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
     }
 
     private void loadAllCountries() {
@@ -332,7 +406,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                     .addFormDataPart("sponserRelation", nameFather.getText().toString())
                     .addFormDataPart("sponserCompanyContact", nameMother.getText().toString())
                     .build();
-            Request request = new Request.Builder().url(BASE_URL).post(requestBody).build();
+            Request request = new Request.Builder().url(BASE_URL_APLLICANT_FORM).post(requestBody).build();
             okhttp3.Call call = client.newCall(request);
             call.enqueue(new Callback() {
 
