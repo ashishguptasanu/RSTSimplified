@@ -10,7 +10,7 @@ public class AllCountry {
     @Expose
     private List<CompleteCountry> allcountry = null;
 
-    public List<CompleteCountry> getAllcountry() {
+    public List<CompleteCountry> getAllCountries() {
         return allcountry;
     }
 

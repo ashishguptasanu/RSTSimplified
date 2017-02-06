@@ -29,13 +29,22 @@ import com.checkout.exceptions.CheckoutException;
 import com.checkout.httpconnector.Response;
 import com.checkout.models.Card;
 import com.checkout.models.CardTokenResponse;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
-import international.rst.com.rstsimplified.Activities.PaymentGateway;
+
+import international.rst.com.rstsimplified.Model.AllCountryResponse;
+import international.rst.com.rstsimplified.Model.CompleteCountry;
+import international.rst.com.rstsimplified.Model.Country;
+import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.R;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -43,6 +52,8 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
@@ -56,6 +67,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
     EditText nameFirst, nameLast, birthDate, birthPlace, profession, emailEdt, nameFather, nameMother, dateIssue, dateExpiry;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String response;
+    private List<CountryRes> allcountry = new ArrayList<>();
     private OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
 
@@ -128,6 +140,7 @@ public class FragmentForm extends android.support.v4.app.Fragment {
             dateIssue = (EditText)view.findViewById(R.id.edt_issue_date);
             dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
+            loadAllCountries();
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -176,11 +189,14 @@ public class FragmentForm extends android.support.v4.app.Fragment {
             });
             ImageView imgV = (ImageView)view.findViewById(R.id.attach_file);
             imgV.setOnClickListener(new View.OnClickListener() {
+                public static final int FLAG_GRANT_URI_WRITE_PERMISSION = 1 ;
+
                 @Override
                 public void onClick(View view) {
 
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("*/*");
+                    intent.setFlags(FLAG_GRANT_URI_WRITE_PERMISSION);
                     intent.addCategory(Intent.CATEGORY_OPENABLE);
 
                     try {
@@ -200,6 +216,36 @@ public class FragmentForm extends android.support.v4.app.Fragment {
         return view;
     }
 
+    private void loadAllCountries() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.uaevisasonline.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        AllCountryResponse request = retrofit.create(AllCountryResponse.class);
+        retrofit2.Call<Country> call = request.getCountry();
+        //
+        call.enqueue(new retrofit2.Callback<Country>() {
+            @Override
+            public void onResponse(retrofit2.Call<Country> call, retrofit2.Response<Country> response) {
+
+
+                Country jsonResponse = response.body();
+                allcountry = jsonResponse.getCountry();
+                System.out.println(allcountry.size());
+                //populateNationalitySpinner();
+
+
+            }
+            @Override
+            public void onFailure(retrofit2.Call<Country> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
@@ -210,11 +256,8 @@ public class FragmentForm extends android.support.v4.app.Fragment {
                     Log.d(TAG, "File Uri: " + uri.toString());
                     // Get the path
                     String path = null;
-                    try {
-                        path = getPath(getContext(), uri);
-                    } catch (URISyntaxException e) {
-                        e.printStackTrace();
-                    }
+                    //path = getPath(getContext(), uri);
+                    path = uri.toString();
                     Log.d(TAG, "File Path: " + path);
                     // Get the file instance
                     // File file = new File(path);
@@ -244,7 +287,8 @@ public class FragmentForm extends android.support.v4.app.Fragment {
         }
         else if ("file".equalsIgnoreCase(uri.getScheme())) {
 
-            return uri.getPath();
+            return uri.getScheme();
+
         }
 
         return null;
