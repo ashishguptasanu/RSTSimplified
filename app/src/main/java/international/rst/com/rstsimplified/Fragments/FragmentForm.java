@@ -62,7 +62,7 @@ import static android.content.ContentValues.TAG;
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener {
     private static final int FILE_SELECT_CODE =  0;
-    String title;
+    String title, selectedProfession;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry;
@@ -153,6 +153,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
+            profession.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    selectedProfession = professionData.get(i);
+                }
+            });
             birthDate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -179,7 +185,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                     int atTab = mFormPager.getCurrentItem();
                     mFormPager.setCurrentItem(atTab + 1);
-                    sendFormData(nameFirst,nameLast,birthDate,birthPlace,profession,emailEdt,nameFather,nameMother,dateIssue,dateExpiry);
+                    sendFormData(nameFirst,nameLast,birthDate,birthPlace,selectedProfession,emailEdt,nameFather,nameMother,dateIssue,dateExpiry);
 
                 }
             });
@@ -445,7 +451,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         return null;
     }
 
-    private void sendFormData(EditText nameFirst, EditText nameLast, EditText birthDate, EditText birthPlace, EditText profession, EditText emailEdt, EditText nameFather, EditText nameMother, EditText dateIssue, EditText dateExpiry) {
+    private void sendFormData(EditText nameFirst, EditText nameLast, EditText birthDate, EditText birthPlace, String profession, EditText emailEdt, EditText nameFather, EditText nameMother, EditText dateIssue, EditText dateExpiry) {
 
             RequestBody requestBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
@@ -473,7 +479,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     .addFormDataPart("visaRenewalDate", nameLast.getText().toString())
                     .addFormDataPart("sponserName", birthDate.getText().toString())
                     .addFormDataPart("arrivingFrom", birthPlace.getText().toString())
-                    .addFormDataPart("otherProfession", "Dairy Prod Industry Supervisor")
+                    .addFormDataPart("otherProfession", profession)
                     .addFormDataPart("port_arrival", nameFather.getText().toString())
                     .addFormDataPart("age", nameMother.getText().toString())
                     .addFormDataPart("person_type", dateIssue.getText().toString())
