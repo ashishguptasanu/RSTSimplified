@@ -62,7 +62,7 @@ import static android.content.ContentValues.TAG;
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener {
     private static final int FILE_SELECT_CODE =  0;
-    String title, selectedProfession;
+    String title, selectedProfession,selectedProfessionID;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry;
@@ -73,12 +73,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<CountryRes> allcountry = new ArrayList<>();
     private List<ProfessionRes> professionList = new ArrayList<>();
     private List<String> professionData = new ArrayList<>();
-    private List<String> professionNumber = new ArrayList<>();
+    private List<Integer> professionNumber = new ArrayList<>();
 
     private OkHttpClient client = new OkHttpClient();
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
-    int selectedCountry, selectedCountryID, selectedIssueCountry, selectedIssueCountryID, selectedGender, selectedReligion,selectedProfessionID;
+    int selectedCountry, selectedCountryID, selectedIssueCountry, selectedIssueCountryID, selectedGender, selectedReligion;
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
 
@@ -158,9 +158,21 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             profession.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    int position = profession.getListSelection();
-                    System.out.println("Auto:"+ position);
-                    //selectedProfession = adapter.getItem(position);
+                    String selection = (String) adapterView.getItemAtPosition(i);
+                    int pos = -1;
+
+                    for (int j = 0; j < professionData.size(); j++) {
+                        if (professionData.get(j).equals(selection)) {
+                            pos = j;
+                            break;
+                        }
+                    }
+                    int id = professionNumber.get(pos);
+                    selectedProfessionID = String.valueOf(id);
+                    System.out.println("Position " + selectedProfessionID);
+                    //int position = profession.getListSelection();
+                    //System.out.println("Auto:"+ position);
+                    selectedProfession = adapter.getItem(i);
                     //selectedProfessionID = professionList.get(position).getProfessionNo();
                     //selectedProfession = professionData.get(i);
                 }
@@ -191,7 +203,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                     int atTab = mFormPager.getCurrentItem();
                     mFormPager.setCurrentItem(atTab + 1);
-                    sendFormData(nameFirst,nameLast,birthDate,birthPlace,selectedProfession,emailEdt,nameFather,nameMother,dateIssue,dateExpiry);
+                    sendFormData(nameFirst,nameLast,birthDate,birthPlace,selectedProfession,selectedProfessionID,emailEdt,nameFather,nameMother,dateIssue,dateExpiry);
 
                 }
             });
@@ -457,7 +469,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         return null;
     }
 
-    private void sendFormData(EditText nameFirst, EditText nameLast, EditText birthDate, EditText birthPlace, String profession, EditText emailEdt, EditText nameFather, EditText nameMother, EditText dateIssue, EditText dateExpiry) {
+    private void sendFormData(EditText nameFirst, EditText nameLast, EditText birthDate, EditText birthPlace, String profession, String selectedCountryID, EditText emailEdt, EditText nameFather, EditText nameMother, EditText dateIssue, EditText dateExpiry) {
 
             RequestBody requestBody = new MultipartBody.Builder()
                     .setType(MultipartBody.FORM)
@@ -478,14 +490,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     .addFormDataPart("country_of_issue", nameFather.getText().toString())
                     .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
                     .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
-                    .addFormDataPart("profession_id", String.valueOf(selectedProfessionID))
+                    .addFormDataPart("profession_id", selectedProfessionID.toString())
                     .addFormDataPart("insertedTimeIST", dateIssue.getText().toString())
                     .addFormDataPart("visa_status", dateExpiry.getText().toString())
                     .addFormDataPart("service_type", nameFirst.getText().toString())
                     .addFormDataPart("visaRenewalDate", nameLast.getText().toString())
                     .addFormDataPart("sponserName", birthDate.getText().toString())
                     .addFormDataPart("arrivingFrom", birthPlace.getText().toString())
-                    .addFormDataPart("otherProfession", profession)
+                    .addFormDataPart("otherProfession", selectedProfession.toString())
                     .addFormDataPart("port_arrival", nameFather.getText().toString())
                     .addFormDataPart("age", nameMother.getText().toString())
                     .addFormDataPart("person_type", dateIssue.getText().toString())
@@ -641,9 +653,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 for(int i=0;i<professionList.size();i++){
                     professionData.add(professionList.get(i).getProfession());
                 }
-                //for(int i=0;i<professionList.size();i++){
-                //    professionNumber.add(professionList.get(i).getProfessionNo());
-                //}
+                for(int i=0;i<professionList.size();i++){
+                    professionNumber.add(professionList.get(i).getProfessionNo());
+                }
 
 
 
