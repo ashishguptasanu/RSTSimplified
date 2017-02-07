@@ -22,7 +22,7 @@ public class ProfessionRes {
     private String name;
     @SerializedName("ProfessionNo")
     @Expose
-    private String professionNo;
+    private int professionNo;
     @SerializedName("Profession")
     @Expose
     private String profession;
@@ -45,11 +45,11 @@ public class ProfessionRes {
     }
 
 
-    public String getProfessionNo() {
+    public int getProfessionNo() {
         return professionNo;
     }
 
-    public void setProfessionNo(String professionNo) {
+    public void setProfessionNo(int professionNo) {
         this.professionNo = professionNo;
     }
 
