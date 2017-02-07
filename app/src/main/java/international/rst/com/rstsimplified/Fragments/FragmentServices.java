@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -41,6 +43,8 @@ public class FragmentServices extends android.support.v4.app.Fragment {
     VisaAdapter visaAdapter;
     String[] mDataset1;
     int[] mImageSet, mImageSet2;
+    String[] arrayService;
+    Spinner spinnerVisa,spinnerLivingIn,spinnerNationality;
 
 
     public FragmentServices() {
@@ -63,7 +67,12 @@ public class FragmentServices extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_service, container, false);
         tv1 = (TextView)view.findViewById(R.id.text1);
+        arrayService = new String[]{"Select Visa","UAE Visa","USA Visa","Singapore Visa","Oman Visa","Iran Visa"};
         linearLayoutVisa = (LinearLayout)view.findViewById(R.id.linear_layout_services);
+        spinnerVisa = (Spinner)view.findViewById(R.id.spnr_visa);
+        spinnerLivingIn = (Spinner)view.findViewById(R.id.spnr_living_in);
+        spinnerNationality = (Spinner)view.findViewById(R.id.spnr_nationality);
+        loadSpinners();
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +119,17 @@ public class FragmentServices extends android.support.v4.app.Fragment {
             linearLayoutVisa.setVisibility(View.GONE);
         }
         return view;
+    }
+
+    private void loadSpinners() {
+        intializeVisaSpinner();
+    }
+
+    private void intializeVisaSpinner() {
+        spinnerVisa = (Spinner)view.findViewById(R.id.spnr_visa);
+        ArrayAdapter<String> genderDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arrayService);
+        genderDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerVisa.setAdapter(genderDataAdapter);
     }
 
 }
