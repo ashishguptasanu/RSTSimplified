@@ -62,7 +62,7 @@ import static android.content.ContentValues.TAG;
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener {
     private static final int FILE_SELECT_CODE =  0;
-    String title, selectedProfession;
+    String title, selectedProfession,selectedProfessionID;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry;
@@ -76,6 +76,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
     private OkHttpClient client = new OkHttpClient();
     AutoCompleteTextView profession;
+    ArrayAdapter<String> adapter;
     int selectedCountry, selectedCountryID, selectedIssueCountry, selectedIssueCountryID, selectedGender, selectedReligion;
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
@@ -156,7 +157,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             profession.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    selectedProfession = professionData.get(i);
+                    selectedProfession = adapter.getItem(i);
+                    selectedProfessionID = professionList.get(i).getProfessionNo();
+                    //selectedProfession = professionData.get(i);
                 }
             });
             birthDate.setOnClickListener(new View.OnClickListener() {
@@ -190,7 +193,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 }
             });
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, professionData);
+                adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, professionData);
                 profession.setThreshold(1);
                 profession.setAdapter(adapter);
 
@@ -472,7 +475,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     .addFormDataPart("country_of_issue", nameFather.getText().toString())
                     .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
                     .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
-                    .addFormDataPart("profession_id", nameMother.getText().toString())
+                    .addFormDataPart("profession_id", selectedProfessionID)
                     .addFormDataPart("insertedTimeIST", dateIssue.getText().toString())
                     .addFormDataPart("visa_status", dateExpiry.getText().toString())
                     .addFormDataPart("service_type", nameFirst.getText().toString())
