@@ -8,41 +8,9 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="international.rst.com.rstsimplified.Activities.ActivityServices"
     tools:showIn="@layout/app_bar_activity_services">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp"
-        android:id="@+id/linear_layout_services">
-        <Spinner
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-        </Spinner>
-        <Spinner
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-        </Spinner>
-        <Spinner
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-        </Spinner>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight=".5"
-            android:text="GO"
-            android:textColor="#fff"
-            android:background="@drawable/buttonshape"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
-    </LinearLayout>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/linear_layout_services"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

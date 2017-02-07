@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -36,6 +37,7 @@ public class FragmentServices extends android.support.v4.app.Fragment {
     String title;
     View view;
     LinearLayoutManager linearLayoutManager1;
+    LinearLayout linearLayoutVisa;
     VisaAdapter visaAdapter;
     String[] mDataset1;
     int[] mImageSet, mImageSet2;
@@ -61,6 +63,7 @@ public class FragmentServices extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_service, container, false);
         tv1 = (TextView)view.findViewById(R.id.text1);
+        linearLayoutVisa = (LinearLayout)view.findViewById(R.id.linear_layout_services);
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,14 +96,18 @@ public class FragmentServices extends android.support.v4.app.Fragment {
         else if(title.equalsIgnoreCase("hotel")){
             tv1.setText("Title: Hotel Services");
             img.setImageResource(R.mipmap.hotel_background);
+            linearLayoutVisa.setVisibility(View.GONE);
+
         }
         else if(title.equalsIgnoreCase("meet")){
             tv1.setText("Title: Meet & Greet");
             img.setImageResource(R.mipmap.meet_gray);
+            linearLayoutVisa.setVisibility(View.GONE);
         }
         else {
             tv1.setText("Title: Airport Services");
             img.setImageResource(R.mipmap.airport_background);
+            linearLayoutVisa.setVisibility(View.GONE);
         }
         return view;
     }
