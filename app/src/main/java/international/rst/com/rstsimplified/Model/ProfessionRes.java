@@ -35,13 +35,6 @@ public class ProfessionRes {
         this._0 = _0;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String get1() {
         return _1;
@@ -51,13 +44,6 @@ public class ProfessionRes {
         this._1 = _1;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getProfessionNo() {
         return professionNo;

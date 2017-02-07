@@ -16,6 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/name_first"
+                android:inputType="textPersonName"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="First Name"/>
         </android.support.design.widget.TextInputLayout>
@@ -28,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:id="@+id/name_last"
+                android:inputType="textPersonName"
                 android:hint="Last Name"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -70,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Date of Birth"
+                android:inputType="date"
                 android:id="@+id/edt_dob"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -86,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Place of Birth"
+                android:inputType="text"
                 android:id="@+id/edt_place_birth"/>
         </android.support.design.widget.TextInputLayout>
         <LinearLayout
@@ -159,6 +163,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:hint="Email Address"
+            android:inputType="textEmailAddress"
+
             android:id="@+id/edittext_email"/>
     </android.support.design.widget.TextInputLayout>
     <LinearLayout
@@ -174,6 +180,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Father's Name"
+                android:inputType="text"
                 android:id="@+id/name_father"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -185,6 +192,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Mother's Name"
+                android:inputType="textPersonName"
                 android:id="@+id/name_mother"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -227,6 +235,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Issuing Date"
+                android:inputType="date"
                 android:id="@+id/edt_issue_date"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -238,9 +247,11 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Expiry Date"
+                android:inputType="date"
                 android:id="@+id/edt_valid_till"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
+
 
     <Button
         android:layout_width="wrap_content"

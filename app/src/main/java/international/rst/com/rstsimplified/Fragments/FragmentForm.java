@@ -153,7 +153,24 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
-            loadProfession();
+            birthDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    datePicker(birthDate);
+                }
+            });
+            dateIssue.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    datePicker(dateIssue);
+                }
+            });
+            dateExpiry.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    datePicker(dateExpiry);
+                }
+            });
 
             loadAllCountries();
             button2.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +183,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                 }
             });
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, professionData);
+                profession.setThreshold(1);
+                profession.setAdapter(adapter);
+
         }  else if (title.equalsIgnoreCase("payment")){
             view = inflater.inflate(R.layout.payment_form,container,false);
             expiryMonth  = (EditText)view.findViewById(R.id.card_month);
@@ -605,9 +627,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 Profession jsonResponse = response.body();
                 professionList = jsonResponse.getProfession();
                 for(int i=0;i<professionList.size();i++){
-                    professionData.add(professionList.get(i).getName());
+                    professionData.add(professionList.get(i).getProfession());
                 }
-                intializeAutoTextProfession(profession);
+
+
+
 
 
 
@@ -623,12 +647,5 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         });
     }
 
-    private void intializeAutoTextProfession(AutoCompleteTextView profession) {
-        System.out.println(professionData.size());
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, professionData);
-        //Find TextView control
-        this.profession.setThreshold(1);
-        //Set the adapter
-        this.profession.setAdapter(adapter);
-    }
+
 }
