@@ -11,7 +11,7 @@ public class VisaType_ {
     private String id;
     @SerializedName("visa_type_id")
     @Expose
-    private String visaTypeId;
+    private int visaTypeId;
     @SerializedName("nationality_id")
     @Expose
     private String nationalityId;
@@ -81,11 +81,11 @@ public class VisaType_ {
         this.id = id;
     }
 
-    public String getVisaTypeId() {
+    public int getVisaTypeId() {
         return visaTypeId;
     }
 
-    public void setVisaTypeId(String visaTypeId) {
+    public void setVisaTypeId(int visaTypeId) {
         this.visaTypeId = visaTypeId;
     }
 

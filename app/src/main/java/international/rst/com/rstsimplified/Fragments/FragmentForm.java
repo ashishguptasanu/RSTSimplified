@@ -133,7 +133,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     if(edtLivingIn.getText().toString().length() != 0){
                         int atTab = mFormPager.getCurrentItem();
                         mFormPager.setCurrentItem(atTab + 1);
-                        sendConsultData();
+                        //sendConsultData();
                     }
                     else{
                         Toast.makeText(getContext(),"OOps! Enter all value..",Toast.LENGTH_SHORT).show();

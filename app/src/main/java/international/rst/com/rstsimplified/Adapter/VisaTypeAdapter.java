@@ -1,6 +1,7 @@
 package international.rst.com.rstsimplified.Adapter;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,12 +10,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import international.rst.com.rstsimplified.Activities.FormActivity;
 import international.rst.com.rstsimplified.Model.VisaType_;
 import international.rst.com.rstsimplified.R;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTypeHolder> {
 
@@ -27,10 +36,12 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     String livinginID;
     String nationalityID;
     int CurrencyID;
-    String visaTypeID;
+    int visaTypeID;
     float serviceFee, mngFee;
     float govtFee;
-    String serviceFeeCS;
+    String serviceFeeCS, deviceName, deviceOS;
+    private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
+    private OkHttpClient client = new OkHttpClient();
 
     public VisaTypeAdapter(Context context, List<VisaType_> visaTypes){
         this.context = context;
@@ -85,6 +96,9 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             intent.putExtra("mng_fee", mngFee);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
+            deviceName =android.os.Build.MODEL;
+            deviceOS = Build.VERSION.RELEASE;
+            sendConsultData();
 
 
         }
@@ -129,6 +143,77 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     @Override
     public int getItemCount() {
         return visaTypes.size();
+    }
+    private void sendConsultData() {
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", String.valueOf(visaTypeID))
+                .addFormDataPart("start_date", "Testing")
+                .addFormDataPart("end_date", "Testing")
+                .addFormDataPart("pnrNo", "Testing")
+                .addFormDataPart("address1", "Testing")
+                .addFormDataPart("address2", "Testing")
+                .addFormDataPart("city", "Testing")
+                .addFormDataPart("country", "Testing")
+                .addFormDataPart("country_code", "Testing")
+                .addFormDataPart("mobile", "Testing")
+                .addFormDataPart("emirates_uae", "Testing")
+                .addFormDataPart("emergency_contact_name", "Testing")
+                .addFormDataPart("emergency_contact_number", "Testing")
+                .addFormDataPart("hotel_address", "Testing")
+                .addFormDataPart("contact_uae", "Testing")
+                .addFormDataPart("created_date", "Testing")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", serviceType)
+                .addFormDataPart("nationality_id",nationalityID)
+                .addFormDataPart("living_in_id", livinginID)
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", String.valueOf(govtFee))
+                .addFormDataPart("service_fee", String.valueOf(serviceFee))
+                .addFormDataPart("processing_time", "")
+                .addFormDataPart("visa_type_id", String.valueOf(visaTypeID))
+                .addFormDataPart("email_id", "Testing")
+                .addFormDataPart("email_varified", "Testing")
+                .addFormDataPart("comments_added", "Testing")
+                .addFormDataPart("insertedTimeIst", "Testing")
+                .addFormDataPart("agentid", "Testing")
+                .addFormDataPart("service_fee_cs", String.valueOf(serviceFeeCS))
+                .addFormDataPart("termConditions", "Testing")
+                .addFormDataPart("mng_fee", String.valueOf(mngFee))
+                .addFormDataPart("application_type", "Testing")
+                .addFormDataPart("agentType", "Testing")
+                .addFormDataPart("device_type", deviceName)
+                .addFormDataPart("device_os", ("Android:"+deviceOS))
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    String resp = response.body().string();
+//                    Log.v(TAG_REGISTER, resp);
+                    System.out.println(resp);
+                    if (response.isSuccessful()) {
+                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
+                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
+                    } else {
+
+                    }
+                } catch (IOException e) {
+                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
     }
 
 

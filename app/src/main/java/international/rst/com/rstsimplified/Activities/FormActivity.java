@@ -14,18 +14,27 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.io.IOException;
+
 import international.rst.com.rstsimplified.Custom.CustomViewPager;
 import international.rst.com.rstsimplified.Custom.OnSwipeTouchListener;
 import international.rst.com.rstsimplified.Fragments.FragmentForm;
 import international.rst.com.rstsimplified.R;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class FormActivity extends AppCompatActivity {
+
     EditText edtDate1,edtDate2, edtIssue, edtExpiry;
     AlertDialog.Builder dialogBuilder;
     Context context;
     Button btnSavePref;
     String livingID, nationalityID, serviceFeeCs,serviceType;
-    int visaTypeId, currencyId;
+    public int visaTypeId, currencyId;
     float govtFee, mngFee, serviceFee;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPreferences;
@@ -49,11 +58,22 @@ public class FormActivity extends AppCompatActivity {
             mngFee = bundle.getFloat("mng_fee");
             visaTypeId = bundle.getInt("visa_type_id");
             currencyId = bundle.getInt("currency_id");
-
             serviceFee = bundle.getFloat("service_fee");
             govtFee  = bundle.getFloat("govt_fee");
         }
         System.out.println("Living ID:" + livingID);
+        PlaceholderFragment fragment = new PlaceholderFragment();
+        Bundle args = new Bundle();
+        args.putString("service_type", serviceType);
+        args.putString("nationality_id", nationalityID);
+        args.putString("living_id", livingID);
+        args.putString("service_fee_cs", serviceFeeCs);
+        args.putFloat("govt_fee",govtFee);
+        args.putFloat("service_fee",serviceFee);
+        args.putFloat("mng_fee",mngFee);
+        args.putInt("visa_type_id", visaTypeId);
+        args.putInt("currency_id", currencyId);
+        fragment.setArguments(args);
         /*sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
         edtDate1 = (EditText)findViewById(R.id.edt_arrival);
         btnSavePref = (Button)findViewById(R.id.btn_save);
@@ -235,6 +255,7 @@ public class FormActivity extends AppCompatActivity {
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             args.putString("name", name);
+
             fragment.setArguments(args);
             return fragment;
         }
@@ -285,4 +306,5 @@ public class FormActivity extends AppCompatActivity {
             return 4;
         }
     }
+
 }
