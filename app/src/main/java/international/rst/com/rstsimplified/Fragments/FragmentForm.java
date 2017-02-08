@@ -3,11 +3,13 @@ package international.rst.com.rstsimplified.Fragments;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -74,7 +76,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<ProfessionRes> professionList = new ArrayList<>();
     private List<String> professionData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
-
+    SharedPreferences sharedPreferences;
+    String visaId;
     private OkHttpClient client = new OkHttpClient();
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
@@ -156,6 +159,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             passportNumber = (EditText)view.findViewById(R.id.edt_passport_number);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
+            sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
+            if(sharedPreferences != null){
+                visaId = sharedPreferences.getString("visa_id", "");
+            }
+            else{
+                Toast.makeText(getContext(),"No Data Available", Toast.LENGTH_SHORT).show();
+            }
+
             profession.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -443,7 +454,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void sendConsultData() {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("visa_id", "Testing")
+                .addFormDataPart("visaId", "Testing")
                 .addFormDataPart("start_date", "Testing")
                 .addFormDataPart("end_date", "Testing")
                 .addFormDataPart("pnrNo", "Testing")
@@ -515,7 +526,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("visa_id", nameFirst.getText().toString())
+                .addFormDataPart("visaId", visaId)
                 .addFormDataPart("first_name", nameFirst.getText().toString())
                 .addFormDataPart("last_name", nameLast.getText().toString())
                 .addFormDataPart("gender", selectedGender)

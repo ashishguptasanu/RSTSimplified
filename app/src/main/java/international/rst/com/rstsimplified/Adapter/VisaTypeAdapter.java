@@ -1,7 +1,9 @@
 package international.rst.com.rstsimplified.Adapter;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import international.rst.com.rstsimplified.Activities.FormActivity;
+import international.rst.com.rstsimplified.Activities.VisaTypeSelection;
 import international.rst.com.rstsimplified.Model.VisaType_;
 import international.rst.com.rstsimplified.R;
 import okhttp3.Call;
@@ -40,6 +43,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     float serviceFee, mngFee;
     float govtFee;
     String serviceFeeCS, deviceName, deviceOS;
+    public SharedPreferences sharedPreferences;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     private OkHttpClient client = new OkHttpClient();
 
@@ -189,6 +193,9 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new Callback() {
 
+
+            public static final String MODE_PRIVATE = "";
+
             @Override
             public void onFailure(Call call, IOException e) {
                 System.out.println("Registration Error" + e.getMessage());
@@ -199,10 +206,11 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
 
                 try {
                     String resp = response.body().string();
-//                    Log.v(TAG_REGISTER, resp);
-                    System.out.println(resp);
+                    Log.v("Response", resp);
                     if (response.isSuccessful()) {
-                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
+
+                        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                        sharedPreferences.edit().putString("visa_id", resp).apply();
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
                     } else {
 
