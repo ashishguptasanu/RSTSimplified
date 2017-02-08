@@ -110,7 +110,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         if(title.equalsIgnoreCase("visa")){
             tv1.setText("Title: visa Services");
             img.setImageResource(R.mipmap.visa_background);
-            mDataset1 = new String[]{"Singapore visa", "Oman visa"};
+            mDataset1 = new String[]{"UAE visa", "USA visa"};
             mImageSet = new int[]{R.drawable.card_background, R.drawable.oman };
             mImageSet2 = new int[] {R.drawable.singapore_flag, R.drawable.oman_flag};
             visaAdapter = new VisaAdapter(getContext(),mDataset1, mImageSet,mImageSet2);

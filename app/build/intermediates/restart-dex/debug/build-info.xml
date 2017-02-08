@@ -5,19 +5,19 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="778724465560746"
+    timestamp="778904391395840"
     token="-315265450245951108"
     verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="701" />
+        duration="678" />
     <task
         name="instant-run-dex"
-        duration="32" />
+        duration="23" />
     <task
         name="instant-run-transform"
-        duration="75" />
+        duration="34" />
     <task
         name="verifier"
         duration="4" />
@@ -58,6 +58,13 @@
     </build>
     <build
         timestamp="778724465560746"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\builds\debug\778724465560746\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="778904391395840"
         verifier="COMPATIBLE" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
