@@ -38,6 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class VisaTypeSelection extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     int livingID,nationalityID;
+    String selectedVisa;
     String url;
     RecyclerView recyclerView;
     private List<VisaType_> visaTypes = new ArrayList<>();
@@ -56,12 +57,13 @@ public class VisaTypeSelection extends AppCompatActivity
 
         //https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID
         Bundle bundle =  getIntent().getExtras();
-        if ( bundle!= null && bundle.containsKey("livingid") && bundle.containsKey("nationid")){
+        if ( bundle!= null && bundle.containsKey("livingid") && bundle.containsKey("nationid") && bundle.containsKey("visa")){
+            selectedVisa = bundle.getString("visa");
             livingID = bundle.getInt("livingid");
             nationalityID = bundle.getInt("nationid");
         }
-        //System.out.println(livingID);
-        //System.out.println(nationalityID);
+        System.out.println(livingID + selectedVisa);
+        System.out.println(nationalityID);
         url = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID;
         //System.out.println("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
