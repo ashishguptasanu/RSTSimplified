@@ -24,7 +24,7 @@ public class FormActivity extends AppCompatActivity {
     AlertDialog.Builder dialogBuilder;
     Context context;
     Button btnSavePref;
-    String date1,date2;
+    String livingID;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPreferences;
     CustomViewPager mFormPager;
@@ -32,11 +32,17 @@ public class FormActivity extends AppCompatActivity {
     PagerTabStrip mTabStrip;
     PagerAdapter mFormPagerAdapter;
     String[] tabDataSet;
+
     int atTab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
+        Bundle bundle =  getIntent().getExtras();
+        if ( bundle!= null && bundle.containsKey("living_id")){
+            livingID = bundle.getString("living_id");
+        }
+        System.out.println("Living ID:" + livingID);
         /*sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
         edtDate1 = (EditText)findViewById(R.id.edt_arrival);
         btnSavePref = (Button)findViewById(R.id.btn_save);

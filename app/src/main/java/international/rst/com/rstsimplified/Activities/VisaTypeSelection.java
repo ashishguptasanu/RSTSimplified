@@ -16,7 +16,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,7 +38,6 @@ public class VisaTypeSelection extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     int livingID,nationalityID;
     String selectedVisa;
-    String url;
     RecyclerView recyclerView;
     private List<VisaType_> visaTypes = new ArrayList<>();
     VisaTypeAdapter adapter;
@@ -57,17 +55,17 @@ public class VisaTypeSelection extends AppCompatActivity
 
         //https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID
         Bundle bundle =  getIntent().getExtras();
-        if ( bundle!= null && bundle.containsKey("livingid") && bundle.containsKey("nationid") && bundle.containsKey("visa")){
-            selectedVisa = bundle.getString("visa");
+        if ( bundle!= null && bundle.containsKey("livingid") && bundle.containsKey("nationid")){
             livingID = bundle.getInt("livingid");
             nationalityID = bundle.getInt("nationid");
         }
-        System.out.println(livingID + selectedVisa);
+        System.out.println(livingID);
         System.out.println(nationalityID);
-        url = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID;
+        String url = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID;
+        System.out.println(url);
         //System.out.println("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        loadVisaType();
+        loadVisaType(url);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,7 +90,6 @@ public class VisaTypeSelection extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        loadVisaType();
     }
 
     @Override
@@ -151,7 +148,7 @@ public class VisaTypeSelection extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private void loadVisaType() {
+    private void loadVisaType(String url) {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();

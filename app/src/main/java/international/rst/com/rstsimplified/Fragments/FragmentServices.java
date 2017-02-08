@@ -260,7 +260,6 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
             case R.id.services_submission:
                 if(selectedLivingIn != 0 && selectedNationality != 0){
                     Intent intent = new Intent(getContext(),VisaTypeSelection.class);
-                    intent.putExtra("visa", selectedVisa);
                     intent.putExtra("livingid", selectedLivingIn);
                     intent.putExtra("nationid",selectedNationality);
                     startActivity(intent);

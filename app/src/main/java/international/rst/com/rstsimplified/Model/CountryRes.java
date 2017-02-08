@@ -1,8 +1,6 @@
 package international.rst.com.rstsimplified.Model;
 
-/**
- * Created by Ashish on 30-01-2017.
- */
+
 
 public class CountryRes{
 
@@ -12,6 +10,8 @@ public class CountryRes{
         private int id;
         private String _1;
         private String name;
+        private String phoneCode;
+        private int currencyId;
 
         public String get0() {
             return _0;
@@ -28,7 +28,6 @@ public class CountryRes{
         public void setId(int id) {
             this.id = id;
         }
-
         public String get1() {
             return _1;
         }
@@ -43,6 +42,19 @@ public class CountryRes{
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public String getPhoneCode(){
+            return phoneCode;
+        }
+        public void setPhoneCode(String phoneCode){
+            this.phoneCode = phoneCode;
+        }
+        public int getCurrencyId(){
+            return currencyId;
+        }
+        public void setCurrencyId(int currencyId){
+            this.currencyId = currencyId;
         }
     }
 

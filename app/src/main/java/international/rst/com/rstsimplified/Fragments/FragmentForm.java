@@ -280,6 +280,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 for(int i=0;i<allcountry.size();i++){
                     allCountriesData.add(allcountry.get(i).getName());
                 }
+                int currency = allcountry.get(13).getCurrencyId();
+                String code = allcountry.get(13).getPhoneCode();
+                System.out.println(currency + code);
 
                 intializeSpinners();
 
