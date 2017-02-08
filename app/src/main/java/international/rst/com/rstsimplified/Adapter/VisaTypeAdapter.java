@@ -37,7 +37,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     private LinearLayout linearLayout1,linearLayout2;
     String serviceType, processingTime;
     String livinginID;
-    String nationalityID;
+    String nationalityID, resp;
     int CurrencyID;
     int visaTypeID;
     float serviceFee, mngFee;
@@ -102,7 +102,8 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             context.startActivity(intent);
             deviceName =android.os.Build.MODEL;
             deviceOS = Build.VERSION.RELEASE;
-            sendConsultData();
+
+
 
 
         }
@@ -205,14 +206,15 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             public void onResponse(Call call, okhttp3.Response response) throws IOException {
 
                 try {
-                    String resp = response.body().string();
+                    resp = response.body().string();
                     Log.v("Response", resp);
                     if (response.isSuccessful()) {
-
                         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                        sharedPreferences.edit().clear().apply();
                         sharedPreferences.edit().putString("visa_id", resp).apply();
+
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
-                    } else {
+                    }else {
 
                     }
                 } catch (IOException e) {
