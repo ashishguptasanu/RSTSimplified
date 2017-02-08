@@ -24,7 +24,9 @@ public class FormActivity extends AppCompatActivity {
     AlertDialog.Builder dialogBuilder;
     Context context;
     Button btnSavePref;
-    String livingID;
+    String livingID, nationalityID, serviceFeeCs,serviceType;
+    int visaTypeId, currencyId;
+    float govtFee, mngFee, serviceFee;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPreferences;
     CustomViewPager mFormPager;
@@ -41,6 +43,15 @@ public class FormActivity extends AppCompatActivity {
         Bundle bundle =  getIntent().getExtras();
         if ( bundle!= null && bundle.containsKey("living_id")){
             livingID = bundle.getString("living_id");
+            nationalityID = bundle.getString("nationality_id");
+            serviceType = bundle.getString("service_type");
+            serviceFeeCs = bundle.getString("service_fee_cs");
+            mngFee = bundle.getFloat("mng_fee");
+            visaTypeId = bundle.getInt("visa_type_id");
+            currencyId = bundle.getInt("currency_id");
+
+            serviceFee = bundle.getFloat("service_fee");
+            govtFee  = bundle.getFloat("govt_fee");
         }
         System.out.println("Living ID:" + livingID);
         /*sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);

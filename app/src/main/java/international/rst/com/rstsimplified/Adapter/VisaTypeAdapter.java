@@ -28,7 +28,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     String nationalityID;
     int CurrencyID;
     String visaTypeID;
-    float serviceFee;
+    float serviceFee, mngFee;
     float govtFee;
     String serviceFeeCS;
 
@@ -71,6 +71,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             processingTime = visaTypes.get(position).getProcessingTime();
             visaTypeID = visaTypes.get(position).getVisaTypeId();
             serviceFeeCS = visaTypes.get(position).getServiceFeeCs();
+            mngFee = visaTypes.get(position).getMngFee();
 
             Intent intent = new Intent(context, FormActivity.class);
             intent.putExtra("service_type",serviceType);
@@ -81,6 +82,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             intent.putExtra("processing_time",processingTime);
             intent.putExtra("visa_type_id",visaTypeID);
             intent.putExtra("service_fee_cs",serviceFeeCS);
+            intent.putExtra("mng_fee", mngFee);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
 
