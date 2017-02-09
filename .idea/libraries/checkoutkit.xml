@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="checkoutkit">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/checkoutkit.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

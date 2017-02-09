@@ -1,5 +1,6 @@
 package international.rst.com.rstsimplified.Activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -15,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -29,9 +32,11 @@ import okhttp3.RequestBody;
 public class SummaryPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Bundle bundle;
+    Button button;
     SharedPreferences sharedPreferences;
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber;;
     int visaTypeId;
+    TextView tvVisaId;
     Float govtFee, serviceFee, mngFee;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     private OkHttpClient client = new OkHttpClient();
@@ -44,15 +49,16 @@ public class SummaryPage extends AppCompatActivity
         setContentView(R.layout.activity_summary_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        tvVisaId = (TextView)findViewById(R.id.visa_id);
+        button = (Button)findViewById(R.id.submit_payment);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(getApplicationContext(), PaymentGateway.class);
+                startActivity(intent);
             }
         });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -62,6 +68,11 @@ public class SummaryPage extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+    }
+
+    private void getSharedPreferencesData() {
         bundle =  getIntent().getExtras();
         if ( bundle!= null && bundle.containsKey("key")){
             String value = bundle.getString("key");
@@ -82,7 +93,6 @@ public class SummaryPage extends AppCompatActivity
         if(sharedPreferences != null){
             sendConsultData();
         }
-
     }
 
     @Override
@@ -201,7 +211,14 @@ public class SummaryPage extends AppCompatActivity
                     resp = response.body().string();
                     Log.v("Response", resp);
                     if (response.isSuccessful()) {
-                        sendApplicandData(resp);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvVisaId.setText(resp);
+                            }
+                        });
+
+                        //sendApplicandData(resp);
 
 
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
@@ -273,6 +290,7 @@ public class SummaryPage extends AppCompatActivity
                     if (response.isSuccessful()) {
                         //sharedPreferences.edit().putString("Device ID", deviceID).apply();
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
+
                     } else {
 
                     }
@@ -283,5 +301,11 @@ public class SummaryPage extends AppCompatActivity
             }
 
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getSharedPreferencesData();
     }
 }

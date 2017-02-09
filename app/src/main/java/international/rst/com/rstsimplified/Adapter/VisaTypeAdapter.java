@@ -38,7 +38,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     String serviceType, processingTime;
     String livinginID;
     String nationalityID, resp;
-    int CurrencyID;
+    int currencyID;
     int visaTypeID;
     float serviceFee, mngFee;
     float govtFee;
@@ -71,6 +71,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             tvprocessingTime = (TextView)itemView.findViewById(R.id.processing_time);
 
 
+
         }
 
 
@@ -86,6 +87,8 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             visaTypeID = visaTypes.get(position).getVisaTypeId();
             serviceFeeCS = visaTypes.get(position).getServiceFeeCs();
             mngFee = visaTypes.get(position).getMngFee();
+            currencyID = visaTypes.get(position).getCurrencyId();
+
 
             Intent intent = new Intent(context, FormActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -105,6 +108,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             sharedPreferences.edit().putFloat("mng_fee", mngFee).apply();
             sharedPreferences.edit().putString("device_name", deviceName).apply();
             sharedPreferences.edit().putString("device_os", deviceOS).apply();
+
 
 
 
@@ -136,7 +140,6 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
         int currencyID = visaTypes.get(position).getCurrencyId();
         switch (currencyID){
             case 1:
-                Log.d("Currency ID:", String.valueOf(currencyID));
                 break;
             case 2:
                 break;
