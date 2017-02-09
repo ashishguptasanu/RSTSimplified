@@ -30,7 +30,7 @@ public class SummaryPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Bundle bundle;
     SharedPreferences sharedPreferences;
-    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs;
+    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber;;
     int visaTypeId;
     Float govtFee, serviceFee, mngFee;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
@@ -221,18 +221,18 @@ public class SummaryPage extends AppCompatActivity
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("visaId", resp)
-                .addFormDataPart("first_name", "")
-                .addFormDataPart("last_name", "")
+                .addFormDataPart("first_name", nameFirst)
+                .addFormDataPart("last_name", nameLast)
                 .addFormDataPart("gender", "")
-                .addFormDataPart("date_of_birth", "")
-                .addFormDataPart("birth_place", "")
+                .addFormDataPart("date_of_birth", birthDate)
+                .addFormDataPart("birth_place", birthPlace)
                 .addFormDataPart("birth_country","")
                 .addFormDataPart("religion", "")
-                .addFormDataPart("email", "")
-                .addFormDataPart("fathers_name", "")
-                .addFormDataPart("mothers_name", "")
+                .addFormDataPart("email", emailEdt)
+                .addFormDataPart("fathers_name", nameFather)
+                .addFormDataPart("mothers_name", nameMother)
                 .addFormDataPart("marital_status", "")
-                .addFormDataPart("passport_number", "")
+                .addFormDataPart("passport_number", passportNumber)
                 .addFormDataPart("place_of_issue", "")
                 .addFormDataPart("country_of_issue", "")
                 .addFormDataPart("passport_issue_date", "")

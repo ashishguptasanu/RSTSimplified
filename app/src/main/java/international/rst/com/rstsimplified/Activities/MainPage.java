@@ -66,7 +66,7 @@ public class MainPage extends AppCompatActivity
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
 
-    private static final Integer[] IMAGES= {R.drawable.card_background,R.drawable.oman,R.drawable.paris,R.drawable.usa};
+    private static final Integer[] IMAGES= {R.drawable.uae_banner,R.drawable.usa_banner,R.drawable.singapore_banner,R.drawable.oman_banner,R.drawable.iran_banner};
     private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
 
     @Override

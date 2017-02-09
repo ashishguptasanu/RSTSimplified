@@ -135,20 +135,16 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 }
             });
 
-            final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
+            //final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
             Button button1 = (Button)view.findViewById(R.id.button_consult);
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
-                    if(edtLivingIn.getText().toString().length() != 0){
                         int atTab = mFormPager.getCurrentItem();
                         mFormPager.setCurrentItem(atTab + 1);
                         //sendConsultData();
-                    }
-                    else{
-                        Toast.makeText(getContext(),"OOps! Enter all value..",Toast.LENGTH_SHORT).show();
-                    }
+
 
                 }
             });

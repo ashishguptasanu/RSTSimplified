@@ -271,8 +271,6 @@ public class FormActivity extends AppCompatActivity {
                     return FragmentForm.newFormInstance("applicant");
                 case 2:
                     return FragmentForm.newFormInstance("docs");
-                case 3:
-                    return FragmentForm.newFormInstance("payment");
                 default:
                     return  PlaceholderFragment.newFormInstance(1, "");
             }
@@ -291,7 +289,7 @@ public class FormActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 4;
+            return 3;
         }
     }
 

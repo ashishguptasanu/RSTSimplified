@@ -94,25 +94,18 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         buttonSubmission = (Button)view.findViewById(R.id.services_submission);
         buttonSubmission.setOnClickListener(this);
         loadSpinners();
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Getting Data from Server", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
 
-
-        });
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
         ImageView img = (ImageView)view.findViewById(R.id.img_background);
         title = getArguments().getString("title");
         if(title.equalsIgnoreCase("visa")){
             tv1.setText("Title: visa Services");
+            FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+            fab.setVisibility(View.GONE);
             img.setImageResource(R.mipmap.visa_background);
-            mDataset1 = new String[]{"UAE visa", "USA visa"};
-            mImageSet = new int[]{R.drawable.card_background, R.drawable.oman };
-            mImageSet2 = new int[] {R.drawable.singapore_flag, R.drawable.oman_flag};
+            mDataset1 = new String[]{"UAE visa", "USA visa","Singapore Visa","Oman Visa","Iran Visa"};
+            mImageSet = new int[]{R.drawable.uae_banner, R.drawable.usa_banner,R.drawable.singapore_banner,R.drawable.oman_banner,R.drawable.iran_banner };
+            mImageSet2 = new int[] {R.drawable.singapore_flag, R.drawable.oman_flag,R.drawable.oman_flag,R.drawable.oman_flag,R.drawable.oman_flag};
             visaAdapter = new VisaAdapter(getContext(),mDataset1, mImageSet,mImageSet2);
             recyclerView.setAdapter(visaAdapter);
             linearLayoutManager1 = new LinearLayoutManager(getActivity());
