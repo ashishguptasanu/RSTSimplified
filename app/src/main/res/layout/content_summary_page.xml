@@ -109,6 +109,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Ashish Gupta"
+                        android:id="@+id/tv_applicant_name"
                         android:layout_weight="1"/>
                 </LinearLayout>
 
@@ -133,7 +134,8 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="Male"
+                            android:text="----"
+                            android:id="@+id/tv_applicant_gender"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"/>
                     </LinearLayout>
@@ -154,7 +156,8 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="15/04/1997"
+                            android:text="xx/xx/xxxx"
+                            android:id="@+id/tv_applicant_dob"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"/>
                 </LinearLayout>
@@ -176,7 +179,8 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="5484884815484815841"
+                        android:text="xxxxxxxxxxxxxxxxxxxxx"
+                        android:id="@+id/tv_passport_number"
                         android:layout_weight="1"/>
                 </LinearLayout>
                 <LinearLayout
@@ -189,18 +193,19 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginBottom="5dp"
-                        android:layout_weight="1">
+                        android:layout_weight=".8">
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="@color/colorPrimary"
-                            android:text="Issue Date" />
+                            android:text="Arrival Date" />
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="21/09/2005"
+                            android:text="xx/xx/xxxx"
+                            android:id="@+id/tv_arrival_date"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"/>
                     </LinearLayout>
@@ -217,11 +222,12 @@
 
                             android:gravity="center"
                             android:textColor="@color/colorPrimary"
-                            android:text="Expiry Date" />
+                            android:text="Departure Date" />
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="16/08/215"
+                            android:text="xx/xx/xxxx"
+                            android:id="@+id/tv_departure_date"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"/>
                     </LinearLayout>

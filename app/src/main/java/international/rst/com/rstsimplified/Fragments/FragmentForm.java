@@ -83,6 +83,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private OkHttpClient client = new OkHttpClient();
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
+    String arrivalDate, departureDate, fullNameApplicant, birthDateApplicant, passportNumberApplicant,genderApplicant;
     int  selectedCountryID, selectedIssueCountryID;
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
@@ -135,6 +136,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 }
             });
 
+
+
             //final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
             Button button1 = (Button)view.findViewById(R.id.button_consult);
             button1.setOnClickListener(new View.OnClickListener() {
@@ -144,6 +147,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         int atTab = mFormPager.getCurrentItem();
                         mFormPager.setCurrentItem(atTab + 1);
                         //sendConsultData();
+                    arrivalDate = edtDate1.getText().toString();
+                    departureDate = edtDate2.getText().toString();
 
 
                 }
@@ -206,7 +211,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                     int atTab = mFormPager.getCurrentItem();
                     mFormPager.setCurrentItem(atTab + 1);
-                    sendFormData(nameFirst,nameLast,birthDate,birthPlace,selectedProfession,selectedProfessionID,emailEdt,nameFather,nameMother,dateIssue,dateExpiry);
+                    fullNameApplicant = (nameFirst.getText().toString() + " " + nameLast.getText().toString());
+                    birthDateApplicant = birthDate.getText().toString();
+                    passportNumberApplicant = passportNumber.getText().toString();
+                    genderApplicant = selectedGender;
+                    //sendFormData(nameFirst,nameLast,birthDate,birthPlace,selectedProfession,selectedProfessionID,emailEdt,nameFather,nameMother,dateIssue,dateExpiry);
                 }
             });
 
@@ -249,7 +258,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     int atTab = mFormPager.getCurrentItem();
                     mFormPager.setCurrentItem(atTab + 1);*/
                     Intent intent  = new Intent(getContext(), SummaryPage.class);
-                    intent.putExtra("key", "Value");
+                    intent.putExtra("arrival_date",arrivalDate);
+                    intent.putExtra("departure_date",departureDate);
+                    intent.putExtra("full_name", fullNameApplicant);
+                    intent.putExtra("birth_date",birthDateApplicant);
+                    intent.putExtra("passport_number", passportNumberApplicant);
+                    intent.putExtra("gender", genderApplicant);
                     startActivity(intent);
                 }
             });

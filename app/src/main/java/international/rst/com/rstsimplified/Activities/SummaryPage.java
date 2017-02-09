@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -34,9 +32,9 @@ public class SummaryPage extends AppCompatActivity
     Bundle bundle;
     Button button;
     SharedPreferences sharedPreferences;
-    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa;
+    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName;
     int visaTypeId;
-    TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee ;
+    TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     private OkHttpClient client = new OkHttpClient();
@@ -54,7 +52,14 @@ public class SummaryPage extends AppCompatActivity
         visaFee = (TextView)findViewById(R.id.tv_visa_fee);
         finalServiceFee = (TextView)findViewById(R.id.tv_service_fee);
         totalVisaFee = (TextView)findViewById(R.id.total_fee_summary);
+        tvName = (TextView)findViewById(R.id.tv_applicant_name);
+        tvArrivalDate = (TextView)findViewById(R.id.tv_arrival_date);
+        tvDepartureDate = (TextView)findViewById(R.id.tv_departure_date);
+        tvBirthDate = (TextView)findViewById(R.id.tv_applicant_dob);
+        tvPassportNumber = (TextView)findViewById(R.id.tv_passport_number);
+        tvGender = (TextView)findViewById(R.id.tv_applicant_gender);
         button = (Button)findViewById(R.id.submit_payment);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,8 +84,12 @@ public class SummaryPage extends AppCompatActivity
     private void getSharedPreferencesData() {
         bundle =  getIntent().getExtras();
         if ( bundle!= null && bundle.containsKey("key")){
-            String value = bundle.getString("key");
-            System.out.println(value);
+            arrivalDate = bundle.getString("arrival_date");
+            departureDate = bundle.getString("departure_date");
+            fullName = bundle.getString("full_name");
+            birthDate =bundle.getString("birth_date");
+            passportNumber = bundle.getString("passport_number");
+            gender = bundle.getString("gender");
         }
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         serviceType = sharedPreferences.getString("service_type", "");
@@ -225,6 +234,12 @@ public class SummaryPage extends AppCompatActivity
                                 finalServiceFee.setText(String.valueOf(serviceFee) + "$");
                                 totalFee = (govtFee + serviceFee);
                                 totalVisaFee.setText(String.valueOf(totalFee) + "$");
+                                tvBirthDate.setText(birthDate);
+                                tvPassportNumber.setText(passportNumber);
+                                tvDepartureDate.setText(departureDate);
+                                tvArrivalDate.setText(arrivalDate);
+                                tvName.setText(fullName);
+                                tvGender.setText(gender);
                             }
                         });
 
@@ -248,7 +263,7 @@ public class SummaryPage extends AppCompatActivity
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("visaId", resp)
-                .addFormDataPart("first_name", nameFirst)
+                .addFormDataPart("first_name", fullName)
                 .addFormDataPart("last_name", nameLast)
                 .addFormDataPart("gender", "")
                 .addFormDataPart("date_of_birth", birthDate)
