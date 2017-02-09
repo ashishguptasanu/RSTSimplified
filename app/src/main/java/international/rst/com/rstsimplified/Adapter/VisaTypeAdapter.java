@@ -44,8 +44,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     float govtFee;
     String serviceFeeCS, deviceName, deviceOS;
     public SharedPreferences sharedPreferences;
-    private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
-    private OkHttpClient client = new OkHttpClient();
+
 
     public VisaTypeAdapter(Context context, List<VisaType_> visaTypes){
         this.context = context;
@@ -89,19 +88,23 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             mngFee = visaTypes.get(position).getMngFee();
 
             Intent intent = new Intent(context, FormActivity.class);
-            intent.putExtra("service_type",serviceType);
-            intent.putExtra("living_id",livinginID);
-            intent.putExtra("nationality_id",nationalityID);
-            intent.putExtra("govt_fee",govtFee);
-            intent.putExtra("service_fee",serviceFee);
-            intent.putExtra("processing_time",processingTime);
-            intent.putExtra("visa_type_id",visaTypeID);
-            intent.putExtra("service_fee_cs",serviceFeeCS);
-            intent.putExtra("mng_fee", mngFee);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
             deviceName =android.os.Build.MODEL;
             deviceOS = Build.VERSION.RELEASE;
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+            sharedPreferences.edit().clear().apply();
+            sharedPreferences.edit().putString("service_type", serviceType).apply();
+            sharedPreferences.edit().putString("living_id", livinginID).apply();
+            sharedPreferences.edit().putString("nationality_id", nationalityID).apply();
+            sharedPreferences.edit().putFloat("govt_fee", govtFee).apply();
+            sharedPreferences.edit().putFloat("service_fee", serviceFee).apply();
+            sharedPreferences.edit().putString("processing_time", processingTime).apply();
+            sharedPreferences.edit().putInt("visa_type_id", visaTypeID).apply();
+            sharedPreferences.edit().putString("service_fee_cs", serviceFeeCS).apply();
+            sharedPreferences.edit().putFloat("mng_fee", mngFee).apply();
+            sharedPreferences.edit().putString("device_name", deviceName).apply();
+            sharedPreferences.edit().putString("device_os", deviceOS).apply();
 
 
 
@@ -149,82 +152,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     public int getItemCount() {
         return visaTypes.size();
     }
-    private void sendConsultData() {
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("visa_id", String.valueOf(visaTypeID))
-                .addFormDataPart("start_date", "Testing")
-                .addFormDataPart("end_date", "Testing")
-                .addFormDataPart("pnrNo", "Testing")
-                .addFormDataPart("address1", "Testing")
-                .addFormDataPart("address2", "Testing")
-                .addFormDataPart("city", "Testing")
-                .addFormDataPart("country", "Testing")
-                .addFormDataPart("country_code", "Testing")
-                .addFormDataPart("mobile", "Testing")
-                .addFormDataPart("emirates_uae", "Testing")
-                .addFormDataPart("emergency_contact_name", "Testing")
-                .addFormDataPart("emergency_contact_number", "Testing")
-                .addFormDataPart("hotel_address", "Testing")
-                .addFormDataPart("contact_uae", "Testing")
-                .addFormDataPart("created_date", "Testing")
-                .addFormDataPart("order_id", "")
-                .addFormDataPart("service_type", serviceType)
-                .addFormDataPart("nationality_id",nationalityID)
-                .addFormDataPart("living_in_id", livinginID)
-                .addFormDataPart("currency_id", "")
-                .addFormDataPart("govt_fee", String.valueOf(govtFee))
-                .addFormDataPart("service_fee", String.valueOf(serviceFee))
-                .addFormDataPart("processing_time", "")
-                .addFormDataPart("visa_type_id", String.valueOf(visaTypeID))
-                .addFormDataPart("email_id", "Testing")
-                .addFormDataPart("email_varified", "Testing")
-                .addFormDataPart("comments_added", "Testing")
-                .addFormDataPart("insertedTimeIst", "Testing")
-                .addFormDataPart("agentid", "Testing")
-                .addFormDataPart("service_fee_cs", String.valueOf(serviceFeeCS))
-                .addFormDataPart("termConditions", "Testing")
-                .addFormDataPart("mng_fee", String.valueOf(mngFee))
-                .addFormDataPart("application_type", "Testing")
-                .addFormDataPart("agentType", "Testing")
-                .addFormDataPart("device_type", deviceName)
-                .addFormDataPart("device_os", ("Android:"+deviceOS))
-                .build();
-        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM).post(requestBody).build();
-        okhttp3.Call call = client.newCall(request);
-        call.enqueue(new Callback() {
 
-
-            public static final String MODE_PRIVATE = "";
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                System.out.println("Registration Error" + e.getMessage());
-            }
-
-            @Override
-            public void onResponse(Call call, okhttp3.Response response) throws IOException {
-
-                try {
-                    resp = response.body().string();
-                    Log.v("Response", resp);
-                    if (response.isSuccessful()) {
-                        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-                        sharedPreferences.edit().clear().apply();
-                        sharedPreferences.edit().putString("visa_id", resp).apply();
-
-                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
-                    }else {
-
-                    }
-                } catch (IOException e) {
-                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
-                    System.out.println("Exception caught" + e.getMessage());
-                }
-            }
-
-        });
-    }
 
 
 }

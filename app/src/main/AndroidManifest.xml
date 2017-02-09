@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -50,6 +50,10 @@
         <activity
             android:name=".Activities.VisaTypeSelection"
             android:label="@string/title_activity_visa_type_selection"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.SummaryPage"
+            android:label="@string/title_activity_summary_page"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

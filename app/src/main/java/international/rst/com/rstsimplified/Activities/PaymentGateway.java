@@ -1,7 +1,9 @@
 package international.rst.com.rstsimplified.Activities;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -33,6 +35,8 @@ public class PaymentGateway extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     int ammount = 100;
+    Bundle bundle;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class PaymentGateway extends AppCompatActivity
         setContentView(R.layout.activity_payment_gateway);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

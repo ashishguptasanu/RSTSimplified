@@ -61,19 +61,7 @@ public class FormActivity extends AppCompatActivity {
             serviceFee = bundle.getFloat("service_fee");
             govtFee  = bundle.getFloat("govt_fee");
         }
-        System.out.println("Living ID:" + livingID);
-        PlaceholderFragment fragment = new PlaceholderFragment();
-        Bundle args = new Bundle();
-        args.putString("service_type", serviceType);
-        args.putString("nationality_id", nationalityID);
-        args.putString("living_id", livingID);
-        args.putString("service_fee_cs", serviceFeeCs);
-        args.putFloat("govt_fee",govtFee);
-        args.putFloat("service_fee",serviceFee);
-        args.putFloat("mng_fee",mngFee);
-        args.putInt("visa_type_id", visaTypeId);
-        args.putInt("currency_id", currencyId);
-        fragment.setArguments(args);
+        //System.out.println("Living ID:" + livingID);
         /*sharedPreferences = FormActivity.this.getPreferences(Context.MODE_PRIVATE);
         edtDate1 = (EditText)findViewById(R.id.edt_arrival);
         btnSavePref = (Button)findViewById(R.id.btn_save);

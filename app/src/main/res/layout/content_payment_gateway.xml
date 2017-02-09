@@ -13,6 +13,18 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="international.rst.com.rstsimplified.Activities.PaymentGateway"
     tools:showIn="@layout/app_bar_payment_gateway">
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_height="220dp"
+            android:scaleType="fitXY"
+            android:background="@drawable/creditcard"
+            android:id="@+id/imageView2" />
+    </android.support.design.widget.CoordinatorLayout>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,27 +39,45 @@
         android:gravity="center"
         android:id="@+id/card_number"
         android:layout_marginBottom="5dp"/>
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Expiry Month"
-        android:gravity="center"
-        android:id="@+id/card_month"
-        android:layout_marginBottom="5dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Expiry Year"
-        android:gravity="center"
-        android:id="@+id/card_year"
-        android:layout_marginBottom="5dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="CVV"
-        android:gravity="center"
-        android:id="@+id/card_cvv"
-        android:layout_marginBottom="5dp"/>
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Expiry Month"
+            android:gravity="center"
+            android:id="@+id/card_month"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Expiry Year"
+            android:gravity="center"
+            android:id="@+id/card_year"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="CVV"
+            android:gravity="center"
+            android:id="@+id/card_cvv"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@drawable/buttonshape"
+        android:text="Submit"
+        android:textColor="#fff"
+        android:id="@+id/button_payment"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"/>
 
 
 </LinearLayout>

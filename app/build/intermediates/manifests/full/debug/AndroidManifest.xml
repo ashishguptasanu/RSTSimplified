@@ -55,6 +55,10 @@
             android:name="international.rst.com.rstsimplified.Activities.VisaTypeSelection"
             android:label="@string/title_activity_visa_type_selection"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="international.rst.com.rstsimplified.Activities.SummaryPage"
+            android:label="@string/title_activity_summary_page"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

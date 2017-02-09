@@ -42,6 +42,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import international.rst.com.rstsimplified.Activities.PaymentGateway;
+import international.rst.com.rstsimplified.Activities.SummaryPage;
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
 import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
@@ -77,7 +79,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<String> professionData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
     SharedPreferences sharedPreferences;
-    String visaId;
+    String visaId, nationalityID;
     private OkHttpClient client = new OkHttpClient();
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
@@ -101,6 +103,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadProfession();
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+
 
 
     }
@@ -110,8 +115,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         title = getArguments().getString("title");
+        Bundle bundle  = getArguments();
+        nationalityID = bundle.getString("nationality_id");
         if (title.equalsIgnoreCase("consult")) {
             view = inflater.inflate(R.layout.consult_form, container, false);
+
             edtDate1 = (EditText) view.findViewById(R.id.edt_arrival);
             edtDate1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -159,13 +167,20 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             passportNumber = (EditText)view.findViewById(R.id.edt_passport_number);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
-            sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
-            if(sharedPreferences != null){
-                visaId = sharedPreferences.getString("visa_id", "");
-            }
-            else{
-                Toast.makeText(getContext(),"No Data Available", Toast.LENGTH_SHORT).show();
-            }
+
+            /*if(sharedPreferences != null){
+                //visaId = sharedPreferences.getString("visa_id", "");
+                new SharedPreferences.OnSharedPreferenceChangeListener() {
+                    @Override
+                    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+                        visaId = sharedPreferences.getString("visa_id", "");
+                        System.out.println(visaId);
+                    }
+                };
+            //}
+           // else{
+               // Toast.makeText(getContext(),"No Data Available", Toast.LENGTH_SHORT).show();
+            //}*/
 
             profession.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -210,7 +225,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             cardName = (EditText)view.findViewById(R.id.card_name);
             cardNumber = (EditText)view.findViewById(R.id.card_number);
             cardCvv = (EditText)view.findViewById(R.id.card_cvv);
-            Button btnSubmit = (Button)view.findViewById(R.id.button_payment);
+            /*Button btnSubmit = (Button)view.findViewById(R.id.button_payment);
             btnSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -225,7 +240,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         Toast.makeText(getContext(),"OOps! Enter all value..",Toast.LENGTH_SHORT).show();
                     }
                 }
-            });
+            });*/
 
         }
         else if(title.equalsIgnoreCase("docs")){
@@ -234,9 +249,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             button3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
+                    /*ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                     int atTab = mFormPager.getCurrentItem();
-                    mFormPager.setCurrentItem(atTab + 1);
+                    mFormPager.setCurrentItem(atTab + 1);*/
+                    Intent intent  = new Intent(getContext(), SummaryPage.class);
+                    intent.putExtra("key", "Value");
+                    startActivity(intent);
                 }
             });
             ImageView imgV = (ImageView)view.findViewById(R.id.attach_file);
@@ -293,7 +311,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 }
                 int currency = allcountry.get(13).getCurrencyId();
                 String code = allcountry.get(13).getPhoneCode();
-                System.out.println(currency + code);
 
                 intializeSpinners();
 
@@ -372,12 +389,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case R.id.spnr_country:
                 selectedCountryID = allcountry.get(i).getId();
                 selectedCountry = allcountry.get(i).getName();
-                System.out.println(selectedCountryID);
                 break;
             case R.id.spnr_country_issue:
                 selectedIssueCountry = allcountry.get(i).getName();
                 selectedIssueCountryID = allcountry.get(i).getId();
-                System.out.println(selectedIssueCountryID);
                 break;
             case R.id.spnr_gender:
                 selectedGender = gender[i];
