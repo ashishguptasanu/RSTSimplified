@@ -34,10 +34,10 @@ public class SummaryPage extends AppCompatActivity
     Bundle bundle;
     Button button;
     SharedPreferences sharedPreferences;
-    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber;;
+    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa;
     int visaTypeId;
-    TextView tvVisaId;
-    Float govtFee, serviceFee, mngFee;
+    TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee ;
+    Float govtFee, serviceFee, mngFee, totalFee;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     private OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
@@ -50,6 +50,10 @@ public class SummaryPage extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         tvVisaId = (TextView)findViewById(R.id.visa_id);
+        visaName = (TextView)findViewById(R.id.visa_name_summary);
+        visaFee = (TextView)findViewById(R.id.tv_visa_fee);
+        finalServiceFee = (TextView)findViewById(R.id.tv_service_fee);
+        totalVisaFee = (TextView)findViewById(R.id.total_fee_summary);
         button = (Button)findViewById(R.id.submit_payment);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +94,7 @@ public class SummaryPage extends AppCompatActivity
         govtFee = sharedPreferences.getFloat("govt_fee", 0);
         serviceFee = sharedPreferences.getFloat("service_fee", 0);
         mngFee = sharedPreferences.getFloat("mng_fee", 0);
+        fullNameVisa = sharedPreferences.getString("visa_name","");
         if(sharedPreferences != null){
             sendConsultData();
         }
@@ -215,6 +220,11 @@ public class SummaryPage extends AppCompatActivity
                             @Override
                             public void run() {
                                 tvVisaId.setText(resp);
+                                visaName.setText(fullNameVisa);
+                                visaFee.setText(String.valueOf(govtFee) + "$");
+                                finalServiceFee.setText(String.valueOf(serviceFee) + "$");
+                                totalFee = (govtFee + serviceFee);
+                                totalVisaFee.setText(String.valueOf(totalFee) + "$");
                             }
                         });
 

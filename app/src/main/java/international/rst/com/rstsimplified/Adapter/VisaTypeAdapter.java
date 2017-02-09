@@ -44,6 +44,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     float govtFee;
     String serviceFeeCS, deviceName, deviceOS;
     public SharedPreferences sharedPreferences;
+    String finalVisaName;
 
 
     public VisaTypeAdapter(Context context, List<VisaType_> visaTypes){
@@ -88,6 +89,9 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             serviceFeeCS = visaTypes.get(position).getServiceFeeCs();
             mngFee = visaTypes.get(position).getMngFee();
             currencyID = visaTypes.get(position).getCurrencyId();
+            String visaName = visaTypes.get(position).getName();
+            finalVisaName = (visaName + " " + serviceType);
+
 
 
             Intent intent = new Intent(context, FormActivity.class);
@@ -108,6 +112,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             sharedPreferences.edit().putFloat("mng_fee", mngFee).apply();
             sharedPreferences.edit().putString("device_name", deviceName).apply();
             sharedPreferences.edit().putString("device_os", deviceOS).apply();
+            sharedPreferences.edit().putString("visa_name", finalVisaName).apply();
 
 
 
