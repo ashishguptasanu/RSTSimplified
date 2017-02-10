@@ -231,7 +231,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sharedPreferences.edit().putString("date_issue", dateIssue.getText().toString()).apply();
                     sharedPreferences.edit().putString("date_expiry", dateExpiry.getText().toString()).apply();
                     sharedPreferences.edit().putString("selected_country", selectedCountry).apply();
-                    sharedPreferences.edit().putString("selected_issue_country",selectedIssueCountry);
+                    sharedPreferences.edit().putString("selected_issue_country",selectedIssueCountry).apply();
+                    sharedPreferences.edit().putString("selected_religion",selectedReligion).apply();
+
                     ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                     int atTab = mFormPager.getCurrentItem();
                     mFormPager.setCurrentItem(atTab + 1);
@@ -422,8 +424,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedCountry = allcountry.get(i).getName();
                 break;
             case R.id.spnr_country_issue:
-                selectedIssueCountry = allcountry.get(i).getName();
                 selectedIssueCountryID = allcountry.get(i).getId();
+                selectedIssueCountry = allcountry.get(i).getName();
+                System.out.println(selectedIssueCountry);
                 break;
             case R.id.spnr_gender:
                 selectedGender = gender[i];
@@ -447,7 +450,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         DatePickerDialog mDatePicker=new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                edtDate1.setText(selectedday +"/"+(selectedmonth+1)+"/"+selectedyear);
+                edtDate1.setText(selectedyear +"-"+(selectedmonth+1)+"-"+selectedday);
             }
         },mYear, mMonth, mDay);
         mDatePicker.setTitle("Select date");

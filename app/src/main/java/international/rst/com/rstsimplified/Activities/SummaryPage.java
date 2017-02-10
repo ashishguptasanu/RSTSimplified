@@ -32,7 +32,7 @@ public class SummaryPage extends AppCompatActivity
     Bundle bundle;
     Button button;
     SharedPreferences sharedPreferences;
-    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry;
+    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant;
     int visaTypeId;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
@@ -122,6 +122,7 @@ public class SummaryPage extends AppCompatActivity
         professionId = sharedPreferences.getString("profession_id","");
          selectedCountry= sharedPreferences.getString("selected_country","");
         selectedIssueCountry = sharedPreferences.getString("selected_issue_country","");
+        religionApplicant = sharedPreferences.getString("selected_religion","");
 
 
         if(sharedPreferences != null){
@@ -289,7 +290,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("date_of_birth", birthDate)
                 .addFormDataPart("birth_place", birthPlace)
                 .addFormDataPart("birth_country",selectedCountry)
-                .addFormDataPart("religion", "")
+                .addFormDataPart("religion", religionApplicant)
                 .addFormDataPart("email", emailEdt)
                 .addFormDataPart("fathers_name", nameFather)
                 .addFormDataPart("mothers_name", nameMother)
