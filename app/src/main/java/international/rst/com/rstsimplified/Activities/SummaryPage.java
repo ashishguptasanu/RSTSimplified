@@ -284,7 +284,7 @@ public class SummaryPage extends AppCompatActivity
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("visaId", resp)
-                .addFormDataPart("first_name", fullName)
+                .addFormDataPart("first_name", nameFirst)
                 .addFormDataPart("last_name", nameLast)
                 .addFormDataPart("gender", gender)
                 .addFormDataPart("date_of_birth", birthDate)
