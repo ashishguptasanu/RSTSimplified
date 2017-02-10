@@ -32,7 +32,7 @@ public class SummaryPage extends AppCompatActivity
     Bundle bundle;
     Button button;
     SharedPreferences sharedPreferences;
-    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName;
+    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName;
     int visaTypeId;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
@@ -110,6 +110,8 @@ public class SummaryPage extends AppCompatActivity
         gender = sharedPreferences.getString("gender","");
         arrivalDate = sharedPreferences.getString("arrival_date","");
         departureDate = sharedPreferences.getString("departure_date","");
+        nameFirst = sharedPreferences.getString("first_name","");
+        nameLast = sharedPreferences.getString("last_name","");
 
         if(sharedPreferences != null){
             sendConsultData();
@@ -250,7 +252,7 @@ public class SummaryPage extends AppCompatActivity
                             }
                         });
 
-                        //sendApplicandData(resp);
+                        sendApplicandData(resp);
 
 
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
@@ -272,14 +274,14 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("visaId", resp)
                 .addFormDataPart("first_name", fullName)
                 .addFormDataPart("last_name", nameLast)
-                .addFormDataPart("gender", "")
+                .addFormDataPart("gender", gender)
                 .addFormDataPart("date_of_birth", birthDate)
-                .addFormDataPart("birth_place", birthPlace)
+                //.addFormDataPart("birth_place", birthPlace)
                 .addFormDataPart("birth_country","")
                 .addFormDataPart("religion", "")
-                .addFormDataPart("email", emailEdt)
-                .addFormDataPart("fathers_name", nameFather)
-                .addFormDataPart("mothers_name", nameMother)
+                //.addFormDataPart("email", emailEdt)
+                //.addFormDataPart("fathers_name", nameFather)
+                //.addFormDataPart("mothers_name", nameMother)
                 .addFormDataPart("marital_status", "")
                 .addFormDataPart("passport_number", passportNumber)
                 .addFormDataPart("place_of_issue", "")

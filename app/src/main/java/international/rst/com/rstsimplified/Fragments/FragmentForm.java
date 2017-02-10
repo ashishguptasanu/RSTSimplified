@@ -215,6 +215,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                     fullNameApplicant = (nameFirst.getText().toString() + " " + nameLast.getText().toString());
                     sharedPreferences.edit().putString("full_name", fullNameApplicant).apply();
+                    sharedPreferences.edit().putString("first_name", nameFirst.getText().toString()).apply();
+                    sharedPreferences.edit().putString("last_name", nameLast.getText().toString()).apply();
 
                     birthDateApplicant = birthDate.getText().toString();
                     sharedPreferences.edit().putString("birth_date", birthDateApplicant).apply();

@@ -5,26 +5,21 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="951734773355946"
-    token="-315265450245951108"
-    verifier="COMPATIBLE" >
+    timestamp="953267692435626"
+    token="-315265450245951108" >
 
     <task
         name="javac"
-        duration="857" />
+        duration="0" />
     <task
         name="instant-run-dex"
-        duration="111" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="263" />
+        duration="0" />
     <task
         name="verifier"
-        duration="100" />
-
-    <artifact
-        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
-        type="RELOAD_DEX" />
+        duration="0" />
 
     <build
         timestamp="951331639527253"
@@ -34,18 +29,19 @@
             type="MAIN" />
     </build>
     <build
-        timestamp="951536225311573"
-        verifier="COMPATIBLE" >
+        timestamp="952540337028266"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\builds\debug\951536225311573\classes.dex"
-            type="RELOAD_DEX" />
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
     <build
-        timestamp="951734773355946"
-        verifier="COMPATIBLE" >
+        timestamp="953042243899733"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
-            type="RELOAD_DEX" />
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+            type="DEX" />
     </build>
+    <build timestamp="953267692435626" />
 
 </instant-run>
