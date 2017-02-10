@@ -222,8 +222,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sharedPreferences.edit().putString("birth_date", birthDateApplicant).apply();
                     passportNumberApplicant = passportNumber.getText().toString();
                     sharedPreferences.edit().putString("passport_number", passportNumberApplicant).apply();
-                    genderApplicant = selectedGender;
                     sharedPreferences.edit().putString("gender", selectedGender).apply();
+                    sharedPreferences.edit().putString("profession", selectedProfession).apply();
+                    sharedPreferences.edit().putString("profession_id", selectedProfessionID).apply();
                     ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                     int atTab = mFormPager.getCurrentItem();
                     mFormPager.setCurrentItem(atTab + 1);
