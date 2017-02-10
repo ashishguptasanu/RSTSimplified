@@ -52,9 +52,12 @@ import international.rst.com.rstsimplified.Activities.SummaryPage;
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
 import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
+import international.rst.com.rstsimplified.Model.Emirate;
+import international.rst.com.rstsimplified.Model.EmirateResponse;
 import international.rst.com.rstsimplified.Model.Profession;
 import international.rst.com.rstsimplified.Model.ProfessionRes;
 import international.rst.com.rstsimplified.Model.ProfessionResponse;
+import international.rst.com.rstsimplified.Model.UaeEmirates;
 import international.rst.com.rstsimplified.R;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -81,8 +84,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private List<ProfessionRes> professionList = new ArrayList<>();
+    private List<Emirate> emirates = new ArrayList<>();
+    private List<String> emiratesData = new ArrayList<>();
     private List<String> professionData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
+
     SharedPreferences sharedPreferences;
     String visaId, nationalityID;
     private OkHttpClient client = new OkHttpClient();
@@ -145,8 +151,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
             edtEmergencyContactNumber = (EditText)view.findViewById(R.id.edt_contact_number);
             edtLivingCity = (EditText)view.findViewById(R.id.living_city);
-
-
+            loadEmirates();
 
             //final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
             Button button1 = (Button)view.findViewById(R.id.button_consult);
@@ -508,6 +513,37 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             }
         });
     }
+    private void loadEmirates(){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.uaevisasonline.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        EmirateResponse request = retrofit.create(EmirateResponse.class);
+        retrofit2.Call<UaeEmirates> call = request.getEmirate();
+        //
+        call.enqueue(new retrofit2.Callback<UaeEmirates>() {
+            @Override
+            public void onResponse(retrofit2.Call<UaeEmirates> call, retrofit2.Response<UaeEmirates> response) {
+                UaeEmirates jsonResponse = response.body();
+                emirates = jsonResponse.getEmirate();
+                for(int i=0;i<emirates.size();i++){
+                    emiratesData.add(emirates.get(i).getName());
+                }
+                populateEmiratesSpinner();
+
+                /*for(int i=0;i<professionList.size();i++){
+                    professionNumber.add(professionList.get(i).getProfessionNo());
+                }*/
+            }
+            @Override
+            public void onFailure(retrofit2.Call<UaeEmirates> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -523,148 +559,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
 
     }
-    private void sendConsultData() {
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("visaId", "Testing")
-                .addFormDataPart("start_date", "Testing")
-                .addFormDataPart("end_date", "Testing")
-                .addFormDataPart("pnrNo", "Testing")
-                .addFormDataPart("address1", "Testing")
-                .addFormDataPart("address2", "Testing")
-                .addFormDataPart("city", "Testing")
-                .addFormDataPart("country", "Testing")
-                .addFormDataPart("country_code", "Testing")
-                .addFormDataPart("mobile", "Testing")
-                .addFormDataPart("emirates_uae", "Testing")
-                .addFormDataPart("emergency_contact_name", "Testing")
-                .addFormDataPart("emergency_contact_number", "Testing")
-                .addFormDataPart("hotel_address", "Testing")
-                .addFormDataPart("contact_uae", "Testing")
-                .addFormDataPart("created_date", "Testing")
-                .addFormDataPart("order_id", "Testing")
-                .addFormDataPart("service_type", "Testing")
-                .addFormDataPart("nationality_id", "Testing")
-                .addFormDataPart("living_in_id", "Testing")
-                .addFormDataPart("currency_id", "Testing")
-                .addFormDataPart("govt_fee", "Testing")
-                .addFormDataPart("service_fee", "Testing")
-                .addFormDataPart("processing_time", "Testing")
-                .addFormDataPart("visa_type_id", "Testing")
-                .addFormDataPart("email_id", "Testing")
-                .addFormDataPart("email_varified", "Testing")
-                .addFormDataPart("comments_added", "Testing")
-                .addFormDataPart("insertedTimeIst", "Testing")
-                .addFormDataPart("agentid", "Testing")
-                .addFormDataPart("service_fee_cs", "Testing")
-                .addFormDataPart("termConditions", "Testing")
-                .addFormDataPart("mng_fee", "Testing")
-                .addFormDataPart("application_type", "Testing")
-                .addFormDataPart("agentType", "Testing")
-                .addFormDataPart("device_type", "Testing")
-                .addFormDataPart("device_os", "Testing")
-                .build();
-        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM).post(requestBody).build();
-        okhttp3.Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                System.out.println("Registration Error" + e.getMessage());
-            }
-
-            @Override
-            public void onResponse(Call call, okhttp3.Response response) throws IOException {
-
-                try {
-                    String resp = response.body().string();
-//                    Log.v(TAG_REGISTER, resp);
-                    System.out.println(resp);
-                    if (response.isSuccessful()) {
-                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
-                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
-                    } else {
-
-                    }
-                } catch (IOException e) {
-                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
-                    System.out.println("Exception caught" + e.getMessage());
-                }
-            }
-
-        });
-    }
-    private void sendFormData(EditText nameFirst, EditText nameLast, EditText birthDate, EditText birthPlace, String profession, String selectedCountryID, EditText emailEdt, EditText nameFather, EditText nameMother, EditText dateIssue, EditText dateExpiry) {
-
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("visaId", visaId)
-                .addFormDataPart("first_name", nameFirst.getText().toString())
-                .addFormDataPart("last_name", nameLast.getText().toString())
-                .addFormDataPart("gender", selectedGender)
-                .addFormDataPart("date_of_birth", birthDate.getText().toString())
-                .addFormDataPart("birth_place", nameFather.getText().toString())
-                .addFormDataPart("birth_country", birthPlace.getText().toString())
-                .addFormDataPart("religion", selectedReligion)
-                .addFormDataPart("email", emailEdt.getText().toString())
-                .addFormDataPart("fathers_name", nameFather.getText().toString())
-                .addFormDataPart("mothers_name", nameMother.getText().toString())
-                .addFormDataPart("marital_status", birthDate.getText().toString())
-                .addFormDataPart("passport_number", passportNumber.getText().toString())
-                .addFormDataPart("place_of_issue", emailEdt.getText().toString())
-                .addFormDataPart("country_of_issue", selectedIssueCountry)
-                .addFormDataPart("passport_issue_date", dateIssue.getText().toString())
-                .addFormDataPart("passport_expiry_date", dateExpiry.getText().toString())
-                .addFormDataPart("profession_id", selectedProfessionID.toString())
-                .addFormDataPart("insertedTimeIST", dateIssue.getText().toString())
-                .addFormDataPart("visa_status", dateExpiry.getText().toString())
-                .addFormDataPart("service_type", nameFirst.getText().toString())
-                .addFormDataPart("visaRenewalDate", nameLast.getText().toString())
-                .addFormDataPart("sponserName", birthDate.getText().toString())
-                .addFormDataPart("arrivingFrom", birthPlace.getText().toString())
-                .addFormDataPart("otherProfession", selectedProfession.toString())
-                .addFormDataPart("port_arrival", nameFather.getText().toString())
-                .addFormDataPart("age", nameMother.getText().toString())
-                .addFormDataPart("person_type", dateIssue.getText().toString())
-                .addFormDataPart("sponserType", dateExpiry.getText().toString())
-                .addFormDataPart("sponserNationality", birthPlace.getText().toString())
-                .addFormDataPart("sponserAdd", emailEdt.getText().toString())
-                .addFormDataPart("sponserRelation", nameFather.getText().toString())
-                .addFormDataPart("sponserCompanyContact", nameMother.getText().toString())
-                .build();
-        Request request = new Request.Builder().url(BASE_URL_APLLICANT_FORM).post(requestBody).build();
-        okhttp3.Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                System.out.println("Registration Error" + e.getMessage());
-            }
-
-            @Override
-            public void onResponse(Call call, okhttp3.Response response) throws IOException {
-
-                try {
-                    String resp = response.body().string();
-//                    Log.v(TAG_REGISTER, resp);
-                    System.out.println(resp);
-                    if (response.isSuccessful()) {
-                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
-                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
-                    } else {
-
-                    }
-                } catch (IOException e) {
-                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
-                    System.out.println("Exception caught" + e.getMessage());
-                }
-            }
-
-        });
 
 
-
-    }
     class ConnectionTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... urls) {
@@ -737,6 +633,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         ArrayAdapter<String> religionDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, religion);
         religionDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrReligion.setAdapter(religionDataAdapter);
+    }
+    private void populateEmiratesSpinner() {
+        spnrReligion = (Spinner)view.findViewById(R.id.emirates);
+        spnrReligion.setOnItemSelectedListener(this);
+        ArrayAdapter<String> emirateDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, emiratesData);
+        emirateDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrReligion.setAdapter(emirateDataAdapter);
     }
     private class UploadFileAsync extends AsyncTask<String, Void, String> {
 

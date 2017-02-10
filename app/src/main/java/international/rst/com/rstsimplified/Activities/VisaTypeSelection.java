@@ -167,10 +167,6 @@ public class VisaTypeSelection extends AppCompatActivity
 
                 VisaType jsonResponse = response.body();
                 visaTypes = jsonResponse.getVisaType();
-                System.out.println(visaTypes.size());
-                for(int i = 0; i<visaTypes.size();i++){
-                    Log.i("Name", String.valueOf(visaTypes.get(i).getGovtFee()));
-                }
                 adapter = new VisaTypeAdapter(getApplicationContext(),visaTypes);
                 recyclerView.setAdapter(adapter);
 
