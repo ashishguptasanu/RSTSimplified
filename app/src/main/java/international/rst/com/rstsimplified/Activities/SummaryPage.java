@@ -32,7 +32,7 @@ public class SummaryPage extends AppCompatActivity
     Bundle bundle;
     Button button;
     SharedPreferences sharedPreferences;
-    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName;
+    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry;
     int visaTypeId;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
@@ -112,6 +112,17 @@ public class SummaryPage extends AppCompatActivity
         departureDate = sharedPreferences.getString("departure_date","");
         nameFirst = sharedPreferences.getString("first_name","");
         nameLast = sharedPreferences.getString("last_name","");
+        birthPlace = sharedPreferences.getString("last_name","");
+        emailEdt = sharedPreferences.getString("email","");
+        nameFather = sharedPreferences.getString("father_name","");
+        nameMother = sharedPreferences.getString("mother_name","");
+        dateIssue = sharedPreferences.getString("date_issue","");
+        dateExpiry = sharedPreferences.getString("date_expiry","");
+        profession= sharedPreferences.getString("profession","");
+        professionId = sharedPreferences.getString("profession_id","");
+         selectedCountry= sharedPreferences.getString("selected_country","");
+        selectedIssueCountry = sharedPreferences.getString("selected_issue_country","");
+
 
         if(sharedPreferences != null){
             sendConsultData();
@@ -178,13 +189,13 @@ public class SummaryPage extends AppCompatActivity
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("visa_id", String.valueOf(visaTypeId))
-                .addFormDataPart("start_date", "Testing")
-                .addFormDataPart("end_date", "Testing")
+                .addFormDataPart("start_date", arrivalDate)
+                .addFormDataPart("end_date", departureDate)
                 .addFormDataPart("pnrNo", "Testing")
                 .addFormDataPart("address1", "Testing")
                 .addFormDataPart("address2", "Testing")
                 .addFormDataPart("city", "Testing")
-                .addFormDataPart("country", "Testing")
+                .addFormDataPart("country", selectedCountry)
                 .addFormDataPart("country_code", "Testing")
                 .addFormDataPart("mobile", "Testing")
                 .addFormDataPart("emirates_uae", "Testing")
@@ -200,9 +211,9 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("currency_id", "")
                 .addFormDataPart("govt_fee", String.valueOf(govtFee))
                 .addFormDataPart("service_fee", String.valueOf(serviceFee))
-                .addFormDataPart("processing_time", "")
+                .addFormDataPart("processing_time",processingTime)
                 .addFormDataPart("visa_type_id", String.valueOf(visaTypeId))
-                .addFormDataPart("email_id", "Testing")
+                .addFormDataPart("email_id", emailEdt)
                 .addFormDataPart("email_varified", "Testing")
                 .addFormDataPart("comments_added", "Testing")
                 .addFormDataPart("insertedTimeIst", "Testing")
@@ -210,7 +221,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("service_fee_cs", serviceFeeCs)
                 .addFormDataPart("termConditions", "Testing")
                 .addFormDataPart("mng_fee", String.valueOf(mngFee))
-                .addFormDataPart("application_type", "Testing")
+                .addFormDataPart("application_type", fullNameVisa)
                 .addFormDataPart("agentType", "Testing")
                 .addFormDataPart("device_type", deviceType)
                 .addFormDataPart("device_os", ("Android:"+deviceOS))
@@ -276,26 +287,26 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("last_name", nameLast)
                 .addFormDataPart("gender", gender)
                 .addFormDataPart("date_of_birth", birthDate)
-                //.addFormDataPart("birth_place", birthPlace)
-                .addFormDataPart("birth_country","")
+                .addFormDataPart("birth_place", birthPlace)
+                .addFormDataPart("birth_country",selectedCountry)
                 .addFormDataPart("religion", "")
-                //.addFormDataPart("email", emailEdt)
-                //.addFormDataPart("fathers_name", nameFather)
-                //.addFormDataPart("mothers_name", nameMother)
+                .addFormDataPart("email", emailEdt)
+                .addFormDataPart("fathers_name", nameFather)
+                .addFormDataPart("mothers_name", nameMother)
                 .addFormDataPart("marital_status", "")
                 .addFormDataPart("passport_number", passportNumber)
                 .addFormDataPart("place_of_issue", "")
-                .addFormDataPart("country_of_issue", "")
-                .addFormDataPart("passport_issue_date", "")
-                .addFormDataPart("passport_expiry_date", "")
-                .addFormDataPart("profession_id", "")
+                .addFormDataPart("country_of_issue", selectedIssueCountry)
+                .addFormDataPart("passport_issue_date", dateIssue)
+                .addFormDataPart("passport_expiry_date", dateExpiry)
+                .addFormDataPart("profession_id", professionId)
                 .addFormDataPart("insertedTimeIST", "")
                 .addFormDataPart("visa_status", "")
-                .addFormDataPart("service_type", "")
+                .addFormDataPart("service_type", fullNameVisa)
                 .addFormDataPart("visaRenewalDate", "")
                 .addFormDataPart("sponserName", "")
                 .addFormDataPart("arrivingFrom", "")
-                .addFormDataPart("otherProfession", "")
+                .addFormDataPart("otherProfession", profession)
                 .addFormDataPart("port_arrival", "")
                 .addFormDataPart("age", "")
                 .addFormDataPart("person_type", "")

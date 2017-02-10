@@ -217,7 +217,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sharedPreferences.edit().putString("full_name", fullNameApplicant).apply();
                     sharedPreferences.edit().putString("first_name", nameFirst.getText().toString()).apply();
                     sharedPreferences.edit().putString("last_name", nameLast.getText().toString()).apply();
-
                     birthDateApplicant = birthDate.getText().toString();
                     sharedPreferences.edit().putString("birth_date", birthDateApplicant).apply();
                     passportNumberApplicant = passportNumber.getText().toString();
@@ -225,6 +224,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sharedPreferences.edit().putString("gender", selectedGender).apply();
                     sharedPreferences.edit().putString("profession", selectedProfession).apply();
                     sharedPreferences.edit().putString("profession_id", selectedProfessionID).apply();
+                    sharedPreferences.edit().putString("email", emailEdt.getText().toString()).apply();
+                    sharedPreferences.edit().putString("birth_place", birthPlace.getText().toString()).apply();
+                    sharedPreferences.edit().putString("father_name", nameFather.getText().toString()).apply();
+                    sharedPreferences.edit().putString("mother_name", nameMother.getText().toString()).apply();
+                    sharedPreferences.edit().putString("date_issue", dateIssue.getText().toString()).apply();
+                    sharedPreferences.edit().putString("date_expiry", dateExpiry.getText().toString()).apply();
+                    sharedPreferences.edit().putString("selected_country", selectedCountry).apply();
+                    sharedPreferences.edit().putString("selected_issue_country",selectedIssueCountry);
                     ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                     int atTab = mFormPager.getCurrentItem();
                     mFormPager.setCurrentItem(atTab + 1);
