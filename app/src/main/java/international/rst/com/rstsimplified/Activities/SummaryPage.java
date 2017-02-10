@@ -210,7 +210,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("emergency_contact_name", contactperson)
                 .addFormDataPart("emergency_contact_number", contactNumber)
                 .addFormDataPart("hotel_address", hotelAddress)
-                .addFormDataPart("contact_uae", "Testing")
+                .addFormDataPart("contact_uae", contactNumber)
                 .addFormDataPart("created_date", "Testing")
                 .addFormDataPart("order_id", "")
                 .addFormDataPart("service_type", serviceType)

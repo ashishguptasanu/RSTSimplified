@@ -153,20 +153,25 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
+                    if(edtDate1.getText().toString().length() != 0 && edtDate2.getText().toString().length() != 0 && edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
+                        ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                         int atTab = mFormPager.getCurrentItem();
                         mFormPager.setCurrentItem(atTab + 1);
                         //sendConsultData();
-                    sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                    arrivalDate = edtDate1.getText().toString();
-                    departureDate = edtDate2.getText().toString();
-                    sharedPreferences.edit().putString("arrival_date", arrivalDate).apply();
-                    sharedPreferences.edit().putString("departure_date", departureDate).apply();
-                    sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
-                    sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
-                    sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
-                    sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
-                    sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
+                        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        arrivalDate = edtDate1.getText().toString();
+                        departureDate = edtDate2.getText().toString();
+                        sharedPreferences.edit().putString("arrival_date", arrivalDate).apply();
+                        sharedPreferences.edit().putString("departure_date", departureDate).apply();
+                        sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
+                        sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
+                        sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
+                        sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
+                        sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
+                    }
+                    else {
+                        Toast.makeText(getContext(),"Enter all fields", Toast.LENGTH_SHORT).show();
+                    }
 
 
 
@@ -227,31 +232,36 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                    fullNameApplicant = (nameFirst.getText().toString() + " " + nameLast.getText().toString());
-                    sharedPreferences.edit().putString("full_name", fullNameApplicant).apply();
-                    sharedPreferences.edit().putString("first_name", nameFirst.getText().toString()).apply();
-                    sharedPreferences.edit().putString("last_name", nameLast.getText().toString()).apply();
-                    birthDateApplicant = birthDate.getText().toString();
-                    sharedPreferences.edit().putString("birth_date", birthDateApplicant).apply();
-                    passportNumberApplicant = passportNumber.getText().toString();
-                    sharedPreferences.edit().putString("passport_number", passportNumberApplicant).apply();
-                    sharedPreferences.edit().putString("gender", selectedGender).apply();
-                    sharedPreferences.edit().putString("profession", selectedProfession).apply();
-                    sharedPreferences.edit().putString("profession_id", selectedProfessionID).apply();
-                    sharedPreferences.edit().putString("email", emailEdt.getText().toString()).apply();
-                    sharedPreferences.edit().putString("birth_place", birthPlace.getText().toString()).apply();
-                    sharedPreferences.edit().putString("father_name", nameFather.getText().toString()).apply();
-                    sharedPreferences.edit().putString("mother_name", nameMother.getText().toString()).apply();
-                    sharedPreferences.edit().putString("date_issue", dateIssue.getText().toString()).apply();
-                    sharedPreferences.edit().putString("date_expiry", dateExpiry.getText().toString()).apply();
-                    sharedPreferences.edit().putString("selected_country", selectedCountry).apply();
-                    sharedPreferences.edit().putString("selected_issue_country",selectedIssueCountry).apply();
-                    sharedPreferences.edit().putString("selected_religion",selectedReligion).apply();
+                    if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && profession.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
+                        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        fullNameApplicant = (nameFirst.getText().toString() + " " + nameLast.getText().toString());
+                        sharedPreferences.edit().putString("full_name", fullNameApplicant).apply();
+                        sharedPreferences.edit().putString("first_name", nameFirst.getText().toString()).apply();
+                        sharedPreferences.edit().putString("last_name", nameLast.getText().toString()).apply();
+                        birthDateApplicant = birthDate.getText().toString();
+                        sharedPreferences.edit().putString("birth_date", birthDateApplicant).apply();
+                        passportNumberApplicant = passportNumber.getText().toString();
+                        sharedPreferences.edit().putString("passport_number", passportNumberApplicant).apply();
+                        sharedPreferences.edit().putString("gender", selectedGender).apply();
+                        sharedPreferences.edit().putString("profession", selectedProfession).apply();
+                        sharedPreferences.edit().putString("profession_id", selectedProfessionID).apply();
+                        sharedPreferences.edit().putString("email", emailEdt.getText().toString()).apply();
+                        sharedPreferences.edit().putString("birth_place", birthPlace.getText().toString()).apply();
+                        sharedPreferences.edit().putString("father_name", nameFather.getText().toString()).apply();
+                        sharedPreferences.edit().putString("mother_name", nameMother.getText().toString()).apply();
+                        sharedPreferences.edit().putString("date_issue", dateIssue.getText().toString()).apply();
+                        sharedPreferences.edit().putString("date_expiry", dateExpiry.getText().toString()).apply();
+                        sharedPreferences.edit().putString("selected_country", selectedCountry).apply();
+                        sharedPreferences.edit().putString("selected_issue_country",selectedIssueCountry).apply();
+                        sharedPreferences.edit().putString("selected_religion",selectedReligion).apply();
 
-                    ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
-                    int atTab = mFormPager.getCurrentItem();
-                    mFormPager.setCurrentItem(atTab + 1);
+                        ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
+                        int atTab = mFormPager.getCurrentItem();
+                        mFormPager.setCurrentItem(atTab + 1);
+                    }
+                    else {
+                        Toast.makeText(getContext(),"Enter all fields",Toast.LENGTH_SHORT).show();
+                    }
 
                     //sendFormData(nameFirst,nameLast,birthDate,birthPlace,selectedProfession,selectedProfessionID,emailEdt,nameFather,nameMother,dateIssue,dateExpiry);
                 }
@@ -734,7 +744,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         protected String doInBackground(String... params) {
 
             try {
-                String sourceFileUri = "content://com.android.providers.downloads.documents/document/292";
+                String sourceFileUri = "/document/Download.pdf";
 
                 HttpURLConnection conn = null;
                 DataOutputStream dos = null;
