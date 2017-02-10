@@ -35,9 +35,14 @@ import com.checkout.models.CardTokenResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,7 +74,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
-    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber;
+    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion;
     Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion;
@@ -135,6 +140,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     datePicker(edtDate2);
                 }
             });
+            edtAddress = (EditText)view.findViewById(R.id.edt_current_address);
+            edtHotelAddress = (EditText)view.findViewById(R.id.edt_hotel_address);
+            edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
+            edtEmergencyContactNumber = (EditText)view.findViewById(R.id.edt_contact_number);
+            edtLivingCity = (EditText)view.findViewById(R.id.living_city);
 
 
 
@@ -152,6 +162,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     departureDate = edtDate2.getText().toString();
                     sharedPreferences.edit().putString("arrival_date", arrivalDate).apply();
                     sharedPreferences.edit().putString("departure_date", departureDate).apply();
+                    sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
+                    sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
+                    sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
+                    sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
+                    sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
 
 
 
@@ -375,9 +390,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     Uri uri = data.getData();
                     Log.d(TAG, "File Uri: " + uri.toString());
                     // Get the path
-                    String path = null;
-                    //path = getPath(getContext(), uri);
-                    path = uri.toString();
+                    File myFile = new File(uri.getPath());
+
+                    String path = myFile.getAbsolutePath();
+                    new UploadFileAsync().execute("");
                     Log.d(TAG, "File Path: " + path);
                     // Get the file instance
                     // File file = new File(path);
@@ -387,16 +403,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-    public static String getPath(Context context, Uri uri) throws URISyntaxException {
-        if ("content".equalsIgnoreCase(uri.getScheme())) {
+    public static String getPath(Context context, Uri url) throws URISyntaxException {
+        if ("content".equalsIgnoreCase(url.getScheme())) {
             String[] projection = { "_data" };
             Cursor cursor = null;
-            File myFile = new File(uri.getPath());
-            String path = myFile.getAbsolutePath();
-            System.out.println(path);
 
             try {
-                cursor = context.getContentResolver().query(uri, projection, null, null, null);
+                cursor = context.getContentResolver().query(url, projection, null, null, null);
                 int column_index = cursor.getColumnIndexOrThrow("_data");
                 if (cursor.moveToFirst()) {
                     return cursor.getString(column_index);
@@ -405,9 +418,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 // Eat it
             }
         }
-        else if ("file".equalsIgnoreCase(uri.getScheme())) {
+        else if ("file".equalsIgnoreCase(url.getScheme())) {
 
-            return uri.getScheme();
+            return url.getScheme();
 
         }
 
@@ -714,6 +727,134 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         ArrayAdapter<String> religionDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, religion);
         religionDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrReligion.setAdapter(religionDataAdapter);
+    }
+    private class UploadFileAsync extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                String sourceFileUri = "content://com.android.providers.downloads.documents/document/292";
+
+                HttpURLConnection conn = null;
+                DataOutputStream dos = null;
+                String lineEnd = "\r\n";
+                String twoHyphens = "--";
+                String boundary = "*****";
+                int bytesRead, bytesAvailable, bufferSize;
+                byte[] buffer;
+                int maxBufferSize = 1 * 1024 * 1024;
+                File sourceFile = new File(sourceFileUri);
+
+                if (sourceFile.isFile()) {
+
+                    try {
+                        String upLoadServerUri = "\n" +
+                                "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=upload";
+
+                        // open a URL connection to the Servlet
+                        FileInputStream fileInputStream = new FileInputStream(
+                                sourceFile);
+                        URL url = new URL(upLoadServerUri);
+
+                        // Open a HTTP connection to the URL
+                        conn = (HttpURLConnection) url.openConnection();
+                        conn.setDoInput(true); // Allow Inputs
+                        conn.setDoOutput(true); // Allow Outputs
+                        conn.setUseCaches(false); // Don't use a Cached Copy
+                        conn.setRequestMethod("POST");
+                        conn.setRequestProperty("Connection", "Keep-Alive");
+                        conn.setRequestProperty("ENCTYPE",
+                                "multipart/form-data");
+                        conn.setRequestProperty("Content-Type",
+                                "multipart/form-data;boundary=" + boundary);
+                        conn.setRequestProperty("bill", sourceFileUri);
+
+                        dos = new DataOutputStream(conn.getOutputStream());
+
+                        dos.writeBytes(twoHyphens + boundary + lineEnd);
+                        dos.writeBytes("Content-Disposition: form-data; name=\"bill\";filename=\""
+                                + sourceFileUri + "\"" + lineEnd);
+
+                        dos.writeBytes(lineEnd);
+
+                        // create a buffer of maximum size
+                        bytesAvailable = fileInputStream.available();
+
+                        bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                        buffer = new byte[bufferSize];
+
+                        // read file and write it into form...
+                        bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                        while (bytesRead > 0) {
+
+                            dos.write(buffer, 0, bufferSize);
+                            bytesAvailable = fileInputStream.available();
+                            bufferSize = Math
+                                    .min(bytesAvailable, maxBufferSize);
+                            bytesRead = fileInputStream.read(buffer, 0,
+                                    bufferSize);
+
+                        }
+
+                        // send multipart form data necesssary after file
+                        // data...
+                        dos.writeBytes(lineEnd);
+                        dos.writeBytes(twoHyphens + boundary + twoHyphens
+                                + lineEnd);
+
+                        // Responses from the server (code and message)
+                        int serverResponseCode = conn.getResponseCode();
+                        String serverResponseMessage = conn
+                                .getResponseMessage();
+
+                        if (serverResponseCode == 200) {
+
+                            // messageText.setText(msg);
+                            Toast.makeText(getContext(), "File Upload Complete.",
+                                  Toast.LENGTH_SHORT).show();
+
+                            // recursiveDelete(mDirectory1);
+
+                        }
+
+                        // close the streams //
+                        fileInputStream.close();
+                        dos.flush();
+                        dos.close();
+
+                    } catch (Exception e) {
+
+                        // dialog.dismiss();
+                        e.printStackTrace();
+
+                    }
+                    // dialog.dismiss();
+
+                } // End else block
+
+
+            } catch (Exception ex) {
+                // dialog.dismiss();
+
+                ex.printStackTrace();
+            }
+            return "Executed";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+        }
     }
 
 

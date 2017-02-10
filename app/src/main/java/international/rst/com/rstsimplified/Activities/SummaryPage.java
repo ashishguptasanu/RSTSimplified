@@ -34,6 +34,7 @@ public class SummaryPage extends AppCompatActivity
     SharedPreferences sharedPreferences;
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant;
     int visaTypeId;
+    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
@@ -122,7 +123,13 @@ public class SummaryPage extends AppCompatActivity
         professionId = sharedPreferences.getString("profession_id","");
          selectedCountry= sharedPreferences.getString("selected_country","");
         selectedIssueCountry = sharedPreferences.getString("selected_issue_country","");
+        currentCity = sharedPreferences.getString("living_city","");
+        currentAddress = sharedPreferences.getString("current_address","");
+        hotelAddress = sharedPreferences.getString("hotel_address","");
+        contactperson = sharedPreferences.getString("emergency_name","");
+        contactNumber = sharedPreferences.getString("emergency_number","");
         religionApplicant = sharedPreferences.getString("selected_religion","");
+
 
 
         if(sharedPreferences != null){
@@ -193,16 +200,16 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("start_date", arrivalDate)
                 .addFormDataPart("end_date", departureDate)
                 .addFormDataPart("pnrNo", "Testing")
-                .addFormDataPart("address1", "Testing")
+                .addFormDataPart("address1", currentAddress)
                 .addFormDataPart("address2", "Testing")
-                .addFormDataPart("city", "Testing")
+                .addFormDataPart("city", currentCity)
                 .addFormDataPart("country", selectedCountry)
                 .addFormDataPart("country_code", "Testing")
                 .addFormDataPart("mobile", "Testing")
                 .addFormDataPart("emirates_uae", "Testing")
-                .addFormDataPart("emergency_contact_name", "Testing")
-                .addFormDataPart("emergency_contact_number", "Testing")
-                .addFormDataPart("hotel_address", "Testing")
+                .addFormDataPart("emergency_contact_name", contactperson)
+                .addFormDataPart("emergency_contact_number", contactNumber)
+                .addFormDataPart("hotel_address", hotelAddress)
                 .addFormDataPart("contact_uae", "Testing")
                 .addFormDataPart("created_date", "Testing")
                 .addFormDataPart("order_id", "")
