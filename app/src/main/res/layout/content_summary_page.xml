@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="2dp"
                     android:text="-- --- ----- --"
                     android:id="@+id/visa_name_summary"
                     android:layout_marginBottom="5dp"/>
@@ -108,7 +108,7 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Ashish Gupta"
+                        android:text="----- -----------"
                         android:id="@+id/tv_applicant_name"
                         android:layout_weight="1"/>
                 </LinearLayout>
@@ -136,7 +136,7 @@
                             android:layout_height="wrap_content"
                             android:text="----"
                             android:id="@+id/tv_applicant_gender"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginLeft="1dp"
                             android:layout_weight="1"/>
                     </LinearLayout>
                     <LinearLayout

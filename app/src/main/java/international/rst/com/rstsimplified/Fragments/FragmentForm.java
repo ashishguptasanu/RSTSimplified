@@ -147,8 +147,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         int atTab = mFormPager.getCurrentItem();
                         mFormPager.setCurrentItem(atTab + 1);
                         //sendConsultData();
+                    sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                     arrivalDate = edtDate1.getText().toString();
                     departureDate = edtDate2.getText().toString();
+                    sharedPreferences.edit().putString("arrival_date", arrivalDate).apply();
+                    sharedPreferences.edit().putString("departure_date", departureDate).apply();
+
 
 
                 }
@@ -208,13 +212,20 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    fullNameApplicant = (nameFirst.getText().toString() + " " + nameLast.getText().toString());
+                    sharedPreferences.edit().putString("full_name", fullNameApplicant).apply();
+
+                    birthDateApplicant = birthDate.getText().toString();
+                    sharedPreferences.edit().putString("birth_date", birthDateApplicant).apply();
+                    passportNumberApplicant = passportNumber.getText().toString();
+                    sharedPreferences.edit().putString("passport_number", passportNumberApplicant).apply();
+                    genderApplicant = selectedGender;
+                    sharedPreferences.edit().putString("gender", selectedGender).apply();
                     ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                     int atTab = mFormPager.getCurrentItem();
                     mFormPager.setCurrentItem(atTab + 1);
-                    fullNameApplicant = (nameFirst.getText().toString() + " " + nameLast.getText().toString());
-                    birthDateApplicant = birthDate.getText().toString();
-                    passportNumberApplicant = passportNumber.getText().toString();
-                    genderApplicant = selectedGender;
+
                     //sendFormData(nameFirst,nameLast,birthDate,birthPlace,selectedProfession,selectedProfessionID,emailEdt,nameFather,nameMother,dateIssue,dateExpiry);
                 }
             });

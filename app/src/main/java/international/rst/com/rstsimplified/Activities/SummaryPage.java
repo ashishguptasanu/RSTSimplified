@@ -82,15 +82,15 @@ public class SummaryPage extends AppCompatActivity
     }
 
     private void getSharedPreferencesData() {
-        bundle =  getIntent().getExtras();
-        if ( bundle!= null && bundle.containsKey("key")){
+        /*bundle =  getIntent().getExtras();
+        if ( bundle!= null && bundle.containsKey("arrival_date") && bundle.containsKey("departure_date")){
             arrivalDate = bundle.getString("arrival_date");
             departureDate = bundle.getString("departure_date");
             fullName = bundle.getString("full_name");
             birthDate =bundle.getString("birth_date");
             passportNumber = bundle.getString("passport_number");
             gender = bundle.getString("gender");
-        }
+        }*/
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         serviceType = sharedPreferences.getString("service_type", "");
         livingId = sharedPreferences.getString("living_id", "");
@@ -104,6 +104,13 @@ public class SummaryPage extends AppCompatActivity
         serviceFee = sharedPreferences.getFloat("service_fee", 0);
         mngFee = sharedPreferences.getFloat("mng_fee", 0);
         fullNameVisa = sharedPreferences.getString("visa_name","");
+        fullName = sharedPreferences.getString("full_name","");
+        birthDate = sharedPreferences.getString("birth_date","");
+        passportNumber = sharedPreferences.getString("passport_number","");
+        gender = sharedPreferences.getString("gender","");
+        arrivalDate = sharedPreferences.getString("arrival_date","");
+        departureDate = sharedPreferences.getString("departure_date","");
+
         if(sharedPreferences != null){
             sendConsultData();
         }
