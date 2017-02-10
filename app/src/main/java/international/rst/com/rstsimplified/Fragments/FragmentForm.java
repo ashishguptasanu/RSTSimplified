@@ -151,7 +151,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
             edtEmergencyContactNumber = (EditText)view.findViewById(R.id.edt_contact_number);
             edtLivingCity = (EditText)view.findViewById(R.id.living_city);
-            loadEmirates();
+            //loadEmirates();
 
             //final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
             Button button1 = (Button)view.findViewById(R.id.button_consult);
