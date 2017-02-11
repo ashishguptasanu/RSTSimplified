@@ -17,15 +17,18 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.File;
 import java.io.IOException;
 
 import international.rst.com.rstsimplified.R;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class SummaryPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -302,6 +305,8 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("fathers_name", nameFather)
                 .addFormDataPart("mothers_name", nameMother)
                 .addFormDataPart("marital_status", "")
+                .addFormDataPart("photo_upload", "/document/Download.pdf",
+                        RequestBody.create(MediaType.parse("pdf"), "/document/Download.pdf"))
                 .addFormDataPart("passport_number", passportNumber)
                 .addFormDataPart("place_of_issue", "")
                 .addFormDataPart("country_of_issue", selectedIssueCountry)
@@ -323,6 +328,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("sponserAdd", "")
                 .addFormDataPart("sponserRelation", "")
                 .addFormDataPart("sponserCompanyContact", "")
+
                 .build();
         Request request = new Request.Builder().url(BASE_URL_APLLICANT_FORM).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
@@ -355,6 +361,7 @@ public class SummaryPage extends AppCompatActivity
 
         });
     }
+
 
     @Override
     protected void onStart() {

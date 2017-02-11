@@ -40,6 +40,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -73,14 +74,14 @@ import static android.content.ContentValues.TAG;
 
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
-    private static final int FILE_SELECT_CODE =  0;
+    private static final int FILE_SELECT_CODE =  1;
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion;
-    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion;
+    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates;
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private List<ProfessionRes> professionList = new ArrayList<>();
@@ -88,9 +89,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<String> emiratesData = new ArrayList<>();
     private List<String> professionData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
+    int serverResponseCode = 0;
 
     SharedPreferences sharedPreferences;
-    String visaId, nationalityID;
+    String nationalityID;
     private OkHttpClient client = new OkHttpClient();
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
@@ -405,14 +407,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     Uri uri = data.getData();
                     Log.d(TAG, "File Uri: " + uri.toString());
                     // Get the path
-                    File myFile = new File(uri.getPath());
-
-                    String path = myFile.getAbsolutePath();
-                    new UploadFileAsync().execute("");
-                    Log.d(TAG, "File Path: " + path);
-                    // Get the file instance
-                    // File file = new File(path);
-                    // Initiate the upload
+                    String path =  data.getData().getLastPathSegment();
+                    Log.d("Path",path);
                 }
                 break;
         }
@@ -514,12 +510,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         });
     }
     private void loadEmirates(){
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.uaevisasonline.com")
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
         EmirateResponse request = retrofit.create(EmirateResponse.class);
         retrofit2.Call<UaeEmirates> call = request.getEmirate();
@@ -635,11 +628,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         spnrReligion.setAdapter(religionDataAdapter);
     }
     private void populateEmiratesSpinner() {
-        spnrReligion = (Spinner)view.findViewById(R.id.emirates);
-        spnrReligion.setOnItemSelectedListener(this);
+        spnrEmirates = (Spinner)view.findViewById(R.id.emirates);
+        spnrEmirates.setOnItemSelectedListener(this);
         ArrayAdapter<String> emirateDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, emiratesData);
         emirateDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnrReligion.setAdapter(emirateDataAdapter);
+        spnrEmirates.setAdapter(emirateDataAdapter);
     }
     private class UploadFileAsync extends AsyncTask<String, Void, String> {
 
@@ -681,12 +674,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                                 "multipart/form-data");
                         conn.setRequestProperty("Content-Type",
                                 "multipart/form-data;boundary=" + boundary);
-                        conn.setRequestProperty("bill", sourceFileUri);
+                        conn.setRequestProperty("additional_document_upload", sourceFileUri);
 
                         dos = new DataOutputStream(conn.getOutputStream());
 
                         dos.writeBytes(twoHyphens + boundary + lineEnd);
-                        dos.writeBytes("Content-Disposition: form-data; name=\"bill\";filename=\""
+                        dos.writeBytes("Content-Disposition: form-data; name=\"additional_document_upload\";filename=\""
                                 + sourceFileUri + "\"" + lineEnd);
 
                         dos.writeBytes(lineEnd);
@@ -699,6 +692,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                         // read file and write it into form...
                         bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+                        System.out.println("Got the File");
 
                         while (bytesRead > 0) {
 
@@ -713,6 +707,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                         // send multipart form data necesssary after file
                         // data...
+                        System.out.println("reading successful");
                         dos.writeBytes(lineEnd);
                         dos.writeBytes(twoHyphens + boundary + twoHyphens
                                 + lineEnd);
@@ -721,12 +716,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         int serverResponseCode = conn.getResponseCode();
                         String serverResponseMessage = conn
                                 .getResponseMessage();
+                        System.out.println(serverResponseCode);
 
                         if (serverResponseCode == 200) {
 
                             // messageText.setText(msg);
-                            Toast.makeText(getContext(), "File Upload Complete.",
-                                  Toast.LENGTH_SHORT).show();
+                            System.out.println("OK");
 
                             // recursiveDelete(mDirectory1);
 
@@ -758,7 +753,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         @Override
         protected void onPostExecute(String result) {
-
+            System.out.println("Server Closed");
         }
 
         @Override
@@ -769,6 +764,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         protected void onProgressUpdate(Void... values) {
         }
     }
+
 
 
 }

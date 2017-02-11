@@ -12,14 +12,14 @@ import java.util.List;
 public class UaeEmirates {
     @SerializedName("emirate")
     @Expose
-    private List<Emirate> emirate = null;
+    private List<Emirate> emirates = null;
 
     public List<Emirate> getEmirate() {
-        return emirate;
+        return emirates;
     }
 
     public void setEmirates(List<Emirate> emirate) {
-        this.emirate = emirate;
+        this.emirates = emirates;
     }
 
 }
