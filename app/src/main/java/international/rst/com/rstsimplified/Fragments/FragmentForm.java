@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -66,7 +67,7 @@ import static android.content.ContentValues.TAG;
 
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
-    private static final int FILE_SELECT_CODE =  1;
+    private static final int FILE_SELECT_CODE = 3;
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
@@ -320,28 +321,36 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                 @Override
                 public void onClick(View view) {
-
-                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                    intent.setType("*/*");
-                    intent.setFlags(FLAG_GRANT_URI_WRITE_PERMISSION);
-                    intent.addCategory(Intent.CATEGORY_OPENABLE);
-
-                    try {
-                        startActivityForResult(
-                                Intent.createChooser(intent, "Select a File to Upload"),
-                                FILE_SELECT_CODE);
-                    } catch (android.content.ActivityNotFoundException ex) {
-                        // Potentially direct the user to the Market with a Dialog
-                        Toast.makeText(getContext(), "Please install a File Manager.",
-                                Toast.LENGTH_SHORT).show();
-                    }
+                    showFileChooser();
 
                 }
             });
+
         }
+
 
         return view;
     }
+    /*public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != RESULT_OK) return;
+        String path     = "";
+        if(requestCode == FILE_SELECT_CODE)
+        {
+            Uri uri = data.getData();
+            String FilePath = getRealPathFromURI(uri);
+
+        }
+    }
+
+    public String getRealPathFromURI(Uri contentUri) {
+        String [] proj      = {MediaStore.Images.Media.DATA};
+        Context context = getContext();
+        Cursor cursor       = context.getContentResolver().query( contentUri, proj, null, null,null);
+        if (cursor == null) return null;
+        int column_index    = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }*/
 
 
 
@@ -386,6 +395,21 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         populateGenderSpinner();
         populateReligionSpinner();
     }
+    private void showFileChooser() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+        try {
+            startActivityForResult(
+                    Intent.createChooser(intent, "Select a File to Upload"),
+                    FILE_SELECT_CODE);
+        } catch (android.content.ActivityNotFoundException ex) {
+            // Potentially direct the user to the Market with a Dialog
+            Toast.makeText(getContext(), "Please install a File Manager.",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 
 
 
@@ -397,10 +421,15 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 if (resultCode == RESULT_OK) {
                     // Get the Uri of the selected file
                     Uri uri = data.getData();
-                    Log.d(TAG, "File Uri: " + uri.toString());
+                    Log.d(TAG, "File Uri: " + uri.getPath().toString());
+                    String path = "";
+                    try {
+                        path = getPath(getContext(), uri);
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
                     // Get the path
-                    String path =  data.getData().getLastPathSegment();
-                    Log.d("Path",path);
+                    //String path =  data.getData().getLastPathSegment();
                 }
                 break;
         }
@@ -408,12 +437,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     }
     public static String getPath(Context context, Uri url) throws URISyntaxException {
         if ("content".equalsIgnoreCase(url.getScheme())) {
-            String[] projection = { "_data" };
+            String[] projection = {MediaStore.Images.Media.DATA};
             Cursor cursor = null;
 
             try {
                 cursor = context.getContentResolver().query(url, projection, null, null, null);
-                int column_index = cursor.getColumnIndexOrThrow("_data");
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
                 if (cursor.moveToFirst()) {
                     return cursor.getString(column_index);
                 }

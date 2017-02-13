@@ -43,6 +43,7 @@ public class SummaryPage extends AppCompatActivity
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     private OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
+    private static final String BASE_URL_UPLOAD_DOCS = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=upload";
     String resp;
 
     @Override
@@ -305,8 +306,6 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("fathers_name", nameFather)
                 .addFormDataPart("mothers_name", nameMother)
                 .addFormDataPart("marital_status", "")
-                .addFormDataPart("photo_upload", "/document/Download.pdf",
-                        RequestBody.create(MediaType.parse("pdf"), "/document/Download.pdf"))
                 .addFormDataPart("passport_number", passportNumber)
                 .addFormDataPart("place_of_issue", "")
                 .addFormDataPart("country_of_issue", selectedIssueCountry)
@@ -362,10 +361,51 @@ public class SummaryPage extends AppCompatActivity
         });
     }
 
+    private void uploadDocuments() {
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+
+                .addFormDataPart("document_name","document_name",
+                        RequestBody.create(MediaType.parse("Image"), "/document/561"))
+
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_UPLOAD_DOCS).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    String resp = response.body().string();
+//                    Log.v(TAG_REGISTER, resp);
+                    System.out.println(resp);
+                    if (response.isSuccessful()) {
+                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
+                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
+
+                    } else {
+
+                    }
+                } catch (IOException e) {
+                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+
 
     @Override
     protected void onStart() {
         super.onStart();
         getSharedPreferencesData();
+        uploadDocuments();
     }
 }
