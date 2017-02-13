@@ -1,9 +1,17 @@
 package international.rst.com.rstsimplified.Activities;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -19,6 +27,8 @@ import android.widget.TextView;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import international.rst.com.rstsimplified.R;
 import okhttp3.Call;
@@ -45,6 +55,11 @@ public class SummaryPage extends AppCompatActivity
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_UPLOAD_DOCS = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=upload";
     String resp;
+    public static final String SD_CARD = "sdCard";
+    public static final String EXTERNAL_SD_CARD = "externalSdCard";
+    private static final String ENV_SECONDARY_STORAGE = "SECONDARY_STORAGE";
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +67,7 @@ public class SummaryPage extends AppCompatActivity
         setContentView(R.layout.activity_summary_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        context = getApplicationContext();
         tvVisaId = (TextView)findViewById(R.id.visa_id);
         visaName = (TextView)findViewById(R.id.visa_name_summary);
         visaFee = (TextView)findViewById(R.id.tv_visa_fee);
@@ -64,10 +80,24 @@ public class SummaryPage extends AppCompatActivity
         tvPassportNumber = (TextView)findViewById(R.id.tv_passport_number);
         tvGender = (TextView)findViewById(R.id.tv_applicant_gender);
         button = (Button)findViewById(R.id.submit_payment);
+        int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
+        int permissionCheck2 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED && permissionCheck2 != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_EXTERNAL_STORAGE);
+        } else {
+
+
+
+        }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 Intent intent = new Intent(getApplicationContext(), PaymentGateway.class);
                 startActivity(intent);
             }
@@ -85,7 +115,20 @@ public class SummaryPage extends AppCompatActivity
 
 
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_EXTERNAL_STORAGE:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    uploadDocuments();
 
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
     private void getSharedPreferencesData() {
         /*bundle =  getIntent().getExtras();
         if ( bundle!= null && bundle.containsKey("arrival_date") && bundle.containsKey("departure_date")){
@@ -361,12 +404,14 @@ public class SummaryPage extends AppCompatActivity
         });
     }
 
+
     private void uploadDocuments() {
+        File file = new File("/storage/emulated/0/Download/panc.jpg");
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
 
                 .addFormDataPart("document_name","document_name",
-                        RequestBody.create(MediaType.parse("Image"), "/document/561"))
+                        RequestBody.create(MediaType.parse("Image"), file))
 
                 .build();
         Request request = new Request.Builder().url(BASE_URL_UPLOAD_DOCS).post(requestBody).build();
@@ -406,6 +451,6 @@ public class SummaryPage extends AppCompatActivity
     protected void onStart() {
         super.onStart();
         getSharedPreferencesData();
-        uploadDocuments();
+
     }
 }

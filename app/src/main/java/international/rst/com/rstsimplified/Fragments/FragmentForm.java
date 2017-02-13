@@ -41,6 +41,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -422,12 +423,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     // Get the Uri of the selected file
                     Uri uri = data.getData();
                     Log.d(TAG, "File Uri: " + uri.getPath().toString());
-                    String path = "";
-                    try {
-                        path = getPath(getContext(), uri);
-                    } catch (URISyntaxException e) {
-                        e.printStackTrace();
-                    }
+
                     // Get the path
                     //String path =  data.getData().getLastPathSegment();
                 }
