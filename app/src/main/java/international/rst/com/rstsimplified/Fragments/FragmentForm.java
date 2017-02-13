@@ -40,15 +40,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 
-import international.rst.com.rstsimplified.Activities.PaymentGateway;
 import international.rst.com.rstsimplified.Activities.SummaryPage;
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
 import international.rst.com.rstsimplified.Model.Country;
@@ -58,14 +55,9 @@ import international.rst.com.rstsimplified.Model.EmirateResponse;
 import international.rst.com.rstsimplified.Model.Profession;
 import international.rst.com.rstsimplified.Model.ProfessionRes;
 import international.rst.com.rstsimplified.Model.ProfessionResponse;
-import international.rst.com.rstsimplified.Model.UaeEmirates;
+import international.rst.com.rstsimplified.Model.Emirate_;
 import international.rst.com.rstsimplified.R;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -85,7 +77,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private List<ProfessionRes> professionList = new ArrayList<>();
-    private List<Emirate> emirates = new ArrayList<>();
+    private List<Emirate_> emirates = new ArrayList<>();
     private List<String> emiratesData = new ArrayList<>();
     private List<String> professionData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
@@ -153,7 +145,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
             edtEmergencyContactNumber = (EditText)view.findViewById(R.id.edt_contact_number);
             edtLivingCity = (EditText)view.findViewById(R.id.living_city);
-            //loadEmirates();
+            loadEmirates();
 
             //final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
             Button button1 = (Button)view.findViewById(R.id.button_consult);
@@ -515,13 +507,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         EmirateResponse request = retrofit.create(EmirateResponse.class);
-        retrofit2.Call<UaeEmirates> call = request.getEmirate();
+        retrofit2.Call<Emirate> call = request.getEmirates();
         //
-        call.enqueue(new retrofit2.Callback<UaeEmirates>() {
+        call.enqueue(new retrofit2.Callback<Emirate>() {
             @Override
-            public void onResponse(retrofit2.Call<UaeEmirates> call, retrofit2.Response<UaeEmirates> response) {
-                UaeEmirates jsonResponse = response.body();
-                emirates = jsonResponse.getEmirate();
+            public void onResponse(retrofit2.Call<Emirate> call, retrofit2.Response<Emirate> response) {
+                Emirate jsonResponse = response.body();
+                emirates = jsonResponse.getEmirates();
                 for(int i=0;i<emirates.size();i++){
                     emiratesData.add(emirates.get(i).getName());
                 }
@@ -532,7 +524,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 }*/
             }
             @Override
-            public void onFailure(retrofit2.Call<UaeEmirates> call, Throwable t) {
+            public void onFailure(retrofit2.Call<Emirate> call, Throwable t) {
                 Log.v("Error",t.getMessage());
             }
         });
