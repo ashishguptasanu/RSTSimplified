@@ -47,7 +47,7 @@ public class SummaryPage extends AppCompatActivity
     SharedPreferences sharedPreferences;
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant;
     int visaTypeId;
-    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress;
+    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
@@ -87,6 +87,7 @@ public class SummaryPage extends AppCompatActivity
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_EXTERNAL_STORAGE);
         } else {
+            uploadDocuments();
 
 
 
@@ -176,6 +177,9 @@ public class SummaryPage extends AppCompatActivity
         contactperson = sharedPreferences.getString("emergency_name","");
         contactNumber = sharedPreferences.getString("emergency_number","");
         religionApplicant = sharedPreferences.getString("selected_religion","");
+        selectedEmirate = sharedPreferences.getString("selected_emirate", "");
+
+
 
 
 
@@ -253,7 +257,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("country", selectedCountry)
                 .addFormDataPart("country_code", "Testing")
                 .addFormDataPart("mobile", "Testing")
-                .addFormDataPart("emirates_uae", "Testing")
+                .addFormDataPart("emirates_uae", selectedEmirate)
                 .addFormDataPart("emergency_contact_name", contactperson)
                 .addFormDataPart("emergency_contact_number", contactNumber)
                 .addFormDataPart("hotel_address", hotelAddress)
@@ -278,7 +282,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("mng_fee", String.valueOf(mngFee))
                 .addFormDataPart("application_type", fullNameVisa)
                 .addFormDataPart("agentType", "Testing")
-                .addFormDataPart("device_type", deviceType)
+                .addFormDataPart("device_type", "app")
                 .addFormDataPart("device_os", ("Android:"+deviceOS))
                 .build();
         Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM).post(requestBody).build();
@@ -411,7 +415,7 @@ public class SummaryPage extends AppCompatActivity
                 .setType(MultipartBody.FORM)
 
                 .addFormDataPart("document_name","document_name",
-                        RequestBody.create(MediaType.parse("Image"), file))
+                        RequestBody.create(MediaType.parse("jpg"), file))
 
                 .build();
         Request request = new Request.Builder().url(BASE_URL_UPLOAD_DOCS).post(requestBody).build();

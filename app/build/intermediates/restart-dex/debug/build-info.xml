@@ -5,37 +5,37 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="1218071290354773"
+    timestamp="1233745681596160"
     token="-315265450245951108"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="FIELD_ADDED" >
 
     <task
         name="javac"
-        duration="1221" />
+        duration="810" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="48" />
+        duration="57" />
     <task
         name="verifier"
-        duration="10" />
+        duration="7" />
 
     <artifact
         location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
         type="DEX" />
 
     <build
-        timestamp="1217781741023573"
+        timestamp="1233368220445866"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="1218071290354773"
-        verifier="COLD_SWAP_REQUESTED" >
+        timestamp="1233745681596160"
+        verifier="FIELD_ADDED" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
             type="DEX" />

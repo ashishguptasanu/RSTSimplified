@@ -1,6 +1,7 @@
 package international.rst.com.rstsimplified.Fragments;
 
 import android.app.DatePickerDialog;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,8 +9,11 @@ import android.database.Cursor;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -65,11 +69,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
+import java.util.Date;
 
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     private static final int FILE_SELECT_CODE = 3;
-    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry;
+    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber;
@@ -91,7 +96,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
     String arrivalDate, departureDate, fullNameApplicant, birthDateApplicant, passportNumberApplicant,genderApplicant;
-    int  selectedCountryID, selectedIssueCountryID;
+    int  selectedCountryID, selectedIssueCountryID, age;
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
 
@@ -169,6 +174,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
                         sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
                         sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
+                        sharedPreferences.edit().putString("selected_emirate",selectedEmirate).apply();
                     }
                     else {
                         Toast.makeText(getContext(),"Enter all fields", Toast.LENGTH_SHORT).show();
@@ -225,7 +231,26 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     selectedProfession = adapter.getItem(i);
                 }
             });
-            birthDate.setOnClickListener(this);
+            birthDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    final Calendar mcurrentDate=Calendar.getInstance();
+                    final int mYear = mcurrentDate.get(Calendar.YEAR);
+                    final int mMonth=mcurrentDate.get(Calendar.MONTH);
+                    final int mDay=mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+                    DatePickerDialog mDatePicker=new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                        public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                            birthDate.setText(selectedyear +"-"+(selectedmonth+1)+"-"+selectedday);
+                            age = mYear - selectedyear;
+                            System.out.println(age);
+                        }
+                    },mYear, mMonth, mDay);
+
+                    mDatePicker.setTitle("Select date");
+                    mDatePicker.show();
+                }
+            });
             dateIssue.setOnClickListener(this);
             dateExpiry.setOnClickListener(this);
 
@@ -255,6 +280,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         sharedPreferences.edit().putString("selected_country", selectedCountry).apply();
                         sharedPreferences.edit().putString("selected_issue_country",selectedIssueCountry).apply();
                         sharedPreferences.edit().putString("selected_religion",selectedReligion).apply();
+
 
                         ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                         int atTab = mFormPager.getCurrentItem();
@@ -423,6 +449,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     // Get the Uri of the selected file
                     Uri uri = data.getData();
                     Log.d(TAG, "File Uri: " + uri.getPath().toString());
+                    //File newFile = new File(get);
+                    //String path = newFile.getPath();
+                    //System.out.println(path);
+                    //getPath(getContext(),uri);
 
                     // Get the path
                     //String path =  data.getData().getLastPathSegment();
@@ -431,7 +461,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-    public static String getPath(Context context, Uri url) throws URISyntaxException {
+    /*public static String getPath(Context context, Uri url) throws URISyntaxException {
         if ("content".equalsIgnoreCase(url.getScheme())) {
             String[] projection = {MediaStore.Images.Media.DATA};
             Cursor cursor = null;
@@ -453,6 +483,125 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
 
         return null;
+    }*/
+    public static String getPath(final Context context, final Uri uri) {
+
+        final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+
+        // DocumentProvider
+        if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
+            // ExternalStorageProvider
+            if (isExternalStorageDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+
+                if ("primary".equalsIgnoreCase(type)) {
+                    return Environment.getExternalStorageDirectory() + "/" + split[1];
+                }
+
+                // TODO handle non-primary volumes
+            }
+            // DownloadsProvider
+            else if (isDownloadsDocument(uri)) {
+
+                final String id = DocumentsContract.getDocumentId(uri);
+                final Uri contentUri = ContentUris.withAppendedId(
+                        Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+
+                return getDataColumn(context, contentUri, null, null);
+            }
+            // MediaProvider
+            else if (isMediaDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+
+                Uri contentUri = null;
+                if ("image".equals(type)) {
+                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                } else if ("video".equals(type)) {
+                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                } else if ("audio".equals(type)) {
+                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                }
+
+                final String selection = "_id=?";
+                final String[] selectionArgs = new String[] {
+                        split[1]
+                };
+
+                return getDataColumn(context, contentUri, selection, selectionArgs);
+            }
+        }
+        // MediaStore (and general)
+        else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            return getDataColumn(context, uri, null, null);
+        }
+        // File
+        else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the value of the data column for this Uri. This is useful for
+     * MediaStore Uris, and other file-based ContentProviders.
+     *
+     * @param context The context.
+     * @param uri The Uri to query.
+     * @param selection (Optional) Filter used in the query.
+     * @param selectionArgs (Optional) Selection arguments used in the query.
+     * @return The value of the _data column, which is typically a file path.
+     */
+    public static String getDataColumn(Context context, Uri uri, String selection,
+                                       String[] selectionArgs) {
+
+        Cursor cursor = null;
+        final String column = "_data";
+        final String[] projection = {
+                column
+        };
+
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
+                    null);
+            if (cursor != null && cursor.moveToFirst()) {
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(column_index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
+
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is ExternalStorageProvider.
+     */
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is DownloadsProvider.
+     */
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is MediaProvider.
+     */
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
 
 
@@ -475,6 +624,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case R.id.spnr_religion:
                 selectedReligion = religion[i];
                 break;
+            case R.id.emirates:
+                selectedEmirate = emiratesData.get(i);
+
 
         }
     }
@@ -485,7 +637,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     }
     private void datePicker(final EditText edtDate1) {
         Calendar mcurrentDate=Calendar.getInstance();
-        int mYear = mcurrentDate.get(Calendar.YEAR);
+        final int mYear = mcurrentDate.get(Calendar.YEAR);
         int mMonth=mcurrentDate.get(Calendar.MONTH);
         int mDay=mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
@@ -494,6 +646,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 edtDate1.setText(selectedyear +"-"+(selectedmonth+1)+"-"+selectedday);
             }
         },mYear, mMonth, mDay);
+
         mDatePicker.setTitle("Select date");
         mDatePicker.show();
     }
