@@ -47,7 +47,7 @@ public class SummaryPage extends AppCompatActivity
     SharedPreferences sharedPreferences;
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant;
     int visaTypeId;
-    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate;
+    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
@@ -297,7 +297,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("mothers_name", nameMother)
                 .addFormDataPart("marital_status", "")
                 .addFormDataPart("passport_number", passportNumber)
-                .addFormDataPart("place_of_issue", "")
+                .addFormDataPart("place_of_issue", placeIssue)
                 .addFormDataPart("country_of_issue", selectedIssueCountry)
                 .addFormDataPart("passport_issue_date", dateIssue)
                 .addFormDataPart("passport_expiry_date", dateExpiry)
@@ -317,7 +317,6 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("sponserAdd", "")
                 .addFormDataPart("sponserRelation", "")
                 .addFormDataPart("sponserCompanyContact", "")
-
                 .build();
         Request request = new Request.Builder().url(BASE_URL_APLLICANT_FORM).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
@@ -440,6 +439,7 @@ public class SummaryPage extends AppCompatActivity
         contactNumber = sharedPreferences.getString("emergency_number","");
         religionApplicant = sharedPreferences.getString("selected_religion","");
         selectedEmirate = sharedPreferences.getString("selected_emirate", "");
+        placeIssue = sharedPreferences.getString("place_issue", "");
 
 
 

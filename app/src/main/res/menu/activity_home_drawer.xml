@@ -5,7 +5,8 @@
         <item
             android:id="@+id/visa_services"
             android:icon="@mipmap/visa_gray"
-            android:title="Visa Services" />
+            android:title="Visa Services"
+            />
         <item
             android:id="@+id/airport_services"
             android:icon="@mipmap/airport_gray"

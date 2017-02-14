@@ -223,7 +223,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:hint="Passport Number"
-            android:inputType="number"
+            android:inputType="text"
             android:id="@+id/edt_passport_number"/>
     </android.support.design.widget.TextInputLayout>
     <LinearLayout

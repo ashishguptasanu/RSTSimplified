@@ -100,7 +100,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             deviceName =android.os.Build.MODEL;
             deviceOS = Build.VERSION.RELEASE;
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-            sharedPreferences.edit().clear().apply();
+            //sharedPreferences.edit().clear().apply();
             sharedPreferences.edit().putString("service_type", serviceType).apply();
             sharedPreferences.edit().putString("living_id", livinginID).apply();
             sharedPreferences.edit().putString("nationality_id", nationalityID).apply();

@@ -77,7 +77,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
-    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber;
+    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion;
     Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates;
@@ -96,7 +96,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
     String arrivalDate, departureDate, fullNameApplicant, birthDateApplicant, passportNumberApplicant,genderApplicant;
-    int  selectedCountryID, selectedIssueCountryID, age;
+    int  selectedCountryID, selectedIssueCountryID, age, selectedEmirateId;
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
 
@@ -153,6 +153,23 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             edtEmergencyContactNumber = (EditText)view.findViewById(R.id.edt_contact_number);
             edtLivingCity = (EditText)view.findViewById(R.id.living_city);
             loadEmirates();
+            if(sharedPreferences!=null){
+                String arrivalDateTemp  = sharedPreferences.getString("arrival_date","");
+                String departureDateTemp = sharedPreferences.getString("departure_date","");
+                String hotelAddress = sharedPreferences.getString("hotel_address","");
+                String address = sharedPreferences.getString("current_address","");
+                String emergencyName = sharedPreferences.getString("emergency_name","");
+                String emergencyNumber = sharedPreferences.getString("emergency_number","");
+                edtEmergencyContactName.setText(emergencyName);
+                edtEmergencyContactNumber.setText(emergencyNumber);
+                edtAddress.setText(address);
+                edtHotelAddress.setText(hotelAddress);
+                edtDate1.setText(arrivalDateTemp);
+                edtDate2.setText(departureDateTemp);
+                String city = sharedPreferences.getString("living_city","");
+                edtLivingCity.setText(city);
+
+            }
 
             //final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
             Button button1 = (Button)view.findViewById(R.id.button_consult);
@@ -175,6 +192,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
                         sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
                         sharedPreferences.edit().putString("selected_emirate",selectedEmirate).apply();
+                        sharedPreferences.edit().putInt("selected_emirate_id",selectedEmirateId).apply();
                     }
                     else {
                         Toast.makeText(getContext(),"Enter all fields", Toast.LENGTH_SHORT).show();
@@ -197,8 +215,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             dateIssue = (EditText)view.findViewById(R.id.edt_issue_date);
             dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
             passportNumber = (EditText)view.findViewById(R.id.edt_passport_number);
+            edtIssuePlace = (EditText)view.findViewById(R.id.edt_issue_place);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
+
 
             /*if(sharedPreferences != null){
                 //visaId = sharedPreferences.getString("visa_id", "");
@@ -280,6 +300,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         sharedPreferences.edit().putString("selected_country", selectedCountry).apply();
                         sharedPreferences.edit().putString("selected_issue_country",selectedIssueCountry).apply();
                         sharedPreferences.edit().putString("selected_religion",selectedReligion).apply();
+                        sharedPreferences.edit().putString("place_issue",edtIssuePlace.getText().toString()).apply();
 
 
                         ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
@@ -626,6 +647,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 break;
             case R.id.emirates:
                 selectedEmirate = emiratesData.get(i);
+                selectedEmirateId = i;
 
 
         }
@@ -803,6 +825,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         ArrayAdapter<String> emirateDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, emiratesData);
         emirateDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrEmirates.setAdapter(emirateDataAdapter);
+        if(sharedPreferences != null){
+            int emirate = sharedPreferences.getInt("selected_emirate_id", 0);
+            spnrEmirates.setSelection(emirate);
+        }
     }
     private class UploadFileAsync extends AsyncTask<String, Void, String> {
 
