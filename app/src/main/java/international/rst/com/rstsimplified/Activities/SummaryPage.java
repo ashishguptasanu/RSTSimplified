@@ -130,63 +130,6 @@ public class SummaryPage extends AppCompatActivity
                 break;
         }
     }
-    private void getSharedPreferencesData() {
-        /*bundle =  getIntent().getExtras();
-        if ( bundle!= null && bundle.containsKey("arrival_date") && bundle.containsKey("departure_date")){
-            arrivalDate = bundle.getString("arrival_date");
-            departureDate = bundle.getString("departure_date");
-            fullName = bundle.getString("full_name");
-            birthDate =bundle.getString("birth_date");
-            passportNumber = bundle.getString("passport_number");
-            gender = bundle.getString("gender");
-        }*/
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        serviceType = sharedPreferences.getString("service_type", "");
-        livingId = sharedPreferences.getString("living_id", "");
-        nationalityId = sharedPreferences.getString("nationality_id", "");
-        serviceFeeCs = sharedPreferences.getString("service_fee_cs", "");
-        processingTime = sharedPreferences.getString("processing_time", "");
-        deviceType = sharedPreferences.getString("device_name", "");
-        deviceOS = sharedPreferences.getString("device_os", "");
-        visaTypeId = sharedPreferences.getInt("visa_type_id", 0);
-        govtFee = sharedPreferences.getFloat("govt_fee", 0);
-        serviceFee = sharedPreferences.getFloat("service_fee", 0);
-        mngFee = sharedPreferences.getFloat("mng_fee", 0);
-        fullNameVisa = sharedPreferences.getString("visa_name","");
-        fullName = sharedPreferences.getString("full_name","");
-        birthDate = sharedPreferences.getString("birth_date","");
-        passportNumber = sharedPreferences.getString("passport_number","");
-        gender = sharedPreferences.getString("gender","");
-        arrivalDate = sharedPreferences.getString("arrival_date","");
-        departureDate = sharedPreferences.getString("departure_date","");
-        nameFirst = sharedPreferences.getString("first_name","");
-        nameLast = sharedPreferences.getString("last_name","");
-        birthPlace = sharedPreferences.getString("last_name","");
-        emailEdt = sharedPreferences.getString("email","");
-        nameFather = sharedPreferences.getString("father_name","");
-        nameMother = sharedPreferences.getString("mother_name","");
-        dateIssue = sharedPreferences.getString("date_issue","");
-        dateExpiry = sharedPreferences.getString("date_expiry","");
-        profession= sharedPreferences.getString("profession","");
-        professionId = sharedPreferences.getString("profession_id","");
-         selectedCountry= sharedPreferences.getString("selected_country","");
-        selectedIssueCountry = sharedPreferences.getString("selected_issue_country","");
-        currentCity = sharedPreferences.getString("living_city","");
-        currentAddress = sharedPreferences.getString("current_address","");
-        hotelAddress = sharedPreferences.getString("hotel_address","");
-        contactperson = sharedPreferences.getString("emergency_name","");
-        contactNumber = sharedPreferences.getString("emergency_number","");
-        religionApplicant = sharedPreferences.getString("selected_religion","");
-        selectedEmirate = sharedPreferences.getString("selected_emirate", "");
-
-
-
-
-
-        if(sharedPreferences != null){
-            sendConsultData();
-        }
-    }
 
     @Override
     public void onBackPressed() {
@@ -449,6 +392,64 @@ public class SummaryPage extends AppCompatActivity
 
         });
     }
+    private void getSharedPreferencesData() {
+        /*bundle =  getIntent().getExtras();
+        if ( bundle!= null && bundle.containsKey("arrival_date") && bundle.containsKey("departure_date")){
+            arrivalDate = bundle.getString("arrival_date");
+            departureDate = bundle.getString("departure_date");
+            fullName = bundle.getString("full_name");
+            birthDate =bundle.getString("birth_date");
+            passportNumber = bundle.getString("passport_number");
+            gender = bundle.getString("gender");
+        }*/
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        serviceType = sharedPreferences.getString("service_type", "");
+        livingId = sharedPreferences.getString("living_id", "");
+        nationalityId = sharedPreferences.getString("nationality_id", "");
+        serviceFeeCs = sharedPreferences.getString("service_fee_cs", "");
+        processingTime = sharedPreferences.getString("processing_time", "");
+        deviceType = sharedPreferences.getString("device_name", "");
+        deviceOS = sharedPreferences.getString("device_os", "");
+        visaTypeId = sharedPreferences.getInt("visa_type_id", 0);
+        govtFee = sharedPreferences.getFloat("govt_fee", 0);
+        serviceFee = sharedPreferences.getFloat("service_fee", 0);
+        mngFee = sharedPreferences.getFloat("mng_fee", 0);
+        fullNameVisa = sharedPreferences.getString("visa_name","");
+        fullName = sharedPreferences.getString("full_name","");
+        birthDate = sharedPreferences.getString("birth_date","");
+        passportNumber = sharedPreferences.getString("passport_number","");
+        gender = sharedPreferences.getString("gender","");
+        arrivalDate = sharedPreferences.getString("arrival_date","");
+        departureDate = sharedPreferences.getString("departure_date","");
+        nameFirst = sharedPreferences.getString("first_name","");
+        nameLast = sharedPreferences.getString("last_name","");
+        birthPlace = sharedPreferences.getString("last_name","");
+        emailEdt = sharedPreferences.getString("email","");
+        nameFather = sharedPreferences.getString("father_name","");
+        nameMother = sharedPreferences.getString("mother_name","");
+        dateIssue = sharedPreferences.getString("date_issue","");
+        dateExpiry = sharedPreferences.getString("date_expiry","");
+        profession= sharedPreferences.getString("profession","");
+        professionId = sharedPreferences.getString("profession_id","");
+        selectedCountry= sharedPreferences.getString("selected_country","");
+        selectedIssueCountry = sharedPreferences.getString("selected_issue_country","");
+        currentCity = sharedPreferences.getString("living_city","");
+        currentAddress = sharedPreferences.getString("current_address","");
+        hotelAddress = sharedPreferences.getString("hotel_address","");
+        contactperson = sharedPreferences.getString("emergency_name","");
+        contactNumber = sharedPreferences.getString("emergency_number","");
+        religionApplicant = sharedPreferences.getString("selected_religion","");
+        selectedEmirate = sharedPreferences.getString("selected_emirate", "");
+
+
+
+
+
+        if(sharedPreferences != null){
+            sendConsultData();
+        }
+    }
+
 
 
     @Override

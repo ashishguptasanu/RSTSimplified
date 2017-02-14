@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="5dp">
+<android.support.v4.widget.NestedScrollView layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fadeScrollbars="true"
+    android:scrollbars="vertical"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -196,6 +201,20 @@
                 android:id="@+id/name_mother"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:text="Passport Information"
+        android:textAlignment="center"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="3dp"
+        android:background="#9b9999"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"/>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -207,7 +226,6 @@
             android:inputType="number"
             android:id="@+id/edt_passport_number"/>
     </android.support.design.widget.TextInputLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -215,7 +233,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.24"
+            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
@@ -237,6 +255,24 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"/>
         </LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Place of Issue"
+                android:id="@+id/edt_issue_place"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -279,3 +315,4 @@
 
 
 </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
