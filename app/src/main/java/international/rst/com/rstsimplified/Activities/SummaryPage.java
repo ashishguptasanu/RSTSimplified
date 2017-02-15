@@ -55,9 +55,6 @@ public class SummaryPage extends AppCompatActivity
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_UPLOAD_DOCS = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=upload";
     String resp;
-    public static final String SD_CARD = "sdCard";
-    public static final String EXTERNAL_SD_CARD = "externalSdCard";
-    private static final String ENV_SECONDARY_STORAGE = "SECONDARY_STORAGE";
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     Context context;
 
@@ -205,7 +202,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("emergency_contact_number", contactNumber)
                 .addFormDataPart("hotel_address", hotelAddress)
                 .addFormDataPart("contact_uae", contactNumber)
-                .addFormDataPart("created_date", "Testing")
+                .addFormDataPart("created_date", "")
                 .addFormDataPart("order_id", "")
                 .addFormDataPart("service_type", serviceType)
                 .addFormDataPart("nationality_id",nationalityId)
@@ -220,7 +217,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("comments_added", "Testing")
                 .addFormDataPart("insertedTimeIst", "Testing")
                 .addFormDataPart("agentid", "Testing")
-                .addFormDataPart("service_fee_cs", serviceFeeCs)
+                .addFormDataPart("service_fee_cs","")
                 .addFormDataPart("termConditions", "Testing")
                 .addFormDataPart("mng_fee", String.valueOf(mngFee))
                 .addFormDataPart("application_type", fullNameVisa)

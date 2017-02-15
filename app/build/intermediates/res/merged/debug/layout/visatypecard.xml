@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Single Entry"
-
+                    android:id="@+id/visa_type1"
                     android:textAlignment="center"
                     android:layout_weight="1"/>
                 <TextView
@@ -91,7 +91,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Type of Visa"
+                    android:id="@+id/visa_validity1"
                     android:textAlignment="center"
                     android:layout_weight="1"/>
                 <TextView
@@ -120,6 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Type of Visa"
+                    android:id="@+id/visa_stay_validity1"
                     android:textAlignment="center"
                     android:layout_weight="1"/>
                 <TextView
@@ -148,6 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Type of Visa"
+                    android:id="@+id/processing_time1"
                     android:textAlignment="center"
                     android:layout_weight="1"/>
                 <TextView
@@ -176,6 +178,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Type of Visa"
+                    android:id="@+id/visa_fee1"
                     android:textAlignment="center"
                     android:layout_weight="1"/>
                 <TextView
@@ -203,7 +206,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="Type of Visa"
+                    android:id="@+id/service_fee1"
                     android:textAlignment="center"
                     android:layout_weight="1"/>
                 <TextView
@@ -232,6 +235,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Type of Visa"
+                    android:id="@+id/total_fee1"
                     android:textAlignment="center"
                     android:layout_weight="1"/>
                 <TextView
@@ -262,6 +266,7 @@
                 android:textSize="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
+                android:id="@+id/button_submit_combo"
                 android:background="@drawable/buttonshape"/>
             <Button
                 android:layout_width="0dp"
@@ -272,7 +277,7 @@
                 android:textSize="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
-                android:id="@+id/button_submit"
+                android:id="@+id/button_submit_regular"
                 android:background="@drawable/buttonshape"/>
         </LinearLayout>
     </LinearLayout>
