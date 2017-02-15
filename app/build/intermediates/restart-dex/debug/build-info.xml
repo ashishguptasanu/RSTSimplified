@@ -5,7 +5,7 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="1381831781218986"
+    timestamp="1389022224190293"
     token="-315265450245951108"
     verifier="COMPATIBLE" >
 
@@ -27,24 +27,21 @@
         type="RESOURCES" />
 
     <build
-        timestamp="1381111634195626"
+        timestamp="1388758037381973"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="1381661739191893"
-        verifier="FIELD_ADDED" >
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_1\classes.dex"
-            type="DEX" />
+        timestamp="1388890766237013"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
             type="DEX" />
     </build>
     <build
-        timestamp="1381831781218986"
+        timestamp="1389022224190293"
         verifier="COMPATIBLE" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
