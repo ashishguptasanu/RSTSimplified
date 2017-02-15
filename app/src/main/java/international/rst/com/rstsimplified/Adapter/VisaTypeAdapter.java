@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,26 +12,18 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import international.rst.com.rstsimplified.Activities.FormActivity;
-import international.rst.com.rstsimplified.Activities.VisaTypeSelection;
 import international.rst.com.rstsimplified.Model.VisaType_;
 import international.rst.com.rstsimplified.R;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 
 public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTypeHolder> {
 
 
     private Context context;
-    private Button submitButton;
+    private Button submitButton2, submitButton1;
     private List<VisaType_> visaTypes = new ArrayList<>();
     private LinearLayout linearLayout1,linearLayout2;
     String serviceType, processingTime;
@@ -59,8 +50,10 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             super(itemView);
             //linearLayout1 = (LinearLayout)itemView.findViewById(R.id.linear_layout_visa_combo);
             //linearLayout2  = (LinearLayout)itemView.findViewById(R.id.linear_layout_regular_visa);
-            //submitButton = (Button)itemView.findViewById(R.id.button_submit);
-            //submitButton.setOnClickListener(this);
+            submitButton1 = (Button)itemView.findViewById(R.id.button_submit_combo);
+            submitButton1.setOnClickListener(this);
+            submitButton2 = (Button)itemView.findViewById(R.id.button_submit_regular);
+            submitButton2.setOnClickListener(this);
             //visaName = (TextView)itemView.findViewById(R.id.visa_name);
             visaType = (TextView)itemView.findViewById(R.id.visa_type);
             visaValidity = (TextView)itemView.findViewById(R.id.visa_validity);
@@ -79,45 +72,43 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
-            serviceType = visaTypes.get(position).getEntryType();
-            livinginID = visaTypes.get(position).getLivingInId();
-            nationalityID = visaTypes.get(position).getNationalityId();
-            govtFee = visaTypes.get(position).getGovtFee();
-            serviceFee = visaTypes.get(position).getServiceFee();
-            processingTime = visaTypes.get(position).getProcessingTime();
-            visaTypeID = visaTypes.get(position).getVisaTypeId();
-            serviceFeeCS = visaTypes.get(position).getServiceFeeCs();
-            mngFee = visaTypes.get(position).getMngFee();
-            currencyID = visaTypes.get(position).getCurrencyId();
-            String visaName = visaTypes.get(position).getName();
-            finalVisaName = (visaName + " " + serviceType);
-
-
-
-            Intent intent = new Intent(context, FormActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-            deviceName =android.os.Build.MODEL;
-            deviceOS = Build.VERSION.RELEASE;
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-            //sharedPreferences.edit().clear().apply();
-            sharedPreferences.edit().putString("service_type", serviceType).apply();
-            sharedPreferences.edit().putString("living_id", livinginID).apply();
-            sharedPreferences.edit().putString("nationality_id", nationalityID).apply();
-            sharedPreferences.edit().putFloat("govt_fee", govtFee).apply();
-            sharedPreferences.edit().putFloat("service_fee", serviceFee).apply();
-            sharedPreferences.edit().putString("processing_time", processingTime).apply();
-            sharedPreferences.edit().putInt("visa_type_id", visaTypeID).apply();
-            sharedPreferences.edit().putString("service_fee_cs", serviceFeeCS).apply();
-            sharedPreferences.edit().putFloat("mng_fee", mngFee).apply();
-            sharedPreferences.edit().putString("device_name", deviceName).apply();
-            sharedPreferences.edit().putString("device_os", deviceOS).apply();
-            sharedPreferences.edit().putString("visa_name", finalVisaName).apply();
-
-
-
-
-
+            switch (view.getId()){
+                case R.id.button_submit_combo:
+                    break;
+                case R.id.button_submit_regular:
+                    serviceType = visaTypes.get(position).getEntryType();
+                    livinginID = visaTypes.get(position).getLivingInId();
+                    nationalityID = visaTypes.get(position).getNationalityId();
+                    govtFee = visaTypes.get(position).getGovtFee();
+                    serviceFee = visaTypes.get(position).getServiceFee();
+                    processingTime = visaTypes.get(position).getProcessingTime();
+                    visaTypeID = visaTypes.get(position).getVisaTypeId();
+                    serviceFeeCS = visaTypes.get(position).getServiceFeeCs();
+                    mngFee = visaTypes.get(position).getMngFee();
+                    currencyID = visaTypes.get(position).getCurrencyId();
+                    String visaName = visaTypes.get(position).getName();
+                    finalVisaName = (visaName + " " + serviceType);
+                    Intent intent = new Intent(context, FormActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                    deviceName =android.os.Build.MODEL;
+                    deviceOS = Build.VERSION.RELEASE;
+                    sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+                    //sharedPreferences.edit().clear().apply();
+                    sharedPreferences.edit().putString("service_type", serviceType).apply();
+                    sharedPreferences.edit().putString("living_id", livinginID).apply();
+                    sharedPreferences.edit().putString("nationality_id", nationalityID).apply();
+                    sharedPreferences.edit().putFloat("govt_fee", govtFee).apply();
+                    sharedPreferences.edit().putFloat("service_fee", serviceFee).apply();
+                    sharedPreferences.edit().putString("processing_time", processingTime).apply();
+                    sharedPreferences.edit().putInt("visa_type_id", visaTypeID).apply();
+                    sharedPreferences.edit().putString("service_fee_cs", serviceFeeCS).apply();
+                    sharedPreferences.edit().putFloat("mng_fee", mngFee).apply();
+                    sharedPreferences.edit().putString("device_name", deviceName).apply();
+                    sharedPreferences.edit().putString("device_os", deviceOS).apply();
+                    sharedPreferences.edit().putString("visa_name", finalVisaName).apply();
+                    break;
+            }
         }
     }
     @Override
