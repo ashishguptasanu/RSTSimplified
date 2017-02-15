@@ -59,6 +59,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     private List<String> nationalityData = new ArrayList<>();
     public String selectedVisa;
     int selectedLivingIn, selectedNationality;
+    ImageView img1;
     ArrayAdapter<String> dataAdapter,dataAdapter2;
 
 
@@ -95,40 +96,45 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         buttonSubmission.setOnClickListener(this);
         loadSpinners();
 
-        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
+        //RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
         ImageView img = (ImageView)view.findViewById(R.id.img_background);
+        img1 = (ImageView)view.findViewById(R.id.img_visa_background);
+
         title = getArguments().getString("title");
         if(title.equalsIgnoreCase("visa")){
             tv1.setText("Title: visa Services");
-            FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-            fab.setVisibility(View.GONE);
+            //FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+            //fab.setVisibility(View.GONE);
             img.setImageResource(R.mipmap.visa_background);
             mDataset1 = new String[]{"UAE visa", "USA visa","Singapore Visa","Oman Visa","Iran Visa"};
             mImageSet = new int[]{R.drawable.uae_banner, R.drawable.usa_banner,R.drawable.singapore_banner,R.drawable.oman_banner,R.drawable.iran_banner };
             mImageSet2 = new int[] {R.drawable.singapore_flag, R.drawable.oman_flag,R.drawable.oman_flag,R.drawable.oman_flag,R.drawable.oman_flag};
             visaAdapter = new VisaAdapter(getContext(),mDataset1, mImageSet,mImageSet2);
-            recyclerView.setAdapter(visaAdapter);
-            linearLayoutManager1 = new LinearLayoutManager(getActivity());
-            recyclerView.setHasFixedSize(true);
+            //recyclerView.setAdapter(visaAdapter);
+            //linearLayoutManager1 = new LinearLayoutManager(getActivity());
+            //recyclerView.setHasFixedSize(true);
             tv1.setVisibility(View.GONE);
             img.setVisibility(View.GONE);
-            recyclerView.setLayoutManager(linearLayoutManager1);
+            //recyclerView.setLayoutManager(linearLayoutManager1);
 
 
         }
         else if(title.equalsIgnoreCase("hotel")){
             tv1.setText("Title: Hotel Services");
+            img1.setVisibility(View.GONE);
             img.setImageResource(R.mipmap.hotel_background);
             linearLayoutVisa.setVisibility(View.GONE);
 
         }
         else if(title.equalsIgnoreCase("meet")){
             tv1.setText("Title: Meet & Greet");
+            img1.setVisibility(View.GONE);
             img.setImageResource(R.mipmap.meet_gray);
             linearLayoutVisa.setVisibility(View.GONE);
         }
         else {
             tv1.setText("Title: Airport Services");
+            img1.setVisibility(View.GONE);
             img.setImageResource(R.mipmap.airport_background);
             linearLayoutVisa.setVisibility(View.GONE);
         }
