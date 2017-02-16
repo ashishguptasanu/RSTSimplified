@@ -1,10 +1,12 @@
 package international.rst.com.rstsimplified.Fragments;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.icu.util.Calendar;
 import android.net.Uri;
@@ -15,6 +17,7 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -39,6 +42,7 @@ import com.checkout.models.Card;
 import com.checkout.models.CardTokenResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.nononsenseapps.filepicker.FilePickerActivity;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -92,6 +96,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<Integer> professionNumber = new ArrayList<>();
     int serverResponseCode = 0;
     CustomScrollView scrollView;
+    final static int FILE_CODE = 3;
 
     SharedPreferences sharedPreferences;
     String nationalityID;
@@ -381,7 +386,25 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                 @Override
                 public void onClick(View view) {
-                    showFileChooser();
+                    //showFileChooser();
+                    Intent i = new Intent(getContext(), FilePickerActivity.class);
+                    // This works if you defined the intent filter
+                    // Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+
+                    // Set these depending on your use case. These are the defaults.
+                    i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
+                    i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
+                    i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
+
+                    // Configure initial directory by specifying a String.
+                    // You could specify a String like "/storage/emulated/0/", but that can
+                    // dangerous. Always use Android's API calls to get paths to the SD-card or
+                    // internal memory.
+                    i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
+
+                    startActivityForResult(i, FILE_CODE);
+
+
 
                 }
             });
@@ -391,6 +414,37 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         return view;
     }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        String path1 = intent.getData().getPath();
+        System.out.println(path1);
+        if (requestCode == FILE_CODE && resultCode == Activity.RESULT_OK) {
+            if (intent.getBooleanExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false)) {
+                // The URI will now be something like content://PACKAGE-NAME/root/path/to/file
+                Uri uri = intent.getData();
+                // A utility method is provided to transform the URI to a File object
+                File file = com.nononsenseapps.filepicker.Utils.getFileForUri(uri);
+
+                // If you want a URI which matches the old return value, you can do
+                Uri fileUri = Uri.fromFile(file);
+                // Do something with the result...
+            } else {
+                // Handling multiple results is one extra step
+                ArrayList<String> paths = intent.getStringArrayListExtra(FilePickerActivity.EXTRA_PATHS);
+                if (paths != null) {
+                    for (String path: paths) {
+                        Uri uri = Uri.parse(path);
+                        // Do something with the URI
+                        File file = com.nononsenseapps.filepicker.Utils.getFileForUri(uri);
+                        // If you want a URI which matches the old return value, you can do
+                        Uri fileUri = Uri.fromFile(file);
+
+                    }
+                }
+            }
+        }
+    }
+
 
     private void disableInput(EditText editText) {
         editText.setFocusable(false);
@@ -478,14 +532,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
 
 
-    @Override
+    /*@Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case FILE_SELECT_CODE:
                 if (resultCode == RESULT_OK) {
                     // Get the Uri of the selected file
-                    Uri uri = data.getData();
-                    Log.d(TAG, "File Uri: " + uri.getPath().toString());
+                    String uri = data.getData().getEncodedPath();
+                    Log.d(TAG, "File Uri: " + uri);
                     //File newFile = new File(get);
                     //String path = newFile.getPath();
                     //System.out.println(path);
@@ -497,7 +551,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
+    }*/
     /*public static String getPath(Context context, Uri url) throws URISyntaxException {
         if ("content".equalsIgnoreCase(url.getScheme())) {
             String[] projection = {MediaStore.Images.Media.DATA};
