@@ -53,6 +53,8 @@ import java.util.List;
 
 
 import international.rst.com.rstsimplified.Activities.SummaryPage;
+import international.rst.com.rstsimplified.Custom.CustomScrollView;
+import international.rst.com.rstsimplified.Custom.CustomViewPager;
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
 import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
@@ -89,6 +91,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<String> professionData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
     int serverResponseCode = 0;
+    CustomScrollView scrollView;
 
     SharedPreferences sharedPreferences;
     String nationalityID;
@@ -140,6 +143,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     datePicker(edtDate1);
                 }
             });
+            disableInput(edtDate1);
+
             edtDate2 = (EditText) view.findViewById(R.id.edt_departure);
             edtDate2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -147,6 +152,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     datePicker(edtDate2);
                 }
             });
+            disableInput(edtDate2);
             edtAddress = (EditText)view.findViewById(R.id.edt_current_address);
             edtHotelAddress = (EditText)view.findViewById(R.id.edt_hotel_address);
             edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
@@ -205,15 +211,21 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         } else if (title.equalsIgnoreCase("applicant")) {
             view = inflater.inflate(R.layout.appicant_form, container, false);
+            scrollView = (CustomScrollView)view.findViewById(R.id.scroll_view);
+            CustomViewPager parentPager = (CustomViewPager)getActivity().findViewById(R.id.formViewPager);
+            scrollView.setParentPager(parentPager);
             nameFirst = (EditText)view.findViewById(R.id.name_first);
             nameLast = (EditText)view.findViewById(R.id.name_last);
             birthDate = (EditText)view.findViewById(R.id.edt_dob);
+            disableInput(birthDate);
             birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
             emailEdt = (EditText)view.findViewById(R.id.edittext_email);
             nameFather = (EditText)view.findViewById(R.id.name_father);
             nameMother = (EditText)view.findViewById(R.id.name_mother);
             dateIssue = (EditText)view.findViewById(R.id.edt_issue_date);
+            disableInput(dateIssue);
             dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
+            disableInput(dateExpiry);
             passportNumber = (EditText)view.findViewById(R.id.edt_passport_number);
             edtIssuePlace = (EditText)view.findViewById(R.id.edt_issue_place);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
@@ -378,6 +390,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
 
         return view;
+    }
+
+    private void disableInput(EditText editText) {
+        editText.setFocusable(false);
     }
     /*public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != RESULT_OK) return;

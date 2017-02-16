@@ -14,18 +14,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.io.IOException;
-
+import international.rst.com.rstsimplified.Custom.CustomPagerTabStrip;
+import international.rst.com.rstsimplified.Custom.CustomScrollView;
 import international.rst.com.rstsimplified.Custom.CustomViewPager;
 import international.rst.com.rstsimplified.Custom.OnSwipeTouchListener;
 import international.rst.com.rstsimplified.Fragments.FragmentForm;
 import international.rst.com.rstsimplified.R;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 
 public class FormActivity extends AppCompatActivity {
 
@@ -40,7 +34,7 @@ public class FormActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     CustomViewPager mFormPager;
     AlertDialog b;
-    PagerTabStrip mTabStrip;
+    CustomPagerTabStrip mTabStrip;
     PagerAdapter mFormPagerAdapter;
     String[] tabDataSet;
 
@@ -76,9 +70,10 @@ public class FormActivity extends AppCompatActivity {
 
         */
 
-        mTabStrip = (PagerTabStrip)findViewById(R.id.tab_strip);
+        mTabStrip = (CustomPagerTabStrip)findViewById(R.id.tab_strip);
         mTabStrip.setTabIndicatorColorResource(R.color.colorAccent);
-        tabDataSet = new String[]{"Consult Form","Applicant Form","Upload Documents","Payment"};
+        mTabStrip.setTabSwitchEnabled(false);
+        tabDataSet = new String[]{"Travelling Information","Applicant Information","Upload Documents","Payment"};
 
         mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mFormPager = (CustomViewPager) findViewById(R.id.formViewPager);
@@ -88,7 +83,7 @@ public class FormActivity extends AppCompatActivity {
 
             public void onSwipeRight() {
                 atTab = mFormPager.getCurrentItem();
-                if(atTab == 1 || atTab == 2 || atTab == 3){
+                if(atTab == 1 || atTab == 2){
                     mFormPager.setCurrentItem(atTab - 1);
                 }
 
