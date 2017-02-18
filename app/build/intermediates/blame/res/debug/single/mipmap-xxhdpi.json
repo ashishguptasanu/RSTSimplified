@@ -12,12 +12,12 @@
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\express_visa.png"
     },
     {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\airport_background.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\airport_background.png"
-    },
-    {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\regular_visa.png",
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\regular_visa.png"
+    },
+    {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\airport_background.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\airport_background.png"
     },
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\airport_gray.png",

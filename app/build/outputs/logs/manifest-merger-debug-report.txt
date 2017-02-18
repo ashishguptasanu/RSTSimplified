@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:2:1-79:12
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:2:1-66:12
 	package
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:4:5-50
 		INJECTED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml
@@ -40,19 +40,18 @@ ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\ma
 	android:name
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:11:22-78
 application
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:13:5-77:19
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:13:5-64:19
 MERGED from [com.android.support:design:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:transition:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:cardview-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.nononsenseapps:filepicker:4.0.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.nononsenseapps\filepicker\4.0.0\AndroidManifest.xml:17:5-20
 MERGED from [com.android.support:appcompat-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:transition:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-fragment:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-media-compat:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:16:9-41
@@ -95,105 +94,79 @@ ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\ma
 	android:name
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:32:13-48
 activity#international.rst.com.rstsimplified.Activities.FormActivity
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:35:9-38:47
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:35:9-43:20
 	android:label
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:37:13-48
 	android:theme
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:38:13-44
 	android:name
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:36:13-52
-activity#international.rst.com.rstsimplified.Activities.ActivityServices
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:39:9-42:59
-	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:41:13-60
-	android:theme
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:42:13-56
-	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:40:13-56
-activity#international.rst.com.rstsimplified.Activities.VisaServicesOptions
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:43:9-46:59
-	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:45:13-73
-	android:theme
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:46:13-56
-	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:44:13-59
-activity#international.rst.com.rstsimplified.Activities.PaymentGateway
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:47:9-50:59
-	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:49:13-67
-	android:theme
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:50:13-56
-	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:48:13-54
-activity#international.rst.com.rstsimplified.Activities.VisaTypeSelection
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:51:9-54:59
-	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:53:13-71
-	android:theme
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:54:13-56
-	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:52:13-57
-activity#international.rst.com.rstsimplified.Activities.SummaryPage
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:55:9-58:68
-	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:57:13-64
-	android:theme
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:58:13-56
-	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:56:13-51
-activity#com.nononsenseapps.filepicker.FilePickerActivity
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:59:9-67:20
-	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:61:13-45
-	android:theme
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:62:13-51
-	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:60:13-76
 intent-filter#android.intent.action.GET_CONTENT+android.intent.category.DEFAULT
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:63:13-66:29
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:39:13-42:29
 action#android.intent.action.GET_CONTENT
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:64:17-76
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:40:17-76
 	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:64:25-73
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:40:25-73
 category#android.intent.category.DEFAULT
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:65:17-76
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:41:17-76
 	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:65:27-73
-provider#android.support.v4.content.FileProvider
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:68:9-76:20
-	android:authorities
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:70:13-60
-		INJECTED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml
-	android:grantUriPermissions
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:72:13-47
-	android:exported
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:71:13-37
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:41:27-73
+activity#international.rst.com.rstsimplified.Activities.ActivityServices
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:44:9-47:59
+	android:label
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:46:13-60
+	android:theme
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:47:13-56
 	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:69:13-67
-meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:73:13-75:62
-	android:resource
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:75:17-59
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:45:13-56
+activity#international.rst.com.rstsimplified.Activities.VisaServicesOptions
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:48:9-51:59
+	android:label
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:50:13-73
+	android:theme
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:51:13-56
 	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:74:17-67
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:49:13-59
+activity#international.rst.com.rstsimplified.Activities.PaymentGateway
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:52:9-55:59
+	android:label
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:54:13-67
+	android:theme
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:55:13-56
+	android:name
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:53:13-54
+activity#international.rst.com.rstsimplified.Activities.VisaTypeSelection
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:56:9-59:59
+	android:label
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:58:13-71
+	android:theme
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:59:13-56
+	android:name
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:57:13-57
+activity#international.rst.com.rstsimplified.Activities.SummaryPage
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:60:9-63:68
+	android:label
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:62:13-64
+	android:theme
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:63:13-56
+	android:name
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:61:13-51
 uses-sdk
 INJECTED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:transition:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.1.0\AndroidManifest.xml:20:5-43
-MERGED from [me.relex:circleindicator:1.2.2] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\me.relex\circleindicator\1.2.2\AndroidManifest.xml:8:5-10:41
-MERGED from [com.nononsenseapps:filepicker:4.0.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.nononsenseapps\filepicker\4.0.0\AndroidManifest.xml:13:5-15:41
 MERGED from [com.android.support:appcompat-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:transition:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.1.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:21:5-23:58
+MERGED from [me.relex:circleindicator:1.2.2] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\me.relex\circleindicator\1.2.2\AndroidManifest.xml:8:5-10:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion

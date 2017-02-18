@@ -10,11 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
-import international.rst.com.rstsimplified.Activities.FormActivity;
-import international.rst.com.rstsimplified.Activities.VisaServicesOptions;
 import international.rst.com.rstsimplified.R;
 
 /**
