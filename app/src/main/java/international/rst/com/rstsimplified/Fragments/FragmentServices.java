@@ -3,10 +3,7 @@ package international.rst.com.rstsimplified.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import international.rst.com.rstsimplified.Activities.VisaTypeSelection;
-import international.rst.com.rstsimplified.Adapter.VisaAdapter;
 import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.Model.CountryResponse;
@@ -48,7 +43,6 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     LinearLayoutManager linearLayoutManager1;
     Button buttonSubmission;
     LinearLayout linearLayoutVisa;
-    VisaAdapter visaAdapter;
     String[] mDataset1;
     int[] mImageSet, mImageSet2;
     String[] arrayService;
@@ -103,16 +97,6 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         title = getArguments().getString("title");
         if(title.equalsIgnoreCase("visa")){
             tv1.setText("Title: visa Services");
-            //FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-            //fab.setVisibility(View.GONE);
-            img.setImageResource(R.mipmap.visa_background);
-            mDataset1 = new String[]{"UAE visa", "USA visa","Singapore Visa","Oman Visa","Iran Visa"};
-            mImageSet = new int[]{R.drawable.uae_banner, R.drawable.usa_banner,R.drawable.singapore_banner,R.drawable.oman_banner,R.drawable.iran_banner };
-            mImageSet2 = new int[] {R.drawable.singapore_flag, R.drawable.oman_flag,R.drawable.oman_flag,R.drawable.oman_flag,R.drawable.oman_flag};
-            visaAdapter = new VisaAdapter(getContext(),mDataset1, mImageSet,mImageSet2);
-            //recyclerView.setAdapter(visaAdapter);
-            //linearLayoutManager1 = new LinearLayoutManager(getActivity());
-            //recyclerView.setHasFixedSize(true);
             tv1.setVisibility(View.GONE);
             img.setVisibility(View.GONE);
             //recyclerView.setLayoutManager(linearLayoutManager1);

@@ -73,7 +73,7 @@ public class FormActivity extends AppCompatActivity {
         mTabStrip = (CustomPagerTabStrip)findViewById(R.id.tab_strip);
         mTabStrip.setTabIndicatorColorResource(R.color.colorAccent);
         mTabStrip.setTabSwitchEnabled(false);
-        tabDataSet = new String[]{"Travelling Information","Applicant Information","Upload Documents","Payment"};
+        tabDataSet = new String[]{"Travelling Information","Contact Details","Applicant Information","Upload Documents"};
 
         mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mFormPager = (CustomViewPager) findViewById(R.id.formViewPager);
@@ -263,8 +263,10 @@ public class FormActivity extends AppCompatActivity {
                 case 0:
                     return FragmentForm.newFormInstance("consult");
                 case 1:
-                    return FragmentForm.newFormInstance("applicant");
+                    return FragmentForm.newFormInstance("contact");
                 case 2:
+                    return FragmentForm.newFormInstance("applicant");
+                case 3:
                     return FragmentForm.newFormInstance("docs");
                 default:
                     return  PlaceholderFragment.newFormInstance(1, "");
@@ -284,7 +286,7 @@ public class FormActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
     }
 

@@ -51,10 +51,6 @@
             android:label="@string/title_activity_services"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="international.rst.com.rstsimplified.Activities.VisaServicesOptions"
-            android:label="@string/title_activity_visa_services_options"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="international.rst.com.rstsimplified.Activities.PaymentGateway"
             android:label="@string/title_activity_payment_gateway"
             android:theme="@style/AppTheme.NoActionBar" />

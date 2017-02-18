@@ -29,6 +29,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.checkout.CheckoutKit;
@@ -93,7 +94,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     final static int FILE_CODE = 3;
 
     SharedPreferences sharedPreferences;
-    String nationalityID;
+    public String nationalityID;
+    public static String filePath;
+    TextView tvPassportCopy;
     private OkHttpClient client = new OkHttpClient();
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
@@ -152,27 +155,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 }
             });
             disableInput(edtDate2);
-            edtAddress = (EditText)view.findViewById(R.id.edt_current_address);
-            edtHotelAddress = (EditText)view.findViewById(R.id.edt_hotel_address);
-            edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
-            edtEmergencyContactNumber = (EditText)view.findViewById(R.id.edt_contact_number);
-            edtLivingCity = (EditText)view.findViewById(R.id.living_city);
-            loadEmirates();
+
             if(sharedPreferences!=null){
                 String arrivalDateTemp  = sharedPreferences.getString("arrival_date","");
                 String departureDateTemp = sharedPreferences.getString("departure_date","");
-                String hotelAddress = sharedPreferences.getString("hotel_address","");
-                String address = sharedPreferences.getString("current_address","");
-                String emergencyName = sharedPreferences.getString("emergency_name","");
-                String emergencyNumber = sharedPreferences.getString("emergency_number","");
-                edtEmergencyContactName.setText(emergencyName);
-                edtEmergencyContactNumber.setText(emergencyNumber);
-                edtAddress.setText(address);
-                edtHotelAddress.setText(hotelAddress);
                 edtDate1.setText(arrivalDateTemp);
                 edtDate2.setText(departureDateTemp);
-                String city = sharedPreferences.getString("living_city","");
-                edtLivingCity.setText(city);
 
             }
 
@@ -181,7 +169,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(edtDate1.getText().toString().length() != 0 && edtDate2.getText().toString().length() != 0 && edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
+                    if(edtDate1.getText().toString().length() != 0 && edtDate2.getText().toString().length() != 0 ){
                         ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
                         int atTab = mFormPager.getCurrentItem();
                         mFormPager.setCurrentItem(atTab + 1);
@@ -191,13 +179,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         departureDate = edtDate2.getText().toString();
                         sharedPreferences.edit().putString("arrival_date", arrivalDate).apply();
                         sharedPreferences.edit().putString("departure_date", departureDate).apply();
-                        sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
-                        sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
-                        sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
-                        sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
-                        sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
-                        sharedPreferences.edit().putString("selected_emirate",selectedEmirate).apply();
-                        sharedPreferences.edit().putInt("selected_emirate_id",selectedEmirateId).apply();
                     }
                     else {
                         Toast.makeText(getContext(),"Enter all fields", Toast.LENGTH_SHORT).show();
@@ -330,34 +311,57 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 profession.setThreshold(1);
                 profession.setAdapter(adapter);
 
-        }  else if (title.equalsIgnoreCase("payment")){
-            view = inflater.inflate(R.layout.payment_form,container,false);
-            expiryMonth  = (EditText)view.findViewById(R.id.card_month);
-            expiryYear = (EditText)view.findViewById(R.id.card_year);
-            cardName = (EditText)view.findViewById(R.id.card_name);
-            cardNumber = (EditText)view.findViewById(R.id.card_number);
-            cardCvv = (EditText)view.findViewById(R.id.card_cvv);
-            /*Button btnSubmit = (Button)view.findViewById(R.id.button_payment);
-            btnSubmit.setOnClickListener(new View.OnClickListener() {
+        }  else if (title.equalsIgnoreCase("contact")){
+            view = inflater.inflate(R.layout.contact_form,container,false);
+            edtAddress = (EditText)view.findViewById(R.id.edt_current_address);
+            edtHotelAddress = (EditText)view.findViewById(R.id.edt_hotel_address);
+            edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
+            edtEmergencyContactNumber = (EditText)view.findViewById(R.id.edt_contact_number);
+            edtLivingCity = (EditText)view.findViewById(R.id.living_city);
+            loadEmirates();
+            if(sharedPreferences!=null){
+                String hotelAddress = sharedPreferences.getString("hotel_address","");
+                String address = sharedPreferences.getString("current_address","");
+                String emergencyName = sharedPreferences.getString("emergency_name","");
+                String emergencyNumber = sharedPreferences.getString("emergency_number","");
+                edtEmergencyContactName.setText(emergencyName);
+                edtEmergencyContactNumber.setText(emergencyNumber);
+                edtAddress.setText(address);
+                edtHotelAddress.setText(hotelAddress);
+                String city = sharedPreferences.getString("living_city","");
+                edtLivingCity.setText(city);
+
+            }
+            Button button = (Button)view.findViewById(R.id.button_contact);
+            button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(expiryMonth.getText().toString().length() != 0 && expiryYear.getText().toString().length() != 0 && cardName.getText().toString().length() != 0 && cardCvv.getText().toString().length() != 0 && cardNumber.getText().toString().length() != 0 ){
-                        try {
-                            new ConnectionTask().execute("");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                    if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
+                        ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
+                        int atTab = mFormPager.getCurrentItem();
+                        mFormPager.setCurrentItem(atTab + 1);
+                        //sendConsultData();
+                        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
+                        sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
+                        sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
+                        sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
+                        sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
+                        sharedPreferences.edit().putString("selected_emirate",selectedEmirate).apply();
+                        sharedPreferences.edit().putInt("selected_emirate_id",selectedEmirateId).apply();
                     }
-                    else{
-                        Toast.makeText(getContext(),"OOps! Enter all value..",Toast.LENGTH_SHORT).show();
+                    else {
+                        Toast.makeText(getContext(),"Enter all fields", Toast.LENGTH_SHORT).show();
                     }
                 }
-            });*/
+            });
+
 
         }
         else if(title.equalsIgnoreCase("docs")){
             view = inflater.inflate(R.layout.docs_form, container, false);
             Button button3 = (Button)view.findViewById(R.id.button_docs);
+            tvPassportCopy = (TextView)view.findViewById(R.id.doc1);
             button3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -524,8 +528,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
         // File
         else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            filePath = uri.getPath();
+
             return uri.getPath();
         }
+
 
         return null;
     }

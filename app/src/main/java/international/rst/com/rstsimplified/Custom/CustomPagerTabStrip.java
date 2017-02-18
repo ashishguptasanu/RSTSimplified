@@ -24,7 +24,7 @@ public class CustomPagerTabStrip extends PagerTabStrip{
         if (this.isTabSwitchEnabled) {
             return super.onInterceptTouchEvent(event);
         } else {
-            return true;
+            return false;
         }
     }
 

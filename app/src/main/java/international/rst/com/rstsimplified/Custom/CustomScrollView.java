@@ -37,7 +37,7 @@ public class CustomScrollView extends ScrollView {
                 touchY = ev.getY();
                 return super.onTouchEvent(ev);
             case MotionEvent.ACTION_MOVE:
-                if(Math.abs(touchX-ev.getX())<50){
+                if(Math.abs(touchX-ev.getX())<20){
                     return super.onTouchEvent(ev);
                 }else{
                     if (parentPager==null) {

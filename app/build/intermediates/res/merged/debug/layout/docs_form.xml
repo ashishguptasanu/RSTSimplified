@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,26 +28,23 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:id="@+id/doc1"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textSize="15dp"
                 android:text="Coloured Passport Scanned Copy"
                 android:layout_weight="1"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:id="@+id/attach_file"
-                android:src="@drawable/attach"
+                android:src="@drawable/link"
                 android:layout_gravity="left"
-                android:layout_weight="0.21"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:src="@drawable/drive"
-                android:layout_gravity="left"
-                android:layout_weight="0.17" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,23 +68,19 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Proof of Residence"
+                android:textSize="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/attach"
+                android:src="@drawable/link"
                 android:layout_gravity="left"
-                android:layout_weight="0.21"/>
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:src="@drawable/drive"
-                android:layout_gravity="left"
-                android:layout_weight="0.17" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -113,23 +107,18 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textSize="15dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:layout_marginTop="5dp"
                 android:text="Return Ticket Copy"
                 android:layout_weight="1"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/attach"
+                android:src="@drawable/link"
                 android:layout_gravity="left"
-                android:layout_weight="0.21"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:src="@drawable/drive"
-                android:layout_gravity="left"
-                android:layout_weight="0.17" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -156,23 +145,18 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textSize="15dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Hotel Reservation Copy"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/attach"
+                android:src="@drawable/link"
                 android:layout_gravity="left"
-                android:layout_weight="0.21"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:src="@drawable/drive"
-                android:layout_gravity="left"
-                android:layout_weight="0.17" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -199,23 +183,19 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textSize="15dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Employee ID Copy"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/attach"
+                android:src="@drawable/link"
                 android:layout_gravity="left"
-                android:layout_weight="0.21"/>
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:src="@drawable/drive"
-                android:layout_gravity="left"
-                android:layout_weight="0.17" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -242,24 +222,19 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                android:textSize="15dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Miscellaneous Documents"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:src="@drawable/attach"
+                android:src="@drawable/link"
                 android:layout_gravity="left"
-                android:layout_weight="0.21"/>
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:src="@drawable/drive"
-                android:layout_gravity="left"
-                android:id="@+id/imageView3"
-                android:layout_weight="0.17" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
