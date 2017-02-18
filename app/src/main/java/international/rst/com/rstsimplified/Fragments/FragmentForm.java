@@ -386,26 +386,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                 @Override
                 public void onClick(View view) {
-                    //showFileChooser();
-                    Intent i = new Intent(getContext(), FilePickerActivity.class);
-                    // This works if you defined the intent filter
-                    // Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-
-                    // Set these depending on your use case. These are the defaults.
-                    i.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
-                    i.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);
-                    i.putExtra(FilePickerActivity.EXTRA_MODE, FilePickerActivity.MODE_FILE);
-
-                    // Configure initial directory by specifying a String.
-                    // You could specify a String like "/storage/emulated/0/", but that can
-                    // dangerous. Always use Android's API calls to get paths to the SD-card or
-                    // internal memory.
-                    i.putExtra(FilePickerActivity.EXTRA_START_PATH, Environment.getExternalStorageDirectory().getPath());
-
-                    startActivityForResult(i, FILE_CODE);
-
-
-
+                    showFileChooser();
                 }
             });
 
@@ -415,60 +396,24 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         return view;
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        String path1 = intent.getData().getPath();
-        System.out.println(path1);
-        if (requestCode == FILE_CODE && resultCode == Activity.RESULT_OK) {
-            if (intent.getBooleanExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false)) {
-                // The URI will now be something like content://PACKAGE-NAME/root/path/to/file
-                Uri uri = intent.getData();
-                // A utility method is provided to transform the URI to a File object
-                File file = com.nononsenseapps.filepicker.Utils.getFileForUri(uri);
-
-                // If you want a URI which matches the old return value, you can do
-                Uri fileUri = Uri.fromFile(file);
-                // Do something with the result...
-            } else {
-                // Handling multiple results is one extra step
-                ArrayList<String> paths = intent.getStringArrayListExtra(FilePickerActivity.EXTRA_PATHS);
-                if (paths != null) {
-                    for (String path: paths) {
-                        Uri uri = Uri.parse(path);
-                        // Do something with the URI
-                        File file = com.nononsenseapps.filepicker.Utils.getFileForUri(uri);
-                        // If you want a URI which matches the old return value, you can do
-                        Uri fileUri = Uri.fromFile(file);
-
-                    }
-                }
-            }
-        }
-    }
-
 
     private void disableInput(EditText editText) {
         editText.setFocusable(false);
     }
-    /*public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //String path = data.getStringExtra("path");
+        //System.out.println(path);
         if (resultCode != RESULT_OK) return;
-        String path     = "";
+        //String path     = "";
         if(requestCode == FILE_SELECT_CODE)
         {
             Uri uri = data.getData();
-            String FilePath = getRealPathFromURI(uri);
+
+            String FilePath = getPath(getContext(),uri);
+            System.out.println(FilePath);
 
         }
     }
-
-    public String getRealPathFromURI(Uri contentUri) {
-        String [] proj      = {MediaStore.Images.Media.DATA};
-        Context context = getContext();
-        Cursor cursor       = context.getContentResolver().query( contentUri, proj, null, null,null);
-        if (cursor == null) return null;
-        int column_index    = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
-    }*/
 
 
 
@@ -515,6 +460,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     }
     private void showFileChooser() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.putExtra("path",Environment.getExternalStorageDirectory().getPath());
         intent.setType("*/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
 
@@ -528,53 +474,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
-
-    /*@Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case FILE_SELECT_CODE:
-                if (resultCode == RESULT_OK) {
-                    // Get the Uri of the selected file
-                    String uri = data.getData().getEncodedPath();
-                    Log.d(TAG, "File Uri: " + uri);
-                    //File newFile = new File(get);
-                    //String path = newFile.getPath();
-                    //System.out.println(path);
-                    //getPath(getContext(),uri);
-
-                    // Get the path
-                    //String path =  data.getData().getLastPathSegment();
-                }
-                break;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }*/
-    /*public static String getPath(Context context, Uri url) throws URISyntaxException {
-        if ("content".equalsIgnoreCase(url.getScheme())) {
-            String[] projection = {MediaStore.Images.Media.DATA};
-            Cursor cursor = null;
-
-            try {
-                cursor = context.getContentResolver().query(url, projection, null, null, null);
-                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                if (cursor.moveToFirst()) {
-                    return cursor.getString(column_index);
-                }
-            } catch (Exception e) {
-                // Eat it
-            }
-        }
-        else if ("file".equalsIgnoreCase(url.getScheme())) {
-
-            return url.getScheme();
-
-        }
-
-        return null;
-    }*/
     public static String getPath(final Context context, final Uri uri) {
 
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
