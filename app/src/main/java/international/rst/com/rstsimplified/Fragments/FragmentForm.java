@@ -78,7 +78,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
-    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace;
+    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion;
     Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates;
@@ -210,6 +210,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             edtIssuePlace = (EditText)view.findViewById(R.id.edt_issue_place);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
+            edtMobile = (EditText)view.findViewById(R.id.edittext_mobile);
 
 
             /*if(sharedPreferences != null){
@@ -281,6 +282,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         passportNumberApplicant = passportNumber.getText().toString();
                         sharedPreferences.edit().putString("passport_number", passportNumberApplicant).apply();
                         sharedPreferences.edit().putString("gender", selectedGender).apply();
+                        sharedPreferences.edit().putString("mobile", edtMobile.getText().toString()).apply();
                         sharedPreferences.edit().putString("profession", selectedProfession).apply();
                         sharedPreferences.edit().putString("profession_id", selectedProfessionID).apply();
                         sharedPreferences.edit().putString("email", emailEdt.getText().toString()).apply();
@@ -293,6 +295,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         sharedPreferences.edit().putString("selected_issue_country",selectedIssueCountry).apply();
                         sharedPreferences.edit().putString("selected_religion",selectedReligion).apply();
                         sharedPreferences.edit().putString("place_issue",edtIssuePlace.getText().toString()).apply();
+                        sharedPreferences.edit().putString("country_id", String.valueOf(selectedCountryID)).apply();
 
 
                         ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
@@ -741,6 +744,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
         dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrAllCountries.setAdapter(dataAdapterCountries);
+        spnrAllCountries.setOnItemSelectedListener(this);
     }
     private void populateIssueCountrySpinner() {
         spnrIssueCountry = (Spinner)view.findViewById(R.id.spnr_country_issue);

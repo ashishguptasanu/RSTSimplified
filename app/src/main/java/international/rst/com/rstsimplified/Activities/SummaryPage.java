@@ -47,7 +47,7 @@ public class SummaryPage extends AppCompatActivity
     SharedPreferences sharedPreferences;
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant;
     int visaTypeId;
-    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue;
+    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
@@ -195,8 +195,8 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("address2", "Testing")
                 .addFormDataPart("city", currentCity)
                 .addFormDataPart("country", selectedCountry)
-                .addFormDataPart("country_code", "Testing")
-                .addFormDataPart("mobile", "Testing")
+                .addFormDataPart("country_code", countryId)
+                .addFormDataPart("mobile", mobileNumber)
                 .addFormDataPart("emirates_uae", selectedEmirate)
                 .addFormDataPart("emergency_contact_name", contactperson)
                 .addFormDataPart("emergency_contact_number", contactNumber)
@@ -213,7 +213,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("processing_time",processingTime)
                 .addFormDataPart("visa_type_id", String.valueOf(visaTypeId))
                 .addFormDataPart("email_id", emailEdt)
-                .addFormDataPart("email_varified", "Testing")
+                .addFormDataPart("email_varified", "")
                 .addFormDataPart("comments_added", "Testing")
                 .addFormDataPart("insertedTimeIst", "Testing")
                 .addFormDataPart("agentid", "Testing")
@@ -476,6 +476,8 @@ public class SummaryPage extends AppCompatActivity
         religionApplicant = sharedPreferences.getString("selected_religion","");
         selectedEmirate = sharedPreferences.getString("selected_emirate", "");
         placeIssue = sharedPreferences.getString("place_issue", "");
+        mobileNumber = sharedPreferences.getString("mobile","");
+        countryId = sharedPreferences.getString("country_id","");
 
 
 
