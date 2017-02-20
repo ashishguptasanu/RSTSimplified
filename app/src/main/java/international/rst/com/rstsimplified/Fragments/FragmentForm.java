@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -77,7 +78,7 @@ import java.util.Date;
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     private static final int FILE_SELECT_CODE = 3;
-    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus;
+    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName;
     View view;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
@@ -99,7 +100,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     SharedPreferences sharedPreferences;
     public String nationalityID;
     public static String filePath;
-    TextView tvPassportCopy;
+    TextView tvPassportCopy, name1;
     private OkHttpClient client = new OkHttpClient();
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
@@ -375,6 +376,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             view = inflater.inflate(R.layout.docs_form, container, false);
             Button button3 = (Button)view.findViewById(R.id.button_docs);
             tvPassportCopy = (TextView)view.findViewById(R.id.doc1);
+            name1 = (TextView)view.findViewById(R.id.doc1);
             button3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -382,12 +384,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     int atTab = mFormPager.getCurrentItem();
                     mFormPager.setCurrentItem(atTab + 1);*/
                     Intent intent  = new Intent(getContext(), SummaryPage.class);
-                    intent.putExtra("arrival_date",arrivalDate);
-                    intent.putExtra("departure_date",departureDate);
-                    intent.putExtra("full_name", fullNameApplicant);
-                    intent.putExtra("birth_date",birthDateApplicant);
-                    intent.putExtra("passport_number", passportNumberApplicant);
-                    intent.putExtra("gender", genderApplicant);
                     startActivity(intent);
                 }
             });
@@ -451,8 +447,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             Uri uri = data.getData();
 
             String FilePath = getPath(getContext(),uri);
-            String filename=FilePath.substring(FilePath.lastIndexOf("/")+1);
-            System.out.println(FilePath + " " + " FileName:" + filename);
+            fileName=FilePath.substring(FilePath.lastIndexOf("/")+1);
+            name1.setText(fileName);
+            System.out.println(FilePath + " " + " FileName:" + fileName);
 
         }
     }
@@ -833,136 +830,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             spnrEmirates.setSelection(emirate);
         }
     }
-    private class UploadFileAsync extends AsyncTask<String, Void, String> {
 
-        @Override
-        protected String doInBackground(String... params) {
-
-            try {
-                String sourceFileUri = "/document/Download.pdf";
-
-                HttpURLConnection conn = null;
-                DataOutputStream dos = null;
-                String lineEnd = "\r\n";
-                String twoHyphens = "--";
-                String boundary = "*****";
-                int bytesRead, bytesAvailable, bufferSize;
-                byte[] buffer;
-                int maxBufferSize = 1 * 1024 * 1024;
-                File sourceFile = new File(sourceFileUri);
-
-                if (sourceFile.isFile()) {
-
-                    try {
-                        String upLoadServerUri = "\n" +
-                                "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=upload";
-
-                        // open a URL connection to the Servlet
-                        FileInputStream fileInputStream = new FileInputStream(
-                                sourceFile);
-                        URL url = new URL(upLoadServerUri);
-
-                        // Open a HTTP connection to the URL
-                        conn = (HttpURLConnection) url.openConnection();
-                        conn.setDoInput(true); // Allow Inputs
-                        conn.setDoOutput(true); // Allow Outputs
-                        conn.setUseCaches(false); // Don't use a Cached Copy
-                        conn.setRequestMethod("POST");
-                        conn.setRequestProperty("Connection", "Keep-Alive");
-                        conn.setRequestProperty("ENCTYPE",
-                                "multipart/form-data");
-                        conn.setRequestProperty("Content-Type",
-                                "multipart/form-data;boundary=" + boundary);
-                        conn.setRequestProperty("additional_document_upload", sourceFileUri);
-
-                        dos = new DataOutputStream(conn.getOutputStream());
-
-                        dos.writeBytes(twoHyphens + boundary + lineEnd);
-                        dos.writeBytes("Content-Disposition: form-data; name=\"additional_document_upload\";filename=\""
-                                + sourceFileUri + "\"" + lineEnd);
-
-                        dos.writeBytes(lineEnd);
-
-                        // create a buffer of maximum size
-                        bytesAvailable = fileInputStream.available();
-
-                        bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                        buffer = new byte[bufferSize];
-
-                        // read file and write it into form...
-                        bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-                        System.out.println("Got the File");
-
-                        while (bytesRead > 0) {
-
-                            dos.write(buffer, 0, bufferSize);
-                            bytesAvailable = fileInputStream.available();
-                            bufferSize = Math
-                                    .min(bytesAvailable, maxBufferSize);
-                            bytesRead = fileInputStream.read(buffer, 0,
-                                    bufferSize);
-
-                        }
-
-                        // send multipart form data necesssary after file
-                        // data...
-                        System.out.println("reading successful");
-                        dos.writeBytes(lineEnd);
-                        dos.writeBytes(twoHyphens + boundary + twoHyphens
-                                + lineEnd);
-
-                        // Responses from the server (code and message)
-                        int serverResponseCode = conn.getResponseCode();
-                        String serverResponseMessage = conn
-                                .getResponseMessage();
-                        System.out.println(serverResponseCode);
-
-                        if (serverResponseCode == 200) {
-
-                            // messageText.setText(msg);
-                            System.out.println("OK");
-
-                            // recursiveDelete(mDirectory1);
-
-                        }
-
-                        // close the streams //
-                        fileInputStream.close();
-                        dos.flush();
-                        dos.close();
-
-                    } catch (Exception e) {
-
-                        // dialog.dismiss();
-                        e.printStackTrace();
-
-                    }
-                    // dialog.dismiss();
-
-                } // End else block
-
-
-            } catch (Exception ex) {
-                // dialog.dismiss();
-
-                ex.printStackTrace();
-            }
-            return "Executed";
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            System.out.println("Server Closed");
-        }
-
-        @Override
-        protected void onPreExecute() {
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-        }
-    }
 
 
 
