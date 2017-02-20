@@ -17,6 +17,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -272,38 +273,23 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 @Override
                 public void onClick(View view) {
                     if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && profession.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
-                        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                        fullNameApplicant = (nameFirst.getText().toString() + " " + nameLast.getText().toString());
-                        sharedPreferences.edit().putString("full_name", fullNameApplicant).apply();
-                        sharedPreferences.edit().putString("first_name", nameFirst.getText().toString()).apply();
-                        sharedPreferences.edit().putString("last_name", nameLast.getText().toString()).apply();
-                        birthDateApplicant = birthDate.getText().toString();
-                        sharedPreferences.edit().putString("birth_date", birthDateApplicant).apply();
-                        passportNumberApplicant = passportNumber.getText().toString();
-                        sharedPreferences.edit().putString("passport_number", passportNumberApplicant).apply();
-                        sharedPreferences.edit().putString("gender", selectedGender).apply();
-                        sharedPreferences.edit().putString("mobile", edtMobile.getText().toString()).apply();
-                        sharedPreferences.edit().putString("profession", selectedProfession).apply();
-                        sharedPreferences.edit().putString("profession_id", selectedProfessionID).apply();
-                        sharedPreferences.edit().putString("email", emailEdt.getText().toString()).apply();
-                        sharedPreferences.edit().putString("birth_place", birthPlace.getText().toString()).apply();
-                        sharedPreferences.edit().putString("father_name", nameFather.getText().toString()).apply();
-                        sharedPreferences.edit().putString("mother_name", nameMother.getText().toString()).apply();
-                        sharedPreferences.edit().putString("date_issue", dateIssue.getText().toString()).apply();
-                        sharedPreferences.edit().putString("date_expiry", dateExpiry.getText().toString()).apply();
-                        sharedPreferences.edit().putString("selected_country", selectedCountry).apply();
-                        sharedPreferences.edit().putString("selected_issue_country",selectedIssueCountry).apply();
-                        sharedPreferences.edit().putString("selected_religion",selectedReligion).apply();
-                        sharedPreferences.edit().putString("place_issue",edtIssuePlace.getText().toString()).apply();
-                        sharedPreferences.edit().putString("country_id", String.valueOf(selectedCountryID)).apply();
-
-
-                        ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
-                        int atTab = mFormPager.getCurrentItem();
-                        mFormPager.setCurrentItem(atTab + 1);
+                        if(isValidEmail(emailEdt.getText().toString())) {
+                            if(isValidMobile(edtMobile.getText().toString())){
+                                saveSharedPreferences();
+                                ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
+                                int atTab = mFormPager.getCurrentItem();
+                                mFormPager.setCurrentItem(atTab + 1);
+                            }
+                            else{
+                                showToast("Mobile Numeber is not valid");
+                            }
+                        }
+                        else {
+                            showToast("Email is not valid");
+                        }
                     }
                     else {
-                        Toast.makeText(getContext(),"Enter all fields",Toast.LENGTH_SHORT).show();
+                        showToast("Enter all Fields");
                     }
 
                     //sendFormData(nameFirst,nameLast,birthDate,birthPlace,selectedProfession,selectedProfessionID,emailEdt,nameFather,nameMother,dateIssue,dateExpiry);
@@ -354,7 +340,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         sharedPreferences.edit().putInt("selected_emirate_id",selectedEmirateId).apply();
                     }
                     else {
-                        Toast.makeText(getContext(),"Enter all fields", Toast.LENGTH_SHORT).show();
+                        showToast("Enter all Fields");
                     }
                 }
             });
@@ -397,6 +383,37 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         return view;
     }
 
+    private void showToast(String s) {
+        Toast.makeText(getContext(),s,Toast.LENGTH_SHORT).show();
+    }
+
+    private void saveSharedPreferences() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        fullNameApplicant = (nameFirst.getText().toString() + " " + nameLast.getText().toString());
+        sharedPreferences.edit().putString("full_name", fullNameApplicant).apply();
+        sharedPreferences.edit().putString("first_name", nameFirst.getText().toString()).apply();
+        sharedPreferences.edit().putString("last_name", nameLast.getText().toString()).apply();
+        birthDateApplicant = birthDate.getText().toString();
+        sharedPreferences.edit().putString("birth_date", birthDateApplicant).apply();
+        passportNumberApplicant = passportNumber.getText().toString();
+        sharedPreferences.edit().putString("passport_number", passportNumberApplicant).apply();
+        sharedPreferences.edit().putString("gender", selectedGender).apply();
+        sharedPreferences.edit().putString("mobile", edtMobile.getText().toString()).apply();
+        sharedPreferences.edit().putString("profession", selectedProfession).apply();
+        sharedPreferences.edit().putString("profession_id", selectedProfessionID).apply();
+        sharedPreferences.edit().putString("email", emailEdt.getText().toString()).apply();
+        sharedPreferences.edit().putString("birth_place", birthPlace.getText().toString()).apply();
+        sharedPreferences.edit().putString("father_name", nameFather.getText().toString()).apply();
+        sharedPreferences.edit().putString("mother_name", nameMother.getText().toString()).apply();
+        sharedPreferences.edit().putString("date_issue", dateIssue.getText().toString()).apply();
+        sharedPreferences.edit().putString("date_expiry", dateExpiry.getText().toString()).apply();
+        sharedPreferences.edit().putString("selected_country", selectedCountry).apply();
+        sharedPreferences.edit().putString("selected_issue_country", selectedIssueCountry).apply();
+        sharedPreferences.edit().putString("selected_religion", selectedReligion).apply();
+        sharedPreferences.edit().putString("place_issue", edtIssuePlace.getText().toString()).apply();
+        sharedPreferences.edit().putString("country_id", String.valueOf(selectedCountryID)).apply();
+    }
+
 
     private void disableInput(EditText editText) {
         editText.setFocusable(false);
@@ -416,7 +433,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
     }
 
-
+    public final static boolean isValidEmail(CharSequence target) {
+        return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
+    private boolean isValidMobile(String phone) {
+        return android.util.Patterns.PHONE.matcher(phone).matches();
+    }
 
     private void loadAllCountries() {
         Gson gson = new GsonBuilder()
