@@ -397,13 +397,13 @@ public class SummaryPage extends AppCompatActivity
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("uploaded_file","IMG_20170213_172107.jpg",
                         RequestBody.create(MediaType.parse("image/jpg"), file))
-                .addFormDataPart("uploaded_file","panc.jpg",
+                .addFormDataPart("uploaded_file1","panc.jpg",
                         RequestBody.create(MediaType.parse("image/jpg"), file1))
-                .addFormDataPart("uploaded_file","Snapchat-863676976.jpg",
+                .addFormDataPart("uploaded_file2","Snapchat-863676976.jpg",
                         RequestBody.create(MediaType.parse("image/jpg"), file2))
-                .addFormDataPart("uploaded_file","IMG_20170217_171954.jpg",
+                .addFormDataPart("uploaded_file3","IMG_20170217_171954.jpg",
                         RequestBody.create(MediaType.parse("image/jpg"), file3))
-                .addFormDataPart("uploaded_file","panc.jpg",
+                .addFormDataPart("uploaded_file4","panc.jpg",
                         RequestBody.create(MediaType.parse("image/jpg"), file4))
 
                 .build();
