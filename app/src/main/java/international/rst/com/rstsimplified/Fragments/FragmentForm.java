@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,9 +77,9 @@ import java.util.Date;
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     private static final int FILE_SELECT_CODE = 3;
-    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate;
+    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus;
     View view;
-    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv;
+    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion;
@@ -93,6 +94,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     int serverResponseCode = 0;
     CustomScrollView scrollView;
     final static int FILE_CODE = 3;
+    RadioButton radioButton1, radioButton2;
 
     SharedPreferences sharedPreferences;
     public String nationalityID;
@@ -212,6 +214,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
             edtMobile = (EditText)view.findViewById(R.id.edittext_mobile);
+            phoneCode = (EditText)view.findViewById(R.id.phone_code);
+            radioButton1 = (RadioButton)view.findViewById(R.id.rb_single);
+            radioButton2 = (RadioButton)view.findViewById(R.id.rb_married);
 
 
             /*if(sharedPreferences != null){
@@ -275,10 +280,22 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && profession.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
                         if(isValidEmail(emailEdt.getText().toString())) {
                             if(isValidMobile(edtMobile.getText().toString())){
-                                saveSharedPreferences();
-                                ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
-                                int atTab = mFormPager.getCurrentItem();
-                                mFormPager.setCurrentItem(atTab + 1);
+                                if(radioButton1.isChecked() || radioButton2.isChecked()){
+                                    if (radioButton1.isChecked()){
+                                        selectedMaritalStatus = "Single";
+                                    }
+                                    else{
+                                        selectedMaritalStatus = "Married";
+                                    }
+                                    saveSharedPreferences();
+                                    ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
+                                    int atTab = mFormPager.getCurrentItem();
+                                    mFormPager.setCurrentItem(atTab + 1);
+
+                                }
+                                else {
+                                    showToast("Select marital status");
+                                }
                             }
                             else{
                                 showToast("Mobile Numeber is not valid");
@@ -326,18 +343,23 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 @Override
                 public void onClick(View view) {
                     if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
-                        ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
-                        int atTab = mFormPager.getCurrentItem();
-                        mFormPager.setCurrentItem(atTab + 1);
-                        //sendConsultData();
-                        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                        sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
-                        sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
-                        sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
-                        sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
-                        sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
-                        sharedPreferences.edit().putString("selected_emirate",selectedEmirate).apply();
-                        sharedPreferences.edit().putInt("selected_emirate_id",selectedEmirateId).apply();
+                        if(isValidMobile(edtEmergencyContactNumber.getText().toString())) {
+                            ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
+                            int atTab = mFormPager.getCurrentItem();
+                            mFormPager.setCurrentItem(atTab + 1);
+                            //sendConsultData();
+                            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                            sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
+                            sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
+                            sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
+                            sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
+                            sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
+                            sharedPreferences.edit().putString("selected_emirate", selectedEmirate).apply();
+                            sharedPreferences.edit().putInt("selected_emirate_id", selectedEmirateId).apply();
+                        }
+                        else {
+                            showToast("Mobile Number is not valid");
+                        }
                     }
                     else {
                         showToast("Enter all Fields");
@@ -411,7 +433,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("selected_issue_country", selectedIssueCountry).apply();
         sharedPreferences.edit().putString("selected_religion", selectedReligion).apply();
         sharedPreferences.edit().putString("place_issue", edtIssuePlace.getText().toString()).apply();
-        sharedPreferences.edit().putString("country_id", String.valueOf(selectedCountryID)).apply();
+        sharedPreferences.edit().putString("country_id", String.valueOf(selectedPhoneCode)).apply();
+        sharedPreferences.edit().putInt("age",age).apply();
+        sharedPreferences.edit().putString("marital_status",selectedMaritalStatus);
     }
 
 
@@ -604,6 +628,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case R.id.spnr_country:
                 selectedCountryID = allcountry.get(i).getId();
                 selectedCountry = allcountry.get(i).getName();
+                selectedPhoneCode = ("+" + allcountry.get(i).getPhoneCode());
+                if(selectedCountryID == 0){
+                    phoneCode.setText("");
+                }
+                else {
+                    phoneCode.setText(selectedPhoneCode);
+                }
                 break;
             case R.id.spnr_country_issue:
                 selectedIssueCountryID = allcountry.get(i).getId();

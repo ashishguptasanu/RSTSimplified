@@ -45,8 +45,8 @@ public class SummaryPage extends AppCompatActivity
     Bundle bundle;
     Button button;
     SharedPreferences sharedPreferences;
-    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant;
-    int visaTypeId;
+    String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant, maritalStatus;
+    int visaTypeId, age;
     String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
@@ -190,9 +190,9 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("visa_id", String.valueOf(visaTypeId))
                 .addFormDataPart("start_date", arrivalDate)
                 .addFormDataPart("end_date", departureDate)
-                .addFormDataPart("pnrNo", "Testing")
+                .addFormDataPart("pnrNo", "")
                 .addFormDataPart("address1", currentAddress)
-                .addFormDataPart("address2", "Testing")
+                .addFormDataPart("address2", "")
                 .addFormDataPart("city", currentCity)
                 .addFormDataPart("country", selectedCountry)
                 .addFormDataPart("country_code", countryId)
@@ -293,7 +293,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("email", emailEdt)
                 .addFormDataPart("fathers_name", nameFather)
                 .addFormDataPart("mothers_name", nameMother)
-                .addFormDataPart("marital_status", "")
+                .addFormDataPart("marital_status", maritalStatus)
                 .addFormDataPart("passport_number", passportNumber)
                 .addFormDataPart("place_of_issue", placeIssue)
                 .addFormDataPart("country_of_issue", selectedIssueCountry)
@@ -308,7 +308,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("arrivingFrom", "")
                 .addFormDataPart("otherProfession", profession)
                 .addFormDataPart("port_arrival", "")
-                .addFormDataPart("age", "")
+                .addFormDataPart("age", String.valueOf(age))
                 .addFormDataPart("person_type", "")
                 .addFormDataPart("sponserType", "")
                 .addFormDataPart("sponserNationality", "")
@@ -478,6 +478,8 @@ public class SummaryPage extends AppCompatActivity
         placeIssue = sharedPreferences.getString("place_issue", "");
         mobileNumber = sharedPreferences.getString("mobile","");
         countryId = sharedPreferences.getString("country_id","");
+        age = sharedPreferences.getInt("age",0);
+        maritalStatus = sharedPreferences.getString("marital_status","");
 
 
 
