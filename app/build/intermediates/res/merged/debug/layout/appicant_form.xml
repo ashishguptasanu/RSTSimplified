@@ -224,10 +224,12 @@
                     android:layout_width="wrap_content"
                     android:text="Single"
                     android:layout_marginRight="15dp"
+                    android:id="@+id/rb_single"
                     android:layout_height="wrap_content" />
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:text="Married"
+                    android:id="@+id/rb_married"
                     android:layout_height="wrap_content" />
             </RadioGroup>
 

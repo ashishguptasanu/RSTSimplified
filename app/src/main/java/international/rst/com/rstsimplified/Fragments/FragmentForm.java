@@ -283,11 +283,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                                 if(radioButton1.isChecked() || radioButton2.isChecked()){
                                     if (radioButton1.isChecked()){
                                         selectedMaritalStatus = "Single";
+                                        saveSharedPreferences();
                                     }
                                     else{
                                         selectedMaritalStatus = "Married";
+                                        saveSharedPreferences();
                                     }
-                                    saveSharedPreferences();
+
                                     ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
                                     int atTab = mFormPager.getCurrentItem();
                                     mFormPager.setCurrentItem(atTab + 1);
@@ -435,7 +437,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("place_issue", edtIssuePlace.getText().toString()).apply();
         sharedPreferences.edit().putString("country_id", String.valueOf(selectedPhoneCode)).apply();
         sharedPreferences.edit().putInt("age",age).apply();
-        sharedPreferences.edit().putString("marital_status",selectedMaritalStatus);
+        sharedPreferences.edit().putString("marital_status",selectedMaritalStatus).apply();
     }
 
 
