@@ -388,11 +388,23 @@ public class SummaryPage extends AppCompatActivity
 
 
     private void uploadDocuments() {
-        File file = new File("/storage/emulated/0/Download/panc.jpg");
+        File file = new File("/storage/emulated/0/MagicPin/IMG_20170213_172107.jpg");
+        File file1 = new File("/storage/emulated/0/Download/panc.jpg");
+        File file2 = new File("/storage/emulated/0/Snapchat/Snapchat-863676976.jpg");
+        File file3 = new File("/storage/emulated/0/Snapchat/IMG_20170217_171954.jpg");
+        File file4 = new File("/storage/emulated/0/Download/panc.jpg");
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("uploaded_file","panc.jpg",
+                .addFormDataPart("uploaded_file","IMG_20170213_172107.jpg",
                         RequestBody.create(MediaType.parse("image/jpg"), file))
+                .addFormDataPart("uploaded_file","panc.jpg",
+                        RequestBody.create(MediaType.parse("image/jpg"), file1))
+                .addFormDataPart("uploaded_file","Snapchat-863676976.jpg",
+                        RequestBody.create(MediaType.parse("image/jpg"), file2))
+                .addFormDataPart("uploaded_file","IMG_20170217_171954.jpg",
+                        RequestBody.create(MediaType.parse("image/jpg"), file3))
+                .addFormDataPart("uploaded_file","panc.jpg",
+                        RequestBody.create(MediaType.parse("image/jpg"), file4))
 
                 .build();
         Request request = new Request.Builder().url(BASE_URL_UPLOAD_DOCS).post(requestBody).build();
