@@ -391,9 +391,8 @@ public class SummaryPage extends AppCompatActivity
         File file = new File("/storage/emulated/0/Download/panc.jpg");
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-
-                .addFormDataPart("document_name","document_name",
-                        RequestBody.create(MediaType.parse("jpg"), file))
+                .addFormDataPart("uploaded_file","panc.jpg",
+                        RequestBody.create(MediaType.parse("image/jpg"), file))
 
                 .build();
         Request request = new Request.Builder().url(BASE_URL_UPLOAD_DOCS).post(requestBody).build();
