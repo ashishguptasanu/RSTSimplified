@@ -445,16 +445,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         editText.setFocusable(false);
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //String path = data.getStringExtra("path");
-        //System.out.println(path);
         if (resultCode != RESULT_OK) return;
-        //String path     = "";
         if(requestCode == FILE_SELECT_CODE)
         {
             Uri uri = data.getData();
 
             String FilePath = getPath(getContext(),uri);
-            System.out.println(FilePath);
+            String filename=FilePath.substring(FilePath.lastIndexOf("/")+1);
+            System.out.println(FilePath + " " + " FileName:" + filename);
 
         }
     }
