@@ -5,33 +5,40 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="1902729782816853"
+    timestamp="1906081997300053"
     token="-315265450245951108"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="FIELD_ADDED" >
 
     <task
         name="javac"
-        duration="837" />
+        duration="822" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="104" />
+        duration="176" />
     <task
         name="verifier"
-        duration="6" />
+        duration="22" />
 
     <artifact
-        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="1902729782816853"
+        timestamp="1904196680762880"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="1906081997300053"
+        verifier="FIELD_ADDED" >
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>

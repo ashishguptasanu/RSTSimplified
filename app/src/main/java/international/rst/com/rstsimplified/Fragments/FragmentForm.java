@@ -1,6 +1,7 @@
 package international.rst.com.rstsimplified.Fragments;
 
 import android.app.DatePickerDialog;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -517,20 +518,30 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         if (resultCode != RESULT_OK) return;
         Uri uri;
         String filePath;
+        String type;
+        ContentResolver cR;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         switch (requestCode){
             case 1:
                 uri = data.getData();
                 filePath = getPath(getContext(),uri);
+                cR = getContext().getContentResolver();
+                type = cR.getType(uri);
+                sharedPreferences.edit().putString("file_type1", type).apply();
                 selectedFile1=filePath.substring(filePath.lastIndexOf("/")+1);
+                sharedPreferences.edit().putString("file_name1", selectedFile1).apply();
                 name1.setText(selectedFile1);
-                System.out.println(filePath + " " + " FileName:" + selectedFile1);
                 sharedPreferences.edit().putString("file_path1", filePath).apply();
+
                 break;
             case 2:
                 uri = data.getData();
                 filePath = getPath(getContext(),uri);
+                cR = getContext().getContentResolver();
+                type = cR.getType(uri);
+                sharedPreferences.edit().putString("file_type2", type).apply();
                 selectedFile2=filePath.substring(filePath.lastIndexOf("/")+1);
+                sharedPreferences.edit().putString("file_name2", selectedFile2).apply();
                 name2.setText(selectedFile2);
                 System.out.println(filePath + " " + " FileName:" + selectedFile2);
                 sharedPreferences.edit().putString("file_path2", filePath).apply();
@@ -538,7 +549,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case 3:
                 uri = data.getData();
                 filePath = getPath(getContext(),uri);
+                cR = getContext().getContentResolver();
+                type = cR.getType(uri);
+                sharedPreferences.edit().putString("file_type3", type).apply();
                 selectedFile3=filePath.substring(filePath.lastIndexOf("/")+1);
+                sharedPreferences.edit().putString("file_name3", selectedFile3).apply();
                 name3.setText(selectedFile3);
                 System.out.println(filePath + " " + " FileName:" + selectedFile3);
                 sharedPreferences.edit().putString("file_path3", filePath).apply();
@@ -546,7 +561,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case 4:
                 uri = data.getData();
                 filePath = getPath(getContext(),uri);
+                cR = getContext().getContentResolver();
+                type = cR.getType(uri);
+                sharedPreferences.edit().putString("file_type4", type).apply();
                 selectedFile4=filePath.substring(filePath.lastIndexOf("/")+1);
+                sharedPreferences.edit().putString("file_name4", selectedFile4).apply();
                 name4.setText(selectedFile4);
                 System.out.println(filePath + " " + " FileName:" + selectedFile5);
                 sharedPreferences.edit().putString("file_path4", filePath).apply();
@@ -554,7 +573,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case 5:
                 uri = data.getData();
                 filePath = getPath(getContext(),uri);
+                cR = getContext().getContentResolver();
+                type = cR.getType(uri);
+                sharedPreferences.edit().putString("file_type5", type).apply();
                 selectedFile5=filePath.substring(filePath.lastIndexOf("/")+1);
+                sharedPreferences.edit().putString("file_name5", selectedFile5).apply();
                 name5.setText(selectedFile5);
                 System.out.println(filePath + " " + " FileName:" + selectedFile5);
                 sharedPreferences.edit().putString("file_path5", filePath).apply();
@@ -562,8 +585,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case 6:
                 uri = data.getData();
                 filePath = getPath(getContext(),uri);
-                String type =
+                cR = getContext().getContentResolver();
+                type = cR.getType(uri);
+                sharedPreferences.edit().putString("file_type6", type).apply();
                 selectedFile6=filePath.substring(filePath.lastIndexOf("/")+1);
+                sharedPreferences.edit().putString("file_name6", selectedFile6).apply();
                 name6.setText(selectedFile6);
                 System.out.println(filePath + " " + " FileName:" + selectedFile6);
                 sharedPreferences.edit().putString("file_path6", filePath).apply();

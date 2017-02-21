@@ -2,10 +2,12 @@ package international.rst.com.rstsimplified.Activities;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -22,6 +24,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -50,6 +53,7 @@ public class SummaryPage extends AppCompatActivity
     String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
+    String fileName1, fileName2, fileName3, fileName4, fileName5, fileName6, fileType1, fileType2, fileType3, fileType4, fileType5, fileType6;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     private OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
@@ -84,7 +88,7 @@ public class SummaryPage extends AppCompatActivity
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_EXTERNAL_STORAGE);
         } else {
-            uploadDocuments();
+            //uploadDocuments();
 
 
 
@@ -118,7 +122,7 @@ public class SummaryPage extends AppCompatActivity
         switch (requestCode) {
             case REQUEST_EXTERNAL_STORAGE:
                 if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    uploadDocuments();
+                    //uploadDocuments();
 
                 }
                 break;
@@ -332,6 +336,7 @@ public class SummaryPage extends AppCompatActivity
                     String response2 = response.body().string();
 //                    Log.v(TAG_REGISTER, resp);
                     System.out.println(response2);
+                    uploadDocuments();
                     if (response.isSuccessful()) {
                         //sharedPreferences.edit().putString("Device ID", deviceID).apply();
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
@@ -388,22 +393,28 @@ public class SummaryPage extends AppCompatActivity
 
 
     private void uploadDocuments() {
-        File file = new File("/storage/emulated/0/MagicPin/IMG_20170213_172107.jpg");
-        File file1 = new File("/storage/emulated/0/Download/panc.jpg");
-        File file2 = new File("/storage/emulated/0/Snapchat/Snapchat-863676976.jpg");
-        File file3 = new File("/storage/emulated/0/Snapchat/IMG_20170217_171954.jpg");
-        File file4 = new File("/storage/emulated/0/Download/panc.jpg");
+        File file = new File(selectedFile1);
+        File file1 = new File(selectedFile2);
+        File file2 = new File(selectedFile3);
+        File file3 = new File(selectedFile4);
+        File file4 = new File(selectedFile5);
+        File file5 = new File(selectedFile6);
+
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("uploaded_file","IMG_20170213_172107.jpg",
-                        RequestBody.create(MediaType.parse("image/jpg"), file))
-                .addFormDataPart("uploaded_file1","panc.jpg",
-                        RequestBody.create(MediaType.parse("image/jpg"), file1))
-                .addFormDataPart("uploaded_file2","Snapchat-863676976.jpg",
-                        RequestBody.create(MediaType.parse("image/jpg"), file2))
-                .addFormDataPart("uploaded_file3","IMG_20170217_171954.jpg",
-                        RequestBody.create(MediaType.parse("image/jpg"), file3))
-
+                .addFormDataPart("uploaded_file",fileName1,
+                        RequestBody.create(MediaType.parse(fileType1), file))
+                .addFormDataPart("uploaded_file1",fileName2,
+                        RequestBody.create(MediaType.parse(fileType2), file1))
+                .addFormDataPart("uploaded_file2",fileName3,
+                        RequestBody.create(MediaType.parse(fileType3), file2))
+                .addFormDataPart("uploaded_file3",fileName4,
+                        RequestBody.create(MediaType.parse(fileType4), file3))
+                .addFormDataPart("uploaded_file4",fileName5,
+                        RequestBody.create(MediaType.parse(fileType5), file4))
+                .addFormDataPart("uploaded_file5",fileName6,
+                        RequestBody.create(MediaType.parse(fileType6), file5))
+                .addFormDataPart("id", "10154212")
                 .build();
         Request request = new Request.Builder().url(BASE_URL_UPLOAD_DOCS).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
@@ -495,6 +506,18 @@ public class SummaryPage extends AppCompatActivity
         selectedFile4 = sharedPreferences.getString("file_path4","");
         selectedFile5 = sharedPreferences.getString("file_path5","");
         selectedFile6 = sharedPreferences.getString("file_path6","");
+        fileName1 = sharedPreferences.getString("file_name1","");
+        fileName2 = sharedPreferences.getString("file_name2","");
+        fileName3 = sharedPreferences.getString("file_name3","");
+        fileName4 = sharedPreferences.getString("file_name4","");
+        fileName5 = sharedPreferences.getString("file_name5","");
+        fileName6 = sharedPreferences.getString("file_name6","");
+        fileType1 = sharedPreferences.getString("file_type1","");
+        fileType2 = sharedPreferences.getString("file_type2","");
+        fileType3 = sharedPreferences.getString("file_type3","");
+        fileType4 = sharedPreferences.getString("file_type4","");
+        fileType5 = sharedPreferences.getString("file_type5","");
+        fileType6 = sharedPreferences.getString("file_type6","");
         if(sharedPreferences != null){
             sendConsultData();
         }
