@@ -60,7 +60,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.NavDrawBaseActivity"
-            android:label="@string/title_activity_nav_draw_base"></activity>
+            android:label="@string/title_activity_nav_draw_base"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

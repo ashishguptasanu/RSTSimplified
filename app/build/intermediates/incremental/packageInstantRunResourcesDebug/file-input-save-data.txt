@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Feb 21 16:01:07 IST 2017
+#Tue Feb 21 17:58:59 IST 2017
 20.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 493.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_

@@ -64,7 +64,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="international.rst.com.rstsimplified.Activities.NavDrawBaseActivity"
-            android:label="@string/title_activity_nav_draw_base" />
+            android:label="@string/title_activity_nav_draw_base"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

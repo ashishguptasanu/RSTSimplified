@@ -43,6 +43,8 @@ public class FormActivity extends NavDrawBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
+
+
         Bundle bundle =  getIntent().getExtras();
         if ( bundle!= null && bundle.containsKey("living_id")){
             livingID = bundle.getString("living_id");
