@@ -336,7 +336,7 @@ public class SummaryPage extends AppCompatActivity
                     String response2 = response.body().string();
 //                    Log.v(TAG_REGISTER, resp);
                     System.out.println(response2);
-                    uploadDocuments();
+                    uploadDocuments(response2);
                     if (response.isSuccessful()) {
                         //sharedPreferences.edit().putString("Device ID", deviceID).apply();
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
@@ -392,7 +392,7 @@ public class SummaryPage extends AppCompatActivity
     }
 
 
-    private void uploadDocuments() {
+    private void uploadDocuments(String response2) {
         File file = new File(selectedFile1);
         File file1 = new File(selectedFile2);
         File file2 = new File(selectedFile3);
@@ -414,7 +414,7 @@ public class SummaryPage extends AppCompatActivity
                         RequestBody.create(MediaType.parse(fileType5), file4))
                 .addFormDataPart("uploaded_file5",fileName6,
                         RequestBody.create(MediaType.parse(fileType6), file5))
-                .addFormDataPart("id", "10154212")
+                .addFormDataPart("id", response2)
                 .build();
         Request request = new Request.Builder().url(BASE_URL_UPLOAD_DOCS).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
@@ -448,15 +448,6 @@ public class SummaryPage extends AppCompatActivity
         });
     }
     private void getSharedPreferencesData() {
-        /*bundle =  getIntent().getExtras();
-        if ( bundle!= null && bundle.containsKey("arrival_date") && bundle.containsKey("departure_date")){
-            arrivalDate = bundle.getString("arrival_date");
-            departureDate = bundle.getString("departure_date");
-            fullName = bundle.getString("full_name");
-            birthDate =bundle.getString("birth_date");
-            passportNumber = bundle.getString("passport_number");
-            gender = bundle.getString("gender");
-        }*/
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         serviceType = sharedPreferences.getString("service_type", "");
         livingId = sharedPreferences.getString("living_id", "");

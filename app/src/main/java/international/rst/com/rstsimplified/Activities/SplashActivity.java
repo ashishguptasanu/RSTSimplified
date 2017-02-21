@@ -35,9 +35,9 @@ public class SplashActivity extends AppCompatActivity {
     private static final String BASE_URL = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=new_registration";
     //private static final String BASE_URL = "https://www.google.com/url?q=https%3A%2F%2Fuaevisasonline.com%3A2083%2Fcpsess9380849380%2F3rdparty%2FphpMyAdmin%2Fsql.php%3Fserver%3D1%26db%3Dchandrac_db%26table%3Duv_visa_applicants%26pos%3D0%26token%3Dcaaf8db0a55e4aa7a631ad3a84358922%23PMAURL-0%3Asql.php%3Fdb%3Dchandrac_db%26table%3Duv_visa_applicants%26server%3D1%26target%3D%26token%3Dcaaf8db0a55e4aa7a631ad3a84358922&sa=D&sntz=1&usg=AFQjCNGeGoS92KxwhJRs0kyfgebC8xUPYw";
     private OkHttpClient client = new OkHttpClient();
-    TelephonyManager mngr;
+
     SharedPreferences sharedPreferences;
-    final int REQUEST_READ_PHONE_STATE = 0;
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -49,7 +49,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         View yourView = findViewById(R.id.your_view);
         sharedPreferences = SplashActivity.this.getPreferences(Context.MODE_PRIVATE);
-        sendData();
+        //sendData();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (yourView != null) {
                 yourView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
@@ -122,34 +122,10 @@ public class SplashActivity extends AppCompatActivity {
     private void getDeviceID() {
         androidID = Settings.Secure.getString(this.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
-        mngr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
 
-        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},REQUEST_READ_PHONE_STATE);
-        } else {
-            deviceID = mngr.getDeviceId();
-            Log.d("Device ID", deviceID);
-
-
-        }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_READ_PHONE_STATE:
-                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    String deviceID = mngr.getDeviceId();
 
-                }
-                break;
-
-            default:
-                break;
-        }
-    }
 
 
 }

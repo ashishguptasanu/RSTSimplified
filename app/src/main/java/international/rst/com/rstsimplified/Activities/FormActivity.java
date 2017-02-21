@@ -21,7 +21,7 @@ import international.rst.com.rstsimplified.Custom.OnSwipeTouchListener;
 import international.rst.com.rstsimplified.Fragments.FragmentForm;
 import international.rst.com.rstsimplified.R;
 
-public class FormActivity extends AppCompatActivity {
+public class FormActivity extends NavDrawBaseActivity {
 
     EditText edtDate1,edtDate2, edtIssue, edtExpiry;
     AlertDialog.Builder dialogBuilder;

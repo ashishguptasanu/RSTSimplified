@@ -29,6 +29,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/doc1"
+                android:layout_marginTop="10dp"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textSize="15dp"
                 android:text="Coloured Passport Scanned Copy"
@@ -72,7 +73,7 @@
                 android:text="Proof of Residence"
                 android:id="@+id/doc2"
                 android:textSize="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
             <ImageView
                 android:layout_width="0dp"
@@ -112,7 +113,7 @@
                 android:textSize="15dp"
                 android:id="@+id/doc3"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:text="Return Ticket Copy"
                 android:layout_weight="1"/>
             <ImageView
@@ -153,7 +154,7 @@
                 android:id="@+id/doc4"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Hotel Reservation Copy"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
             <ImageView
                 android:layout_width="0dp"
@@ -193,7 +194,7 @@
                 android:id="@+id/doc5"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Employee ID Copy"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
             <ImageView
                 android:layout_width="0dp"
@@ -234,7 +235,7 @@
                 android:id="@+id/doc6"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Miscellaneous Documents"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
             <ImageView
                 android:layout_width="0dp"
@@ -248,6 +249,11 @@
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/upload_form_note"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="35dp"

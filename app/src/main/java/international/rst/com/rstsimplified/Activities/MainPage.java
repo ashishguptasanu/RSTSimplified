@@ -56,6 +56,8 @@ public class MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private static final String REGISTER_URL ="http://uaevisasonline.com/api/new-device.php" ;
     private static ViewPager imageviewPager;
+    final int REQUEST_READ_PHONE_STATE = 0;
+    TelephonyManager mngr;
 
     Bundle b;
     String data;
@@ -77,6 +79,16 @@ public class MainPage extends AppCompatActivity
         setSupportActionBar(toolbar);
         imageviewPager = (ViewPager)findViewById(R.id.viewpager1);
         init();
+        mngr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
+
+        if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},REQUEST_READ_PHONE_STATE);
+        } else {
+
+
+        }
 
 
         if(isOnline() == true){
@@ -110,7 +122,20 @@ public class MainPage extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_READ_PHONE_STATE:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    String deviceID = mngr.getDeviceId();
 
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
     private boolean isOnline()
     {
         try

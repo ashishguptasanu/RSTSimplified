@@ -20,7 +20,7 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#e8e8e8">
+                android:background="@color/viewColour">
                 <View
                     android:layout_height="2dp"
                     android:layout_width="match_parent"
@@ -45,18 +45,21 @@
             <View
                 android:layout_height="2dp"
                 android:layout_width="match_parent"
-                android:background="#cacaca"
+                android:background="@color/viewColour"
                 android:layout_marginTop="5dp"/>
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Type of Visa"
                     android:textColor="@color/colorPrimary"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:id="@+id/textView4" />
+
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -76,7 +79,7 @@
             <View
                 android:layout_height="2dp"
                 android:layout_width="match_parent"
-                android:background="#cacaca"
+                android:background="@color/viewColour"
                 android:layout_marginTop="5dp"/>
 
             <TableRow
@@ -105,7 +108,7 @@
             <View
                 android:layout_height="2dp"
                 android:layout_width="match_parent"
-                android:background="#cacaca"
+                android:background="@color/viewColour"
                 android:layout_marginTop="5dp"/>
             <TableRow
                 android:layout_width="match_parent"
@@ -134,7 +137,7 @@
             <View
                 android:layout_height="2dp"
                 android:layout_width="match_parent"
-                android:background="#cacaca"
+                android:background="@color/viewColour"
                 android:layout_marginTop="5dp"/>
             <TableRow
                 android:layout_width="match_parent"
@@ -144,14 +147,14 @@
                     android:layout_width="wrap_content"
                     android:text="Process Time"
                     android:textColor="@color/colorPrimary"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1.5"/>
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Type of Visa"
                     android:id="@+id/processing_time1"
                     android:textAlignment="center"
-                    android:layout_weight="1"/>
+                    android:layout_weight=".7"/>
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -163,7 +166,7 @@
             <View
                 android:layout_height="2dp"
                 android:layout_width="match_parent"
-                android:background="#cacaca"
+                android:background="@color/viewColour"
                 android:layout_marginTop="5dp"/>
             <TableRow
                 android:layout_width="match_parent"
@@ -192,7 +195,7 @@
             <View
                 android:layout_height="2dp"
                 android:layout_width="match_parent"
-                android:background="#cacaca"
+                android:background="@color/viewColour"
                 android:layout_marginTop="5dp"/>
             <TableRow
                 android:layout_width="match_parent"
@@ -262,7 +265,7 @@
                 android:layout_height="22dp"
                 android:layout_marginLeft="15dp"
                 android:text="Get Started"
-                android:textColor="#fff"
+                android:textColor="@color/buttonTextColour"
                 android:textSize="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
@@ -273,7 +276,7 @@
                 android:layout_height="22dp"
                 android:layout_marginLeft="15dp"
                 android:text="Get Started"
-                android:textColor="#fff"
+                android:textColor="@color/buttonTextColour"
                 android:textSize="10dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
