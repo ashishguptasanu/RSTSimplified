@@ -77,9 +77,9 @@ import java.util.Date;
 
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
-    private static final int FILE_SELECT_CODE = 3;
-    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName;
+    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6;
     View view;
+    ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
@@ -94,13 +94,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<Integer> professionNumber = new ArrayList<>();
     int serverResponseCode = 0;
     CustomScrollView scrollView;
-    final static int FILE_CODE = 3;
     RadioButton radioButton1, radioButton2;
 
     SharedPreferences sharedPreferences;
     public String nationalityID;
     public static String filePath;
-    TextView tvPassportCopy, name1;
+    TextView  name1, name2, name3, name4, name5, name6;
     private OkHttpClient client = new OkHttpClient();
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
@@ -375,8 +374,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         else if(title.equalsIgnoreCase("docs")){
             view = inflater.inflate(R.layout.docs_form, container, false);
             Button button3 = (Button)view.findViewById(R.id.button_docs);
-            tvPassportCopy = (TextView)view.findViewById(R.id.doc1);
             name1 = (TextView)view.findViewById(R.id.doc1);
+            name2 = (TextView)view.findViewById(R.id.doc2);
+            name3 = (TextView)view.findViewById(R.id.doc3);
+            name4 = (TextView)view.findViewById(R.id.doc4);
+            name5 = (TextView)view.findViewById(R.id.doc5);
+            name6 = (TextView)view.findViewById(R.id.doc6);
             button3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -387,15 +390,18 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     startActivity(intent);
                 }
             });
-            ImageView imgV = (ImageView)view.findViewById(R.id.attach_file);
-            imgV.setOnClickListener(new View.OnClickListener() {
-                public static final int FLAG_GRANT_URI_WRITE_PERMISSION = 1 ;
-
-                @Override
-                public void onClick(View view) {
-                    showFileChooser();
-                }
-            });
+            attachFile1 = (ImageView)view.findViewById(R.id.attach_file1);
+            attachFile2 = (ImageView)view.findViewById(R.id.attach_file2);
+            attachFile3 = (ImageView)view.findViewById(R.id.attach_file3);
+            attachFile4 = (ImageView)view.findViewById(R.id.attach_file4);
+            attachFile5 = (ImageView)view.findViewById(R.id.attach_file5);
+            attachFile6 = (ImageView)view.findViewById(R.id.attach_file6);
+            attachFile1.setOnClickListener(this);
+            attachFile2.setOnClickListener(this);
+            attachFile3.setOnClickListener(this);
+            attachFile4.setOnClickListener(this);
+            attachFile5.setOnClickListener(this);
+            attachFile6.setOnClickListener(this);
 
         }
 
@@ -440,19 +446,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void disableInput(EditText editText) {
         editText.setFocusable(false);
     }
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_OK) return;
-        if(requestCode == FILE_SELECT_CODE)
-        {
-            Uri uri = data.getData();
 
-            String FilePath = getPath(getContext(),uri);
-            fileName=FilePath.substring(FilePath.lastIndexOf("/")+1);
-            name1.setText(fileName);
-            System.out.println(FilePath + " " + " FileName:" + fileName);
-
-        }
-    }
 
     public final static boolean isValidEmail(CharSequence target) {
         return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
@@ -502,21 +496,72 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         populateGenderSpinner();
         populateReligionSpinner();
     }
-    private void showFileChooser() {
+    private void showFileChooser(int one) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.putExtra("path",Environment.getExternalStorageDirectory().getPath());
         intent.setType("*/*");
+        intent.putExtra("count", one);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
 
         try {
             startActivityForResult(
                     Intent.createChooser(intent, "Select a File to Upload"),
-                    FILE_SELECT_CODE);
+                    one);
         } catch (android.content.ActivityNotFoundException ex) {
             // Potentially direct the user to the Market with a Dialog
             Toast.makeText(getContext(), "Please install a File Manager.",
                     Toast.LENGTH_SHORT).show();
         }
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != RESULT_OK) return;
+        Uri uri;
+        String filePath;
+        switch (requestCode){
+            case 1:
+                uri = data.getData();
+                filePath = getPath(getContext(),uri);
+                selectedFile1=filePath.substring(filePath.lastIndexOf("/")+1);
+                name1.setText(selectedFile1);
+                System.out.println(filePath + " " + " FileName:" + selectedFile1);
+                break;
+            case 2:
+                uri = data.getData();
+                filePath = getPath(getContext(),uri);
+                selectedFile2=filePath.substring(filePath.lastIndexOf("/")+1);
+                name2.setText(selectedFile2);
+                System.out.println(filePath + " " + " FileName:" + selectedFile2);
+                break;
+            case 3:
+                uri = data.getData();
+                filePath = getPath(getContext(),uri);
+                selectedFile3=filePath.substring(filePath.lastIndexOf("/")+1);
+                name3.setText(selectedFile3);
+                System.out.println(filePath + " " + " FileName:" + selectedFile3);
+                break;
+            case 4:
+                uri = data.getData();
+                filePath = getPath(getContext(),uri);
+                selectedFile4=filePath.substring(filePath.lastIndexOf("/")+1);
+                name4.setText(selectedFile4);
+                System.out.println(filePath + " " + " FileName:" + selectedFile5);
+                break;
+            case 5:
+                uri = data.getData();
+                filePath = getPath(getContext(),uri);
+                selectedFile5=filePath.substring(filePath.lastIndexOf("/")+1);
+                name5.setText(selectedFile5);
+                System.out.println(filePath + " " + " FileName:" + selectedFile5);
+                break;
+            case 6:
+                uri = data.getData();
+                filePath = getPath(getContext(),uri);
+                selectedFile6=filePath.substring(filePath.lastIndexOf("/")+1);
+                name6.setText(selectedFile6);
+                System.out.println(filePath + " " + " FileName:" + selectedFile6);
+                break;
+        }
+        
     }
     public static String getPath(final Context context, final Uri uri) {
 
@@ -739,6 +784,24 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 break;
             case R.id.edt_valid_till:
                 datePicker(dateExpiry);
+                break;
+            case R.id.attach_file1:
+                showFileChooser(1);
+                break;
+            case R.id.attach_file2:
+                showFileChooser(2);
+                break;
+            case R.id.attach_file3:
+                showFileChooser(3);
+                break;
+            case R.id.attach_file4:
+                showFileChooser(4);
+                break;
+            case R.id.attach_file5:
+                showFileChooser(5);
+                break;
+            case R.id.attach_file6:
+                showFileChooser(6);
                 break;
         }
 

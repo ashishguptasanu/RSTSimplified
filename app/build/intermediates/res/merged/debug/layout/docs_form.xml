@@ -36,7 +36,7 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:id="@+id/attach_file"
+                android:id="@+id/attach_file1"
                 android:src="@drawable/link"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
@@ -70,6 +70,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Proof of Residence"
+                android:id="@+id/doc2"
                 android:textSize="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"/>
@@ -77,6 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:src="@drawable/link"
+                android:id="@+id/attach_file2"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
@@ -108,6 +110,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
+                android:id="@+id/doc3"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:layout_marginTop="5dp"
                 android:text="Return Ticket Copy"
@@ -116,6 +119,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:src="@drawable/link"
+                android:id="@+id/attach_file3"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
@@ -146,6 +150,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
+                android:id="@+id/doc4"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Hotel Reservation Copy"
                 android:layout_marginTop="5dp"
@@ -154,6 +159,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:src="@drawable/link"
+                android:id="@+id/attach_file4"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
@@ -184,6 +190,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
+                android:id="@+id/doc5"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Employee ID Copy"
                 android:layout_marginTop="5dp"
@@ -193,6 +200,7 @@
                 android:layout_height="30dp"
                 android:src="@drawable/link"
                 android:layout_gravity="left"
+                android:id="@+id/attach_file5"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
 
@@ -223,6 +231,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
+                android:id="@+id/doc6"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:text="Miscellaneous Documents"
                 android:layout_marginTop="5dp"
@@ -231,6 +240,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:src="@drawable/link"
+                android:id="@+id/attach_file6"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
