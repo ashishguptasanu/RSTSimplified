@@ -47,7 +47,7 @@ public class SummaryPage extends AppCompatActivity
     SharedPreferences sharedPreferences;
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant, maritalStatus;
     int visaTypeId, age;
-    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId;
+    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
@@ -403,8 +403,6 @@ public class SummaryPage extends AppCompatActivity
                         RequestBody.create(MediaType.parse("image/jpg"), file2))
                 .addFormDataPart("uploaded_file3","IMG_20170217_171954.jpg",
                         RequestBody.create(MediaType.parse("image/jpg"), file3))
-                .addFormDataPart("uploaded_file4","panc.jpg",
-                        RequestBody.create(MediaType.parse("image/jpg"), file4))
 
                 .build();
         Request request = new Request.Builder().url(BASE_URL_UPLOAD_DOCS).post(requestBody).build();
@@ -491,11 +489,12 @@ public class SummaryPage extends AppCompatActivity
         countryId = sharedPreferences.getString("country_id","");
         age = sharedPreferences.getInt("age",0);
         maritalStatus = sharedPreferences.getString("marital_status","");
-
-
-
-
-
+        selectedFile1 = sharedPreferences.getString("file_path1","");
+        selectedFile2 = sharedPreferences.getString("file_path2","");
+        selectedFile3 = sharedPreferences.getString("file_path3","");
+        selectedFile4 = sharedPreferences.getString("file_path4","");
+        selectedFile5 = sharedPreferences.getString("file_path5","");
+        selectedFile6 = sharedPreferences.getString("file_path6","");
         if(sharedPreferences != null){
             sendConsultData();
         }
