@@ -87,7 +87,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     View view;
     String livingInId, nationalityId, selectedGCC, selectedPort;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
-    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress;
+    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion, gccList;
@@ -232,6 +232,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             latestDate = (EditText)view.findViewById(R.id.late_issue_date);
             edtSponsorName = (EditText)view.findViewById(R.id.sponsor_name);
             edtSponsorAddress = (EditText)view.findViewById(R.id.sponsor_address);
+            edtSponsorCotact = (EditText)view.findViewById(R.id.sponsor_contact);
 
 
             disableInput(latestDate);
@@ -486,10 +487,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("country_id", String.valueOf(selectedPhoneCode)).apply();
         sharedPreferences.edit().putInt("age",age).apply();
         sharedPreferences.edit().putString("marital_status",selectedMaritalStatus).apply();
-        sharedPreferences.edit().putString("sponsor_name",selectedMaritalStatus).apply();
-        sharedPreferences.edit().putString("sponsor_address",selectedMaritalStatus).apply();
+        sharedPreferences.edit().putString("sponsor_name",edtSponsorName.getText().toString()).apply();
+        sharedPreferences.edit().putString("sponsor_address",edtSponsorAddress.getText().toString()).apply();
         sharedPreferences.edit().putString("sponsor_type",selectedGCC).apply();
         sharedPreferences.edit().putString("port",selectedPort).apply();
+        sharedPreferences.edit().putString("sponsor_contact",edtSponsorCotact.getText().toString());
 
     }
 

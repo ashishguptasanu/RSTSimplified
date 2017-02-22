@@ -53,7 +53,7 @@ public class SummaryPage extends AppCompatActivity
     String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6, selectedPort;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
-    String fileName1, fileName2, fileName3, fileName4, fileName5, fileName6, fileType1, fileType2, fileType3, fileType4, fileType5, fileType6, sponsorName, sponsorAddress, selectedGcc;
+    String fileName1, fileName2, fileName3, fileName4, fileName5, fileName6, fileType1, fileType2, fileType3, fileType4, fileType5, fileType6, sponsorName, sponsorAddress, selectedGcc, sponsorContact;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     private OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
@@ -318,7 +318,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("sponserNationality", "")
                 .addFormDataPart("sponserAdd", sponsorAddress)
                 .addFormDataPart("sponserRelation", "")
-                .addFormDataPart("sponserCompanyContact", "")
+                .addFormDataPart("sponserCompanyContact", sponsorContact)
                 .build();
         Request request = new Request.Builder().url(BASE_URL_APLLICANT_FORM).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
@@ -513,6 +513,7 @@ public class SummaryPage extends AppCompatActivity
         sponsorAddress  = sharedPreferences.getString("sponsor_address","");
         selectedGcc = sharedPreferences.getString("sponsor_type", "");
         selectedPort = sharedPreferences.getString("port","");
+        sponsorContact = sharedPreferences.getString("sponsor_contact","");
         if(sharedPreferences != null){
             sendConsultData();
         }
