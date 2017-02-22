@@ -80,7 +80,7 @@ import java.util.Date;
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6;
     View view;
-    ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6;
+    ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
@@ -381,6 +381,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             name4 = (TextView)view.findViewById(R.id.doc4);
             name5 = (TextView)view.findViewById(R.id.doc5);
             name6 = (TextView)view.findViewById(R.id.doc6);
+            checked1 = (ImageView)view.findViewById(R.id.attach_file_checked1);
+            checked2 = (ImageView)view.findViewById(R.id.attach_file_checked2);
+            checked3 = (ImageView)view.findViewById(R.id.attach_file_checked3);
+            checked4 = (ImageView)view.findViewById(R.id.attach_file_checked4);
+            checked5 = (ImageView)view.findViewById(R.id.attach_file_checked5);
+            checked6 = (ImageView)view.findViewById(R.id.attach_file_checked6);
+
             button3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -531,6 +538,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile1=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name1", selectedFile1).apply();
                 name1.setText(selectedFile1);
+                checked1.setImageResource(R.mipmap.checked_green);
                 sharedPreferences.edit().putString("file_path1", filePath).apply();
 
                 break;
@@ -543,6 +551,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile2=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name2", selectedFile2).apply();
                 name2.setText(selectedFile2);
+                checked2.setImageResource(R.mipmap.checked_green);
                 sharedPreferences.edit().putString("file_path2", filePath).apply();
                 break;
             case 3:
@@ -554,6 +563,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile3=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name3", selectedFile3).apply();
                 name3.setText(selectedFile3);
+                checked3.setImageResource(R.mipmap.checked_green);
                 sharedPreferences.edit().putString("file_path3", filePath).apply();
                 break;
             case 4:
@@ -565,6 +575,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile4=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name4", selectedFile4).apply();
                 name4.setText(selectedFile4);
+                checked4.setImageResource(R.mipmap.checked_green);
                 sharedPreferences.edit().putString("file_path4", filePath).apply();
                 break;
             case 5:
@@ -576,6 +587,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile5=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name5", selectedFile5).apply();
                 name5.setText(selectedFile5);
+                checked5.setImageResource(R.mipmap.checked_green);
                 sharedPreferences.edit().putString("file_path5", filePath).apply();
                 break;
             case 6:
@@ -587,6 +599,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile6=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name6", selectedFile6).apply();
                 name6.setText(selectedFile6);
+                checked6.setImageResource(R.mipmap.checked_green);
                 sharedPreferences.edit().putString("file_path6", filePath).apply();
                 break;
         }

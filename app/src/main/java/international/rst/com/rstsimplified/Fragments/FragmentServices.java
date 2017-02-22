@@ -272,10 +272,12 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         switch (view.getId()){
             case R.id.services_submission:
                 if(selectedLivingIn != 0 && selectedNationality != 0){
-
                     Intent intent = new Intent(getContext(),VisaTypeSelection.class);
                     intent.putExtra("livingid", selectedLivingIn);
                     intent.putExtra("nationid",selectedNationality);
+
+
+
                     if(selectedVisaId==0){
                         urlVisaType = ("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+selectedNationality+"&livingIn="+selectedLivingIn);
                         intent.putExtra("visa_type_url", urlVisaType);

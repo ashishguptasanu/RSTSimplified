@@ -78,8 +78,7 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="15dp"
-                        android:layout_weight=".2"
-                        android:src="@mipmap/regular_visa"/>
+                        android:layout_weight=".2" />
                     <View
                         android:layout_width="0dp"
                         android:layout_height="20dp"
@@ -103,8 +102,7 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="15dp"
-                        android:layout_weight=".2"
-                        android:src="@mipmap/gold_visa"/>
+                        android:layout_weight=".2" />
                     <View
                         android:layout_width="0dp"
                         android:layout_height="20dp"
@@ -129,8 +127,7 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="15dp"
-                        android:layout_weight=".2"
-                        android:src="@mipmap/express_visa"/>
+                        android:layout_weight=".2" />
                     <View
                         android:layout_width="0dp"
                         android:layout_height="20dp"

@@ -37,11 +37,19 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:id="@+id/attach_file1"
-                android:src="@drawable/link"
+                android:id="@+id/attach_file_checked1"
+                android:src="@mipmap/checked_gray"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
+            <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:id="@+id/attach_file1"
+            android:src="@drawable/link"
+            android:layout_gravity="left"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.10"/>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -78,11 +86,20 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
+                android:id="@+id/attach_file_checked2"
+                android:src="@mipmap/checked_gray"
+                android:layout_gravity="left"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
                 android:src="@drawable/link"
                 android:id="@+id/attach_file2"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
+
 
 
         </LinearLayout>
@@ -116,6 +133,14 @@
                 android:layout_marginTop="10dp"
                 android:text="Return Ticket Copy"
                 android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/attach_file_checked3"
+                android:src="@mipmap/checked_gray"
+                android:layout_gravity="left"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
@@ -159,6 +184,14 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
+                android:id="@+id/attach_file_checked4"
+                android:src="@mipmap/checked_gray"
+                android:layout_gravity="left"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
                 android:src="@drawable/link"
                 android:id="@+id/attach_file4"
                 android:layout_gravity="left"
@@ -196,6 +229,14 @@
                 android:text="Employee ID Copy"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/attach_file_checked5"
+                android:src="@mipmap/checked_gray"
+                android:layout_gravity="left"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
@@ -237,6 +278,14 @@
                 android:text="Miscellaneous Documents"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:id="@+id/attach_file_checked6"
+                android:src="@mipmap/checked_gray"
+                android:layout_gravity="left"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.10"/>
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
