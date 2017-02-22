@@ -31,6 +31,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -75,11 +76,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
 import java.util.Date;
+import java.util.Objects;
 
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6;
     View view;
+    String livingInId, nationalityId;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
@@ -96,6 +99,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     int serverResponseCode = 0;
     CustomScrollView scrollView;
     RadioButton radioButton1, radioButton2;
+    LinearLayout sponsorLayout;
 
     SharedPreferences sharedPreferences;
     public String nationalityID;
@@ -218,6 +222,18 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             phoneCode = (EditText)view.findViewById(R.id.phone_code);
             radioButton1 = (RadioButton)view.findViewById(R.id.rb_single);
             radioButton2 = (RadioButton)view.findViewById(R.id.rb_married);
+            sponsorLayout  = (LinearLayout)view.findViewById(R.id.layout_sponsor);
+            if(sharedPreferences!=null) {
+                livingInId = sharedPreferences.getString("living_id", "");
+                nationalityID = sharedPreferences.getString("nationality_id", "");
+                if(Objects.equals(livingInId, "17") || Objects.equals(livingInId, "114") || Objects.equals(livingInId, "187") || Objects.equals(livingInId, "174") || Objects.equals(livingInId, "161")){
+                    sponsorLayout.setVisibility(View.VISIBLE);
+                }
+                else {
+                    sponsorLayout.setVisibility(View.GONE);
+                }
+            }
+
 
 
             /*if(sharedPreferences != null){

@@ -64,7 +64,6 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Mobile Number"
                 android:inputType="numberDecimal"
-
                 android:id="@+id/edittext_mobile"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -94,8 +93,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp">
+        android:layout_marginLeft="10dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -109,7 +107,7 @@
             android:layout_height="0dp"
             android:id="@+id/emirates"
             android:layout_weight="1" />
-        <view
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_weight=".01"
@@ -125,6 +123,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
         android:hint="Contact Number"
+        android:inputType="numberDecimal"
         android:clickable="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"/>
@@ -152,7 +151,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="5dp">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
@@ -196,7 +195,6 @@
         android:layout_gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginBottom="20dp" />
 
 </LinearLayout>
