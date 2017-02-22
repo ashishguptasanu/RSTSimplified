@@ -37,7 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class VisaTypeSelection extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     int livingID,nationalityID;
-    String selectedVisa;
+    String selectedVisa , url;
     RecyclerView recyclerView;
     private List<VisaType_> visaTypes = new ArrayList<>();
     VisaTypeAdapter adapter;
@@ -58,10 +58,10 @@ public class VisaTypeSelection extends AppCompatActivity
         if ( bundle!= null && bundle.containsKey("livingid") && bundle.containsKey("nationid")){
             livingID = bundle.getInt("livingid");
             nationalityID = bundle.getInt("nationid");
+            url = bundle.getString("visa_type_url");
         }
         System.out.println(livingID);
         System.out.println(nationalityID);
-        String url = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID;
         System.out.println(url);
         //System.out.println("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

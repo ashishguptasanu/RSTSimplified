@@ -38,7 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentServices extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener{
     TextView tv1;
-    String title;
+    String title, urlNationality, urlLivingIn, urlVisaType;
     View view;
     LinearLayoutManager linearLayoutManager1;
     Button buttonSubmission;
@@ -46,6 +46,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     String[] mDataset1;
     int[] mImageSet, mImageSet2;
     String[] arrayService;
+    int selectedVisaId;
     Spinner spinnerVisa,spinnerLivingIn,spinnerNationality;
     private List<CountryRes> nationality = new ArrayList<>();
     private List<CountryRes> livingin = new ArrayList<>();
@@ -126,8 +127,8 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     }
 
     private void loadJson() {
-        loadNationality();
-        loadLivingIn();
+        loadNationality(urlNationality);
+        loadLivingIn(urlLivingIn);
     }
 
     private void loadSpinners() {
@@ -142,7 +143,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         genderDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerVisa.setAdapter(genderDataAdapter);
     }
-    private void loadNationality(){
+    private void loadNationality(String urlNationality){
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -151,7 +152,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         NationalityResponse request = retrofit.create(NationalityResponse.class);
-        Call<Country> call = request.getCountry();
+        Call<Country> call = request.getCountry(urlNationality);
         //
         call.enqueue(new Callback<Country>() {
             @Override
@@ -172,7 +173,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
             }
         });
     }
-    private void loadLivingIn(){
+    private void loadLivingIn(String urlLivingIn){
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
@@ -181,7 +182,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         CountryResponse request = retrofit.create(CountryResponse.class);
-        Call<Country> call = request.getCountry();
+        Call<Country> call = request.getCountry(urlLivingIn);
         //
         call.enqueue(new Callback<Country>() {
             @Override
@@ -214,12 +215,41 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerNationality.setAdapter(dataAdapter2);
     }
+    private void loadSpinnerData(String urlNationality, String urlLivingIn){
+        loadLivingIn(urlLivingIn);
+        loadNationality(urlNationality);
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         switch (adapterView.getId()){
             case R.id.spnr_visa:
                 selectedVisa = arrayService[i];
+                selectedVisaId = i;
+                if(i==0){
+                    urlNationality = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=nationality&gofor=country";
+                    urlLivingIn = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=livingIn&gofor=country";
+                    loadSpinnerData(urlNationality, urlLivingIn);
+
+                }
+                else if(i==1){
+                    urlNationality = "http://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=nationality&gofor=country";
+                    urlLivingIn = "http://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=livingIn&gofor=country";
+                    loadSpinnerData(urlNationality, urlLivingIn);
+
+                }
+                else if(i==2){
+                    urlNationality = "";
+                    urlLivingIn = "";
+                }
+                else if(i==3){
+                    urlNationality ="";
+                    urlLivingIn = "";
+                }
+                else if(i==4){
+                    urlNationality = "";
+                    urlLivingIn = "";
+                }
                 break;
             case R.id.spnr_living_in:
                 int selectedLiving = spinnerLivingIn.getSelectedItemPosition();
@@ -242,9 +272,18 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         switch (view.getId()){
             case R.id.services_submission:
                 if(selectedLivingIn != 0 && selectedNationality != 0){
+
                     Intent intent = new Intent(getContext(),VisaTypeSelection.class);
                     intent.putExtra("livingid", selectedLivingIn);
                     intent.putExtra("nationid",selectedNationality);
+                    if(selectedVisaId==0){
+                        urlVisaType = ("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+selectedNationality+"&livingIn="+selectedLivingIn);
+                        intent.putExtra("visa_type_url", urlVisaType);
+                    }
+                    else {
+                        urlVisaType = ("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+selectedNationality+"&livingIn="+selectedLivingIn);
+                        intent.putExtra("visa_type_url", urlVisaType);
+                    }
                     startActivity(intent);
                 }
                 else {
