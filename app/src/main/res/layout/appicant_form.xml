@@ -107,13 +107,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Choose Country"/>
-                <android.support.v7.widget.AppCompatSpinner
+                <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/spnr_country"
                     android:spinnerMode="dialog">
-                </android.support.v7.widget.AppCompatSpinner>
+                </Spinner>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
@@ -388,13 +388,13 @@
                    android:layout_height="0dp"
                    android:layout_weight="1"
                    android:text="Port Of Arrival:"/>
-               <android.support.v7.widget.AppCompatSpinner
+               <Spinner
                    android:layout_width="match_parent"
                    android:layout_height="0dp"
                    android:layout_weight="1"
                    android:spinnerMode="dialog"
                    android:id="@+id/spnr_port">
-               </android.support.v7.widget.AppCompatSpinner>
+               </Spinner>
                <View
                    android:layout_width="match_parent"
                    android:layout_height="1dp"

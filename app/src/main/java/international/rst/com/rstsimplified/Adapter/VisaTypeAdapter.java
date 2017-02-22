@@ -56,14 +56,14 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
             submitButton1.setOnClickListener(this);
             submitButton2 = (Button)itemView.findViewById(R.id.button_submit_regular);
             submitButton2.setOnClickListener(this);
-            //visaName = (TextView)itemView.findViewById(R.id.visa_name);
+            visaName = (TextView)itemView.findViewById(R.id.visa_name);
             visaType = (TextView)itemView.findViewById(R.id.visa_type);
             visaValidity = (TextView)itemView.findViewById(R.id.visa_validity);
             stayValidity = (TextView)itemView.findViewById(R.id.visa_stay_validity);
             visaFee = (TextView)itemView.findViewById(R.id.visa_fee);
             tvServiceFee = (TextView)itemView.findViewById(R.id.service_fee);
             totalFee = (TextView)itemView.findViewById(R.id.total_fee);
-            //visaDetails = (TextView)itemView.findViewById(R.id.visa_details);
+            visaDetails = (TextView)itemView.findViewById(R.id.details);
             tvprocessingTime = (TextView)itemView.findViewById(R.id.processing_time);
             visaType1 = (TextView)itemView.findViewById(R.id.visa_type1);
             visaValidity1 = (TextView)itemView.findViewById(R.id.visa_validity1);
@@ -168,6 +168,8 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
         holder.stayValidity.setText(visaTypes.get(position).getStayValidity());
         holder.tvprocessingTime.setText(visaTypes.get(position).getProcessingTime());
         float service = visaTypes.get(position).getServiceFee();
+        holder.visaName.setText(visaTypes.get(position).getName());
+        holder.visaDetails.setText("Details:  " + visaTypes.get(position).getDetail());
         //linearLayout2.setVisibility(View.GONE);
 
         float visa = visaTypes.get(position).getGovtFee();

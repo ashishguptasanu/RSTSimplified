@@ -50,7 +50,7 @@ public class SummaryPage extends AppCompatActivity
     SharedPreferences sharedPreferences;
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant, maritalStatus;
     int visaTypeId, age;
-    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6;
+    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6, selectedPort;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
     String fileName1, fileName2, fileName3, fileName4, fileName5, fileName6, fileType1, fileType2, fileType3, fileType4, fileType5, fileType6, sponsorName, sponsorAddress, selectedGcc;
@@ -309,7 +309,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("service_type", fullNameVisa)
                 .addFormDataPart("visaRenewalDate", "")
                 .addFormDataPart("sponserName", sponsorName)
-                .addFormDataPart("arrivingFrom", "")
+                .addFormDataPart("arrivingFrom", selectedPort)
                 .addFormDataPart("otherProfession", profession)
                 .addFormDataPart("port_arrival", "")
                 .addFormDataPart("age", String.valueOf(age))
@@ -512,6 +512,7 @@ public class SummaryPage extends AppCompatActivity
         sponsorName = sharedPreferences.getString("sponsor_name", "");
         sponsorAddress  = sharedPreferences.getString("sponsor_address","");
         selectedGcc = sharedPreferences.getString("sponsor_type", "");
+        selectedPort = sharedPreferences.getString("port","");
         if(sharedPreferences != null){
             sendConsultData();
         }

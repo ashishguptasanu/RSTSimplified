@@ -85,7 +85,7 @@ import java.util.Objects;
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6;
     View view;
-    String livingInId, nationalityId, selectedGCC;
+    String livingInId, nationalityId, selectedGCC, selectedPort;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
@@ -97,6 +97,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<ProfessionRes> professionList = new ArrayList<>();
     private List<Emirate_> emirates = new ArrayList<>();
     private List<Portofarrival> ports = new ArrayList<>();
+    private List<String> arrivalPortData = new ArrayList<>();
     private List<String> emiratesData = new ArrayList<>();
     private List<String> professionData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
@@ -488,6 +489,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("sponsor_name",selectedMaritalStatus).apply();
         sharedPreferences.edit().putString("sponsor_address",selectedMaritalStatus).apply();
         sharedPreferences.edit().putString("sponsor_type",selectedGCC).apply();
+        sharedPreferences.edit().putString("port",selectedPort).apply();
 
     }
 
@@ -554,8 +556,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                 ArrivalPort jsonResponse = response.body();
                 ports = jsonResponse.getPortofarrival();
-                for(int i=0;i<allcountry.size();i++){
-                    allCountriesData.add(allcountry.get(i).getName());
+                for(int i=0;i<ports.size();i++){
+                    arrivalPortData.add(ports.get(i).getPortArrival());
                 }
 
                 intializeSpinners();
@@ -810,6 +812,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 break;
             case R.id.spnr_sponsor:
                 selectedGCC = gccList[i];
+                break;
+            case R.id.spnr_port:
+                selectedPort = arrivalPortData.get(i);
 
 
 
@@ -984,9 +989,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void populatePortArrivalSpinner() {
         spnrPort = (Spinner)view.findViewById(R.id.spnr_port);
         spnrPort.setOnItemSelectedListener(this);
-        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
-        dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnrPort.setAdapter(dataAdapterCountries);
+        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arrivalPortData);
+        dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrPort.setAdapter(dataAdapterPort);
         spnrPort.setOnItemSelectedListener(this);
     }
     private void populateIssueCountrySpinner() {
