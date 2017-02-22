@@ -475,6 +475,18 @@
                     android:hint="Sponsor/Company Address"
                     android:inputType="date"/>
             </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sponsor_contact"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:hint="Company Contact Number"
+                    android:inputType="numberDecimal"/>
+            </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
 
