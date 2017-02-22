@@ -84,7 +84,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     View view;
     String livingInId, nationalityId;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
-    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode;
+    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion;
@@ -343,12 +343,17 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
             edtEmergencyContactNumber = (EditText)view.findViewById(R.id.edt_contact_number);
             edtLivingCity = (EditText)view.findViewById(R.id.living_city);
+            livingInEdt = (EditText)view.findViewById(R.id.edt_country);
+            phoneCodeEdt = (EditText)view.findViewById(R.id.phone_code);
             loadEmirates();
             if(sharedPreferences!=null){
+                String livingIn = sharedPreferences.getString("living_in_country","");
                 String hotelAddress = sharedPreferences.getString("hotel_address","");
                 String address = sharedPreferences.getString("current_address","");
                 String emergencyName = sharedPreferences.getString("emergency_name","");
                 String emergencyNumber = sharedPreferences.getString("emergency_number","");
+
+                livingInEdt.setText(livingIn);
                 edtEmergencyContactName.setText(emergencyName);
                 edtEmergencyContactNumber.setText(emergencyNumber);
                 edtAddress.setText(address);
@@ -500,8 +505,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 for(int i=0;i<allcountry.size();i++){
                     allCountriesData.add(allcountry.get(i).getName());
                 }
-                int currency = allcountry.get(13).getCurrencyId();
-                String code = allcountry.get(13).getPhoneCode();
 
                 intializeSpinners();
 

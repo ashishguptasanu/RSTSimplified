@@ -300,16 +300,16 @@
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\layout\\content_nav_draw_base.xml"
     },
     {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\layout\\app_bar_nav_draw_base.xml",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\layout\\app_bar_nav_draw_base.xml"
+    },
+    {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_payment_gateway.xml",
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\layout\\activity_payment_gateway.xml"
     },
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\layout\\app_bar_main_page.xml",
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\layout\\app_bar_main_page.xml"
-    },
-    {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\layout\\app_bar_nav_draw_base.xml",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\layout\\app_bar_nav_draw_base.xml"
     },
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\layout\\app_bar_summary_page.xml",

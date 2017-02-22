@@ -3140,8 +3140,8 @@ containing a value of this type.
         public static final int spnr_country=0x7f0d0084;
         public static final int spnr_country_issue=0x7f0d008f;
         public static final int spnr_gender=0x7f0d0081;
-        public static final int spnr_living_in=0x7f0d00f1;
-        public static final int spnr_nationality=0x7f0d00f2;
+        public static final int spnr_living_in=0x7f0d00f2;
+        public static final int spnr_nationality=0x7f0d00f0;
         public static final int spnr_religion=0x7f0d0086;
         public static final int spnr_sponsor=0x7f0d0094;
         public static final int spnr_visa=0x7f0d00ef;
@@ -3163,7 +3163,7 @@ containing a value of this type.
         public static final int textSpacerNoTitle=0x7f0d0054;
         public static final int textView=0x7f0d00f7;
         public static final int textView2=0x7f0d007a;
-        public static final int textView3=0x7f0d00f0;
+        public static final int textView3=0x7f0d00f1;
         public static final int textView4=0x7f0d0113;
         public static final int textView5=0x7f0d009c;
         public static final int text_input_password_toggle=0x7f0d00d9;

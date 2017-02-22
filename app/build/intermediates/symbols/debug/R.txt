@@ -991,8 +991,8 @@ int id split_action_bar 0x7f0d0008
 int id spnr_country 0x7f0d0084
 int id spnr_country_issue 0x7f0d008f
 int id spnr_gender 0x7f0d0081
-int id spnr_living_in 0x7f0d00f1
-int id spnr_nationality 0x7f0d00f2
+int id spnr_living_in 0x7f0d00f2
+int id spnr_nationality 0x7f0d00f0
 int id spnr_religion 0x7f0d0086
 int id spnr_sponsor 0x7f0d0094
 int id spnr_visa 0x7f0d00ef
@@ -1014,7 +1014,7 @@ int id textSpacerNoButtons 0x7f0d0055
 int id textSpacerNoTitle 0x7f0d0054
 int id textView 0x7f0d00f7
 int id textView2 0x7f0d007a
-int id textView3 0x7f0d00f0
+int id textView3 0x7f0d00f1
 int id textView4 0x7f0d0113
 int id textView5 0x7f0d009c
 int id text_input_password_toggle 0x7f0d00d9

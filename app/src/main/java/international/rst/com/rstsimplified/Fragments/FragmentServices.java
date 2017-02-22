@@ -1,7 +1,9 @@
 package international.rst.com.rstsimplified.Fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
@@ -52,8 +54,8 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     private List<CountryRes> livingin = new ArrayList<>();
     private List<String> livingInData = new ArrayList<>();
     private List<String> nationalityData = new ArrayList<>();
-    public String selectedVisa;
-    int selectedLivingIn, selectedNationality;
+    public String selectedVisa, selectedLivingInCountry;
+    int selectedLivingIn, selectedNationality, selectedLiving;
     ImageView img1;
     ArrayAdapter<String> dataAdapter,dataAdapter2;
 
@@ -252,8 +254,9 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 }
                 break;
             case R.id.spnr_living_in:
-                int selectedLiving = spinnerLivingIn.getSelectedItemPosition();
+                selectedLiving = spinnerLivingIn.getSelectedItemPosition();
                 selectedLivingIn = livingin.get(selectedLiving).getId();
+                selectedLivingInCountry = livingInData.get(i);
                 break;
             case R.id.spnr_nationality:
                 int livingIn = spinnerNationality.getSelectedItemPosition();
@@ -275,6 +278,9 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                     Intent intent = new Intent(getContext(),VisaTypeSelection.class);
                     intent.putExtra("livingid", selectedLivingIn);
                     intent.putExtra("nationid",selectedNationality);
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    sharedPreferences.edit().putString("living_in_country", selectedLivingInCountry).apply();
+                    sharedPreferences.edit().putInt("living_in_id", selectedLiving).apply();
 
 
 

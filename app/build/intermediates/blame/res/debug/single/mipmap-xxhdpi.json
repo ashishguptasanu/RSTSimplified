@@ -4,44 +4,16 @@
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\checked_green.png"
     },
     {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\airport_background.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\airport_background.png"
-    },
-    {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\airport_gray.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\airport_gray.png"
-    },
-    {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\hotel_white.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\hotel_white.png"
-    },
-    {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\visa_background.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\visa_background.png"
-    },
-    {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\airport_white.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\airport_white.png"
-    },
-    {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\meet_white.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\meet_white.png"
-    },
-    {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\meet_gray.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\meet_gray.png"
-    },
-    {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\launge.png",
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\launge.png"
     },
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\hotel_background.png",
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\hotel_background.png"
+    },
+    {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\airport_background.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\airport_background.png"
     },
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\visa_white.png",
@@ -64,8 +36,28 @@
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\home.png"
     },
     {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\airport_gray.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\airport_gray.png"
+    },
+    {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\hotel_white.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\hotel_white.png"
+    },
+    {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\hotel_gray.png",
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\hotel_gray.png"
+    },
+    {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\visa_background.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\visa_background.png"
+    },
+    {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\airport_white.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\airport_white.png"
     },
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\visa_icon.png",
@@ -74,6 +66,10 @@
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\user.png",
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\user.png"
+    },
+    {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\meet_white.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\meet_white.png"
     },
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\meet.png",
@@ -90,5 +86,9 @@
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\search_icon.png",
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\search_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\meet_gray.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\mipmap-xxhdpi\\meet_gray.png"
     }
 ]
