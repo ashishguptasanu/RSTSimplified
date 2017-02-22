@@ -361,6 +361,59 @@
                     android:id="@+id/edt_valid_till"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:id="@+id/layout_gcc">
+           <android.support.design.widget.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/text_layout_issue_date">
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                   android:hint="Latest Issue date of Residence Visa / Iqama:"
+                   android:inputType="date"
+                   android:id="@+id/late_issue_date"/>
+           </android.support.design.widget.TextInputLayout>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="5dp"
+               android:orientation="vertical">
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="0dp"
+                   android:layout_weight="1"
+                   android:text="Port Of Arrival:"/>
+               <Spinner
+                   android:layout_width="match_parent"
+                   android:layout_height="0dp"
+                   android:layout_weight="1"
+                   android:id="@+id/spnr_port">
+               </Spinner>
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="1dp"
+                   android:layout_weight="0.01"
+                   android:background="@color/colorAccent"
+                   android:layout_marginLeft="5dp"
+                   android:layout_marginRight="5dp"/>
+           </LinearLayout>
+           <android.support.design.widget.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                   android:hint="Arriving From in UAE"
+                   android:inputType="date"
+                   android:id="@+id/arriving_from_uae"/>
+           </android.support.design.widget.TextInputLayout>
+       </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:id="@+id/layout_sponsor"

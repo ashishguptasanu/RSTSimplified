@@ -84,11 +84,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     View view;
     String livingInId, nationalityId;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
-    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt;
+    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
-    String[] gender, religion;
-    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates;
+    String[] gender, religion, gccList;
+    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC;
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private List<ProfessionRes> professionList = new ArrayList<>();
@@ -99,7 +99,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     int serverResponseCode = 0;
     CustomScrollView scrollView;
     RadioButton radioButton1, radioButton2;
-    LinearLayout sponsorLayout;
+    LinearLayout sponsorLayout, gccLayout;
 
     SharedPreferences sharedPreferences;
     public String nationalityID;
@@ -223,14 +223,21 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             radioButton1 = (RadioButton)view.findViewById(R.id.rb_single);
             radioButton2 = (RadioButton)view.findViewById(R.id.rb_married);
             sponsorLayout  = (LinearLayout)view.findViewById(R.id.layout_sponsor);
+            gccLayout = (LinearLayout)view.findViewById(R.id.layout_gcc);
+            latestDate = (EditText)view.findViewById(R.id.late_issue_date);
+            disableInput(latestDate);
+            latestDate.setOnClickListener(this);
             if(sharedPreferences!=null) {
                 livingInId = sharedPreferences.getString("living_id", "");
                 nationalityID = sharedPreferences.getString("nationality_id", "");
                 if(Objects.equals(livingInId, "17") || Objects.equals(livingInId, "114") || Objects.equals(livingInId, "187") || Objects.equals(livingInId, "174") || Objects.equals(livingInId, "161")){
                     sponsorLayout.setVisibility(View.VISIBLE);
+                    gccLayout.setVisibility(View.VISIBLE);
+
                 }
                 else {
                     sponsorLayout.setVisibility(View.GONE);
+                    gccLayout.setVisibility(View.GONE);
                 }
             }
 
@@ -522,6 +529,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         populateIssueCountrySpinner();
         populateGenderSpinner();
         populateReligionSpinner();
+        populateGCCSpinner();
     }
     private void showFileChooser(int one) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -864,6 +872,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case R.id.attach_file6:
                 showFileChooser(6);
                 break;
+            case R.id.late_issue_date:
+                datePicker(latestDate);
+                break;
         }
 
     }
@@ -934,6 +945,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         ArrayAdapter<String> genderDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, gender);
         genderDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrGender.setAdapter(genderDataAdapter);
+    }
+    private void populateGCCSpinner() {
+        spnrGCC = (Spinner)view.findViewById(R.id.spnr_sponsor);
+        spnrGCC.setOnItemSelectedListener(this);
+        gccList = new String[]{"Select One", "Estabishment","GCC Citizen", "GCC Resident"};
+        ArrayAdapter<String> gccDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, gccList);
+        gccDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrGCC.setAdapter(gccDataAdapter);
     }
     private void populateReligionSpinner() {
         spnrReligion = (Spinner)view.findViewById(R.id.spnr_religion);
