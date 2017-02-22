@@ -53,7 +53,7 @@ public class SummaryPage extends AppCompatActivity
     String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
-    String fileName1, fileName2, fileName3, fileName4, fileName5, fileName6, fileType1, fileType2, fileType3, fileType4, fileType5, fileType6;
+    String fileName1, fileName2, fileName3, fileName4, fileName5, fileName6, fileType1, fileType2, fileType3, fileType4, fileType5, fileType6, sponsorName, sponsorAddress, selectedGcc;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     private OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
@@ -308,15 +308,15 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("visa_status", "")
                 .addFormDataPart("service_type", fullNameVisa)
                 .addFormDataPart("visaRenewalDate", "")
-                .addFormDataPart("sponserName", "")
+                .addFormDataPart("sponserName", sponsorName)
                 .addFormDataPart("arrivingFrom", "")
                 .addFormDataPart("otherProfession", profession)
                 .addFormDataPart("port_arrival", "")
                 .addFormDataPart("age", String.valueOf(age))
                 .addFormDataPart("person_type", "")
-                .addFormDataPart("sponserType", "")
+                .addFormDataPart("sponserType", selectedGcc)
                 .addFormDataPart("sponserNationality", "")
-                .addFormDataPart("sponserAdd", "")
+                .addFormDataPart("sponserAdd", sponsorAddress)
                 .addFormDataPart("sponserRelation", "")
                 .addFormDataPart("sponserCompanyContact", "")
                 .build();
@@ -509,6 +509,9 @@ public class SummaryPage extends AppCompatActivity
         fileType4 = sharedPreferences.getString("file_type4","");
         fileType5 = sharedPreferences.getString("file_type5","");
         fileType6 = sharedPreferences.getString("file_type6","");
+        sponsorName = sharedPreferences.getString("sponsor_name", "");
+        sponsorAddress  = sharedPreferences.getString("sponsor_address","");
+        selectedGcc = sharedPreferences.getString("sponsor_type", "");
         if(sharedPreferences != null){
             sendConsultData();
         }

@@ -388,12 +388,13 @@
                    android:layout_height="0dp"
                    android:layout_weight="1"
                    android:text="Port Of Arrival:"/>
-               <Spinner
+               <android.support.v7.widget.AppCompatSpinner
                    android:layout_width="match_parent"
                    android:layout_height="0dp"
                    android:layout_weight="1"
+                   android:spinnerMode="dialog"
                    android:id="@+id/spnr_port">
-               </Spinner>
+               </android.support.v7.widget.AppCompatSpinner>
                <View
                    android:layout_width="match_parent"
                    android:layout_height="1dp"
@@ -457,6 +458,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/sponsor_name"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Sponsor/Company Name"
                     android:inputType="date" />
@@ -468,6 +470,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/sponsor_address"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Sponsor/Company Address"
                     android:inputType="date"/>

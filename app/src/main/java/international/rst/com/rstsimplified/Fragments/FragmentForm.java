@@ -60,10 +60,13 @@ import international.rst.com.rstsimplified.Activities.SummaryPage;
 import international.rst.com.rstsimplified.Custom.CustomScrollView;
 import international.rst.com.rstsimplified.Custom.CustomViewPager;
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
+import international.rst.com.rstsimplified.Model.ArrivalPort;
 import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.Model.Emirate;
 import international.rst.com.rstsimplified.Model.EmirateResponse;
+import international.rst.com.rstsimplified.Model.Port;
+import international.rst.com.rstsimplified.Model.Portofarrival;
 import international.rst.com.rstsimplified.Model.Profession;
 import international.rst.com.rstsimplified.Model.ProfessionRes;
 import international.rst.com.rstsimplified.Model.ProfessionResponse;
@@ -82,17 +85,18 @@ import java.util.Objects;
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6;
     View view;
-    String livingInId, nationalityId;
+    String livingInId, nationalityId, selectedGCC;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
-    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate;
+    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion, gccList;
-    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC;
+    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort;
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private List<ProfessionRes> professionList = new ArrayList<>();
     private List<Emirate_> emirates = new ArrayList<>();
+    private List<Portofarrival> ports = new ArrayList<>();
     private List<String> emiratesData = new ArrayList<>();
     private List<String> professionData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
@@ -225,6 +229,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             sponsorLayout  = (LinearLayout)view.findViewById(R.id.layout_sponsor);
             gccLayout = (LinearLayout)view.findViewById(R.id.layout_gcc);
             latestDate = (EditText)view.findViewById(R.id.late_issue_date);
+            edtSponsorName = (EditText)view.findViewById(R.id.sponsor_name);
+            edtSponsorAddress = (EditText)view.findViewById(R.id.sponsor_address);
+
+
             disableInput(latestDate);
             latestDate.setOnClickListener(this);
             if(sharedPreferences!=null) {
@@ -298,6 +306,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             dateExpiry.setOnClickListener(this);
 
             loadAllCountries();
+            loadArrivalPort();
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -476,6 +485,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("country_id", String.valueOf(selectedPhoneCode)).apply();
         sharedPreferences.edit().putInt("age",age).apply();
         sharedPreferences.edit().putString("marital_status",selectedMaritalStatus).apply();
+        sharedPreferences.edit().putString("sponsor_name",selectedMaritalStatus).apply();
+        sharedPreferences.edit().putString("sponsor_address",selectedMaritalStatus).apply();
+        sharedPreferences.edit().putString("sponsor_type",selectedGCC).apply();
+
     }
 
 
@@ -523,6 +536,38 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             }
         });
     }
+    private void loadArrivalPort() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.uaevisasonline.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        Port request = retrofit.create(Port.class);
+        retrofit2.Call<ArrivalPort> call = request.getPortofarrival();
+        //
+        call.enqueue(new retrofit2.Callback<ArrivalPort>() {
+            @Override
+            public void onResponse(retrofit2.Call<ArrivalPort> call, retrofit2.Response<ArrivalPort> response) {
+
+
+                ArrivalPort jsonResponse = response.body();
+                ports = jsonResponse.getPortofarrival();
+                for(int i=0;i<allcountry.size();i++){
+                    allCountriesData.add(allcountry.get(i).getName());
+                }
+
+                intializeSpinners();
+
+
+            }
+            @Override
+            public void onFailure(retrofit2.Call<ArrivalPort> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
 
     private void intializeSpinners() {
         populateAllCountrySpinner();
@@ -530,6 +575,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         populateGenderSpinner();
         populateReligionSpinner();
         populateGCCSpinner();
+        populatePortArrivalSpinner();
     }
     private void showFileChooser(int one) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -761,6 +807,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case R.id.emirates:
                 selectedEmirate = emiratesData.get(i);
                 selectedEmirateId = i;
+                break;
+            case R.id.spnr_sponsor:
+                selectedGCC = gccList[i];
+
 
 
         }
@@ -930,6 +980,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrAllCountries.setAdapter(dataAdapterCountries);
         spnrAllCountries.setOnItemSelectedListener(this);
+    }
+    private void populatePortArrivalSpinner() {
+        spnrPort = (Spinner)view.findViewById(R.id.spnr_port);
+        spnrPort.setOnItemSelectedListener(this);
+        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
+        dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrPort.setAdapter(dataAdapterCountries);
+        spnrPort.setOnItemSelectedListener(this);
     }
     private void populateIssueCountrySpinner() {
         spnrIssueCountry = (Spinner)view.findViewById(R.id.spnr_country_issue);
