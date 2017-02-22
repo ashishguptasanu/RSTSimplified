@@ -34,25 +34,101 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"/>
         </android.support.design.widget.TextInputLayout>
-        <LinearLayout
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
+            android:layout_weight=".3">
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="Select Emirates"/>
-
-            <Spinner
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:hint="code"
+                android:focusable="false"
+                android:id="@+id/phone_code"/>
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <EditText
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/emirates"
-                android:layout_weight="1" />
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:hint="Mobile Number"
+                android:inputType="numberDecimal"
 
-        </LinearLayout>
+                android:id="@+id/edittext_mobile"/>
+        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edt_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:hint="Country"
+            android:clickable="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"/>
+    </android.support.design.widget.TextInputLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address in UAE"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/colorAccent"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Select Emirates"
+            android:id="@+id/textView5" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/emirates"
+            android:layout_weight="1" />
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight=".01"
+            android:background="@color/colorAccent"/>
+
+    </LinearLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/edt_phone_uae"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:hint="Contact Number"
+        android:clickable="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"/>
+    </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -121,6 +197,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="15dp"/>
 
 </LinearLayout>
