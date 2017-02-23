@@ -50,7 +50,7 @@ public class SummaryPage extends AppCompatActivity
     SharedPreferences sharedPreferences;
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant, maritalStatus;
     int visaTypeId, age;
-    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6, selectedPort;
+    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6, selectedPort, responseVisa;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
     String fileName1, fileName2, fileName3, fileName4, fileName5, fileName6, fileType1, fileType2, fileType3, fileType4, fileType5, fileType6, sponsorName, sponsorAddress, selectedGcc, sponsorContact;
@@ -81,6 +81,10 @@ public class SummaryPage extends AppCompatActivity
         tvPassportNumber = (TextView)findViewById(R.id.tv_passport_number);
         tvGender = (TextView)findViewById(R.id.tv_applicant_gender);
         button = (Button)findViewById(R.id.submit_payment);
+        getSharedPreferencesData();
+        if(sharedPreferences != null){
+            sendApplicandData(responseVisa);
+        }
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
         int permissionCheck2 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
@@ -188,7 +192,7 @@ public class SummaryPage extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private void sendConsultData() {
+    /*private void sendConsultData() {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("visa_id", String.valueOf(visaTypeId))
@@ -266,8 +270,8 @@ public class SummaryPage extends AppCompatActivity
                             }
                         });
 
-                        sendApplicandData(resp);
-                        sendVerificationEmail(resp, emailEdt);
+                        //sendApplicandData(resp);
+                        //sendVerificationEmail(resp, emailEdt);
 
 
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
@@ -281,7 +285,7 @@ public class SummaryPage extends AppCompatActivity
             }
 
         });
-    }
+    }*/
 
     private void sendApplicandData(String resp) {
         RequestBody requestBody = new MultipartBody.Builder()
@@ -338,6 +342,23 @@ public class SummaryPage extends AppCompatActivity
                     System.out.println(response2);
                     uploadDocuments(response2);
                     if (response.isSuccessful()) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvVisaId.setText(responseVisa);
+                                visaName.setText(fullNameVisa);
+                                visaFee.setText(String.valueOf(govtFee) + "$");
+                                finalServiceFee.setText(String.valueOf(serviceFee) + "$");
+                                totalFee = (govtFee + serviceFee);
+                                totalVisaFee.setText(String.valueOf(totalFee) + "$");
+                                tvBirthDate.setText(birthDate);
+                                tvPassportNumber.setText(passportNumber);
+                                tvDepartureDate.setText(departureDate);
+                                tvArrivalDate.setText(arrivalDate);
+                                tvName.setText(fullName);
+                                tvGender.setText(gender);
+                            }
+                        });
                         //sharedPreferences.edit().putString("Device ID", deviceID).apply();
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
 
@@ -514,8 +535,9 @@ public class SummaryPage extends AppCompatActivity
         selectedGcc = sharedPreferences.getString("sponsor_type", "");
         selectedPort = sharedPreferences.getString("port","");
         sponsorContact = sharedPreferences.getString("sponsor_contact","");
+        responseVisa = sharedPreferences.getString("response", "");
         if(sharedPreferences != null){
-            sendConsultData();
+            //sendConsultData();
         }
     }
 
