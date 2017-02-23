@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -270,14 +271,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     final int mMonth=mcurrentDate.get(Calendar.MONTH);
                     final int mDay=mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
-                    DatePickerDialog mDatePicker=new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+                    DatePickerDialog mDatePicker=new DatePickerDialog(getActivity(),android.R.style.Theme_Holo_Light_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
                         public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
                             birthDate.setText(selectedyear +"-"+(selectedmonth+1)+"-"+selectedday);
                             age = mYear - selectedyear;
                             System.out.println(age);
                         }
                     },mYear, mMonth, mDay);
-
+                    mDatePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     mDatePicker.setTitle("Select date");
                     mDatePicker.show();
                 }
