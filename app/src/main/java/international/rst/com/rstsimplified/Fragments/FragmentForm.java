@@ -204,9 +204,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         } else if (title.equalsIgnoreCase("applicant")) {
             view = inflater.inflate(R.layout.appicant_form, container, false);
-            scrollView = (CustomScrollView)view.findViewById(R.id.scroll_view);
-            CustomViewPager parentPager = (CustomViewPager)getActivity().findViewById(R.id.formViewPager);
-            scrollView.setParentPager(parentPager);
             nameFirst = (EditText)view.findViewById(R.id.name_first);
             nameLast = (EditText)view.findViewById(R.id.name_last);
             birthDate = (EditText)view.findViewById(R.id.edt_dob);
@@ -223,7 +220,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             edtIssuePlace = (EditText)view.findViewById(R.id.edt_issue_place);
             Button button2 = (Button)view.findViewById(R.id.button_applicant);
             profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
-            edtMobile = (EditText)view.findViewById(R.id.edittext_mobile);
             phoneCode = (EditText)view.findViewById(R.id.phone_code);
             radioButton1 = (RadioButton)view.findViewById(R.id.rb_single);
             radioButton2 = (RadioButton)view.findViewById(R.id.rb_married);
@@ -363,6 +359,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             edtLivingCity = (EditText)view.findViewById(R.id.living_city);
             livingInEdt = (EditText)view.findViewById(R.id.edt_country);
             phoneCodeEdt = (EditText)view.findViewById(R.id.phone_code);
+            edtMobile = (EditText)view.findViewById(R.id.edittext_mobile);
             loadEmirates();
             if(sharedPreferences!=null){
                 String livingIn = sharedPreferences.getString("living_in_country","");
@@ -385,7 +382,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 @Override
                 public void onClick(View view) {
                     if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
-                        if(isValidMobile(edtEmergencyContactNumber.getText().toString())) {
+                        if(isValidMobile(edtEmergencyContactNumber.getText().toString()) && isValidMobile(edtMobile.getText().toString())) {
                             ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
                             int atTab = mFormPager.getCurrentItem();
                             mFormPager.setCurrentItem(atTab + 1);
@@ -398,6 +395,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                             sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
                             sharedPreferences.edit().putString("selected_emirate", selectedEmirate).apply();
                             sharedPreferences.edit().putInt("selected_emirate_id", selectedEmirateId).apply();
+                            sharedPreferences.edit().putString("mobile", edtMobile.getText().toString()).apply();
                         }
                         else {
                             showToast("Mobile Number is not valid");
@@ -471,7 +469,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         passportNumberApplicant = passportNumber.getText().toString();
         sharedPreferences.edit().putString("passport_number", passportNumberApplicant).apply();
         sharedPreferences.edit().putString("gender", selectedGender).apply();
-        sharedPreferences.edit().putString("mobile", edtMobile.getText().toString()).apply();
+
         sharedPreferences.edit().putString("profession", selectedProfession).apply();
         sharedPreferences.edit().putString("profession_id", selectedProfessionID).apply();
         sharedPreferences.edit().putString("email", emailEdt.getText().toString()).apply();

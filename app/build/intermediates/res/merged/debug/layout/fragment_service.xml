@@ -72,7 +72,7 @@
                             android:textColor="@color/colorAccent"
                             android:layout_weight="1"
                             android:layout_marginLeft="10dp"
-                            android:text="I am Citizen of"/>
+                            android:text="I am a Citizen of"/>
                         <Spinner
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
