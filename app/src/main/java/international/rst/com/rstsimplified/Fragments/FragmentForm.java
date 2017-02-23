@@ -112,7 +112,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     CustomScrollView scrollView;
     RadioButton radioButton1, radioButton2;
     LinearLayout sponsorLayout, gccLayout;
-
+    Button button2;
     SharedPreferences sharedPreferences;
     public String nationalityID, livingIn;
     public static String filePath;
@@ -210,31 +210,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         } else if (title.equalsIgnoreCase("applicant")) {
             view = inflater.inflate(R.layout.appicant_form, container, false);
-            nameFirst = (EditText)view.findViewById(R.id.name_first);
-            nameLast = (EditText)view.findViewById(R.id.name_last);
-            birthDate = (EditText)view.findViewById(R.id.edt_dob);
-            disableInput(birthDate);
-            birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
-            emailEdt = (EditText)view.findViewById(R.id.edittext_email);
-            nameFather = (EditText)view.findViewById(R.id.name_father);
-            nameMother = (EditText)view.findViewById(R.id.name_mother);
-            dateIssue = (EditText)view.findViewById(R.id.edt_issue_date);
-            disableInput(dateIssue);
-            dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
-            disableInput(dateExpiry);
-            passportNumber = (EditText)view.findViewById(R.id.edt_passport_number);
-            edtIssuePlace = (EditText)view.findViewById(R.id.edt_issue_place);
-            Button button2 = (Button)view.findViewById(R.id.button_applicant);
-            profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
-            phoneCode = (EditText)view.findViewById(R.id.phone_code);
-            radioButton1 = (RadioButton)view.findViewById(R.id.rb_single);
-            radioButton2 = (RadioButton)view.findViewById(R.id.rb_married);
-            sponsorLayout  = (LinearLayout)view.findViewById(R.id.layout_sponsor);
-            gccLayout = (LinearLayout)view.findViewById(R.id.layout_gcc);
-            latestDate = (EditText)view.findViewById(R.id.late_issue_date);
-            edtSponsorName = (EditText)view.findViewById(R.id.sponsor_name);
-            edtSponsorAddress = (EditText)view.findViewById(R.id.sponsor_address);
-            edtSponsorCotact = (EditText)view.findViewById(R.id.sponsor_contact);
+            intializeApplicantViews();
 
 
             disableInput(latestDate);
@@ -355,16 +331,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         }  else if (title.equalsIgnoreCase("contact")){
             view = inflater.inflate(R.layout.contact_form,container,false);
-            edtAddress = (EditText)view.findViewById(R.id.edt_current_address);
-            edtHotelAddress = (EditText)view.findViewById(R.id.edt_hotel_address);
-            edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
-            edtEmergencyContactNumber = (EditText)view.findViewById(R.id.edt_contact_number);
-            edtLivingCity = (EditText)view.findViewById(R.id.living_city);
-            livingInEdt = (EditText)view.findViewById(R.id.edt_country);
-            phoneCodeEdt = (EditText)view.findViewById(R.id.phone_code);
-            edtMobile = (EditText)view.findViewById(R.id.edittext_mobile);
-            edtEmailContact = (EditText)view.findViewById(R.id.edt_email_contact);
-            loadEmirates();
+            intializeContactView();
             if(sharedPreferences!=null){
                 String phoneCode = sharedPreferences.getString("code","");
                 phoneCodeEdt.setText(phoneCode);
@@ -426,47 +393,93 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
         else if(title.equalsIgnoreCase("docs")){
             view = inflater.inflate(R.layout.docs_form, container, false);
-            Button button3 = (Button)view.findViewById(R.id.button_docs);
-            name1 = (TextView)view.findViewById(R.id.doc1);
-            name2 = (TextView)view.findViewById(R.id.doc2);
-            name3 = (TextView)view.findViewById(R.id.doc3);
-            name4 = (TextView)view.findViewById(R.id.doc4);
-            name5 = (TextView)view.findViewById(R.id.doc5);
-            name6 = (TextView)view.findViewById(R.id.doc6);
-            checked1 = (ImageView)view.findViewById(R.id.attach_file_checked1);
-            checked2 = (ImageView)view.findViewById(R.id.attach_file_checked2);
-            checked3 = (ImageView)view.findViewById(R.id.attach_file_checked3);
-            checked4 = (ImageView)view.findViewById(R.id.attach_file_checked4);
-            checked5 = (ImageView)view.findViewById(R.id.attach_file_checked5);
-            checked6 = (ImageView)view.findViewById(R.id.attach_file_checked6);
+            intializeDocsView();
 
-            button3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    /*ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
-                    int atTab = mFormPager.getCurrentItem();
-                    mFormPager.setCurrentItem(atTab + 1);*/
-                    Intent intent  = new Intent(getContext(), SummaryPage.class);
-                    startActivity(intent);
-                }
-            });
-            attachFile1 = (ImageView)view.findViewById(R.id.attach_file1);
-            attachFile2 = (ImageView)view.findViewById(R.id.attach_file2);
-            attachFile3 = (ImageView)view.findViewById(R.id.attach_file3);
-            attachFile4 = (ImageView)view.findViewById(R.id.attach_file4);
-            attachFile5 = (ImageView)view.findViewById(R.id.attach_file5);
-            attachFile6 = (ImageView)view.findViewById(R.id.attach_file6);
-            attachFile1.setOnClickListener(this);
-            attachFile2.setOnClickListener(this);
-            attachFile3.setOnClickListener(this);
-            attachFile4.setOnClickListener(this);
-            attachFile5.setOnClickListener(this);
-            attachFile6.setOnClickListener(this);
 
         }
 
 
         return view;
+    }
+
+    private void intializeApplicantViews() {
+        nameFirst = (EditText)view.findViewById(R.id.name_first);
+        nameLast = (EditText)view.findViewById(R.id.name_last);
+        birthDate = (EditText)view.findViewById(R.id.edt_dob);
+        disableInput(birthDate);
+        birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
+        emailEdt = (EditText)view.findViewById(R.id.edittext_email);
+        nameFather = (EditText)view.findViewById(R.id.name_father);
+        nameMother = (EditText)view.findViewById(R.id.name_mother);
+        dateIssue = (EditText)view.findViewById(R.id.edt_issue_date);
+        disableInput(dateIssue);
+        dateExpiry = (EditText)view.findViewById(R.id.edt_valid_till);
+        disableInput(dateExpiry);
+        passportNumber = (EditText)view.findViewById(R.id.edt_passport_number);
+        edtIssuePlace = (EditText)view.findViewById(R.id.edt_issue_place);
+        button2 = (Button)view.findViewById(R.id.button_applicant);
+        profession = (AutoCompleteTextView)view.findViewById(R.id.auto_profession);
+        phoneCode = (EditText)view.findViewById(R.id.phone_code);
+        radioButton1 = (RadioButton)view.findViewById(R.id.rb_single);
+        radioButton2 = (RadioButton)view.findViewById(R.id.rb_married);
+        sponsorLayout  = (LinearLayout)view.findViewById(R.id.layout_sponsor);
+        gccLayout = (LinearLayout)view.findViewById(R.id.layout_gcc);
+        latestDate = (EditText)view.findViewById(R.id.late_issue_date);
+        edtSponsorName = (EditText)view.findViewById(R.id.sponsor_name);
+        edtSponsorAddress = (EditText)view.findViewById(R.id.sponsor_address);
+        edtSponsorCotact = (EditText)view.findViewById(R.id.sponsor_contact);
+    }
+
+    private void intializeDocsView() {
+        Button button3 = (Button)view.findViewById(R.id.button_docs);
+        name1 = (TextView)view.findViewById(R.id.doc1);
+        name2 = (TextView)view.findViewById(R.id.doc2);
+        name3 = (TextView)view.findViewById(R.id.doc3);
+        name4 = (TextView)view.findViewById(R.id.doc4);
+        name5 = (TextView)view.findViewById(R.id.doc5);
+        name6 = (TextView)view.findViewById(R.id.doc6);
+        checked1 = (ImageView)view.findViewById(R.id.attach_file_checked1);
+        checked2 = (ImageView)view.findViewById(R.id.attach_file_checked2);
+        checked3 = (ImageView)view.findViewById(R.id.attach_file_checked3);
+        checked4 = (ImageView)view.findViewById(R.id.attach_file_checked4);
+        checked5 = (ImageView)view.findViewById(R.id.attach_file_checked5);
+        checked6 = (ImageView)view.findViewById(R.id.attach_file_checked6);
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    /*ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
+                    int atTab = mFormPager.getCurrentItem();
+                    mFormPager.setCurrentItem(atTab + 1);*/
+                Intent intent  = new Intent(getContext(), SummaryPage.class);
+                startActivity(intent);
+            }
+        });
+        attachFile1 = (ImageView)view.findViewById(R.id.attach_file1);
+        attachFile2 = (ImageView)view.findViewById(R.id.attach_file2);
+        attachFile3 = (ImageView)view.findViewById(R.id.attach_file3);
+        attachFile4 = (ImageView)view.findViewById(R.id.attach_file4);
+        attachFile5 = (ImageView)view.findViewById(R.id.attach_file5);
+        attachFile6 = (ImageView)view.findViewById(R.id.attach_file6);
+        attachFile1.setOnClickListener(this);
+        attachFile2.setOnClickListener(this);
+        attachFile3.setOnClickListener(this);
+        attachFile4.setOnClickListener(this);
+        attachFile5.setOnClickListener(this);
+        attachFile6.setOnClickListener(this);
+    }
+
+    private void intializeContactView() {
+        edtAddress = (EditText)view.findViewById(R.id.edt_current_address);
+        edtHotelAddress = (EditText)view.findViewById(R.id.edt_hotel_address);
+        edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
+        edtEmergencyContactNumber = (EditText)view.findViewById(R.id.edt_contact_number);
+        edtLivingCity = (EditText)view.findViewById(R.id.living_city);
+        livingInEdt = (EditText)view.findViewById(R.id.edt_country);
+        phoneCodeEdt = (EditText)view.findViewById(R.id.phone_code);
+        edtMobile = (EditText)view.findViewById(R.id.edittext_mobile);
+        edtEmailContact = (EditText)view.findViewById(R.id.edt_email_contact);
+        loadEmirates();
     }
 
     private void showToast(String s) {
@@ -628,7 +641,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile1=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name1", selectedFile1).apply();
                 name1.setText(selectedFile1);
-                checked1.setImageResource(R.mipmap.checked_green);
+                checked1.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path1", filePath).apply();
 
                 break;
@@ -641,7 +654,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile2=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name2", selectedFile2).apply();
                 name2.setText(selectedFile2);
-                checked2.setImageResource(R.mipmap.checked_green);
+                checked2.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path2", filePath).apply();
                 break;
             case 3:
@@ -653,7 +666,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile3=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name3", selectedFile3).apply();
                 name3.setText(selectedFile3);
-                checked3.setImageResource(R.mipmap.checked_green);
+                checked3.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path3", filePath).apply();
                 break;
             case 4:
@@ -665,7 +678,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile4=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name4", selectedFile4).apply();
                 name4.setText(selectedFile4);
-                checked4.setImageResource(R.mipmap.checked_green);
+                checked4.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path4", filePath).apply();
                 break;
             case 5:
@@ -677,7 +690,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile5=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name5", selectedFile5).apply();
                 name5.setText(selectedFile5);
-                checked5.setImageResource(R.mipmap.checked_green);
+                checked5.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path5", filePath).apply();
                 break;
             case 6:
@@ -689,7 +702,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedFile6=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name6", selectedFile6).apply();
                 name6.setText(selectedFile6);
-                checked6.setImageResource(R.mipmap.checked_green);
+                checked6.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path6", filePath).apply();
                 break;
         }

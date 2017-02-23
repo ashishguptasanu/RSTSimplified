@@ -38,7 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:id="@+id/attach_file_checked1"
-                android:src="@mipmap/checked_gray"
+                android:src="@drawable/unchecked"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
@@ -87,7 +87,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:id="@+id/attach_file_checked2"
-                android:src="@mipmap/checked_gray"
+                android:src="@drawable/unchecked"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
@@ -137,7 +137,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:id="@+id/attach_file_checked3"
-                android:src="@mipmap/checked_gray"
+                android:src="@drawable/unchecked"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
@@ -185,7 +185,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:id="@+id/attach_file_checked4"
-                android:src="@mipmap/checked_gray"
+                android:src="@drawable/unchecked"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
@@ -233,7 +233,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:id="@+id/attach_file_checked5"
-                android:src="@mipmap/checked_gray"
+                android:src="@drawable/unchecked"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
@@ -282,7 +282,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:id="@+id/attach_file_checked6"
-                android:src="@mipmap/checked_gray"
+                android:src="@drawable/unchecked"
                 android:layout_gravity="left"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0.10"/>
