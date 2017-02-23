@@ -342,6 +342,7 @@ public class SummaryPage extends AppCompatActivity
                     System.out.println(response2);
                     uploadDocuments(response2);
                     if (response.isSuccessful()) {
+                        sendVerificationEmail(responseVisa, emailEdt);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
