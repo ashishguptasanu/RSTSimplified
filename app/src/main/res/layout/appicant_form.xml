@@ -22,6 +22,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/name_first"
+                    android:maxLines="1"
                     android:inputType="textPersonName"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="First Name"/>
@@ -35,6 +36,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:id="@+id/name_last"
+                    android:maxLines="1"
                     android:inputType="textPersonName"
                     android:hint="Last Name"/>
             </android.support.design.widget.TextInputLayout>
@@ -78,6 +80,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Date of Birth"
+                    android:maxLines="1"
                     android:inputType="date"
                     android:id="@+id/edt_dob"/>
             </android.support.design.widget.TextInputLayout>
@@ -95,6 +98,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Birth Place"
+                    android:maxLines="1"
                     android:inputType="text"
                     android:id="@+id/edt_place_birth"/>
             </android.support.design.widget.TextInputLayout>
@@ -162,6 +166,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Email Address"
+                android:maxLines="1"
                 android:inputType="textEmailAddress"
                 android:id="@+id/edittext_email"/>
         </android.support.design.widget.TextInputLayout>
@@ -191,6 +196,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Father's Name"
+                    android:maxLines="1"
                     android:inputType="text"
                     android:id="@+id/name_father"/>
             </android.support.design.widget.TextInputLayout>
@@ -203,6 +209,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Mother's Name"
+                    android:maxLines="1"
                     android:inputType="textPersonName"
                     android:id="@+id/name_mother"/>
             </android.support.design.widget.TextInputLayout>
@@ -260,6 +267,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Passport Number"
                 android:inputType="text"
@@ -302,6 +310,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Place of Issue"
+                    android:maxLines="1"
                     android:id="@+id/edt_issue_place"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
@@ -321,6 +330,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Issuing Date"
+                    android:maxLines="1"
                     android:inputType="date"
                     android:id="@+id/edt_issue_date"/>
             </android.support.design.widget.TextInputLayout>
@@ -333,6 +343,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Expiry Date"
+                    android:maxLines="1"
                     android:inputType="date"
                     android:id="@+id/edt_valid_till"/>
             </android.support.design.widget.TextInputLayout>
@@ -349,6 +360,7 @@
                <EditText
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
+                   android:maxLines="1"
                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                    android:hint="Latest Issue date of Residence Visa / Iqama:"
                    android:inputType="date"
@@ -385,9 +397,10 @@
                <EditText
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
+                   android:maxLines="1"
                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                    android:hint="Arriving From in UAE"
-                   android:inputType="date"
+                   android:inputType="text"
                    android:id="@+id/arriving_from_uae"/>
            </android.support.design.widget.TextInputLayout>
        </LinearLayout>
@@ -435,9 +448,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/sponsor_name"
+                    android:maxLines="1"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Sponsor/Company Name"
-                    android:inputType="date" />
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -447,9 +461,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/sponsor_address"
+                    android:maxLines="1"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Sponsor/Company Address"
-                    android:inputType="date"/>
+                    android:inputType="text"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -459,6 +474,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/sponsor_contact"
+                    android:maxLines="1"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Company Contact Number"
                     android:inputType="numberDecimal"/>

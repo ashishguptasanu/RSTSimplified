@@ -57,6 +57,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     public String selectedVisa, selectedLivingInCountry;
     int selectedLivingIn, selectedNationality, selectedLiving;
     ImageView img1;
+    SharedPreferences sharedPreferences;
     ArrayAdapter<String> dataAdapter,dataAdapter2;
 
 
@@ -79,6 +80,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_service, container, false);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         loadJson();
         tv1 = (TextView)view.findViewById(R.id.text1);
         arrayService = new String[]{"UAE Visa","USA Visa","Singapore Visa","Oman Visa","Iran Visa"};
@@ -257,7 +259,10 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 selectedLiving = spinnerLivingIn.getSelectedItemPosition();
                 selectedLivingIn = livingin.get(selectedLiving).getId();
                 selectedLivingInCountry = livingInData.get(i);
-                break;
+                String phoneCode = livingin.get(i).getPhoneCode();
+                final String code= ("+" + phoneCode);
+                sharedPreferences.edit().putString("code", code).apply();
+               break;
             case R.id.spnr_nationality:
                 int livingIn = spinnerNationality.getSelectedItemPosition();
                 selectedNationality = nationality.get(livingIn).getId();

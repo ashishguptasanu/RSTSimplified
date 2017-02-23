@@ -14,6 +14,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Current Address"
+                android:maxLines="2"
                 android:inputType="textPostalAddress"
                 android:clickable="true"
                 android:layout_marginLeft="10dp"
@@ -33,6 +34,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="City"
+                    android:maxLines="1"
                     android:clickable="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="5dp"/>
@@ -66,6 +68,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Mobile Number"
+                    android:maxLines="1"
+                    android:maxLength="15"
                     android:inputType="numberDecimal"
                     android:id="@+id/edittext_mobile"/>
             </android.support.design.widget.TextInputLayout>
@@ -79,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Country"
+                android:maxLines="1"
                 android:clickable="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"/>
@@ -92,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Email"
+                android:maxLines="1"
                 android:clickable="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"/>
@@ -141,6 +147,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Contact Number"
+                android:maxLines="1"
+                android:maxLength="17"
                 android:inputType="numberDecimal"
                 android:clickable="true"
                 android:layout_marginLeft="10dp"
@@ -155,6 +163,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Hotel Address"
+                android:maxLines="2"
                 android:clickable="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"/>
@@ -181,6 +190,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Contact Person"
+                    android:maxLines="1"
                     android:clickable="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="5dp"/>
@@ -197,6 +207,8 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Contact Number"
+                    android:maxLines="1"
+                    android:maxLength="17"
                     android:inputType="numberDecimal"
                     android:clickable="true"
                     android:layout_marginLeft="10dp"

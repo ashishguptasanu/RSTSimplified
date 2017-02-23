@@ -122,7 +122,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     ArrayAdapter<String> adapter;
     String arrivalDate, departureDate, fullNameApplicant, birthDateApplicant, passportNumberApplicant,genderApplicant, savedArrivalDate, savedDepartureDate;
     int  selectedCountryID, selectedIssueCountryID, age, selectedEmirateId;
-    private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
 
 
@@ -367,6 +366,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             edtEmailContact = (EditText)view.findViewById(R.id.edt_email_contact);
             loadEmirates();
             if(sharedPreferences!=null){
+                String phoneCode = sharedPreferences.getString("code","");
+                phoneCodeEdt.setText(phoneCode);
                 livingIn = sharedPreferences.getString("living_in_country","");
                 String hotelAddress = sharedPreferences.getString("hotel_address","");
                 String address = sharedPreferences.getString("current_address","");
@@ -387,26 +388,32 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 @Override
                 public void onClick(View view) {
                     if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
-                        if(isValidMobile(edtEmergencyContactNumber.getText().toString()) && isValidMobile(edtMobile.getText().toString())) {
-                            ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
-                            int atTab = mFormPager.getCurrentItem();
-                            mFormPager.setCurrentItem(atTab + 1);
-                            getSharedPreferences();
-                            if(sharedPreferences != null){
-                                sendConsultData();
+                        System.out.println(edtEmailContact);
+                        if(isValidEmail(edtEmailContact.getText().toString())){
+                            if(isValidMobile(edtEmergencyContactNumber.getText().toString()) && isValidMobile(edtMobile.getText().toString())) {
+                                ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
+                                int atTab = mFormPager.getCurrentItem();
+                                mFormPager.setCurrentItem(atTab + 1);
+                                getSharedPreferences();
+                                if(sharedPreferences != null){
+                                    sendConsultData();
+                                }
+                                sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                                sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
+                                sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
+                                sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
+                                sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
+                                sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
+                                sharedPreferences.edit().putString("selected_emirate", selectedEmirate).apply();
+                                sharedPreferences.edit().putInt("selected_emirate_id", selectedEmirateId).apply();
+                                sharedPreferences.edit().putString("mobile", edtMobile.getText().toString()).apply();
                             }
-                            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                            sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
-                            sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
-                            sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
-                            sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
-                            sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
-                            sharedPreferences.edit().putString("selected_emirate", selectedEmirate).apply();
-                            sharedPreferences.edit().putInt("selected_emirate_id", selectedEmirateId).apply();
-                            sharedPreferences.edit().putString("mobile", edtMobile.getText().toString()).apply();
+                            else {
+                                showToast("Mobile Number is not valid");
+                            }
                         }
                         else {
-                            showToast("Mobile Number is not valid");
+                            showToast("Email is not valid");
                         }
                     }
                     else {
@@ -497,7 +504,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("sponsor_address",edtSponsorAddress.getText().toString()).apply();
         sharedPreferences.edit().putString("sponsor_type",selectedGCC).apply();
         sharedPreferences.edit().putString("port",selectedPort).apply();
-        sharedPreferences.edit().putString("sponsor_contact",edtSponsorCotact.getText().toString());
+        sharedPreferences.edit().putString("sponsor_contact",edtSponsorCotact.getText().toString()).apply();
 
     }
 
