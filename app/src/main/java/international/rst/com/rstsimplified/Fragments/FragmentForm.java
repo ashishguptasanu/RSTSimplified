@@ -1124,8 +1124,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 try {
                     resp = response.body().string();
                     Log.v("Response", resp);
+                    sendVerificationEmail(resp, edtEmailContact.getText().toString());
+                    sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
-                        sharedPreferences.edit().putString("response",resp).apply();
+
+
 
                         //sendApplicandData(resp);
                         //sendVerificationEmail(resp, emailEdt);
@@ -1133,6 +1136,42 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
                     }else {
+
+                    }
+                } catch (IOException e) {
+                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendVerificationEmail(String resp, String emailEdt) {
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("email","em")
+                .build();
+        String emailUrl = ("http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=email_send&visa_id="+resp+"+&email_id="+emailEdt);
+        Request request = new Request.Builder().url(emailUrl).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    String resp = response.body().string();
+//                    Log.v(TAG_REGISTER, resp);
+                    if (response.isSuccessful()) {
+                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
+                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
+
+                    } else {
 
                     }
                 } catch (IOException e) {
