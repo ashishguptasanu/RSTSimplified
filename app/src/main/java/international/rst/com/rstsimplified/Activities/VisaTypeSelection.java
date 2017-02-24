@@ -66,7 +66,6 @@ public class VisaTypeSelection extends AppCompatActivity
         System.out.println(nationalityID);
         System.out.println(url);
         //System.out.println("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         loadVisaType(url);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
