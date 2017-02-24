@@ -1,5 +1,6 @@
 package international.rst.com.rstsimplified.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -42,6 +43,7 @@ public class VisaTypeSelection extends AppCompatActivity
     private List<VisaType_> visaTypes = new ArrayList<>();
     VisaTypeAdapter adapter;
     ProgressBar mProgress;
+    Bundle b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,22 +122,44 @@ public class VisaTypeSelection extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-       /* // Handle navigation view item clicks here.
+        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.home) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.visa_services) {
+            Intent intent1=new Intent(this,ActivityServices.class);
+            b=new Bundle();
+            b.putInt("tab",0);
+            intent1.putExtras(b);
+            startActivity(intent1);
+        } else if (id == R.id.airport_services) {
+            Intent intent1=new Intent(this,ActivityServices.class);
+            b=new Bundle();
+            b.putInt("tab",1);
+            intent1.putExtras(b);
+            startActivity(intent1);
+        } else if (id == R.id.hotel_services) {
+            Intent intent1=new Intent(this,ActivityServices.class);
+            b=new Bundle();
+            b.putInt("tab",2);
+            intent1.putExtras(b);
+            startActivity(intent1);
+        } else if (id == R.id.meet_greet) {
+            Intent intent1=new Intent(this,ActivityServices.class);
+            b=new Bundle();
+            b.putInt("tab",3);
+            intent1.putExtras(b);
+            startActivity(intent1);
+        } else if (id == R.id.sight_seeing) {
 
-        } else if (id == R.id.nav_manage) {
+        }
+        else if (id == R.id.car_parking) {
 
-        } else if (id == R.id.nav_share) {
+        }
+        else if (id == R.id.launge_booking) {
 
-        } else if (id == R.id.nav_send) {
-
-        }*/
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
