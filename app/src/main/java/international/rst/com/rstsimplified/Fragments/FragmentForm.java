@@ -114,7 +114,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     CustomScrollView scrollView;
     RadioButton radioButton1, radioButton2;
     LinearLayout sponsorLayout, gccLayout;
-    Button button2;
+    Button button2, button3;
     SharedPreferences sharedPreferences;
     public String nationalityID, livingIn, codePhone;
     public static String filePath;
@@ -434,7 +434,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     }
 
     private void intializeDocsView() {
-        Button button3 = (Button)view.findViewById(R.id.button_docs);
+        button3 = (Button)view.findViewById(R.id.button_docs);
+        button3.setText("Skip & Submit");
         name1 = (TextView)view.findViewById(R.id.doc1);
         name2 = (TextView)view.findViewById(R.id.doc2);
         name3 = (TextView)view.findViewById(R.id.doc3);
@@ -646,6 +647,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 name1.setText(selectedFile1);
                 checked1.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path1", filePath).apply();
+                button3.setText("Submit");
 
                 break;
             case 2:
@@ -659,6 +661,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 name2.setText(selectedFile2);
                 checked2.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path2", filePath).apply();
+                button3.setText("Submit");
                 break;
             case 3:
                 uri = data.getData();
@@ -671,6 +674,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 name3.setText(selectedFile3);
                 checked3.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path3", filePath).apply();
+                button3.setText("Submit");
                 break;
             case 4:
                 uri = data.getData();
@@ -683,6 +687,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 name4.setText(selectedFile4);
                 checked4.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path4", filePath).apply();
+                button3.setText("Submit");
                 break;
             case 5:
                 uri = data.getData();
@@ -695,6 +700,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 name5.setText(selectedFile5);
                 checked5.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path5", filePath).apply();
+                button3.setText("Submit");
                 break;
             case 6:
                 uri = data.getData();
@@ -707,6 +713,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 name6.setText(selectedFile6);
                 checked6.setImageResource(R.drawable.checked);
                 sharedPreferences.edit().putString("file_path6", filePath).apply();
+                button3.setText("Submit");
                 break;
         }
         

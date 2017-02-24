@@ -2,8 +2,6 @@ package international.rst.com.rstsimplified.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -52,10 +50,7 @@ public class VisaTypeSelection extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mProgress = (ProgressBar)findViewById(R.id.progress_visa_type);
-
         initViews();
-
-        //https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID
         Bundle bundle =  getIntent().getExtras();
         if ( bundle!= null && bundle.containsKey("livingid") && bundle.containsKey("nationid")){
             livingID = bundle.getInt("livingid");
@@ -67,7 +62,6 @@ public class VisaTypeSelection extends AppCompatActivity
         System.out.println(url);
         //System.out.println("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality="+nationalityID+"&livingIn="+livingID);
         loadVisaType(url);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

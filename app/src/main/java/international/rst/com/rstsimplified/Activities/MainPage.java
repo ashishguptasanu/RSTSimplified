@@ -58,11 +58,8 @@ public class MainPage extends AppCompatActivity
     private static ViewPager imageviewPager;
     final int REQUEST_READ_PHONE_STATE = 0;
     TelephonyManager mngr;
-
     Bundle b;
     String data;
-
-
     CardView cardView1, cardView2,cardView3,cardView4;
     Menu menu;
     private static int currentPage = 0;

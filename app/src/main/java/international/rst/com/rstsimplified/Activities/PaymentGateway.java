@@ -47,20 +47,6 @@ public class PaymentGateway extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                try {
-                    new ConnectionTask().execute("");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });*/
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -83,19 +69,13 @@ public class PaymentGateway extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.payment_gateway, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -161,12 +141,9 @@ public class PaymentGateway extends AppCompatActivity
 
             try {
                 /* Create the card object */
-
                 Card card = new Card(number.getText().toString(), name.getText().toString(), expMonth.getText().toString(), expYear.getText().toString(), cvv.getText().toString());
                 /* Create the CheckoutKit instance */
                 CheckoutKit ck = CheckoutKit.getInstance(publicKey);
-
-
                 final Response<CardTokenResponse> resp = ck.createCardToken(card);
                 if (resp.hasError) {
                     /* Handle errors */

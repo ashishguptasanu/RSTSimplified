@@ -35,17 +35,11 @@ public class SplashActivity extends AppCompatActivity {
     private static final String BASE_URL = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=new_registration";
     //private static final String BASE_URL = "https://www.google.com/url?q=https%3A%2F%2Fuaevisasonline.com%3A2083%2Fcpsess9380849380%2F3rdparty%2FphpMyAdmin%2Fsql.php%3Fserver%3D1%26db%3Dchandrac_db%26table%3Duv_visa_applicants%26pos%3D0%26token%3Dcaaf8db0a55e4aa7a631ad3a84358922%23PMAURL-0%3Asql.php%3Fdb%3Dchandrac_db%26table%3Duv_visa_applicants%26server%3D1%26target%3D%26token%3Dcaaf8db0a55e4aa7a631ad3a84358922&sa=D&sntz=1&usg=AFQjCNGeGoS92KxwhJRs0kyfgebC8xUPYw";
     private OkHttpClient client = new OkHttpClient();
-
     SharedPreferences sharedPreferences;
-
-
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_splash);
         View yourView = findViewById(R.id.your_view);
         sharedPreferences = SplashActivity.this.getPreferences(Context.MODE_PRIVATE);

@@ -1,4 +1,7 @@
-#Fri Feb 24 15:07:17 IST 2017
-base.0=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
-renamed.0=classes.dex
-file.0=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+#Fri Feb 24 17:09:44 IST 2017
+base.0=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_dced6bc6792f743a6aa83dbde7415b4d70a84c16
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_658c1bfc43545cc5b1b8c1117c552d4a30518eb5\\classes.dex
+base.1=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_658c1bfc43545cc5b1b8c1117c552d4a30518eb5
+file.0=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_dced6bc6792f743a6aa83dbde7415b4d70a84c16\\classes.dex
