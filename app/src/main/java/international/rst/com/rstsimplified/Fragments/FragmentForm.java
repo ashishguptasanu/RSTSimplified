@@ -860,12 +860,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         int mMonth=mcurrentDate.get(Calendar.MONTH);
         int mDay=mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog mDatePicker=new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog mDatePicker=new DatePickerDialog(getActivity(),android.R.style.Theme_Holo_Light_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
                 edtDate1.setText(selectedyear +"-"+(selectedmonth+1)+"-"+selectedday);
             }
         },mYear, mMonth, mDay);
-
+        mDatePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mDatePicker.setTitle("Select date");
         mDatePicker.show();
     }
