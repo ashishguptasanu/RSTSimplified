@@ -19,6 +19,7 @@ import android.preference.PreferenceManager;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -264,6 +265,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 }
             });
             birthDate.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onClick(View view) {
                     final Calendar mcurrentDate=Calendar.getInstance();

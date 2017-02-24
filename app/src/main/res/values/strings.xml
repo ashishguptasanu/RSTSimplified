@@ -19,4 +19,7 @@
     <string name="upload_form_note">Note: You can skip this page by clicking on Submit button. you can submit documents later.</string>
     <string name="title_activity_nav_draw_base">NavDrawBaseActivity</string>
     <string name="drawer_email">ashishkumar@rstintl.com</string>
+    <string name="citizen">I am a citizen of</string>
+    <string name="living">I am living in</string>
+    <string name="visa">Select Visa for</string>
 </resources>
