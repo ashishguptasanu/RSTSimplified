@@ -18,4 +18,5 @@
     <string name="title_activity_summary_page">Order Summary</string>
     <string name="upload_form_note">Note: You can skip this page by clicking on Submit button. you can submit documents later.</string>
     <string name="title_activity_nav_draw_base">NavDrawBaseActivity</string>
+    <string name="drawer_email">ashishkumar@rstintl.com</string>
 </resources>

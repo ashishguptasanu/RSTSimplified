@@ -3,33 +3,41 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/home"
+            android:icon="@mipmap/home"
+            android:title="Home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/visa_services"
+            android:icon="@mipmap/visa_gray"
+            android:title="Visa Services" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/airport_services"
+            android:icon="@mipmap/airport_gray"
+            android:title="Airport Services" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/hotel_services"
+            android:icon="@mipmap/hotel_gray"
+            android:title="Hotel Services" />
+        <item
+            android:id="@+id/meet_greet"
+            android:icon="@mipmap/meet"
+            android:title="Meet &amp; Greet " />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Services">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/sight_seeing"
+                android:icon="@mipmap/city_sight"
+                android:title="City Sight Seeing" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/car_parking"
+                android:icon="@mipmap/parking"
+                android:title="Car Parking" />
+            <item
+                android:id="@+id/launge_booking"
+                android:icon="@mipmap/launge"
+                android:title="Launge Booking" />
         </menu>
     </item>
 

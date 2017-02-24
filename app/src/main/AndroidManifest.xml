@@ -58,10 +58,6 @@
             android:name=".Activities.SummaryPage"
             android:label="@string/title_activity_summary_page"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Activities.NavDrawBaseActivity"
-            android:label="@string/title_activity_nav_draw_base"
-            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

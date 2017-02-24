@@ -115,7 +115,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     LinearLayout sponsorLayout, gccLayout;
     Button button2;
     SharedPreferences sharedPreferences;
-    public String nationalityID, livingIn;
+    public String nationalityID, livingIn, codePhone;
     public static String filePath;
     TextView  name1, name2, name3, name4, name5, name6;
     private OkHttpClient client = new OkHttpClient();
@@ -334,8 +334,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             view = inflater.inflate(R.layout.contact_form,container,false);
             intializeContactView();
             if(sharedPreferences!=null){
-                String phoneCode = sharedPreferences.getString("code","");
-                phoneCodeEdt.setText(phoneCode);
+                codePhone = sharedPreferences.getString("code","");
+                phoneCodeEdt.setText(codePhone);
                 livingIn = sharedPreferences.getString("living_in_country","");
                 String hotelAddress = sharedPreferences.getString("hotel_address","");
                 String address = sharedPreferences.getString("current_address","");
@@ -374,7 +374,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                                 sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
                                 sharedPreferences.edit().putString("selected_emirate", selectedEmirate).apply();
                                 sharedPreferences.edit().putInt("selected_emirate_id", selectedEmirateId).apply();
-                                sharedPreferences.edit().putString("mobile", edtMobile.getText().toString()).apply();
+                                sharedPreferences.edit().putString("mobile", (codePhone + edtMobile.getText().toString())).apply();
                             }
                             else {
                                 showToast("Mobile Number is not valid");
