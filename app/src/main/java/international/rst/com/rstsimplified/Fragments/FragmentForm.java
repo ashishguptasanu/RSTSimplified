@@ -90,7 +90,7 @@ import java.util.Objects;
 
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
-    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6, resp;
+    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6, resp, emailFinal;
     View view;
     String livingInId, nationalityId, selectedGCC, selectedPort, serviceType, livingId, serviceFeeCs, processingTime, deviceType, deviceOS, fullNameVisa;
     int visaTypeId;
@@ -213,10 +213,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         } else if (title.equalsIgnoreCase("applicant")) {
             view = inflater.inflate(R.layout.appicant_form, container, false);
             intializeApplicantViews();
-
-
             disableInput(latestDate);
             latestDate.setOnClickListener(this);
+            emailEdt.setText(emailFinal);
             if(sharedPreferences!=null) {
                 livingInId = sharedPreferences.getString("living_id", "");
                 nationalityID = sharedPreferences.getString("nationality_id", "");
@@ -338,6 +337,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             if(sharedPreferences!=null){
                 codePhone = sharedPreferences.getString("code","");
                 phoneCodeEdt.setText(codePhone);
+                emailFinal = edtEmailContact.getText().toString();
                 livingIn = sharedPreferences.getString("living_in_country","");
                 String hotelAddress = sharedPreferences.getString("hotel_address","");
                 String address = sharedPreferences.getString("current_address","");
@@ -365,18 +365,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                                 int atTab = mFormPager.getCurrentItem();
                                 mFormPager.setCurrentItem(atTab + 1);
                                 getSharedPreferences();
+                                emailFinal = edtEmailContact.getText().toString();
                                 if(sharedPreferences != null){
                                     sendConsultData();
                                 }
-                                sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                                sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
-                                sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
-                                sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
-                                sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
-                                sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
-                                sharedPreferences.edit().putString("selected_emirate", selectedEmirate).apply();
-                                sharedPreferences.edit().putInt("selected_emirate_id", selectedEmirateId).apply();
-                                sharedPreferences.edit().putString("mobile", (codePhone + edtMobile.getText().toString())).apply();
+                                saveContactSharedPref();
                             }
                             else {
                                 showToast("Mobile Number is not valid");
@@ -403,6 +396,19 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
 
         return view;
+    }
+
+    private void saveContactSharedPref() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sharedPreferences.edit().putString("current_address", edtAddress.getText().toString()).apply();
+        sharedPreferences.edit().putString("hotel_address", edtHotelAddress.getText().toString()).apply();
+        sharedPreferences.edit().putString("emergency_name", edtEmergencyContactName.getText().toString()).apply();
+        sharedPreferences.edit().putString("emergency_number", edtEmergencyContactNumber.getText().toString()).apply();
+        sharedPreferences.edit().putString("living_city", edtLivingCity.getText().toString()).apply();
+        sharedPreferences.edit().putString("email_contact", edtEmailContact.getText().toString()).apply();
+        sharedPreferences.edit().putString("selected_emirate", selectedEmirate).apply();
+        sharedPreferences.edit().putInt("selected_emirate_id", selectedEmirateId).apply();
+        sharedPreferences.edit().putString("mobile", (codePhone + edtMobile.getText().toString())).apply();
     }
 
     private void intializeApplicantViews() {
