@@ -90,7 +90,7 @@ import java.util.Objects;
 
 
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
-    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6, resp, emailFinal;
+    String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6, resp;
     View view;
     String livingInId, nationalityId, selectedGCC, selectedPort, serviceType, livingId, serviceFeeCs, processingTime, deviceType, deviceOS, fullNameVisa;
     int visaTypeId;
@@ -100,6 +100,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, edtMobileApplicant;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion, gccList;
+    String emailFinal;
     Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort;
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
@@ -216,8 +217,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             disableInput(latestDate);
             latestDate.setOnClickListener(this);
             emailEdt.setText(emailFinal);
+            System.out.println(emailFinal + "     " + sharedPreferences.getString("email_contact", ""));
             if(sharedPreferences!=null) {
                 livingInId = sharedPreferences.getString("living_id", "");
+                System.out.println(sharedPreferences.getString("email_contact",""));
                 nationalityID = sharedPreferences.getString("nationality_id", "");
                 if(Objects.equals(livingInId, "17") || Objects.equals(livingInId, "114") || Objects.equals(livingInId, "187") || Objects.equals(livingInId, "174") || Objects.equals(livingInId, "161")){
                     sponsorLayout.setVisibility(View.VISIBLE);
@@ -358,9 +361,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 @Override
                 public void onClick(View view) {
                     if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
-                        System.out.println(edtEmailContact);
                         if(isValidEmail(edtEmailContact.getText().toString())){
                             if(isValidMobile(edtEmergencyContactNumber.getText().toString()) && isValidMobile(edtMobile.getText().toString())) {
+                                saveContactSharedPref();
                                 ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
                                 int atTab = mFormPager.getCurrentItem();
                                 mFormPager.setCurrentItem(atTab + 1);
@@ -369,7 +372,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                                 if(sharedPreferences != null){
                                     sendConsultData();
                                 }
-                                saveContactSharedPref();
+
                             }
                             else {
                                 showToast("Mobile Number is not valid");
