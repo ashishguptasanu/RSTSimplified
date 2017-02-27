@@ -144,10 +144,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         super.onCreate(savedInstanceState);
         loadProfession();
         sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-
-
-
     }
 
 

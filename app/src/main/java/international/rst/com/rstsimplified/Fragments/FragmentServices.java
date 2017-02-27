@@ -30,6 +30,9 @@ import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.Model.CountryResponse;
 import international.rst.com.rstsimplified.Model.NationalityResponse;
+import international.rst.com.rstsimplified.Model.State;
+import international.rst.com.rstsimplified.Model.StateResponse;
+import international.rst.com.rstsimplified.Model.States;
 import international.rst.com.rstsimplified.R;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,19 +43,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentServices extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener{
     TextView tv1;
-    String title, urlNationality, urlLivingIn, urlVisaType;
+    String title, urlNationality, urlLivingIn, urlVisaType, urlStates;
     View view;
     LinearLayoutManager linearLayoutManager1;
     Button buttonSubmission;
-    LinearLayout linearLayoutVisa;
+    LinearLayout linearLayoutVisa, linearLayoutStates;
     String[] mDataset1;
     int[] mImageSet, mImageSet2;
     String[] arrayService;
     int selectedVisaId;
-    Spinner spinnerVisa,spinnerLivingIn,spinnerNationality;
+    Spinner spinnerVisa,spinnerLivingIn,spinnerNationality, spinnerStates;
     private List<CountryRes> nationality = new ArrayList<>();
     private List<CountryRes> livingin = new ArrayList<>();
+    private List<State> states = new ArrayList<>();
     private List<String> livingInData = new ArrayList<>();
+    private List<String> stateData = new ArrayList<>();
     private List<String> nationalityData = new ArrayList<>();
     public String selectedVisa, selectedLivingInCountry;
     int selectedLivingIn, selectedNationality, selectedLiving;
@@ -81,16 +86,20 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_service, container, false);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        loadJson();
+        //loadJson();
         tv1 = (TextView)view.findViewById(R.id.text1);
         arrayService = new String[]{"UAE Visa","USA Visa","Singapore Visa","Oman Visa","Iran Visa"};
         linearLayoutVisa = (LinearLayout)view.findViewById(R.id.linear_layout_services);
+        linearLayoutStates = (LinearLayout)view.findViewById(R.id.layout_state_usa);
+        linearLayoutStates.setVisibility(View.GONE);
         spinnerVisa = (Spinner)view.findViewById(R.id.spnr_visa);
         spinnerLivingIn = (Spinner)view.findViewById(R.id.spnr_living_in);
         spinnerNationality = (Spinner)view.findViewById(R.id.spnr_nationality);
         spinnerVisa.setOnItemSelectedListener(this);
         spinnerLivingIn.setOnItemSelectedListener(this);
         spinnerNationality.setOnItemSelectedListener(this);
+        spinnerStates = (Spinner)view.findViewById(R.id.spnr_state);
+        spinnerStates.setOnItemSelectedListener(this);
         buttonSubmission = (Button)view.findViewById(R.id.services_submission);
         buttonSubmission.setOnClickListener(this);
         loadSpinners();
@@ -135,18 +144,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         loadLivingIn(urlLivingIn);
     }
 
-    private void loadSpinners() {
-        intializeVisaSpinner();
-        intializeLivingInSpinner();
-        intializeNationalitySpinner();
-    }
 
-    private void intializeVisaSpinner() {
-        spinnerVisa = (Spinner)view.findViewById(R.id.spnr_visa);
-        ArrayAdapter<String> genderDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arrayService);
-        genderDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerVisa.setAdapter(genderDataAdapter);
-    }
     private void loadNationality(String urlNationality){
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -165,6 +163,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
 
                 Country jsonResponse = response.body();
                 nationality = jsonResponse.getCountry();
+                nationalityData.clear();
                 for(int i=0;i<nationality.size();i++){
                     nationalityData.add(nationality.get(i).getName());
                 }
@@ -195,7 +194,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
 
                 Country jsonResponse = response.body();
                 livingin = jsonResponse.getCountry();
-
+                livingInData.clear();
                 for(int i=0;i<livingin.size();i++){
                     livingInData.add(livingin.get(i).getName());
                 }
@@ -209,20 +208,39 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
             }
         });
     }
-    private void intializeLivingInSpinner() {
-        dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, livingInData);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerLivingIn.setAdapter(dataAdapter);
+    private void loadStates(String urlStates){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.usa-visahub.in")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        StateResponse request = retrofit.create(StateResponse.class);
+        Call<States> call = request.getState(urlStates);
+        //
+        call.enqueue(new Callback<States>() {
+            @Override
+            public void onResponse(Call<States> call, Response<States> response) {
+
+
+                States jsonResponse = response.body();
+                states = jsonResponse.getState();
+                stateData.clear();
+                for(int i=0;i<states.size();i++){
+                    stateData.add(states.get(i).getStateName());
+                }
+
+
+                populateStateSpinner();
+            }
+            @Override
+            public void onFailure(Call<States> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
     }
-    private void intializeNationalitySpinner() {
-        dataAdapter2 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, nationalityData);
-        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerNationality.setAdapter(dataAdapter2);
-    }
-    private void loadSpinnerData(String urlNationality, String urlLivingIn){
-        loadLivingIn(urlLivingIn);
-        loadNationality(urlNationality);
-    }
+
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -231,26 +249,31 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 selectedVisa = arrayService[i];
                 selectedVisaId = i;
                 if(i==0){
+                    linearLayoutStates.setVisibility(View.GONE);
                     urlNationality = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=nationality&gofor=country";
                     urlLivingIn = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=livingIn&gofor=country";
                     loadSpinnerData(urlNationality, urlLivingIn);
 
                 }
                 else if(i==1){
+                    linearLayoutStates.setVisibility(View.VISIBLE);
                     urlNationality = "http://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=nationality&gofor=country";
                     urlLivingIn = "http://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=livingIn&gofor=country";
                     loadSpinnerData(urlNationality, urlLivingIn);
 
                 }
                 else if(i==2){
+                    linearLayoutStates.setVisibility(View.GONE);
                     urlNationality = "";
                     urlLivingIn = "";
                 }
                 else if(i==3){
+                    linearLayoutStates.setVisibility(View.GONE);
                     urlNationality ="";
                     urlLivingIn = "";
                 }
                 else if(i==4){
+                    linearLayoutStates.setVisibility(View.GONE);
                     urlNationality = "";
                     urlLivingIn = "";
                 }
@@ -259,9 +282,17 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 selectedLiving = spinnerLivingIn.getSelectedItemPosition();
                 selectedLivingIn = livingin.get(selectedLiving).getId();
                 selectedLivingInCountry = livingInData.get(i);
+                System.out.println(selectedLivingInCountry);
                 String phoneCode = livingin.get(i).getPhoneCode();
                 final String code= ("+" + phoneCode);
                 sharedPreferences.edit().putString("code", code).apply();
+                if(selectedLiving != 0){
+                    urlStates = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=" + selectedLivingIn;
+                    System.out.println(urlStates);
+                    loadStates(urlStates);
+                }
+
+
                break;
             case R.id.spnr_nationality:
                 int livingIn = spinnerNationality.getSelectedItemPosition();
@@ -270,10 +301,13 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         }
     }
 
+
+
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
 
     @Override
     public void onClick(View view) {
@@ -305,5 +339,39 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 }
                 break;
         }
+    }
+    private void loadSpinners() {
+        intializeVisaSpinner();
+        //intializeLivingInSpinner();
+        //intializeNationalitySpinner();
+    }
+
+    private void intializeVisaSpinner() {
+        spinnerVisa = (Spinner)view.findViewById(R.id.spnr_visa);
+        ArrayAdapter<String> genderDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arrayService);
+        genderDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerVisa.setAdapter(genderDataAdapter);
+    }
+    private void populateStateSpinner() {
+        spinnerStates = (Spinner)view.findViewById(R.id.spnr_state);
+        dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, stateData);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerStates.setAdapter(dataAdapter);
+    }
+    private void intializeLivingInSpinner() {
+        dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, livingInData);
+        dataAdapter.setNotifyOnChange(true);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLivingIn.setAdapter(dataAdapter);
+    }
+    private void intializeNationalitySpinner() {
+        dataAdapter2 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, nationalityData);
+        dataAdapter2.setNotifyOnChange(true);
+        dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerNationality.setAdapter(dataAdapter2);
+    }
+    private void loadSpinnerData(String urlNationality, String urlLivingIn){
+        loadLivingIn(urlLivingIn);
+        loadNationality(urlNationality);
     }
 }

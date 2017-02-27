@@ -111,6 +111,33 @@
                     </LinearLayout>
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/layout_state_usa"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/viewColour"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="States"
+                        android:textColor="@color/colorAccent"
+                        android:textAlignment="center"/>
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:id="@+id/spnr_state"
+                        android:spinnerMode="dialog">
+                    </android.support.v7.widget.AppCompatSpinner>
+                </LinearLayout>
+
                 <Button
                     android:layout_width="60dp"
                     android:layout_height="30dp"
