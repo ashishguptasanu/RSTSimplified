@@ -6,6 +6,69 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class VisaType_ {
+    @SerializedName("TravelPlanId")
+    @Expose
+    private String travelPlanId;
+    @SerializedName("destination_id")
+    @Expose
+    private String destinationId;
+    @SerializedName("MissionId")
+    @Expose
+    private String missionId;
+    @SerializedName("visadurationid")
+    @Expose
+    private String visadurationid;
+    @SerializedName("NoOfEntries")
+    @Expose
+    private String noOfEntries;
+    @SerializedName("Comments")
+    @Expose
+    private String comments;
+    @SerializedName("visaadultfee")
+    @Expose
+    private String visaadultfee;
+    @SerializedName("visaminorfee")
+    @Expose
+    private String visaminorfee;
+    @SerializedName("visinfantfee")
+    @Expose
+    private String visinfantfee;
+    @SerializedName("visafeeex")
+    @Expose
+    private String visafeeex;
+    @SerializedName("servicefeeex")
+    @Expose
+    private String servicefeeex;
+    @SerializedName("servicefeeex1")
+    @Expose
+    private String servicefeeex1;
+    @SerializedName("servicefeeexvanila")
+    @Expose
+    private String servicefeeexvanila;
+    @SerializedName("ospfee")
+    @Expose
+    private String ospfee;
+    @SerializedName("visaprocesstimeex")
+    @Expose
+    private String visaprocesstimeex;
+    @SerializedName("visaprocesstimeex1")
+    @Expose
+    private String visaprocesstimeex1;
+    @SerializedName("reference")
+    @Expose
+    private String reference;
+    @SerializedName("minoragecutoff")
+    @Expose
+    private String minoragecutoff;
+    @SerializedName("infantagecutoff")
+    @Expose
+    private String infantagecutoff;
+    @SerializedName("visaissuedtype")
+    @Expose
+    private String visaissuedtype;
+    @SerializedName("deleted")
+    @Expose
+    private String deleted;
     @SerializedName("id")
     @Expose
     private String id;
@@ -72,6 +135,164 @@ public class VisaType_ {
     @SerializedName("priority")
     @Expose
     private String priority;
+    public String getTravelPlanId() {
+        return travelPlanId;
+    }
+
+    public void setTravelPlanId(String travelPlanId) {
+        this.travelPlanId = travelPlanId;
+    }
+    public String getDestinationId() {
+        return destinationId;
+    }
+
+    public void setDestinationId(String destinationId) {
+        this.destinationId = destinationId;
+    }
+    public String getMissionId() {
+        return missionId;
+    }
+
+    public void setMissionId(String missionId) {
+        this.missionId = missionId;
+    }
+    public String getVisadurationid() {
+        return visadurationid;
+    }
+
+    public void setVisadurationid(String visadurationid) {
+        this.visadurationid = visadurationid;
+    }
+
+    public String getNoOfEntries() {
+        return noOfEntries;
+    }
+
+    public void setNoOfEntries(String noOfEntries) {
+        this.noOfEntries = noOfEntries;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getVisaadultfee() {
+        return visaadultfee;
+    }
+
+    public void setVisaadultfee(String visaadultfee) {
+        this.visaadultfee = visaadultfee;
+    }
+
+    public String getVisaminorfee() {
+        return visaminorfee;
+    }
+
+    public void setVisaminorfee(String visaminorfee) {
+        this.visaminorfee = visaminorfee;
+    }
+
+    public String getVisinfantfee() {
+        return visinfantfee;
+    }
+
+    public void setVisinfantfee(String visinfantfee) {
+        this.visinfantfee = visinfantfee;
+    }
+
+    public String getVisafeeex() {
+        return visafeeex;
+    }
+
+    public void setVisafeeex(String visafeeex) {
+        this.visafeeex = visafeeex;
+    }
+    public String getServicefeeex() {
+        return servicefeeex;
+    }
+
+    public void setServicefeeex(String servicefeeex) {
+        this.servicefeeex = servicefeeex;
+    }
+
+    public String getServicefeeex1() {
+        return servicefeeex1;
+    }
+
+    public void setServicefeeex1(String servicefeeex1) {
+        this.servicefeeex1 = servicefeeex1;
+    }
+
+    public String getServicefeeexvanila() {
+        return servicefeeexvanila;
+    }
+
+    public void setServicefeeexvanila(String servicefeeexvanila) {
+        this.servicefeeexvanila = servicefeeexvanila;
+    }
+
+    public String getOspfee() {
+        return ospfee;
+    }
+
+    public void setOspfee(String ospfee) {
+        this.ospfee = ospfee;
+    }
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public String getMinoragecutoff() {
+        return minoragecutoff;
+    }
+
+    public void setMinoragecutoff(String minoragecutoff) {
+        this.minoragecutoff = minoragecutoff;
+    }
+
+    public String getInfantagecutoff() {
+        return infantagecutoff;
+    }
+
+    public void setInfantagecutoff(String infantagecutoff) {
+        this.infantagecutoff = infantagecutoff;
+    }
+
+    public String getVisaissuedtype() {
+        return visaissuedtype;
+    }
+
+    public void setVisaissuedtype(String visaissuedtype) {
+        this.visaissuedtype = visaissuedtype;
+    }
+
+    public String getDeleted() {
+        return deleted;
+    }
+
+    public String getVisaprocesstimeex() {
+        return visaprocesstimeex;
+    }
+
+    public void setVisaprocesstimeex(String visaprocesstimeex) {
+        this.visaprocesstimeex = visaprocesstimeex;
+    }
+
+    public String getVisaprocesstimeex1() {
+        return visaprocesstimeex1;
+    }
+
+    public void setVisaprocesstimeex1(String visaprocesstimeex1) {
+        this.visaprocesstimeex1 = visaprocesstimeex1;
+    }
 
     public String getId() {
         return id;
