@@ -358,13 +358,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 public void onClick(View view) {
                     if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
                         if(isValidEmail(edtEmailContact.getText().toString())){
+                            emailFinal = edtEmailContact.getText().toString();
+                            System.out.println(emailFinal);
                             if(isValidMobile(edtEmergencyContactNumber.getText().toString()) && isValidMobile(edtMobile.getText().toString())) {
                                 saveContactSharedPref();
                                 ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
                                 int atTab = mFormPager.getCurrentItem();
                                 mFormPager.setCurrentItem(atTab + 1);
                                 getSharedPreferences();
-                                emailFinal = edtEmailContact.getText().toString();
                                 if(sharedPreferences != null){
                                     sendConsultData();
                                 }
