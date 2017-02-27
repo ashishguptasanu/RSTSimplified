@@ -5,33 +5,54 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="2425241982998613"
+    timestamp="2429833083471360"
     token="-315265450245951108"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="2073" />
+        duration="895" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="27" />
     <task
         name="instant-run-transform"
-        duration="236" />
+        duration="34" />
     <task
         name="verifier"
-        duration="23" />
+        duration="6" />
 
     <artifact
-        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
 
     <build
-        timestamp="2425241982998613"
+        timestamp="2429661615335680"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="2429726220261120"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\builds\debug\2429726220261120\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="2429807389534293"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\builds\debug\2429807389534293\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="2429833083471360"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>

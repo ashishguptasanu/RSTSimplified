@@ -137,6 +137,12 @@
                         android:spinnerMode="dialog">
                     </android.support.v7.widget.AppCompatSpinner>
                 </LinearLayout>
+                <ProgressBar
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:id="@+id/progress"
+                    android:visibility="gone"
+                    android:layout_gravity="center"/>
 
                 <Button
                     android:layout_width="60dp"

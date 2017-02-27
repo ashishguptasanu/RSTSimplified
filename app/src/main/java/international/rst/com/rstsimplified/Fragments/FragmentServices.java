@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +53,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     int[] mImageSet, mImageSet2;
     String[] arrayService;
     int selectedVisaId;
+    ProgressBar mProgressBar;
     Spinner spinnerVisa,spinnerLivingIn,spinnerNationality, spinnerStates;
     private List<CountryRes> nationality = new ArrayList<>();
     private List<CountryRes> livingin = new ArrayList<>();
@@ -102,6 +104,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         spinnerStates.setOnItemSelectedListener(this);
         buttonSubmission = (Button)view.findViewById(R.id.services_submission);
         buttonSubmission.setOnClickListener(this);
+        mProgressBar = (ProgressBar)view.findViewById(R.id.progress);
         loadSpinners();
 
         //RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
@@ -230,8 +233,8 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 for(int i=0;i<states.size();i++){
                     stateData.add(states.get(i).getStateName());
                 }
-
-
+                mProgressBar.setVisibility(View.GONE);
+                linearLayoutStates.setVisibility(View.VISIBLE);
                 populateStateSpinner();
             }
             @Override
@@ -249,14 +252,12 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 selectedVisa = arrayService[i];
                 selectedVisaId = i;
                 if(i==0){
-                    linearLayoutStates.setVisibility(View.GONE);
                     urlNationality = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=nationality&gofor=country";
                     urlLivingIn = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=livingIn&gofor=country";
                     loadSpinnerData(urlNationality, urlLivingIn);
 
                 }
                 else if(i==1){
-                    linearLayoutStates.setVisibility(View.VISIBLE);
                     urlNationality = "http://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=nationality&gofor=country";
                     urlLivingIn = "http://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=livingIn&gofor=country";
                     loadSpinnerData(urlNationality, urlLivingIn);
@@ -283,10 +284,13 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 selectedLivingIn = livingin.get(selectedLiving).getId();
                 selectedLivingInCountry = livingInData.get(i);
                 System.out.println(selectedLivingInCountry);
+
                 String phoneCode = livingin.get(i).getPhoneCode();
                 final String code= ("+" + phoneCode);
                 sharedPreferences.edit().putString("code", code).apply();
                 if(selectedLiving != 0){
+                    mProgressBar.setVisibility(View.VISIBLE);
+                    linearLayoutStates.setVisibility(View.GONE);
                     urlStates = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=" + selectedLivingIn;
                     System.out.println(urlStates);
                     loadStates(urlStates);
