@@ -53,7 +53,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     int[] mImageSet, mImageSet2;
     String[] arrayService;
     int selectedVisaId;
-    ProgressBar mProgressBar;
+    ProgressBar mProgressBar, nationalityProgress, livingProgress;
     Spinner spinnerVisa,spinnerLivingIn,spinnerNationality, spinnerStates;
     private List<CountryRes> nationality = new ArrayList<>();
     private List<CountryRes> livingin = new ArrayList<>();
@@ -97,6 +97,8 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         spinnerVisa = (Spinner)view.findViewById(R.id.spnr_visa);
         spinnerLivingIn = (Spinner)view.findViewById(R.id.spnr_living_in);
         spinnerNationality = (Spinner)view.findViewById(R.id.spnr_nationality);
+        spinnerLivingIn.setVisibility(View.GONE);
+        spinnerNationality.setVisibility(View.GONE);
         spinnerVisa.setOnItemSelectedListener(this);
         spinnerLivingIn.setOnItemSelectedListener(this);
         spinnerNationality.setOnItemSelectedListener(this);
@@ -105,6 +107,10 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         buttonSubmission = (Button)view.findViewById(R.id.services_submission);
         buttonSubmission.setOnClickListener(this);
         mProgressBar = (ProgressBar)view.findViewById(R.id.progress);
+        nationalityProgress = (ProgressBar)view.findViewById(R.id.nationality_progress);
+        livingProgress = (ProgressBar)view.findViewById(R.id.living_in_progress);
+        nationalityProgress.setVisibility(View.VISIBLE);
+        livingProgress.setVisibility(View.VISIBLE);
         loadSpinners();
 
         //RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler);
@@ -171,6 +177,8 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                     nationalityData.add(nationality.get(i).getName());
                 }
                 intializeNationalitySpinner();
+                spinnerNationality.setVisibility(View.VISIBLE);
+                nationalityProgress.setVisibility(View.GONE);
 
             }
             @Override
@@ -201,6 +209,8 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 for(int i=0;i<livingin.size();i++){
                     livingInData.add(livingin.get(i).getName());
                 }
+                spinnerLivingIn.setVisibility(View.VISIBLE);
+                livingProgress.setVisibility(View.GONE);
                 intializeLivingInSpinner();
 
 
@@ -251,7 +261,13 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
             case R.id.spnr_visa:
                 selectedVisa = arrayService[i];
                 selectedVisaId = i;
+                spinnerLivingIn.setVisibility(View.GONE);
+                spinnerNationality.setVisibility(View.GONE);
+                livingProgress.setVisibility(View.VISIBLE);
+                nationalityProgress.setVisibility(View.VISIBLE);
                 if(i==0){
+                    linearLayoutStates.setVisibility(View.GONE);
+                    mProgressBar.setVisibility(View.GONE);
                     urlNationality = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=nationality&gofor=country";
                     urlLivingIn = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=livingIn&gofor=country";
                     loadSpinnerData(urlNationality, urlLivingIn);
@@ -265,15 +281,21 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 }
                 else if(i==2){
                     linearLayoutStates.setVisibility(View.GONE);
+                    mProgressBar.setVisibility(View.GONE);
+                    linearLayoutStates.setVisibility(View.GONE);
                     urlNationality = "";
                     urlLivingIn = "";
                 }
                 else if(i==3){
                     linearLayoutStates.setVisibility(View.GONE);
+                    mProgressBar.setVisibility(View.GONE);
+                    linearLayoutStates.setVisibility(View.GONE);
                     urlNationality ="";
                     urlLivingIn = "";
                 }
                 else if(i==4){
+                    linearLayoutStates.setVisibility(View.GONE);
+                    mProgressBar.setVisibility(View.GONE);
                     linearLayoutStates.setVisibility(View.GONE);
                     urlNationality = "";
                     urlLivingIn = "";
@@ -364,13 +386,11 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     }
     private void intializeLivingInSpinner() {
         dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, livingInData);
-        dataAdapter.setNotifyOnChange(true);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLivingIn.setAdapter(dataAdapter);
     }
     private void intializeNationalitySpinner() {
         dataAdapter2 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, nationalityData);
-        dataAdapter2.setNotifyOnChange(true);
         dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerNationality.setAdapter(dataAdapter2);
     }
