@@ -274,6 +274,8 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
 
                 }
                 else if(i==1){
+                    linearLayoutStates.setVisibility(View.GONE);
+                    mProgressBar.setVisibility(View.GONE);
                     urlNationality = "http://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=nationality&gofor=country";
                     urlLivingIn = "http://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=livingIn&gofor=country";
                     loadSpinnerData(urlNationality, urlLivingIn);
@@ -306,16 +308,18 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 selectedLivingIn = livingin.get(selectedLiving).getId();
                 selectedLivingInCountry = livingInData.get(i);
                 System.out.println(selectedLivingInCountry);
-
                 String phoneCode = livingin.get(i).getPhoneCode();
                 final String code= ("+" + phoneCode);
                 sharedPreferences.edit().putString("code", code).apply();
-                if(selectedLiving != 0){
+                if(selectedVisaId == 1 && selectedLiving != 0){
                     mProgressBar.setVisibility(View.VISIBLE);
                     linearLayoutStates.setVisibility(View.GONE);
                     urlStates = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=" + selectedLivingIn;
                     System.out.println(urlStates);
                     loadStates(urlStates);
+                }
+                else{
+                    //
                 }
 
 
