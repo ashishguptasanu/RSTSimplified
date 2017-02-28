@@ -328,6 +328,8 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 int livingIn = spinnerNationality.getSelectedItemPosition();
                 selectedNationality = nationality.get(livingIn).getId();
                 break;
+            case R.id.spnr_state:
+
         }
     }
 

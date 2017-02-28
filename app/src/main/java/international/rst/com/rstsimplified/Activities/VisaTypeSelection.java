@@ -173,8 +173,6 @@ public class VisaTypeSelection extends AppCompatActivity
             @Override
             public void onResponse(Call<VisaType> call, Response<VisaType> response) {
                 mProgress.setVisibility(View.GONE);
-
-
                 VisaType jsonResponse = response.body();
                 visaTypes = jsonResponse.getVisaType();
                 adapter = new VisaTypeAdapter(getApplicationContext(),visaTypes);
