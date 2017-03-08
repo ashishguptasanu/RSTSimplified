@@ -34,6 +34,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import international.rst.com.rstsimplified.R;
 import okhttp3.Call;
@@ -59,10 +60,16 @@ public class SummaryPage extends AppCompatActivity
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     private OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
-    private static final String BASE_URL_UPLOAD_DOCS = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=upload";
+    private static final String BASE_URL_UPLOAD_DOCS = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadphoto";
+    private static final String BASE_URL_UPLOAD_DOCS1 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadpassport";
+    private static final String BASE_URL_UPLOAD_DOCS2 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd";
+    private static final String BASE_URL_UPLOAD_DOCS3 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd1";
+    private static final String BASE_URL_UPLOAD_DOCS4 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd2";
+    private static final String BASE_URL_UPLOAD_DOCS5 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd3";
     String resp;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     Context context;
+    File file, file1, file2, file3, file4, file5;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -271,8 +278,26 @@ public class SummaryPage extends AppCompatActivity
                 try {
                     String response2 = response.body().string();
 //                    Log.v(TAG_REGISTER, resp);
-                    System.out.println(response2);
-                    uploadDocuments(response2);
+
+                    if(selectedFile1.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS);
+                    }
+                    if(selectedFile2.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS1);
+                    }
+                    if(selectedFile3.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS2);
+                    }
+                    if(selectedFile4.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS3);
+                    }
+                    if(selectedFile5.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS4);
+                    }
+                    if(selectedFile6.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS5);
+                    }
+
                     if (response.isSuccessful()) {
                         runOnUiThread(new Runnable() {
                             @Override
@@ -310,31 +335,21 @@ public class SummaryPage extends AppCompatActivity
 
 
 
-    private void uploadDocuments(String response2) {
-        File file = new File(selectedFile1);
-        File file1 = new File(selectedFile2);
-        File file2 = new File(selectedFile3);
-        File file3 = new File(selectedFile4);
-        File file4 = new File(selectedFile5);
-        File file5 = new File(selectedFile6);
-
+    private void uploadDocuments(String response2, String selectedFile1,  String fileType1, String fileName1, String uploadedFile,String s) {
+        file = new File(selectedFile1);
+        System.out.println(response2);
+        System.out.println(selectedFile1);
+        System.out.println(fileType1);
+        System.out.println(fileName1);
+        System.out.println(uploadedFile);
+        System.out.println(s);
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("uploaded_file",fileName1,
+                .addFormDataPart(uploadedFile, fileName1,
                         RequestBody.create(MediaType.parse(fileType1), file))
-                .addFormDataPart("uploaded_file1",fileName2,
-                        RequestBody.create(MediaType.parse(fileType2), file1))
-                .addFormDataPart("uploaded_file2",fileName3,
-                        RequestBody.create(MediaType.parse(fileType3), file2))
-                .addFormDataPart("uploaded_file3",fileName4,
-                        RequestBody.create(MediaType.parse(fileType4), file3))
-                .addFormDataPart("uploaded_file4",fileName5,
-                        RequestBody.create(MediaType.parse(fileType5), file4))
-                .addFormDataPart("uploaded_file5",fileName6,
-                        RequestBody.create(MediaType.parse(fileType6), file5))
-                .addFormDataPart("id", response2)
+                .addFormDataPart("visa_id", response2)
                 .build();
-        Request request = new Request.Builder().url(BASE_URL_UPLOAD_DOCS).post(requestBody).build();
+        Request request = new Request.Builder().url(s).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new Callback() {
 
@@ -433,6 +448,7 @@ public class SummaryPage extends AppCompatActivity
         selectedPort = sharedPreferences.getString("port","");
         sponsorContact = sharedPreferences.getString("sponsor_contact","");
         responseVisa = sharedPreferences.getString("response", "");
+        System.out.println("File : " + selectedFile5);
         if(sharedPreferences != null){
             //sendConsultData();
         }

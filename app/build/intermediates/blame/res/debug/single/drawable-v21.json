@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\card_living_selection_image.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\drawable-v21\\card_living_selection_image.png"
-    },
-    {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.0\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\card_living_selection_image.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\src\\main\\res\\drawable-v21\\card_living_selection_image.png"
     },
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\hotel.png",

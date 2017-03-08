@@ -293,24 +293,24 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 public void onClick(View view) {
                     if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && profession.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
                         if(isValidEmail(emailEdt.getText().toString())) {
-                                if(radioButton1.isChecked() || radioButton2.isChecked()){
-                                    if (radioButton1.isChecked()){
-                                        selectedMaritalStatus = "Single";
-                                        saveSharedPreferences();
-                                    }
-                                    else{
-                                        selectedMaritalStatus = "Married";
-                                        saveSharedPreferences();
-                                    }
-
-                                    ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
-                                    int atTab = mFormPager.getCurrentItem();
-                                    mFormPager.setCurrentItem(atTab + 1);
-
+                            if(radioButton1.isChecked() || radioButton2.isChecked()){
+                                if (radioButton1.isChecked()){
+                                    selectedMaritalStatus = "Single";
+                                    saveSharedPreferences();
                                 }
-                                else {
-                                    showToast("Select marital status");
+                                else{
+                                    selectedMaritalStatus = "Married";
+                                    saveSharedPreferences();
                                 }
+
+                                ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
+                                int atTab = mFormPager.getCurrentItem();
+                                mFormPager.setCurrentItem(atTab + 1);
+
+                            }
+                            else {
+                                showToast("Select marital status");
+                            }
 
 
                         }
@@ -326,9 +326,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 }
             });
 
-                adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, professionData);
-                profession.setThreshold(1);
-                profession.setAdapter(adapter);
+            adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, professionData);
+            profession.setThreshold(1);
+            profession.setAdapter(adapter);
 
         }  else if (title.equalsIgnoreCase("contact")){
             view = inflater.inflate(R.layout.contact_form,container,false);
@@ -389,6 +389,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
         else if(title.equalsIgnoreCase("docs")){
             view = inflater.inflate(R.layout.docs_form, container, false);
+            removeUploadPrefData();
             intializeDocsView();
 
 
@@ -396,6 +397,28 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
 
         return view;
+    }
+
+    private void removeUploadPrefData() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        sharedPreferences.edit().putString("file_type1","").apply();
+        sharedPreferences.edit().putString("file_name1","").apply();
+        sharedPreferences.edit().putString("file_path1","").apply();
+        sharedPreferences.edit().putString("file_type2","").apply();
+        sharedPreferences.edit().putString("file_name2","").apply();
+        sharedPreferences.edit().putString("file_path2","").apply();
+        sharedPreferences.edit().putString("file_type3","").apply();
+        sharedPreferences.edit().putString("file_name3","").apply();
+        sharedPreferences.edit().putString("file_path3","").apply();
+        sharedPreferences.edit().putString("file_type4","").apply();
+        sharedPreferences.edit().putString("file_name4","").apply();
+        sharedPreferences.edit().putString("file_path4","").apply();
+        sharedPreferences.edit().putString("file_type5","").apply();
+        sharedPreferences.edit().putString("file_name5","").apply();
+        sharedPreferences.edit().putString("file_path5","").apply();
+        sharedPreferences.edit().putString("file_type6","").apply();
+        sharedPreferences.edit().putString("file_name6","").apply();
+        sharedPreferences.edit().putString("file_path6","").apply();
     }
 
     private void saveContactSharedPref() {
@@ -650,9 +673,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 sharedPreferences.edit().putString("file_type1", type).apply();
                 selectedFile1=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name1", selectedFile1).apply();
+                sharedPreferences.edit().putString("file_path1", filePath).apply();
                 name1.setText(selectedFile1);
                 checked1.setImageResource(R.drawable.checked);
-                sharedPreferences.edit().putString("file_path1", filePath).apply();
+
                 button3.setText("Submit");
 
                 break;
@@ -664,9 +688,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 sharedPreferences.edit().putString("file_type2", type).apply();
                 selectedFile2=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name2", selectedFile2).apply();
+                sharedPreferences.edit().putString("file_path2", filePath).apply();
                 name2.setText(selectedFile2);
                 checked2.setImageResource(R.drawable.checked);
-                sharedPreferences.edit().putString("file_path2", filePath).apply();
                 button3.setText("Submit");
                 break;
             case 3:
@@ -677,9 +701,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 sharedPreferences.edit().putString("file_type3", type).apply();
                 selectedFile3=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name3", selectedFile3).apply();
+                sharedPreferences.edit().putString("file_path3", filePath).apply();
                 name3.setText(selectedFile3);
                 checked3.setImageResource(R.drawable.checked);
-                sharedPreferences.edit().putString("file_path3", filePath).apply();
                 button3.setText("Submit");
                 break;
             case 4:
@@ -690,9 +714,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 sharedPreferences.edit().putString("file_type4", type).apply();
                 selectedFile4=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name4", selectedFile4).apply();
+                sharedPreferences.edit().putString("file_path4", filePath).apply();
+
                 name4.setText(selectedFile4);
                 checked4.setImageResource(R.drawable.checked);
-                sharedPreferences.edit().putString("file_path4", filePath).apply();
+
                 button3.setText("Submit");
                 break;
             case 5:
@@ -703,9 +729,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 sharedPreferences.edit().putString("file_type5", type).apply();
                 selectedFile5=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name5", selectedFile5).apply();
+                sharedPreferences.edit().putString("file_path5", filePath).apply();
                 name5.setText(selectedFile5);
                 checked5.setImageResource(R.drawable.checked);
-                sharedPreferences.edit().putString("file_path5", filePath).apply();
+
                 button3.setText("Submit");
                 break;
             case 6:
@@ -716,13 +743,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 sharedPreferences.edit().putString("file_type6", type).apply();
                 selectedFile6=filePath.substring(filePath.lastIndexOf("/")+1);
                 sharedPreferences.edit().putString("file_name6", selectedFile6).apply();
+                sharedPreferences.edit().putString("file_path6", filePath).apply();
                 name6.setText(selectedFile6);
                 checked6.setImageResource(R.drawable.checked);
-                sharedPreferences.edit().putString("file_path6", filePath).apply();
+
                 button3.setText("Submit");
                 break;
         }
-        
+
     }
     public static String getPath(final Context context, final Uri uri) {
 
