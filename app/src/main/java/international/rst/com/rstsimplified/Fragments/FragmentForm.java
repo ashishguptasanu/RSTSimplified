@@ -212,7 +212,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             intializeApplicantViews();
             disableInput(latestDate);
             latestDate.setOnClickListener(this);
-            emailEdt.setText(emailFinal);
             System.out.println(emailFinal + "     " + sharedPreferences.getString("email_contact", ""));
             if(sharedPreferences!=null) {
                 livingInId = sharedPreferences.getString("living_id", "");
@@ -336,7 +335,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             if(sharedPreferences!=null){
                 codePhone = sharedPreferences.getString("code","");
                 phoneCodeEdt.setText(codePhone);
-                emailFinal = edtEmailContact.getText().toString();
                 livingIn = sharedPreferences.getString("living_in_country","");
                 String hotelAddress = sharedPreferences.getString("hotel_address","");
                 String address = sharedPreferences.getString("current_address","");
@@ -358,12 +356,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 public void onClick(View view) {
                     if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
                         if(isValidEmail(edtEmailContact.getText().toString())){
-                            emailFinal = edtEmailContact.getText().toString();
-                            System.out.println(emailFinal);
                             if(isValidMobile(edtEmergencyContactNumber.getText().toString()) && isValidMobile(edtMobile.getText().toString())) {
                                 saveContactSharedPref();
                                 ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
                                 int atTab = mFormPager.getCurrentItem();
+                                emailFinal = edtEmailContact.getText().toString();
                                 mFormPager.setCurrentItem(atTab + 1);
                                 getSharedPreferences();
                                 if(sharedPreferences != null){
@@ -439,8 +436,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         nameLast = (EditText)view.findViewById(R.id.name_last);
         birthDate = (EditText)view.findViewById(R.id.edt_dob);
         disableInput(birthDate);
+        getEmailId(resp);
         birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
         emailEdt = (EditText)view.findViewById(R.id.edittext_email);
+        String email = sharedPreferences.getString("email_contact","");
+        emailEdt.setText(email);
+        System.out.println("final email" + email);
         nameFather = (EditText)view.findViewById(R.id.name_father);
         nameMother = (EditText)view.findViewById(R.id.name_mother);
         dateIssue = (EditText)view.findViewById(R.id.edt_issue_date);
@@ -1179,6 +1180,42 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                         //sharedPreferences.edit().putString("Android ID",androidID).apply();
                     }else {
+
+                    }
+                } catch (IOException e) {
+                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void getEmailId(String resp) {
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id",sharedPreferences.getString("response", ""))
+                .build();
+        String emailUrl = ("http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=gmail");
+        Request request = new Request.Builder().url(emailUrl).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    emailFinal = response.body().string();
+//                    Log.v(TAG_REGISTER, resp);
+                    if (response.isSuccessful()) {
+                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
+                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
+
+                    } else {
 
                     }
                 } catch (IOException e) {

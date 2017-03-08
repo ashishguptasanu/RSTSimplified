@@ -98,6 +98,7 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:hint="Email"
                 android:maxLines="1"
+                android:inputType="textEmailAddress"
                 android:clickable="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="5dp"/>
