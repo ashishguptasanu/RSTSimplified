@@ -1,4 +1,4 @@
-#Wed Mar 08 17:43:59 IST 2017
+#Wed Mar 08 20:23:41 IST 2017
 base.0=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_dced6bc6792f743a6aa83dbde7415b4d70a84c16
 renamed.1=classes.dex
 renamed.0=classes2.dex

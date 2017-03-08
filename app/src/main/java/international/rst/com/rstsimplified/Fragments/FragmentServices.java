@@ -285,8 +285,9 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                     linearLayoutStates.setVisibility(View.GONE);
                     mProgressBar.setVisibility(View.GONE);
                     linearLayoutStates.setVisibility(View.GONE);
-                    urlNationality = "";
-                    urlLivingIn = "";
+                    urlNationality = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality";
+                    urlLivingIn = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=livingIn";
+                    loadSpinnerData(urlNationality,urlLivingIn);
                 }
                 else if(i==3){
                     linearLayoutStates.setVisibility(View.GONE);
