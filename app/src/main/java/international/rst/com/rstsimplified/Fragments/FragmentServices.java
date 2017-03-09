@@ -354,8 +354,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                         sharedPreferences.edit().putString("living_in_country", selectedLivingInCountry).apply();
                         sharedPreferences.edit().putInt("living_in_id", selectedLiving).apply();
-
-
+                        sharedPreferences.edit().putInt("visa_id", 0).apply();
                         if (selectedVisaId == 0) {
                             urlVisaType = ("https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality=" + selectedNationality + "&livingIn=" + selectedLivingIn);
                             intent.putExtra("visa_type_url", urlVisaType);
@@ -377,8 +376,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                         sharedPreferences.edit().putString("living_in_country", selectedLivingInCountry).apply();
                         sharedPreferences.edit().putInt("living_in_id", selectedLiving).apply();
-
-
+                        sharedPreferences.edit().putInt("visa_id", 2).apply();
                         if (selectedVisaId == 0) {
                             urlVisaType = ("http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality_id=" + selectedNationality + "&living_in_id=" + selectedLivingIn);
                             intent.putExtra("visa_type_url", urlVisaType);

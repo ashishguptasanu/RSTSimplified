@@ -95,7 +95,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6, resp;
     View view;
     String livingInId, nationalityId, selectedGCC, selectedPort, serviceType, livingId, serviceFeeCs, processingTime, deviceType, deviceOS, fullNameVisa;
-    int visaTypeId;
+    int visaTypeId, selectedVisaId;
     float govtFee, mngFee, serviceFee;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact;
@@ -116,7 +116,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     int serverResponseCode = 0;
     CustomScrollView scrollView;
     RadioButton radioButton1, radioButton2;
-    LinearLayout sponsorLayout, gccLayout;
+    LinearLayout sponsorLayout, gccLayout, addressUaeLayout;
     Button button2, button3;
     SharedPreferences sharedPreferences;
     public String nationalityID, livingIn, codePhone;
@@ -128,7 +128,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String arrivalDate, departureDate, fullNameApplicant, birthDateApplicant, passportNumberApplicant,genderApplicant, savedArrivalDate, savedDepartureDate;
     int  selectedCountryID, selectedIssueCountryID, age, selectedEmirateId;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
-
+    String uaeEmailUrl = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D";
+    private static final String BASE_URL_CONSULT_FORM_SINGAPORE = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
 
     public FragmentForm() {
     }
@@ -146,6 +147,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         super.onCreate(savedInstanceState);
         loadProfession();
         sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
+        selectedVisaId = sharedPreferences.getInt("visa_id",0);
     }
 
 
@@ -365,7 +367,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                                 mFormPager.setCurrentItem(atTab + 1);
                                 getSharedPreferences();
                                 if(sharedPreferences != null){
-                                    sendConsultData();
+                                    if(sharedPreferences.getInt("visa_id",0) == 0){
+                                        sendConsultData();
+                                    }
+                                    else if(sharedPreferences.getInt("visa_id",0) == 2){
+                                        sendSingaporeConsultData();
+                                    }
+
                                 }
 
                             }
@@ -504,6 +512,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     }
 
     private void intializeContactView() {
+        addressUaeLayout = (LinearLayout)view.findViewById(R.id.address_uae_layout);
+        System.out.println(selectedVisaId);
+        if(selectedVisaId == 1 || selectedVisaId == 2 || selectedVisaId == 3 || selectedVisaId == 4){
+            addressUaeLayout.setVisibility(View.GONE);
+        }
         edtAddress = (EditText)view.findViewById(R.id.edt_current_address);
         edtHotelAddress = (EditText)view.findViewById(R.id.edt_hotel_address);
         edtEmergencyContactName = (EditText)view.findViewById(R.id.edt_contact_person);
@@ -1190,7 +1203,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 try {
                     resp = response.body().string();
                     Log.v("Response", resp);
-                    sendVerificationEmail(resp, edtEmailContact.getText().toString());
+                    sendVerificationEmail(resp, edtEmailContact.getText().toString(), uaeEmailUrl);
                     sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
 
@@ -1212,12 +1225,86 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         });
     }
-    private void sendVerificationEmail(String resp, String emailEdt) {
+
+    private void sendSingaporeConsultData(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", savedArrivalDate)
+                .addFormDataPart("end_date", savedDepartureDate)
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", edtAddress.getText().toString())
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", edtLivingCity.getText().toString())
+                .addFormDataPart("country", livingIn)
+                .addFormDataPart("country_code", String.valueOf(selectedCountryID))
+                .addFormDataPart("mobile", edtMobile.getText().toString())
+                .addFormDataPart("emirates_uae", "")
+                .addFormDataPart("emergency_contact_name", edtEmergencyContactName.getText().toString())
+                .addFormDataPart("emergency_contact_number", edtEmergencyContactNumber.getText().toString())
+                .addFormDataPart("hotel_address", edtHotelAddress.getText().toString())
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("nric_fin_no","")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", serviceType)
+                .addFormDataPart("nationality_id",nationalityId)
+                .addFormDataPart("living_in_id", livingId)
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", String.valueOf(govtFee))
+                .addFormDataPart("service_fee", String.valueOf(serviceFee))
+                .addFormDataPart("processing_time",processingTime)
+                .addFormDataPart("visa_type_id", String.valueOf(visaTypeId))
+                .addFormDataPart("email_id", edtEmailContact.getText().toString())
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", String.valueOf(mngFee))
+                .addFormDataPart("application_type", fullNameVisa)
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", ("Android:"+deviceOS))
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM_SINGAPORE).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    sendVerificationEmail(resp, edtEmailContact.getText().toString(), uaeEmailUrl);
+                    sharedPreferences.edit().putString("response",resp).apply();
+                    if (response.isSuccessful()) {
+                    }else {
+
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendVerificationEmail(String resp, String emailEdt, String uaeEmailUrl) {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("email","em")
                 .build();
-        String emailUrl = ("http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=email_send&visa_id="+resp+"+&email_id="+emailEdt);
+        String emailUrl = (uaeEmailUrl +"&gofor=email_send&visa_id="+resp+"+&email_id="+emailEdt);
         Request request = new Request.Builder().url(emailUrl).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new Callback() {
@@ -1264,6 +1351,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         fullNameVisa = sharedPreferences.getString("visa_name","");
         savedArrivalDate = sharedPreferences.getString("arrival_date","");
         savedDepartureDate = sharedPreferences.getString("departure_date","");
+
 
     }
 
