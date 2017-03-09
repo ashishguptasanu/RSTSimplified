@@ -41,18 +41,18 @@ ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\ma
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:11:22-78
 application
 ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:13:5-61:19
-MERGED from [com.android.support:design:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:transition:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:cardview-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.1.0\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-compat:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:design:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\design\25.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.2.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.2.0\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:transition:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\transition\25.2.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:cardview-v7:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.2.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.2.0\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.2.0\AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:16:9-41
 	android:supportsRtl
@@ -145,22 +145,22 @@ ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\ma
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:58:13-51
 uses-sdk
 INJECTED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:design:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.0\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.0\AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:transition:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.0\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:recyclerview-v7:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.1.0\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.0\AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.0\AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.0\AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-ui:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.0\AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-utils:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-compat:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:design:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\design\25.2.0\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.2.0\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.2.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.2.0\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:transition:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\transition\25.2.0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.2.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.2.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.2.0\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.2.0\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.2.0\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.2.0\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.2.0\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.2.0\AndroidManifest.xml:21:5-23:58
 MERGED from [me.relex:circleindicator:1.2.2] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\me.relex\circleindicator\1.2.2\AndroidManifest.xml:8:5-10:41
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:25.1.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\design\25.1.0\AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:25.2.0] C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\exploded-aar\com.android.support\design\25.2.0\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
 		INJECTED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml

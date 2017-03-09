@@ -57,7 +57,7 @@ public class SummaryPage extends AppCompatActivity
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
     String fileName1, fileName2, fileName3, fileName4, fileName5, fileName6, fileType1, fileType2, fileType3, fileType4, fileType5, fileType6, sponsorName, sponsorAddress, selectedGcc, sponsorContact;
-    private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
+    private static final String SINGAPORE_APPLICANT_FORM = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data2";
     private OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_UPLOAD_DOCS = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadphoto";
@@ -66,6 +66,7 @@ public class SummaryPage extends AppCompatActivity
     private static final String BASE_URL_UPLOAD_DOCS3 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd1";
     private static final String BASE_URL_UPLOAD_DOCS4 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd2";
     private static final String BASE_URL_UPLOAD_DOCS5 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd3";
+
     String resp;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     Context context;
@@ -95,6 +96,9 @@ public class SummaryPage extends AppCompatActivity
         if(sharedPreferences != null){
             if(selectedVisaId == 0){
                 sendApplicandData(responseVisa);
+            }
+            else if(selectedVisaId == 2){
+                singaporeApplicantData(responseVisa);
             }
 
         }
@@ -334,18 +338,129 @@ public class SummaryPage extends AppCompatActivity
 
         });
     }
+    private void singaporeApplicantData(String resp){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("first_name", nameFirst)
+                .addFormDataPart("last_name", nameLast)
+                .addFormDataPart("gender", gender)
+                .addFormDataPart("date_of_birth", birthDate)
+                .addFormDataPart("birth_place", birthPlace)
+                .addFormDataPart("birth_country",selectedCountry)
+                .addFormDataPart("religion", religionApplicant)
+                .addFormDataPart("email", emailEdt)
+                .addFormDataPart("fathers_name", nameFather)
+                .addFormDataPart("mothers_name", nameMother)
+                .addFormDataPart("marital_status", maritalStatus)
+                .addFormDataPart("spouse_nationality","")
+                .addFormDataPart("passport_number", passportNumber)
+                .addFormDataPart("place_of_issue", placeIssue)
+                .addFormDataPart("country_of_issue", selectedIssueCountry)
+                .addFormDataPart("passport_issue_date", dateIssue)
+                .addFormDataPart("passport_expiry_date", dateExpiry)
+                .addFormDataPart("created_date", professionId)
+                .addFormDataPart("profession_id", professionId)
+                .addFormDataPart("hightest_qualification", "")
+                .addFormDataPart("visa_upload", "")
+                .addFormDataPart("visa_number", "")
+                .addFormDataPart("visa_upload_time", "")
+                .addFormDataPart("visa_denied_reason", "")
+                .addFormDataPart("visa_status", "")
+                .addFormDataPart("admin_upload", "")
+                .addFormDataPart("insertedTimeIST", "")
+                .addFormDataPart("agent_id", "")
+                .addFormDataPart("processingTime", "")
+                .addFormDataPart("hold_comment", "")
+                .addFormDataPart("flag", "")
+                .addFormDataPart("delBy", "")
+                .addFormDataPart("delDate", "")
+                .addFormDataPart("delRemark", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("duration_stay", "")
+                .addFormDataPart("visit_purpose", "")
+                .addFormDataPart("reside_other_country", "")
+                .addFormDataPart("other_country_name", "")
+                .addFormDataPart("other_country_address", "")
+                .addFormDataPart("start_year", "")
+                .addFormDataPart("end_year", "")
+                .addFormDataPart("refused_country", "")
+                .addFormDataPart("court_low_country", "")
+                .addFormDataPart("prohibited_country", "")
+                .build();
+        Request request = new Request.Builder().url(SINGAPORE_APPLICANT_FORM).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    String response2 = response.body().string();
+//                    Log.v(TAG_REGISTER, resp);
+
+                    if(selectedFile1.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS);
+                    }
+                    if(selectedFile2.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS1);
+                    }
+                    if(selectedFile3.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS2);
+                    }
+                    if(selectedFile4.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS3);
+                    }
+                    if(selectedFile5.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS4);
+                    }
+                    if(selectedFile6.length() != 0){
+                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS5);
+                    }
+
+                    if (response.isSuccessful()) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tvVisaId.setText(responseVisa);
+                                visaName.setText(fullNameVisa);
+                                visaFee.setText(String.valueOf(govtFee) + "$");
+                                finalServiceFee.setText(String.valueOf(serviceFee) + "$");
+                                totalFee = (govtFee + serviceFee);
+                                totalVisaFee.setText(String.valueOf(totalFee) + "$");
+                                tvBirthDate.setText(birthDate);
+                                tvPassportNumber.setText(passportNumber);
+                                tvDepartureDate.setText(departureDate);
+                                tvArrivalDate.setText(arrivalDate);
+                                tvName.setText(fullName);
+                                tvGender.setText(gender);
+                            }
+                        });
+                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
+                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
+
+
+                    } else {
+
+                    }
+                } catch (IOException e) {
+                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
 
 
 
 
     private void uploadDocuments(String response2, String selectedFile1,  String fileType1, String fileName1, String uploadedFile,String s) {
         file = new File(selectedFile1);
-        System.out.println(response2);
-        System.out.println(selectedFile1);
-        System.out.println(fileType1);
-        System.out.println(fileName1);
-        System.out.println(uploadedFile);
-        System.out.println(s);
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart(uploadedFile, fileName1,
