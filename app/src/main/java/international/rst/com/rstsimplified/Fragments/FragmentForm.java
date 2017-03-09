@@ -440,6 +440,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         System.out.println("Applicant Email:    " +emailFinal);
         birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
         emailEdt = (EditText)view.findViewById(R.id.edittext_email);
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
         emailEdt.setText(sharedPreferences.getString("email_contact", ""));
         nameFather = (EditText)view.findViewById(R.id.name_father);
         nameMother = (EditText)view.findViewById(R.id.name_mother);
@@ -530,7 +531,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         public void afterTextChanged(Editable editable) {
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             sharedPreferences.edit().putString("email_contact", editable.toString()).apply();
-            //System.out.println(edtEmailContact.getText().toString());
+            System.out.println(edtEmailContact.getText().toString());
             //emailFinal = edtEmailContact.getText().toString();
 
 
