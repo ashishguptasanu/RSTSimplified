@@ -5,29 +5,29 @@
     density="xhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="3229880249409280"
+    timestamp="3285275115514880"
     token="-315265450245951108"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="3153" />
+        duration="1130" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="90" />
+        duration="58" />
     <task
         name="verifier"
-        duration="19" />
+        duration="8" />
 
     <artifact
         location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="3229880249409280"
+        timestamp="3285275115514880"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"

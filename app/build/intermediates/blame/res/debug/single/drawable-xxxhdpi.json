@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\visa_services_gray.png",
-        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\visa_services_gray.png"
-    },
-    {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\hotel_services_gray.png",
         "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\hotel_services_gray.png"
+    },
+    {
+        "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\visa_services_gray.png",
+        "source": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\visa_services_gray.png"
     },
     {
         "merged": "C:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\hotel_services_white.png",
