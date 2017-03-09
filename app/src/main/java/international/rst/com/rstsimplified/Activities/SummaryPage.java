@@ -52,7 +52,7 @@ public class SummaryPage extends AppCompatActivity
     Button button;
     SharedPreferences sharedPreferences;
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant, maritalStatus;
-    int visaTypeId, age;
+    int visaTypeId, age, selectedVisaId;
     String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6, selectedPort, responseVisa;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
@@ -93,7 +93,10 @@ public class SummaryPage extends AppCompatActivity
         button = (Button)findViewById(R.id.submit_payment);
         getSharedPreferencesData();
         if(sharedPreferences != null){
-            sendApplicandData(responseVisa);
+            if(selectedVisaId == 0){
+                sendApplicandData(responseVisa);
+            }
+
         }
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
         int permissionCheck2 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -448,7 +451,9 @@ public class SummaryPage extends AppCompatActivity
         selectedPort = sharedPreferences.getString("port","");
         sponsorContact = sharedPreferences.getString("sponsor_contact","");
         responseVisa = sharedPreferences.getString("response", "");
+        selectedVisaId = sharedPreferences.getInt("visa_id", 0);
         System.out.println("File : " + selectedFile5);
+
         if(sharedPreferences != null){
             //sendConsultData();
         }

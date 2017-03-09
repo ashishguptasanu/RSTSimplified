@@ -129,6 +129,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     int  selectedCountryID, selectedIssueCountryID, age, selectedEmirateId;
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     String uaeEmailUrl = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D";
+    String singaporeEmailUrl = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D";
     private static final String BASE_URL_CONSULT_FORM_SINGAPORE = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
 
     public FragmentForm() {
@@ -1271,10 +1272,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM_SINGAPORE).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new Callback() {
-
-
-            public static final String MODE_PRIVATE = "";
-
             @Override
             public void onFailure(Call call, IOException e) {
                 System.out.println("Registration Error" + e.getMessage());
@@ -1286,7 +1283,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 try {
                     resp = response.body().string();
                     Log.v("Response", resp);
-                    sendVerificationEmail(resp, edtEmailContact.getText().toString(), uaeEmailUrl);
+                    sendVerificationEmail(resp, edtEmailContact.getText().toString(), singaporeEmailUrl);
                     sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
                     }else {
