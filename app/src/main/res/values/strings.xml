@@ -17,9 +17,21 @@
     <string name="title_activity_visa_type_selection">Select Visa Type</string>
     <string name="title_activity_summary_page">Order Summary</string>
     <string name="upload_form_note">Note: You can skip this page by clicking on Submit button. you can submit documents later.</string>
-    <string name="title_activity_nav_draw_base">NavDrawBaseActivity</string>
     <string name="drawer_email">ashishkumar@rstintl.com</string>
     <string name="citizen">I am a citizen of</string>
     <string name="living">I am living in</string>
-    <string name="visa">Select Visa for</string>
+    <string name="address_friend">Address of your Friend</string>
+    <string name="phone_friend">Phone No. of your Friend</string>
+    <string name="name_friend">Name of your Friend</string>
+    <string name="nric_friend">NRIC FIN No. of your Friend</string>
+    <string name="address_relative">Address of your Relative</string>
+    <string name="phone_relative">Phone No. of your Relative</string>
+    <string name="name_relative">Name of your Relative</string>
+    <string name="nric_relative">NRIC FIN No. of your Relative</string>
+    <string name="address_kin">Address of your Next-of-Kin</string>
+    <string name="phone_kin">Phone No. of your Next-of-Kin</string>
+    <string name="name_kin">Name of your Next-of-Kin</string>
+    <string name="nric_kin">NRIC FIN No. of your Next-of-Kin</string>
+    <string name="visa">Select Visa For</string>
+
 </resources>

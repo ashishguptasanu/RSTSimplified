@@ -1,21 +1,16 @@
 package international.rst.com.rstsimplified.Activities;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -26,15 +21,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
 import international.rst.com.rstsimplified.R;
 import okhttp3.Call;
@@ -44,7 +35,6 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class SummaryPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,12 +50,8 @@ public class SummaryPage extends AppCompatActivity
     private static final String SINGAPORE_APPLICANT_FORM = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data2";
     private OkHttpClient client = new OkHttpClient();
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
-    private static final String BASE_URL_UPLOAD_DOCS = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadphoto";
-    private static final String BASE_URL_UPLOAD_DOCS1 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadpassport";
-    private static final String BASE_URL_UPLOAD_DOCS2 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd";
-    private static final String BASE_URL_UPLOAD_DOCS3 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd1";
-    private static final String BASE_URL_UPLOAD_DOCS4 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd2";
-    private static final String BASE_URL_UPLOAD_DOCS5 = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=uploadadd3";
+    private static final String BASE_URL_UPLOAD_DOCS_UAE = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=";
+    private static final String BASE_URL_UPLOAD_DOCS_SINGAPORE = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=";
 
     String resp;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -94,6 +80,7 @@ public class SummaryPage extends AppCompatActivity
         button = (Button)findViewById(R.id.submit_payment);
         getSharedPreferencesData();
         if(sharedPreferences != null){
+            System.out.println(selectedVisaId);
             if(selectedVisaId == 0){
                 sendApplicandData(responseVisa);
             }
@@ -287,22 +274,22 @@ public class SummaryPage extends AppCompatActivity
 //                    Log.v(TAG_REGISTER, resp);
 
                     if(selectedFile1.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS);
+                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS_UAE +"uploadphoto");
                     }
                     if(selectedFile2.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS1);
+                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS_UAE +"uploadpassport");
                     }
                     if(selectedFile3.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS2);
+                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS_UAE +"uploadadd");
                     }
                     if(selectedFile4.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS3);
+                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS_UAE +"uploadadd1");
                     }
                     if(selectedFile5.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS4);
+                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS_UAE +"uploadadd2");
                     }
                     if(selectedFile6.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS5);
+                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS_UAE +"uploadadd3");
                     }
 
                     if (response.isSuccessful()) {
@@ -402,26 +389,27 @@ public class SummaryPage extends AppCompatActivity
 
                 try {
                     String response2 = response.body().string();
-//                    Log.v(TAG_REGISTER, resp);
+                    Log.v("response", response2);
 
                     if(selectedFile1.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS);
+                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadphoto");
                     }
                     if(selectedFile2.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS1);
+                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadpassport");
                     }
                     if(selectedFile3.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS2);
+                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd");
                     }
                     if(selectedFile4.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS3);
+                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd1");
                     }
                     if(selectedFile5.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS4);
+                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd2");
                     }
                     if(selectedFile6.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS5);
+                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd3");
                     }
+
 
                     if (response.isSuccessful()) {
                         runOnUiThread(new Runnable() {
