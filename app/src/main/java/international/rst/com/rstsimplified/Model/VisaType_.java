@@ -135,6 +135,13 @@ public class VisaType_ {
     @SerializedName("priority")
     @Expose
     private String priority;
+    @SerializedName("hotel_min_fee")
+    @Expose
+    private float hotelMinFee;
+    public float getHotelMinFee(){
+        return hotelMinFee;
+    }
+    public void setHotelMinFee(float hotelMinFee){this.hotelMinFee = hotelMinFee;}
     public String getTravelPlanId() {
         return travelPlanId;
     }

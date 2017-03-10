@@ -166,17 +166,19 @@ public class VisaTypeSelection extends AppCompatActivity
                 .baseUrl("https://www.uaevisasonline.com")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-        VisaResponse request = retrofit.create(VisaResponse.class);
+        final VisaResponse request = retrofit.create(VisaResponse.class);
         Call<VisaType> call = request.getVisaType(url);
         //
         call.enqueue(new Callback<VisaType>() {
             @Override
             public void onResponse(Call<VisaType> call, Response<VisaType> response) {
                 mProgress.setVisibility(View.GONE);
-                VisaType jsonResponse = response.body();
-                visaTypes = jsonResponse.getVisaType();
-                adapter = new VisaTypeAdapter(getApplicationContext(),visaTypes);
-                recyclerView.setAdapter(adapter);
+                if(response != null){
+                    VisaType jsonResponse = response.body();
+                    visaTypes = jsonResponse.getVisaType();
+                    adapter = new VisaTypeAdapter(getApplicationContext(),visaTypes);
+                    recyclerView.setAdapter(adapter);
+                }
 
             }
             @Override

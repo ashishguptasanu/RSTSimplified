@@ -532,10 +532,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         addressUaeLayout = (LinearLayout)view.findViewById(R.id.address_uae_layout);
         addressSingaporeLayout = (LinearLayout)view.findViewById(R.id.address_singapore_layout);
         System.out.println(selectedVisaId);
-        if(selectedVisaId == 1 || selectedVisaId == 2 || selectedVisaId == 3 || selectedVisaId == 4){
-            addressUaeLayout.setVisibility(View.GONE);
+        if(selectedVisaId == 0){
+            addressUaeLayout.setVisibility(View.VISIBLE);
         }
-        else if(selectedVisaId == 0 || selectedVisaId == 1 || selectedVisaId == 3 || selectedVisaId == 4){
+        else if(selectedVisaId == 2){
+            addressSingaporeLayout.setVisibility(View.VISIBLE);
+        }
+        else {
+            addressUaeLayout.setVisibility(View.GONE);
             addressSingaporeLayout.setVisibility(View.GONE);
         }
         edtAddress = (EditText)view.findViewById(R.id.edt_current_address);
