@@ -293,8 +293,9 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                     linearLayoutStates.setVisibility(View.GONE);
                     mProgressBar.setVisibility(View.GONE);
                     linearLayoutStates.setVisibility(View.GONE);
-                    urlNationality ="";
-                    urlLivingIn = "";
+                    urlNationality ="http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality";
+                    urlLivingIn = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=livingIn";
+                    loadSpinnerData(urlNationality,urlLivingIn);
                 }
                 else if(i==4){
                     linearLayoutStates.setVisibility(View.GONE);
@@ -369,6 +370,28 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                     }
                 }
                 if(selectedVisaId == 2){
+                    if (selectedLivingIn != 0 && selectedNationality != 0) {
+                        Intent intent = new Intent(getContext(), VisaTypeSelection.class);
+                        intent.putExtra("livingid", selectedLivingIn);
+                        intent.putExtra("nationid", selectedNationality);
+                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        sharedPreferences.edit().putString("living_in_country", selectedLivingInCountry).apply();
+                        sharedPreferences.edit().putInt("living_in_id", selectedLiving).apply();
+                        sharedPreferences.edit().putInt("visa_id", 2).apply();
+                        if (selectedVisaId == 0) {
+                            urlVisaType = ("http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality_id=" + selectedNationality + "&living_in_id=" + selectedLivingIn);
+                            intent.putExtra("visa_type_url", urlVisaType);
+                        } else {
+                            urlVisaType = ("http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaTypes&nationality_id=" + selectedNationality + "&living_in_id=" + selectedLivingIn);
+                            intent.putExtra("visa_type_url", urlVisaType);
+                        }
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getContext(), "Select country to countinue..", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+                if(selectedVisaId == 3){
                     if (selectedLivingIn != 0 && selectedNationality != 0) {
                         Intent intent = new Intent(getContext(), VisaTypeSelection.class);
                         intent.putExtra("livingid", selectedLivingIn);

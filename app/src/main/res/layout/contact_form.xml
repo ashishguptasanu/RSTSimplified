@@ -214,9 +214,6 @@
                     android:layout_marginLeft="10dp"
                     />
             </LinearLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -226,10 +223,6 @@
                     android:maxLines="1"
                     android:inputType="numberDecimal"
                     android:clickable="true" />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -239,10 +232,6 @@
                 android:maxLines="1"
                 android:inputType="text"
                 android:clickable="true" />
-        </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -252,7 +241,16 @@
                     android:maxLines="1"
                     android:inputType="text"
                     android:clickable="true" />
-            </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:hint="Name of Hotel"
+                android:visibility="gone"
+                android:id="@+id/singapore_nric"
+                android:maxLines="1"
+                android:inputType="text"
+                android:clickable="true" />
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"

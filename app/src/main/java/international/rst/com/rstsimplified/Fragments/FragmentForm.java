@@ -528,21 +528,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         addressSingapore = (EditText)view.findViewById(R.id.singapore_address);
         phoneSingapore = (EditText)view.findViewById(R.id.singapore_phone);
         nameSingapore = (EditText)view.findViewById(R.id.singapore_name);
-        if(selectedAddressType == 2){
-            addressSingapore.setHint(R.string.address_relative);
-            phoneSingapore.setHint(R.string.phone_relative);
-            nameSingapore.setHint(R.string.name_relative);
-        }
-        else if(selectedAddressType == 3){
-            addressSingapore.setHint(R.string.address_friend);
-            phoneSingapore.setHint(R.string.phone_friend);
-            nameSingapore.setHint(R.string.name_friend);
-        }
-        else if(selectedAddressType == 4){
-            addressSingapore.setHint(R.string.address_kin);
-            phoneSingapore.setHint(R.string.phone_kin);
-            nameSingapore.setHint(R.string.name_kin);
-        }
+        nricSingapore = (EditText)view.findViewById(R.id.singapore_nric);
         addressUaeLayout = (LinearLayout)view.findViewById(R.id.address_uae_layout);
         addressSingaporeLayout = (LinearLayout)view.findViewById(R.id.address_singapore_layout);
         System.out.println(selectedVisaId);
@@ -961,7 +947,35 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 break;
             case R.id.spinner_address_type_singapore:
                 selectedAddressType = i;
+                if(selectedAddressType == 2){
+                    addressSingapore.setHint(R.string.address_relative);
+                    phoneSingapore.setHint(R.string.phone_relative);
+                    nameSingapore.setHint(R.string.name_relative);
+                    nricSingapore.setVisibility(View.VISIBLE);
+                    nricSingapore.setHint(R.string.nric_relative);
+                }
+                else if(selectedAddressType == 3){
+                    addressSingapore.setHint(R.string.address_friend);
+                    phoneSingapore.setHint(R.string.phone_friend);
+                    nameSingapore.setHint(R.string.name_friend);
+                    nricSingapore.setVisibility(View.VISIBLE);
+                    nricSingapore.setHint(R.string.nric_friend);
+                }
+                else if(selectedAddressType == 4){
+                    addressSingapore.setHint(R.string.address_kin);
+                    phoneSingapore.setHint(R.string.phone_kin);
+                    nameSingapore.setHint(R.string.name_kin);
+                    nricSingapore.setVisibility(View.VISIBLE);
+                    nricSingapore.setHint(R.string.nric_kin);
+                }
+                else {
+                    addressSingapore.setHint("Address");
+                    phoneSingapore.setHint("Phone");
+                    nameSingapore.setHint("Name of your Hotel");
+                    nricSingapore.setVisibility(View.GONE);
+                }
                 break;
+
         }
     }
 
@@ -1284,11 +1298,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("country_code", String.valueOf(selectedCountryID))
                 .addFormDataPart("mobile", edtMobile.getText().toString())
                 .addFormDataPart("emirates_uae", "")
-                .addFormDataPart("emergency_contact_name", edtEmergencyContactName.getText().toString())
-                .addFormDataPart("emergency_contact_number", edtEmergencyContactNumber.getText().toString())
-                .addFormDataPart("hotel_address", edtHotelAddress.getText().toString())
+                .addFormDataPart("emergency_contact_name", nameSingapore.getText().toString())
+                .addFormDataPart("emergency_contact_number", phoneSingapore.getText().toString())
+                .addFormDataPart("hotel_address", addressSingapore.getText().toString())
                 .addFormDataPart("contact_uae", "")
-                .addFormDataPart("nric_fin_no","")
+                .addFormDataPart("nric_fin_no",nricSingapore.getText().toString())
                 .addFormDataPart("created_date", "")
                 .addFormDataPart("order_id", "")
                 .addFormDataPart("service_type", serviceType)
