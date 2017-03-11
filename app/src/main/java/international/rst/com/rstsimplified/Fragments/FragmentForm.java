@@ -142,7 +142,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String uaeEmailUrl = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D";
     String singaporeEmailUrl = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D";
     private static final String BASE_URL_CONSULT_FORM_SINGAPORE = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
-
+    private static final String BASE_URL_CONSULT_FORM_OMAN = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
     public FragmentForm() {
     }
 
@@ -384,6 +384,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                                     }
                                     else if(sharedPreferences.getInt("visa_id",0) == 2){
                                         sendSingaporeConsultData();
+                                    }
+                                    else if(sharedPreferences.getInt("visa_id",0) == 3){
+                                        sendOmanConsultData();
                                     }
 
                                 }
@@ -1248,6 +1251,86 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("device_os", ("Android:"+deviceOS))
                 .build();
         Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    sendVerificationEmail(resp, edtEmailContact.getText().toString(), uaeEmailUrl);
+                    sharedPreferences.edit().putString("response",resp).apply();
+                    if (response.isSuccessful()) {
+
+
+
+                        //sendApplicandData(resp);
+                        //sendVerificationEmail(resp, emailEdt);
+
+
+                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
+                    }else {
+
+                    }
+                } catch (IOException e) {
+                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendOmanConsultData(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", savedArrivalDate)
+                .addFormDataPart("end_date", savedDepartureDate)
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", edtAddress.getText().toString())
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", edtLivingCity.getText().toString())
+                .addFormDataPart("country", livingIn)
+                .addFormDataPart("country_code", String.valueOf(selectedCountryID))
+                .addFormDataPart("mobile", edtMobile.getText().toString())
+                .addFormDataPart("emergency_contact_name", edtEmergencyContactName.getText().toString())
+                .addFormDataPart("emergency_contact_number", edtEmergencyContactNumber.getText().toString())
+                .addFormDataPart("hotel_address", edtHotelAddress.getText().toString())
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", serviceType)
+                .addFormDataPart("nationality_id",nationalityId)
+                .addFormDataPart("living_in_id", livingId)
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", String.valueOf(govtFee))
+                .addFormDataPart("service_fee", String.valueOf(serviceFee))
+                .addFormDataPart("processing_time",processingTime)
+                .addFormDataPart("visa_type_id", String.valueOf(visaTypeId))
+                .addFormDataPart("email_id", edtEmailContact.getText().toString())
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", String.valueOf(mngFee))
+                .addFormDataPart("application_type", fullNameVisa)
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", ("Android:"+deviceOS))
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM_OMAN).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new Callback() {
 
