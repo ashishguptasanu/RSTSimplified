@@ -44,5 +44,6 @@
     <string name="usa_form_security_number">U.S. Social Security Number</string>
     <string name="usa_form_taxpayer_number">U.S. Tax Payer ID Number</string>
     <string name="usa_form_mailing_address">Is your Mailing Address the same as your Home Address?</string>
-
+    <string name="usa_form_lost_passport">Have you ever lost a passport or had one stolen?</string>
+    <string name="usa_form_document_type">Passport/Document Type</string>
 </resources>
