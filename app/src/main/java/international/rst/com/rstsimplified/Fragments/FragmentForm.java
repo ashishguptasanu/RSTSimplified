@@ -537,9 +537,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         System.out.println(selectedVisaId);
         if(selectedVisaId == 0){
             addressUaeLayout.setVisibility(View.VISIBLE);
+            addressSingaporeLayout.setVisibility(View.GONE);
         }
         else if(selectedVisaId == 2){
             addressSingaporeLayout.setVisibility(View.VISIBLE);
+            addressUaeLayout.setVisibility(View.GONE);
         }
         else {
             addressUaeLayout.setVisibility(View.GONE);

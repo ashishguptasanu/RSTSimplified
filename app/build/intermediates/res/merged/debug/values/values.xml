@@ -682,6 +682,17 @@
     <string name="title_activity_visa_services_options">Enter Details</string>
     <string name="title_activity_visa_type_selection">Select Visa Type</string>
     <string name="upload_form_note">Note: You can skip this page by clicking on Submit button. you can submit documents later.</string>
+    <string name="usa_form_birth_country">Place of Birth-Country region</string>
+    <string name="usa_form_birth_state">Place of Birth-State/Province</string>
+    <string name="usa_form_country">Country/Region of origin(Nationality)</string>
+    <string name="usa_form_mailing_address">Is your Mailing Address the same as your Home Address?</string>
+    <string name="usa_form_national_identification_number">National Identification Number</string>
+    <string name="usa_form_other_coutry">Do you hold or have you held any nationality other than the one indicated above on nationality?</string>
+    <string name="usa_form_other_coutry_permanent">Are you a permanent resident of a country/region other than your country/region of origin (nationality) indicated above?</string>
+    <string name="usa_form_other_names">Have you ever used other names?</string>
+    <string name="usa_form_security_number">U.S. Social Security Number</string>
+    <string name="usa_form_taxpayer_number">U.S. Tax Payer ID Number</string>
+    <string name="usa_form_telecode">Do you have telecode that repesents your name?</string>
     <string name="visa">Select Visa For</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

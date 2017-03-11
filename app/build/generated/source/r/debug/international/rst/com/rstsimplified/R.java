@@ -3332,10 +3332,12 @@ containing a value of this type.
         public static final int select_dialog_multichoice_material=0x7f040056;
         public static final int select_dialog_singlechoice_material=0x7f040057;
         public static final int support_simple_spinner_dropdown_item=0x7f040058;
-        public static final int viewpager_image=0x7f040059;
-        public static final int visa_card=0x7f04005a;
-        public static final int visa_type_dialog=0x7f04005b;
-        public static final int visatypecard=0x7f04005c;
+        public static final int usa_form3=0x7f040059;
+        public static final int usa_form4=0x7f04005a;
+        public static final int viewpager_image=0x7f04005b;
+        public static final int visa_card=0x7f04005c;
+        public static final int visa_type_dialog=0x7f04005d;
+        public static final int visatypecard=0x7f04005e;
     }
     public static final class menu {
         public static final int activity_home_drawer=0x7f0e0000;
@@ -3448,7 +3450,18 @@ containing a value of this type.
         public static final int title_activity_visa_services_options=0x7f070044;
         public static final int title_activity_visa_type_selection=0x7f070045;
         public static final int upload_form_note=0x7f070046;
-        public static final int visa=0x7f070047;
+        public static final int usa_form_birth_country=0x7f070047;
+        public static final int usa_form_birth_state=0x7f070048;
+        public static final int usa_form_country=0x7f070049;
+        public static final int usa_form_mailing_address=0x7f07004a;
+        public static final int usa_form_national_identification_number=0x7f07004b;
+        public static final int usa_form_other_coutry=0x7f07004c;
+        public static final int usa_form_other_coutry_permanent=0x7f07004d;
+        public static final int usa_form_other_names=0x7f07004e;
+        public static final int usa_form_security_number=0x7f07004f;
+        public static final int usa_form_taxpayer_number=0x7f070050;
+        public static final int usa_form_telecode=0x7f070051;
+        public static final int visa=0x7f070052;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0900a4;
