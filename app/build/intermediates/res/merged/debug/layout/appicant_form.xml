@@ -421,6 +421,7 @@
                     android:text="@string/singapore_form_other_country"/>
                 <RadioGroup
                     android:layout_width="0dp"
+                    android:id="@+id/radio_group_singapore1"
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:layout_weight="1"
@@ -428,12 +429,71 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_other_country1"
                         android:hint="Yes"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_other_country2"
                         android:hint="No"/>
                 </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:id="@+id/other_country_singapore_layout"
+                android:orientation="vertical">
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name of Country"
+                        android:maxLines="1"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Detail address in that country"
+                        android:maxLines="5"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+                </android.support.design.widget.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:hint="Start Year"
+                            android:maxLines="1"
+                            android:inputType="date" />
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:hint="End Year"
+                            android:maxLines="1"
+                            android:inputType="date" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -448,16 +508,19 @@
                 <RadioGroup
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:id="@+id/radio_group_singapore2"
                     android:layout_weight="1"
                     android:gravity="right"
                     android:orientation="horizontal">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_refused_country1"
                         android:hint="Yes"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_refused_country2"
                         android:hint="No"/>
                 </RadioGroup>
             </LinearLayout>
@@ -475,15 +538,18 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/radio_group_singapore3"
                     android:gravity="right"
                     android:orientation="horizontal">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_convicted1"
                         android:hint="Yes"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_convicted2"
                         android:hint="No"/>
                 </RadioGroup>
             </LinearLayout>
@@ -501,15 +567,18 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/radio_group_singapore4"
                     android:gravity="right"
                     android:orientation="horizontal">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_prohibited1"
                         android:hint="Yes"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_prohibited2"
                         android:hint="No"/>
                 </RadioGroup>
             </LinearLayout>
@@ -527,15 +596,18 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/radio_group_singapore5"
                     android:gravity="right"
                     android:orientation="horizontal">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_diff_passport1"
                         android:hint="Yes"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/rb_diff_passport2"
                         android:hint="No"/>
                 </RadioGroup>
             </LinearLayout>

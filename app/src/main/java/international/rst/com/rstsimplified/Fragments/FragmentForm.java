@@ -32,11 +32,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -126,8 +128,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<Integer> professionNumber = new ArrayList<>();
     int serverResponseCode = 0;
     CustomScrollView scrollView;
-    RadioButton radioButton1, radioButton2;
-    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore;
+    RadioButton radioButton1, radioButton2, singaporeRb1, singaporeRb2, singaporeRb3, singaporeRb4, singaporeRb5,singaporeRb6,singaporeRb7,singaporeRb8,singaporeRb9,singaporeRb10;
+    RadioGroup radioGrpSingapore1, radioGrpSingapore2, radioGrpSingapore3, radioGrpSingapore4, radioGrpSingapore5;
+    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout;
     Button button2, button3;
     SharedPreferences sharedPreferences;
     public String nationalityID, livingIn, codePhone;
@@ -460,12 +463,60 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         nameLast = (EditText)view.findViewById(R.id.name_last);
         birthDate = (EditText)view.findViewById(R.id.edt_dob );
         passportLayoutSingapore = (LinearLayout)view.findViewById(R.id.singapore_passport_layout);
+        otherCountrySingaporeLayout = (LinearLayout)view.findViewById(R.id.other_country_singapore_layout);
         if(selectedVisaId == 2){
             passportLayoutSingapore.setVisibility(View.VISIBLE);
         }
         else {
             passportLayoutSingapore.setVisibility(View.GONE);
         }
+        radioGrpSingapore1 = (RadioGroup)view.findViewById(R.id.radio_group_singapore1);
+        radioGrpSingapore2 = (RadioGroup)view.findViewById(R.id.radio_group_singapore2);
+        radioGrpSingapore3 = (RadioGroup)view.findViewById(R.id.radio_group_singapore3);
+        radioGrpSingapore4 = (RadioGroup)view.findViewById(R.id.radio_group_singapore4);
+        radioGrpSingapore5 = (RadioGroup)view.findViewById(R.id.radio_group_singapore5);
+        singaporeRb1 = (RadioButton)view.findViewById(R.id.rb_other_country1);
+        singaporeRb2 = (RadioButton)view.findViewById(R.id.rb_other_country2);
+        singaporeRb3 = (RadioButton)view.findViewById(R.id.rb_refused_country1);
+        singaporeRb4 = (RadioButton)view.findViewById(R.id.rb_refused_country2);
+        singaporeRb5 = (RadioButton)view.findViewById(R.id.rb_convicted1);
+        singaporeRb6 = (RadioButton)view.findViewById(R.id.rb_convicted2);
+        singaporeRb7 = (RadioButton)view.findViewById(R.id.rb_prohibited1);
+        singaporeRb8 = (RadioButton)view.findViewById(R.id.rb_prohibited2);
+        singaporeRb9 = (RadioButton)view.findViewById(R.id.rb_diff_passport1);
+        singaporeRb10 = (RadioButton)view.findViewById(R.id.rb_diff_passport2);
+        radioGrpSingapore1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(singaporeRb1.isChecked()){otherCountrySingaporeLayout.setVisibility(View.VISIBLE);}
+                else if(singaporeRb2.isChecked()){otherCountrySingaporeLayout.setVisibility(View.GONE);}
+
+            }
+        });
+        radioGrpSingapore2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+            }
+        });
+        radioGrpSingapore3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+            }
+        });
+        radioGrpSingapore4.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+            }
+        });
+        radioGrpSingapore5.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+            }
+        });
         disableInput(birthDate);
         System.out.println("Applicant Email:    " +emailFinal);
         birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
@@ -1107,6 +1158,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
 
     }
+
 
 
     class ConnectionTask extends AsyncTask<String, Void, String> {
