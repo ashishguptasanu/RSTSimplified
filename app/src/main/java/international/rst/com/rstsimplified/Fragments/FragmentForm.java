@@ -20,6 +20,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.ViewPager;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -111,8 +112,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     int visaTypeId, selectedVisaId;
     float govtFee, mngFee, serviceFee;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
-    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact;
-    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore;
+    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd;
+    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification;
+    TextInputLayout inputLayoutQualification;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion, gccList, addressType;
     String emailFinal = null;
@@ -462,14 +464,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         nameFirst = (EditText)view.findViewById(R.id.name_first);
         nameLast = (EditText)view.findViewById(R.id.name_last);
         birthDate = (EditText)view.findViewById(R.id.edt_dob );
+        inputLayoutQualification = (TextInputLayout)view.findViewById(R.id.input_layout_highest_qualification);
+        highestQualification = (EditText)view.findViewById(R.id.edt_qualification);
         passportLayoutSingapore = (LinearLayout)view.findViewById(R.id.singapore_passport_layout);
         otherCountrySingaporeLayout = (LinearLayout)view.findViewById(R.id.other_country_singapore_layout);
-        if(selectedVisaId == 2){
-            passportLayoutSingapore.setVisibility(View.VISIBLE);
-        }
-        else {
-            passportLayoutSingapore.setVisibility(View.GONE);
-        }
         radioGrpSingapore1 = (RadioGroup)view.findViewById(R.id.radio_group_singapore1);
         radioGrpSingapore2 = (RadioGroup)view.findViewById(R.id.radio_group_singapore2);
         radioGrpSingapore3 = (RadioGroup)view.findViewById(R.id.radio_group_singapore3);
@@ -485,35 +483,64 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         singaporeRb8 = (RadioButton)view.findViewById(R.id.rb_prohibited2);
         singaporeRb9 = (RadioButton)view.findViewById(R.id.rb_diff_passport1);
         singaporeRb10 = (RadioButton)view.findViewById(R.id.rb_diff_passport2);
+        edtOtherName = (EditText)view.findViewById(R.id.other_country_name);
+        edtOtherAddress = (EditText)view.findViewById(R.id.other_country_address);
+        edtOtherStart = (EditText)view.findViewById(R.id.other_country_start);
+        edtOtherEnd = (EditText)view.findViewById(R.id.other_country_end);
         radioGrpSingapore1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if(singaporeRb1.isChecked()){otherCountrySingaporeLayout.setVisibility(View.VISIBLE);}
-                else if(singaporeRb2.isChecked()){otherCountrySingaporeLayout.setVisibility(View.GONE);}
+
+                if(singaporeRb1.isChecked()){otherCountrySingaporeLayout.setVisibility(View.VISIBLE);
+                    sharedPreferences.edit().putString("reside_other_country","yes").apply();}
+                else if(singaporeRb2.isChecked()){otherCountrySingaporeLayout.setVisibility(View.GONE);
+                    sharedPreferences.edit().putString("reside_other_country","no").apply();}
 
             }
         });
         radioGrpSingapore2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-
+                if(singaporeRb3.isChecked()){
+                    sharedPreferences.edit().putString("refused_country","yes").apply();
+                }
+                else {
+                    sharedPreferences.edit().putString("refused_country","no").apply();
+                }
             }
         });
         radioGrpSingapore3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-
+                if(singaporeRb5.isChecked()){
+                    sharedPreferences.edit().putString("court_law", "yes").apply();
+                }
+                else {
+                    sharedPreferences.edit().putString("court_law","no").apply();
+                }
             }
         });
         radioGrpSingapore4.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(singaporeRb7.isChecked()){
+                    sharedPreferences.edit().putString("prohibited_country","yes").apply();
+                }
+                else{
+                    sharedPreferences.edit().putString("prohibited_country","no").apply();
+                }
 
             }
         });
         radioGrpSingapore5.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(singaporeRb9.isChecked()){
+                    sharedPreferences.edit().putString("different_passport","yes").apply();
+                }
+                else {
+                    sharedPreferences.edit().putString("different_passport","no").apply();
+                }
 
             }
         });
@@ -542,6 +569,16 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         edtSponsorName = (EditText)view.findViewById(R.id.sponsor_name);
         edtSponsorAddress = (EditText)view.findViewById(R.id.sponsor_address);
         edtSponsorCotact = (EditText)view.findViewById(R.id.sponsor_contact);
+        if(selectedVisaId == 2){
+            passportLayoutSingapore.setVisibility(View.VISIBLE);
+            profession.setVisibility(View.GONE);
+            inputLayoutQualification.setVisibility(View.VISIBLE);
+        }
+        else {
+            passportLayoutSingapore.setVisibility(View.GONE);
+            profession.setVisibility(View.VISIBLE);
+            inputLayoutQualification.setVisibility(View.GONE);
+        }
     }
 
     private void intializeDocsView() {
@@ -675,6 +712,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("sponsor_type",selectedGCC).apply();
         sharedPreferences.edit().putString("port",selectedPort).apply();
         sharedPreferences.edit().putString("sponsor_contact",edtSponsorCotact.getText().toString()).apply();
+        sharedPreferences.edit().putString("other_country_name", edtOtherName.getText().toString()).apply();
+        sharedPreferences.edit().putString("other_country_address", edtOtherAddress.getText().toString()).apply();
+        sharedPreferences.edit().putString("start_year_other_country",edtOtherStart.getText().toString()).apply();
+        sharedPreferences.edit().putString("end_year_other_country", edtOtherEnd.getText().toString()).apply();
+        sharedPreferences.edit().putString("highest_qualification",highestQualification.getText().toString()).apply();
 
     }
 

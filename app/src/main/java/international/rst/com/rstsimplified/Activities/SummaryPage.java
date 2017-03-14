@@ -43,7 +43,7 @@ public class SummaryPage extends AppCompatActivity
     SharedPreferences sharedPreferences;
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant, maritalStatus;
     int visaTypeId, age, selectedVisaId;
-    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6, selectedPort, responseVisa;
+    String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6, selectedPort, responseVisa, refusedCountry, courtLaw, prohibitedCountry, differentPassport, otherCountryName, otherCountryAddress, startOtherCountry, endOtherCountry, resideOther, highestQualification;
     TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
     Float govtFee, serviceFee, mngFee, totalFee;
     String fileName1, fileName2, fileName3, fileName4, fileName5, fileName6, fileType1, fileType2, fileType3, fileType4, fileType5, fileType6, sponsorName, sponsorAddress, selectedGcc, sponsorContact;
@@ -348,7 +348,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("passport_expiry_date", dateExpiry)
                 .addFormDataPart("created_date", professionId)
                 .addFormDataPart("profession_id", professionId)
-                .addFormDataPart("hightest_qualification", "")
+                .addFormDataPart("hightest_qualification", highestQualification)
                 .addFormDataPart("visa_upload", "")
                 .addFormDataPart("visa_number", "")
                 .addFormDataPart("visa_upload_time", "")
@@ -366,14 +366,14 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("service_type", "")
                 .addFormDataPart("duration_stay", "")
                 .addFormDataPart("visit_purpose", "")
-                .addFormDataPart("reside_other_country", "")
-                .addFormDataPart("other_country_name", "")
-                .addFormDataPart("other_country_address", "")
-                .addFormDataPart("start_year", "")
-                .addFormDataPart("end_year", "")
-                .addFormDataPart("refused_country", "")
-                .addFormDataPart("court_low_country", "")
-                .addFormDataPart("prohibited_country", "")
+                .addFormDataPart("reside_other_country", resideOther)
+                .addFormDataPart("other_country_name", otherCountryName)
+                .addFormDataPart("other_country_address", otherCountryAddress)
+                .addFormDataPart("start_year", startOtherCountry)
+                .addFormDataPart("end_year", endOtherCountry)
+                .addFormDataPart("refused_country", refusedCountry)
+                .addFormDataPart("court_low_country", courtLaw)
+                .addFormDataPart("prohibited_entry", prohibitedCountry)
                 .build();
         Request request = new Request.Builder().url(SINGAPORE_APPLICANT_FORM).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
@@ -556,7 +556,16 @@ public class SummaryPage extends AppCompatActivity
         sponsorContact = sharedPreferences.getString("sponsor_contact","");
         responseVisa = sharedPreferences.getString("response", "");
         selectedVisaId = sharedPreferences.getInt("visa_id", 0);
-        System.out.println("File : " + selectedFile5);
+        refusedCountry = sharedPreferences.getString("refused_country","");
+        courtLaw = sharedPreferences.getString("court_law","");
+        prohibitedCountry = sharedPreferences.getString("prohibited_country","");
+        differentPassport = sharedPreferences.getString("different_passport","");
+        otherCountryName  = sharedPreferences.getString("other_country_name", "");
+        otherCountryAddress = sharedPreferences.getString("other_country_address","");
+        startOtherCountry = sharedPreferences.getString("start_year_other_country","");
+        endOtherCountry = sharedPreferences.getString("end_year_other_country","");
+        resideOther = sharedPreferences.getString("reside_other_country","");
+        highestQualification = sharedPreferences.getString("highest_qualification","");
 
         if(sharedPreferences != null){
             //sendConsultData();
