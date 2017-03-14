@@ -114,7 +114,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification;
-    TextInputLayout inputLayoutQualification, inputRace, inputOccupation;
+    TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputdeparture;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion, gccList, addressType, purpose, duration;
     String emailFinal = null, selectedPurpose, selectedDuration;
@@ -128,11 +128,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<String> emiratesData = new ArrayList<>();
     private List<String> professionData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
-    int serverResponseCode = 0;
-    CustomScrollView scrollView;
     RadioButton radioButton1, radioButton2, singaporeRb1, singaporeRb2, singaporeRb3, singaporeRb4, singaporeRb5,singaporeRb6,singaporeRb7,singaporeRb8,singaporeRb9,singaporeRb10;
     RadioGroup radioGrpSingapore1, radioGrpSingapore2, radioGrpSingapore3, radioGrpSingapore4, radioGrpSingapore5;
-    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose;
+    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose, layoutIranConsult;
     Button button2, button3;
     SharedPreferences sharedPreferences;
     public String nationalityID, livingIn, codePhone;
@@ -148,6 +146,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String singaporeEmailUrl = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D";
     private static final String BASE_URL_CONSULT_FORM_SINGAPORE = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
     private static final String BASE_URL_CONSULT_FORM_OMAN = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_CONSULT_FORM_IRAN = "http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
     public FragmentForm() {
     }
 
@@ -176,32 +175,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         nationalityID = bundle.getString("nationality_id");
         if (title.equalsIgnoreCase("consult")) {
             view = inflater.inflate(R.layout.consult_form, container, false);
-
-            edtDate1 = (EditText) view.findViewById(R.id.edt_arrival);
-            edtDate1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    datePicker(edtDate1);
-                }
-            });
-            disableInput(edtDate1);
-
-            edtDate2 = (EditText) view.findViewById(R.id.edt_departure);
-            edtDate2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    datePicker(edtDate2);
-                }
-            });
-            disableInput(edtDate2);
-
-            if(sharedPreferences!=null){
-                String arrivalDateTemp  = sharedPreferences.getString("arrival_date","");
-                String departureDateTemp = sharedPreferences.getString("departure_date","");
-                edtDate1.setText(arrivalDateTemp);
-                edtDate2.setText(departureDateTemp);
-
-            }
+            intializeConsultViews();
 
             //final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
             Button button1 = (Button)view.findViewById(R.id.button_consult);
@@ -393,6 +367,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                                     else if(sharedPreferences.getInt("visa_id",0) == 3){
                                         sendOmanConsultData();
                                     }
+                                    else if(sharedPreferences.getInt("visa_id",0) == 4){
+                                        sendIranConsultData();
+                                    }
 
                                 }
 
@@ -423,6 +400,63 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
 
         return view;
+    }
+
+    private void intializeConsultViews() {
+        layoutIranConsult = (LinearLayout)view.findViewById(R.id.iran_consult_layout);
+        inputArrival = (TextInputLayout)view.findViewById(R.id.input_layout_arrival);
+        inputdeparture = (TextInputLayout)view.findViewById(R.id.input_layout_departure);
+        selectedVisaId = sharedPreferences.getInt("visa_id",0);
+        edtDate1 = (EditText) view.findViewById(R.id.edt_arrival);
+        edtDate1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePicker(edtDate1);
+            }
+        });
+        disableInput(edtDate1);
+        edtDate2 = (EditText) view.findViewById(R.id.edt_departure);
+        edtDate2.setHint(R.string.uae_visa_departure_hint);
+        edtDate2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                datePicker(edtDate2);
+            }
+        });
+        disableInput(edtDate2);
+        if(selectedVisaId == 0){
+            layoutIranConsult.setVisibility(View.GONE);
+            inputArrival.setHint("Arrival Date in UAE");
+            inputdeparture.setHint("Departure Date from UAE");
+        }
+        else if(selectedVisaId == 1){
+            layoutIranConsult.setVisibility(View.GONE);
+            inputArrival.setHint("Arrival Date in USA");
+            inputdeparture.setHint("Departure Date from USA");
+        }
+        else if(selectedVisaId == 2){
+            layoutIranConsult.setVisibility(View.GONE);
+            inputArrival.setHint("Arrival Date in Singapore");
+            inputdeparture.setHint("Departure Date from Singapore");
+        }
+        else if(selectedVisaId == 3){
+            layoutIranConsult.setVisibility(View.GONE);
+            inputArrival.setHint("Arrival Date in Oman");
+            inputdeparture.setHint("Departure Date from Oman");
+        }
+        else if(selectedVisaId == 4){
+
+            inputArrival.setHint("Arrival Date in Iran");
+            inputdeparture.setHint("Departure Date from Iran");
+        }
+
+        if(sharedPreferences!=null){
+            String arrivalDateTemp  = sharedPreferences.getString("arrival_date","");
+            String departureDateTemp = sharedPreferences.getString("departure_date","");
+            edtDate1.setText(arrivalDateTemp);
+            edtDate2.setText(departureDateTemp);
+
+        }
     }
 
     private void removeUploadPrefData() {
@@ -1579,6 +1613,90 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                     }
                 } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendIranConsultData(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", savedArrivalDate)
+                .addFormDataPart("end_date", savedDepartureDate)
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", edtAddress.getText().toString())
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", edtLivingCity.getText().toString())
+                .addFormDataPart("country", livingIn)
+                .addFormDataPart("country_code", String.valueOf(selectedCountryID))
+                .addFormDataPart("mobile", edtMobile.getText().toString())
+                .addFormDataPart("emergency_contact_name", edtEmergencyContactName.getText().toString())
+                .addFormDataPart("emergency_contact_number", edtEmergencyContactNumber.getText().toString())
+                .addFormDataPart("hotel_address", edtHotelAddress.getText().toString())
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", serviceType)
+                .addFormDataPart("nationality_id",nationalityId)
+                .addFormDataPart("living_in_id", livingId)
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", String.valueOf(govtFee))
+                .addFormDataPart("service_fee", String.valueOf(serviceFee))
+                .addFormDataPart("processing_time",processingTime)
+                .addFormDataPart("visa_type_id", String.valueOf(visaTypeId))
+                .addFormDataPart("email_id", edtEmailContact.getText().toString())
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", String.valueOf(mngFee))
+                .addFormDataPart("application_type", fullNameVisa)
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("no_of_person","4")
+                .addFormDataPart("entry_border","North")
+                .addFormDataPart("stay_duration","Upto 30 Days")
+                .addFormDataPart("consulate_id","India(New Delhi)")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", ("Android:"+deviceOS))
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM_IRAN).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    sendVerificationEmail(resp, edtEmailContact.getText().toString(), uaeEmailUrl);
+                    sharedPreferences.edit().putString("response",resp).apply();
+                    if (response.isSuccessful()) {
+
+
+
+                        //sendApplicandData(resp);
+                        //sendVerificationEmail(resp, emailEdt);
+
+
+                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
+                    }else {
+
+                    }
+                } catch (IOException e) {
+                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
                     System.out.println("Exception caught" + e.getMessage());
                 }
             }

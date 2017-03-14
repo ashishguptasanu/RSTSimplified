@@ -658,6 +658,8 @@
     <string name="iran_form_apply_visa">Where are you going to apply for your visa?</string>
     <string name="iran_form_border">Border of entry</string>
     <string name="iran_form_duration_stay">Duration of stay in Iran</string>
+    <string name="iran_visa_arrival_hint">Arrival Date in UAE</string>
+    <string name="iran_visa_departure_hint">Departure Date from UAE</string>
     <string name="living">I am living in</string>
     <string name="name_friend">Name of your Friend</string>
     <string name="name_kin">Name of your Next-of-Kin</string>
@@ -667,6 +669,8 @@
     <string name="nric_friend">NRIC FIN No. of your Friend</string>
     <string name="nric_kin">NRIC FIN No. of your Next-of-Kin</string>
     <string name="nric_relative">NRIC FIN No. of your Relative</string>
+    <string name="oman_visa_arrival_hint">Arrival Date in UAE</string>
+    <string name="oman_visa_departure_hint">Departure Date from UAE</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
@@ -682,6 +686,8 @@
     <string name="singapore_form_other_country">Did you reside in other countries, other than your country of origin, for one year or more during the last 5 years?</string>
     <string name="singapore_form_prohibited">Have you ever been prohibited from entering Singapore?</string>
     <string name="singapore_form_refused">Have you ever been refused entry into or deported from any country, including Singapore?</string>
+    <string name="singapore_visa_arrival_hint">Arrival Date in UAE</string>
+    <string name="singapore_visa_departure_hint">Departure Date from UAE</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_main_page">RST Simplified</string>
     <string name="title_activity_payment_gateway">Complete Payment</string>
@@ -690,6 +696,8 @@
     <string name="title_activity_summary_page">Order Summary</string>
     <string name="title_activity_visa_services_options">Enter Details</string>
     <string name="title_activity_visa_type_selection">Select Visa Type</string>
+    <string name="uae_visa_arrival_hint">Arrival Date in UAE</string>
+    <string name="uae_visa_departure_hint">Departure Date from UAE</string>
     <string name="upload_form_note">Note: You can skip this page by clicking on Submit button. you can submit documents later.</string>
     <string name="usa_form_birth_country">Place of Birth-Country region</string>
     <string name="usa_form_birth_state">Place of Birth-State/Province</string>
@@ -704,6 +712,8 @@
     <string name="usa_form_security_number">U.S. Social Security Number</string>
     <string name="usa_form_taxpayer_number">U.S. Tax Payer ID Number</string>
     <string name="usa_form_telecode">Do you have telecode that repesents your name?</string>
+    <string name="usa_visa_arrival_hint">Arrival Date in UAE</string>
+    <string name="usa_visa_departure_hint">Departure Date from UAE</string>
     <string name="visa">Select Visa For</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

@@ -55,5 +55,15 @@
     <string name="iran_form_border">Border of entry</string>
     <string name="iran_form_duration_stay">Duration of stay in Iran</string>
     <string name="iran_form_apply_visa">Where are you going to apply for your visa?</string>
+    <string name="uae_visa_arrival_hint">Arrival Date in UAE</string>
+    <string name="uae_visa_departure_hint">Departure Date from UAE</string>
+    <string name="usa_visa_arrival_hint">Arrival Date in UAE</string>
+    <string name="usa_visa_departure_hint">Departure Date from UAE</string>
+    <string name="singapore_visa_arrival_hint">Arrival Date in UAE</string>
+    <string name="singapore_visa_departure_hint">Departure Date from UAE</string>
+    <string name="oman_visa_arrival_hint">Arrival Date in UAE</string>
+    <string name="oman_visa_departure_hint">Departure Date from UAE</string>
+    <string name="iran_visa_arrival_hint">Arrival Date in UAE</string>
+    <string name="iran_visa_departure_hint">Departure Date from UAE</string>
     
 </resources>
