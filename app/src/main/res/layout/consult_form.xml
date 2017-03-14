@@ -78,11 +78,14 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Visa Type"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="@color/colorAccent"
+                android:id="@+id/textView6" />
+
             <android.support.v7.widget.AppCompatSpinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,6 +103,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/person_accompanying"
                 android:hint="@string/iran_form_accompanying"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:inputType="numberDecimal"/>
@@ -111,6 +115,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/border_entry"
                 android:hint="@string/iran_form_border"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:inputType="text"/>
@@ -121,20 +126,36 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/duration_stay"
                 android:hint="@string/iran_form_duration_stay"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:inputType="text"/>
         </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/iran_form_apply_visa"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:inputType="numberDecimal"/>
-        </android.support.design.widget.TextInputLayout>
+                android:text="@string/iran_form_apply_visa"
+                android:textColor="@color/colorAccent" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spnr_apply_visa"
+                android:spinnerMode="dropdown">
+            </android.support.v7.widget.AppCompatSpinner>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorAccent"/>
+        </LinearLayout>
     </LinearLayout>
 
 

@@ -112,13 +112,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     int visaTypeId, selectedVisaId;
     float govtFee, mngFee, serviceFee;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
-    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd;
+    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification;
     TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputdeparture;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion, gccList, addressType, purpose, duration;
     String emailFinal = null, selectedPurpose, selectedDuration;
-    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose;
+    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose, spnrVisaFor, spnrApplyingFrom;
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private List<ProfessionRes> professionList = new ArrayList<>();
@@ -206,6 +206,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             view = inflater.inflate(R.layout.appicant_form, container, false);
             intializeApplicantViews();
             disableInput(latestDate);
+            ViewPager mFormPager = (ViewPager)getActivity().findViewById(R.id.formViewPager);
+            int atTab = mFormPager.getCurrentItem();
+            if(atTab == 2){
+                emailEdt.setText(sharedPreferences.getString("email_contact",""));
+            }
             latestDate.setOnClickListener(this);
             System.out.println(emailFinal + "     " + sharedPreferences.getString("email_contact", ""));
             if(sharedPreferences!=null) {
@@ -285,6 +290,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    System.out.println(sharedPreferences.getString("email_contact", ""));
                     if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && profession.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
                         if(isValidEmail(emailEdt.getText().toString())) {
                             if(radioButton1.isChecked() || radioButton2.isChecked()){
@@ -415,6 +421,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             }
         });
         disableInput(edtDate1);
+        edtNoPerson  = (EditText)view.findViewById(R.id.person_accompanying);
+        edtBorderEntry = (EditText)view.findViewById(R.id.border_entry);
+        edtDurationStay = (EditText)view.findViewById(R.id.duration_stay);
         edtDate2 = (EditText) view.findViewById(R.id.edt_departure);
         edtDate2.setHint(R.string.uae_visa_departure_hint);
         edtDate2.setOnClickListener(new View.OnClickListener() {
@@ -586,8 +595,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         System.out.println("Applicant Email:    " +emailFinal);
         birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
         emailEdt = (EditText)view.findViewById(R.id.edittext_email);
-        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
-        emailEdt.setText(sharedPreferences.getString("email_contact", ""));
         nameFather = (EditText)view.findViewById(R.id.name_father);
         nameMother = (EditText)view.findViewById(R.id.name_mother);
         dateIssue = (EditText)view.findViewById(R.id.edt_issue_date);
@@ -714,7 +721,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         public void afterTextChanged(Editable editable) {
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             sharedPreferences.edit().putString("email_contact", editable.toString()).apply();
-            System.out.println(edtEmailContact.getText().toString());
+            //System.out.println(edtEmailContact.getText().toString());
             //emailFinal = edtEmailContact.getText().toString();
 
 
@@ -1072,7 +1079,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     }
 
 
-
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         switch (adapterView.getId()){
@@ -1150,6 +1156,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+        emailEdt.setText(sharedPreferences.getString("email_contact", ""));
 
     }
     private void datePicker(final EditText edtDate1) {
@@ -1439,6 +1446,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             @Override
             public void onFailure(Call call, IOException e) {
                 System.out.println("Registration Error" + e.getMessage());
+
             }
 
             @Override
@@ -1447,6 +1455,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 try {
                     resp = response.body().string();
                     Log.v("Response", resp);
+                    Log.v("Arrival",savedArrivalDate);
                     sendVerificationEmail(resp, edtEmailContact.getText().toString(), uaeEmailUrl);
                     sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
