@@ -51,5 +51,9 @@
     <string name="singapore_form_prohibited">Have you ever been prohibited from entering Singapore?</string>
     <string name="singapore_form_convicted">Have you ever been convicted in a court of law in any country, including Singapore?</string>
     <string name="singapore_form_diff_passport">Have you ever entered Singapore using a different passport or name?</string>
+    <string name="iran_form_accompanying">No. of Persons Accompanying you to Iran</string>
+    <string name="iran_form_border">Border of entry</string>
+    <string name="iran_form_duration_stay">Duration of stay in Iran</string>
+    <string name="iran_form_apply_visa">Where are you going to apply for your visa?</string>
     
 </resources>

@@ -48,13 +48,13 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     View view;
     LinearLayoutManager linearLayoutManager1;
     Button buttonSubmission;
-    LinearLayout linearLayoutVisa, linearLayoutStates;
+    LinearLayout linearLayoutVisa, linearLayoutStates, linearLayoutIran;
     String[] mDataset1;
     int[] mImageSet, mImageSet2;
-    String[] arrayService;
+    String[] arrayService, travellingFor;
     int selectedVisaId;
     ProgressBar mProgressBar, nationalityProgress, livingProgress;
-    Spinner spinnerVisa,spinnerLivingIn,spinnerNationality, spinnerStates;
+    Spinner spinnerVisa,spinnerLivingIn,spinnerNationality, spinnerStates, spinnerTravellingFor;
     private List<CountryRes> nationality = new ArrayList<>();
     private List<CountryRes> livingin = new ArrayList<>();
     private List<State> states = new ArrayList<>();
@@ -65,7 +65,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     int selectedLivingIn, selectedNationality, selectedLiving;
     ImageView img1;
     SharedPreferences sharedPreferences;
-    ArrayAdapter<String> dataAdapter,dataAdapter2;
+    ArrayAdapter<String> dataAdapter,dataAdapter2, travellingAdapter;
 
 
     public FragmentServices() {
@@ -93,6 +93,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         arrayService = new String[]{"UAE Visa","USA Visa","Singapore Visa","Oman Visa","Iran Visa"};
         linearLayoutVisa = (LinearLayout)view.findViewById(R.id.linear_layout_services);
         linearLayoutStates = (LinearLayout)view.findViewById(R.id.layout_state_usa);
+        linearLayoutIran = (LinearLayout)view.findViewById(R.id.layout_travelling_for);
         linearLayoutStates.setVisibility(View.GONE);
         spinnerVisa = (Spinner)view.findViewById(R.id.spnr_visa);
         spinnerLivingIn = (Spinner)view.findViewById(R.id.spnr_living_in);
@@ -268,23 +269,24 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 if(i==0){
                     linearLayoutStates.setVisibility(View.GONE);
                     mProgressBar.setVisibility(View.GONE);
+                    linearLayoutIran.setVisibility(View.GONE);
                     urlNationality = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=nationality&gofor=country";
                     urlLivingIn = "https://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=livingIn&gofor=country";
                     loadSpinnerData(urlNationality, urlLivingIn);
-
                 }
                 else if(i==1){
                     linearLayoutStates.setVisibility(View.GONE);
                     mProgressBar.setVisibility(View.GONE);
+                    linearLayoutIran.setVisibility(View.GONE);
                     urlNationality = "http://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=nationality&gofor=country";
                     urlLivingIn = "http://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&requireData=livingIn&gofor=country";
                     loadSpinnerData(urlNationality, urlLivingIn);
-
                 }
                 else if(i==2){
                     linearLayoutStates.setVisibility(View.GONE);
                     mProgressBar.setVisibility(View.GONE);
                     linearLayoutStates.setVisibility(View.GONE);
+                    linearLayoutIran.setVisibility(View.GONE);
                     urlNationality = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality";
                     urlLivingIn = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=livingIn";
                     loadSpinnerData(urlNationality,urlLivingIn);
@@ -293,6 +295,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                     linearLayoutStates.setVisibility(View.GONE);
                     mProgressBar.setVisibility(View.GONE);
                     linearLayoutStates.setVisibility(View.GONE);
+                    linearLayoutIran.setVisibility(View.GONE);
                     urlNationality ="http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality";
                     urlLivingIn = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=livingIn";
                     loadSpinnerData(urlNationality,urlLivingIn);
@@ -301,6 +304,8 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                     linearLayoutStates.setVisibility(View.GONE);
                     mProgressBar.setVisibility(View.GONE);
                     linearLayoutStates.setVisibility(View.GONE);
+                    linearLayoutIran.setVisibility(View.VISIBLE);
+                    populateTravellingForSpinner();
                     urlNationality = "http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality";
                     urlLivingIn = "http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=livingIn";
                     loadSpinnerData(urlNationality, urlLivingIn);
@@ -408,7 +413,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                         sharedPreferences.edit().putString("living_in_country", selectedLivingInCountry).apply();
                         sharedPreferences.edit().putInt("living_in_id", selectedLiving).apply();
                         sharedPreferences.edit().putInt("visa_id", 4).apply();
-                        urlVisaType = ("http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaType&nationality_id=" + selectedNationality + "&living_in_id=" + selectedLivingIn);
+                        urlVisaType = ("http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaType&nationality_id=" + selectedNationality + "&living_in_id=" + selectedLivingIn);
                         intent.putExtra("visa_type_url", urlVisaType);
                         startActivity(intent);
                     } else {
@@ -436,6 +441,13 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, stateData);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerStates.setAdapter(dataAdapter);
+    }
+    private void populateTravellingForSpinner() {
+        spinnerTravellingFor = (Spinner)view.findViewById(R.id.spnr_travelling_for);
+        travellingFor = new String[]{"Select One", "Tourism", "Buisness"};
+        travellingAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, travellingFor);
+        travellingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerTravellingFor.setAdapter(travellingAdapter);
     }
     private void intializeLivingInSpinner() {
         dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, livingInData);
