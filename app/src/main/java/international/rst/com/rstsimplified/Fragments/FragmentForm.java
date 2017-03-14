@@ -114,11 +114,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification;
-    TextInputLayout inputLayoutQualification;
+    TextInputLayout inputLayoutQualification, inputRace, inputOccupation;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
-    String[] gender, religion, gccList, addressType;
-    String emailFinal = null;
-    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore;
+    String[] gender, religion, gccList, addressType, purpose, duration;
+    String emailFinal = null, selectedPurpose, selectedDuration;
+    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose;
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private List<ProfessionRes> professionList = new ArrayList<>();
@@ -132,7 +132,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     CustomScrollView scrollView;
     RadioButton radioButton1, radioButton2, singaporeRb1, singaporeRb2, singaporeRb3, singaporeRb4, singaporeRb5,singaporeRb6,singaporeRb7,singaporeRb8,singaporeRb9,singaporeRb10;
     RadioGroup radioGrpSingapore1, radioGrpSingapore2, radioGrpSingapore3, radioGrpSingapore4, radioGrpSingapore5;
-    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout;
+    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose;
     Button button2, button3;
     SharedPreferences sharedPreferences;
     public String nationalityID, livingIn, codePhone;
@@ -464,10 +464,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         nameFirst = (EditText)view.findViewById(R.id.name_first);
         nameLast = (EditText)view.findViewById(R.id.name_last);
         birthDate = (EditText)view.findViewById(R.id.edt_dob );
+        inputOccupation = (TextInputLayout)view.findViewById(R.id.edt_occupation);
+        inputRace = (TextInputLayout)view.findViewById(R.id.edt_race);
         inputLayoutQualification = (TextInputLayout)view.findViewById(R.id.input_layout_highest_qualification);
         highestQualification = (EditText)view.findViewById(R.id.edt_qualification);
         passportLayoutSingapore = (LinearLayout)view.findViewById(R.id.singapore_passport_layout);
         otherCountrySingaporeLayout = (LinearLayout)view.findViewById(R.id.other_country_singapore_layout);
+        layoutDuration = (LinearLayout)view.findViewById(R.id.layout_duration_singapore);
+        layoutPurpose = (LinearLayout)view.findViewById(R.id.layout_purpose_singapore);
         radioGrpSingapore1 = (RadioGroup)view.findViewById(R.id.radio_group_singapore1);
         radioGrpSingapore2 = (RadioGroup)view.findViewById(R.id.radio_group_singapore2);
         radioGrpSingapore3 = (RadioGroup)view.findViewById(R.id.radio_group_singapore3);
@@ -573,11 +577,18 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             passportLayoutSingapore.setVisibility(View.VISIBLE);
             profession.setVisibility(View.GONE);
             inputLayoutQualification.setVisibility(View.VISIBLE);
+            layoutPurpose.setVisibility(View.VISIBLE);
+            layoutDuration.setVisibility(View.VISIBLE);
+
         }
         else {
             passportLayoutSingapore.setVisibility(View.GONE);
             profession.setVisibility(View.VISIBLE);
             inputLayoutQualification.setVisibility(View.GONE);
+            layoutDuration.setVisibility(View.GONE);
+            layoutPurpose.setVisibility(View.GONE);
+            inputOccupation.setVisibility(View.GONE);
+            inputRace.setVisibility(View.GONE);
         }
     }
 
@@ -717,6 +728,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("start_year_other_country",edtOtherStart.getText().toString()).apply();
         sharedPreferences.edit().putString("end_year_other_country", edtOtherEnd.getText().toString()).apply();
         sharedPreferences.edit().putString("highest_qualification",highestQualification.getText().toString()).apply();
+        sharedPreferences.edit().putString("purpose_singapore", selectedPurpose).apply();
+        sharedPreferences.edit().putString("duration_singapore",selectedDuration).apply();
 
     }
 
@@ -803,8 +816,15 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         populateIssueCountrySpinner();
         populateGenderSpinner();
         populateReligionSpinner();
-        populateGCCSpinner();
-        populatePortArrivalSpinner();
+
+        if(selectedVisaId == 2){
+            populateDurationSpinner();
+            populatePurposeSpinner();
+        }
+        else if(selectedVisaId == 0){
+            populateGCCSpinner();
+            populatePortArrivalSpinner();
+        }
     }
     private void showFileChooser(int one) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -1084,6 +1104,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     nricSingapore.setVisibility(View.GONE);
                 }
                 break;
+            case R.id.spnr_duration:
+                selectedDuration = duration[i];
+                break;
+            case R.id.spnr_purpose:
+                selectedPurpose = purpose[i];
+
 
         }
     }
@@ -1300,6 +1326,22 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         ArrayAdapter<String> religionDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, religion);
         religionDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrReligion.setAdapter(religionDataAdapter);
+    }
+    private void populateDurationSpinner() {
+        spnrDuration = (Spinner)view.findViewById(R.id.spnr_duration);
+        spnrDuration.setOnItemSelectedListener(this);
+        duration = new String[]{"Select One","Upto 30 days", "More than 30 days"};
+        ArrayAdapter<String> durationDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, duration);
+        durationDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrDuration.setAdapter(durationDataAdapter);
+    }
+    private void populatePurposeSpinner() {
+        spnrPurpose = (Spinner)view.findViewById(R.id.spnr_purpose);
+        spnrPurpose.setOnItemSelectedListener(this);
+        purpose = new String[]{"Select One","Holiday","Business Meeting","Family Visit", "Relative Visit", "Friend Visit", "Medical Treatment", "Transit"};
+        ArrayAdapter<String> religionDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, purpose);
+        religionDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrPurpose.setAdapter(religionDataAdapter);
     }
     private void populateEmiratesSpinner() {
         spnrEmirates = (Spinner)view.findViewById(R.id.emirates);

@@ -301,8 +301,9 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                     linearLayoutStates.setVisibility(View.GONE);
                     mProgressBar.setVisibility(View.GONE);
                     linearLayoutStates.setVisibility(View.GONE);
-                    urlNationality = "";
-                    urlLivingIn = "";
+                    urlNationality = "http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=nationality";
+                    urlLivingIn = "http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=country&requireData=livingIn";
+                    loadSpinnerData(urlNationality, urlLivingIn);
                 }
                 break;
             case R.id.spnr_living_in:
@@ -364,7 +365,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
 
                     }
                 }
-                if(selectedVisaId == 2){
+                else if(selectedVisaId == 2){
                     if (selectedLivingIn != 0 && selectedNationality != 0) {
                         Intent intent = new Intent(getContext(), VisaTypeSelection.class);
                         intent.putExtra("livingid", selectedLivingIn);
@@ -381,7 +382,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
 
                     }
                 }
-                if(selectedVisaId == 3){
+                else if(selectedVisaId == 3){
                     if (selectedLivingIn != 0 && selectedNationality != 0) {
                         Intent intent = new Intent(getContext(), VisaTypeSelection.class);
                         intent.putExtra("livingid", selectedLivingIn);
@@ -392,6 +393,23 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                         sharedPreferences.edit().putInt("visa_id", 3).apply();
                             urlVisaType = ("http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaType&nationality_id=" + selectedNationality + "&living_in_id=" + selectedLivingIn);
                             intent.putExtra("visa_type_url", urlVisaType);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getContext(), "Select country to countinue..", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+                else if(selectedVisaId == 4){
+                    if (selectedLivingIn != 0 && selectedNationality != 0) {
+                        Intent intent = new Intent(getContext(), VisaTypeSelection.class);
+                        intent.putExtra("livingid", selectedLivingIn);
+                        intent.putExtra("nationid", selectedNationality);
+                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        sharedPreferences.edit().putString("living_in_country", selectedLivingInCountry).apply();
+                        sharedPreferences.edit().putInt("living_in_id", selectedLiving).apply();
+                        sharedPreferences.edit().putInt("visa_id", 4).apply();
+                        urlVisaType = ("http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaType&nationality_id=" + selectedNationality + "&living_in_id=" + selectedLivingIn);
+                        intent.putExtra("visa_type_url", urlVisaType);
                         startActivity(intent);
                     } else {
                         Toast.makeText(getContext(), "Select country to countinue..", Toast.LENGTH_SHORT).show();
