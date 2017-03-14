@@ -46,4 +46,10 @@
     <string name="usa_form_mailing_address">Is your Mailing Address the same as your Home Address?</string>
     <string name="usa_form_lost_passport">Have you ever lost a passport or had one stolen?</string>
     <string name="usa_form_document_type">Passport/Document Type</string>
+    <string name="singapore_form_other_country">Did you reside in other countries, other than your country of origin, for one year or more during the last 5 years?</string>
+    <string name="singapore_form_refused">Have you ever been refused entry into or deported from any country, including Singapore?</string>
+    <string name="singapore_form_prohibited">Have you ever been prohibited from entering Singapore?</string>
+    <string name="singapore_form_convicted">Have you ever been convicted in a court of law in any country, including Singapore?</string>
+    <string name="singapore_form_diff_passport">Have you ever entered Singapore using a different passport or name?</string>
+    
 </resources>

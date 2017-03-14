@@ -673,6 +673,11 @@
     <string name="phone_relative">Phone No. of your Relative</string>
     <string name="search_menu_title">Search</string>
     <string name="search_title">Search</string>
+    <string name="singapore_form_convicted">Have you ever been convicted in a court of law in any country, including Singapore?</string>
+    <string name="singapore_form_diff_passport">Have you ever entered Singapore using a different passport or name?</string>
+    <string name="singapore_form_other_country">Did you reside in other countries, other than your country of origin, for one year or more during the last 5 years?</string>
+    <string name="singapore_form_prohibited">Have you ever been prohibited from entering Singapore?</string>
+    <string name="singapore_form_refused">Have you ever been refused entry into or deported from any country, including Singapore?</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_main_page">RST Simplified</string>
     <string name="title_activity_payment_gateway">Complete Payment</string>
@@ -685,6 +690,8 @@
     <string name="usa_form_birth_country">Place of Birth-Country region</string>
     <string name="usa_form_birth_state">Place of Birth-State/Province</string>
     <string name="usa_form_country">Country/Region of origin(Nationality)</string>
+    <string name="usa_form_document_type">Passport/Document Type</string>
+    <string name="usa_form_lost_passport">Have you ever lost a passport or had one stolen?</string>
     <string name="usa_form_mailing_address">Is your Mailing Address the same as your Home Address?</string>
     <string name="usa_form_national_identification_number">National Identification Number</string>
     <string name="usa_form_other_coutry">Do you hold or have you held any nationality other than the one indicated above on nationality?</string>

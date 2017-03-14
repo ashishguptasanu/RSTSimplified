@@ -127,7 +127,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     int serverResponseCode = 0;
     CustomScrollView scrollView;
     RadioButton radioButton1, radioButton2;
-    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout;
+    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore;
     Button button2, button3;
     SharedPreferences sharedPreferences;
     public String nationalityID, livingIn, codePhone;
@@ -458,7 +458,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void intializeApplicantViews() {
         nameFirst = (EditText)view.findViewById(R.id.name_first);
         nameLast = (EditText)view.findViewById(R.id.name_last);
-        birthDate = (EditText)view.findViewById(R.id.edt_dob);
+        birthDate = (EditText)view.findViewById(R.id.edt_dob );
+        passportLayoutSingapore = (LinearLayout)view.findViewById(R.id.singapore_passport_layout);
+        if(selectedVisaId == 2){
+            passportLayoutSingapore.setVisibility(View.VISIBLE);
+        }
+        else {
+            passportLayoutSingapore.setVisibility(View.GONE);
+        }
         disableInput(birthDate);
         System.out.println("Applicant Email:    " +emailFinal);
         birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
