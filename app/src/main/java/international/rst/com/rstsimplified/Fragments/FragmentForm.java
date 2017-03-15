@@ -68,6 +68,9 @@ import international.rst.com.rstsimplified.Custom.CustomScrollView;
 import international.rst.com.rstsimplified.Custom.CustomViewPager;
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
 import international.rst.com.rstsimplified.Model.ArrivalPort;
+import international.rst.com.rstsimplified.Model.Consulate;
+import international.rst.com.rstsimplified.Model.ConsulateInterface;
+import international.rst.com.rstsimplified.Model.ConsulateResponse;
 import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.Model.Emirate;
@@ -117,16 +120,21 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputdeparture;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion, gccList, addressType, purpose, duration;
-    String emailFinal = null, selectedPurpose, selectedDuration;
+    String emailFinal = null;
+    String selectedPurpose;
+    String selectedDuration;
+    int selectedConsulateId;
     Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose, spnrVisaFor, spnrApplyingFrom;
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private List<ProfessionRes> professionList = new ArrayList<>();
     private List<Emirate_> emirates = new ArrayList<>();
+    private List<ConsulateResponse> consulate = new ArrayList<>();
     private List<Portofarrival> ports = new ArrayList<>();
     private List<String> arrivalPortData = new ArrayList<>();
     private List<String> emiratesData = new ArrayList<>();
     private List<String> professionData = new ArrayList<>();
+    private List<String> consulateData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
     RadioButton radioButton1, radioButton2, singaporeRb1, singaporeRb2, singaporeRb3, singaporeRb4, singaporeRb5,singaporeRb6,singaporeRb7,singaporeRb8,singaporeRb9,singaporeRb10;
     RadioGroup radioGrpSingapore1, radioGrpSingapore2, radioGrpSingapore3, radioGrpSingapore4, radioGrpSingapore5;
@@ -144,6 +152,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private static final String BASE_URL_CONSULT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data_tab_2";
     String uaeEmailUrl = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D";
     String singaporeEmailUrl = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D";
+    String iranEmailUrl = "http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D";
     private static final String BASE_URL_CONSULT_FORM_SINGAPORE = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
     private static final String BASE_URL_CONSULT_FORM_OMAN = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
     private static final String BASE_URL_CONSULT_FORM_IRAN = "http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
@@ -177,6 +186,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             view = inflater.inflate(R.layout.consult_form, container, false);
             intializeConsultViews();
 
+
             //final EditText edtLivingIn = (EditText)view.findViewById(R.id.living_in);
             Button button1 = (Button)view.findViewById(R.id.button_consult);
             button1.setOnClickListener(new View.OnClickListener() {
@@ -187,11 +197,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         int atTab = mFormPager.getCurrentItem();
                         mFormPager.setCurrentItem(atTab + 1);
                         //sendConsultData();
-                        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                        arrivalDate = edtDate1.getText().toString();
-                        departureDate = edtDate2.getText().toString();
-                        sharedPreferences.edit().putString("arrival_date", arrivalDate).apply();
-                        sharedPreferences.edit().putString("departure_date", departureDate).apply();
+                        saveConsultData();
                     }
                     else {
                         Toast.makeText(getContext(),"Enter all fields", Toast.LENGTH_SHORT).show();
@@ -408,7 +414,20 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         return view;
     }
 
+    private void saveConsultData() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        arrivalDate = edtDate1.getText().toString();
+        departureDate = edtDate2.getText().toString();
+        sharedPreferences.edit().putString("arrival_date", arrivalDate).apply();
+        sharedPreferences.edit().putString("departure_date", departureDate).apply();
+        sharedPreferences.edit().putString("no_person", edtNoPerson.getText().toString()).apply();
+        sharedPreferences.edit().putString("border_entry",edtBorderEntry.getText().toString()).apply();
+        sharedPreferences.edit().putString("duration_stay",edtDurationStay.getText().toString()).apply();
+        sharedPreferences.edit().putInt("consulate_id",selectedConsulateId).apply();
+    }
+
     private void intializeConsultViews() {
+        loadConsulateData();
         layoutIranConsult = (LinearLayout)view.findViewById(R.id.iran_consult_layout);
         inputArrival = (TextInputLayout)view.findViewById(R.id.input_layout_arrival);
         inputdeparture = (TextInputLayout)view.findViewById(R.id.input_layout_departure);
@@ -595,6 +614,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         System.out.println("Applicant Email:    " +emailFinal);
         birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
         emailEdt = (EditText)view.findViewById(R.id.edittext_email);
+        disableInput(emailEdt);
         nameFather = (EditText)view.findViewById(R.id.name_father);
         nameMother = (EditText)view.findViewById(R.id.name_mother);
         dateIssue = (EditText)view.findViewById(R.id.edt_issue_date);
@@ -1086,6 +1106,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedCountryID = allcountry.get(i).getId();
                 selectedCountry = allcountry.get(i).getName();
                 selectedPhoneCode = ("+" + allcountry.get(i).getPhoneCode());
+                emailEdt.setText(sharedPreferences.getString("email_contact", ""));
                 /*if(selectedCountryID == 0){
                     phoneCode.setText("");
                 }
@@ -1096,13 +1117,15 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case R.id.spnr_country_issue:
                 selectedIssueCountryID = allcountry.get(i).getId();
                 selectedIssueCountry = allcountry.get(i).getName();
-                System.out.println(selectedIssueCountry);
+                emailEdt.setText(sharedPreferences.getString("email_contact", ""));
                 break;
             case R.id.spnr_gender:
                 selectedGender = gender[i];
+                emailEdt.setText(sharedPreferences.getString("email_contact", ""));
                 break;
             case R.id.spnr_religion:
                 selectedReligion = religion[i];
+                emailEdt.setText(sharedPreferences.getString("email_contact", ""));
                 break;
             case R.id.emirates:
                 selectedEmirate = emiratesData.get(i);
@@ -1149,6 +1172,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 break;
             case R.id.spnr_purpose:
                 selectedPurpose = purpose[i];
+                break;
+            case R.id.spnr_apply_visa:
+                selectedConsulateId = i;
 
 
         }
@@ -1394,6 +1420,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             int emirate = sharedPreferences.getInt("selected_emirate_id", 0);
             spnrEmirates.setSelection(emirate);
         }
+    }
+    private void populateConsulateSpinner() {
+        spnrApplyingFrom = (Spinner)view.findViewById(R.id.spnr_apply_visa);
+        spnrApplyingFrom.setOnItemSelectedListener(this);
+        ArrayAdapter<String> cousulateAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, consulateData);
+        cousulateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrApplyingFrom.setAdapter(cousulateAdapter);
     }
     private void sendConsultData() {
         RequestBody requestBody = new MultipartBody.Builder()
@@ -1665,10 +1698,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("mng_fee", String.valueOf(mngFee))
                 .addFormDataPart("application_type", fullNameVisa)
                 .addFormDataPart("agentType", "")
-                .addFormDataPart("no_of_person","4")
-                .addFormDataPart("entry_border","North")
-                .addFormDataPart("stay_duration","Upto 30 Days")
-                .addFormDataPart("consulate_id","India(New Delhi)")
+                .addFormDataPart("no_of_person",sharedPreferences.getString("no_person",""))
+                .addFormDataPart("entry_border",sharedPreferences.getString("border_entry",""))
+                .addFormDataPart("stay_duration",sharedPreferences.getString("duration_stay",""))
+                .addFormDataPart("consulate_id", String.valueOf(sharedPreferences.getInt("consulate_id",0)))
                 .addFormDataPart("device_type", "app")
                 .addFormDataPart("device_os", ("Android:"+deviceOS))
                 .build();
@@ -1690,7 +1723,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 try {
                     resp = response.body().string();
                     Log.v("Response", resp);
-                    sendVerificationEmail(resp, edtEmailContact.getText().toString(), uaeEmailUrl);
+                    sendVerificationEmail(resp, edtEmailContact.getText().toString(), iranEmailUrl);
                     sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
 
@@ -1766,6 +1799,31 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         savedDepartureDate = sharedPreferences.getString("departure_date","");
 
 
+    }
+    private void loadConsulateData(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://iranvisas.in")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        ConsulateInterface request = retrofit.create(ConsulateInterface.class);
+        retrofit2.Call<Consulate> call = request.getConsulate();
+        //
+        call.enqueue(new retrofit2.Callback<Consulate>() {
+            @Override
+            public void onResponse(retrofit2.Call<Consulate> call, retrofit2.Response<Consulate> response) {
+                Consulate jsonResponse = response.body();
+                consulate = jsonResponse.getConsulate();
+                for(int i=0;i<consulate.size();i++){
+                    consulateData.add(consulate.get(i).getConsulateName());
+                }
+                populateConsulateSpinner();
+
+            }
+            @Override
+            public void onFailure(retrofit2.Call<Consulate> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
     }
 
 

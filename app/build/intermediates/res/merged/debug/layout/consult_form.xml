@@ -149,7 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/spnr_apply_visa"
-                android:spinnerMode="dropdown">
+                android:spinnerMode="dialog">
             </android.support.v7.widget.AppCompatSpinner>
             <View
                 android:layout_width="match_parent"
