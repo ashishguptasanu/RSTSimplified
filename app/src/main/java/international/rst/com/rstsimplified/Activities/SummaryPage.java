@@ -277,25 +277,8 @@ public class SummaryPage extends AppCompatActivity
                 try {
                     String response2 = response.body().string();
 //                    Log.v(TAG_REGISTER, resp);
+                    checkDocuments(BASE_URL_UPLOAD_DOCS_UAE);
 
-                    if(selectedFile1.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS_UAE +"uploadphoto");
-                    }
-                    if(selectedFile2.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS_UAE +"uploadpassport");
-                    }
-                    if(selectedFile3.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS_UAE +"uploadadd");
-                    }
-                    if(selectedFile4.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS_UAE +"uploadadd1");
-                    }
-                    if(selectedFile5.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS_UAE +"uploadadd2");
-                    }
-                    if(selectedFile6.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS_UAE +"uploadadd3");
-                    }
 
                     if (response.isSuccessful()) {
                         runOnUiThread(new Runnable() {
@@ -330,6 +313,9 @@ public class SummaryPage extends AppCompatActivity
 
         });
     }
+
+
+
     private void singaporeApplicantData(String resp){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
@@ -395,27 +381,7 @@ public class SummaryPage extends AppCompatActivity
                 try {
                     String response2 = response.body().string();
                     Log.v("response", response2);
-
-                    if(selectedFile1.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadphoto");
-                    }
-                    if(selectedFile2.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadpassport");
-                    }
-                    if(selectedFile3.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd");
-                    }
-                    if(selectedFile4.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd1");
-                    }
-                    if(selectedFile5.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd2");
-                    }
-                    if(selectedFile6.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd3");
-                    }
-
-
+                    checkDocuments(BASE_URL_UPLOAD_DOCS_SINGAPORE);
                     if (response.isSuccessful()) {
                         runOnUiThread(new Runnable() {
                             @Override
@@ -434,12 +400,9 @@ public class SummaryPage extends AppCompatActivity
                                 tvGender.setText(gender);
                             }
                         });
-                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
-                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
-
 
                     } else {
-
+                            //
                     }
                 } catch (IOException e) {
                     // Log.e(TAG_REGISTER, "Exception caught: ", e);
@@ -518,27 +481,7 @@ public class SummaryPage extends AppCompatActivity
                 try {
                     String response2 = response.body().string();
                     Log.v("response", response2);
-
-                    if(selectedFile1.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS_IRAN +"uploadphoto");
-                    }
-                    if(selectedFile2.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS_IRAN +"uploadpassport");
-                    }
-                    if(selectedFile3.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS_IRAN +"uploadadd");
-                    }
-                    if(selectedFile4.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS_IRAN +"uploadadd1");
-                    }
-                    if(selectedFile5.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS_IRAN +"uploadadd2");
-                    }
-                    if(selectedFile6.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS_IRAN +"uploadadd3");
-                    }
-
-
+                    checkDocuments(BASE_URL_UPLOAD_DOCS_IRAN);
                     if (response.isSuccessful()) {
                         runOnUiThread(new Runnable() {
                             @Override
@@ -599,7 +542,7 @@ public class SummaryPage extends AppCompatActivity
 
                 try {
                     String resp = response.body().string();
-//                    Log.v(TAG_REGISTER, resp);
+                    Log.v("Docs", resp);
                     System.out.println(resp);
                     if (response.isSuccessful()) {
                         //sharedPreferences.edit().putString("Device ID", deviceID).apply();
@@ -710,5 +653,25 @@ public class SummaryPage extends AppCompatActivity
         super.onStart();
         getSharedPreferencesData();
 
+    }
+    private void checkDocuments(String baseUrlUploadDocs) {
+        if(selectedFile1.length() != 0){
+            uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", baseUrlUploadDocs +"uploadphoto");
+        }
+        if(selectedFile2.length() != 0){
+            uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", baseUrlUploadDocs +"uploadpassport");
+        }
+        if(selectedFile3.length() != 0){
+            uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", baseUrlUploadDocs +"uploadadd");
+        }
+        if(selectedFile4.length() != 0){
+            uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", baseUrlUploadDocs +"uploadadd1");
+        }
+        if(selectedFile5.length() != 0){
+            uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", baseUrlUploadDocs +"uploadadd2");
+        }
+        if(selectedFile6.length() != 0){
+            uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", baseUrlUploadDocs +"uploadadd3");
+        }
     }
 }
