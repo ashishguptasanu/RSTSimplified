@@ -428,7 +428,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="3dp"
-            android:background="#9b9999"
+            android:background="@color/viewColour"
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"/>
         <android.support.design.widget.TextInputLayout
@@ -885,6 +885,144 @@
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:hint="Company Contact Number"
                     android:inputType="numberDecimal"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/iran_visited_layout">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Visited Details"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/viewColour"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1.5"
+                    android:text="@string/visited_iran"/>
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:id="@+id/radio_group_iran"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rb_iran1"
+                        android:hint="Yes"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rb_iran2"
+                        android:hint="No"/>
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:id="@+id/visited_iran_info_layout">
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/no_visit_iran"
+                        android:maxLines="1"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:hint="@string/no_of_visit_iran"
+                        android:inputType="numberDecimal" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/purpose_iran"
+                        android:maxLines="2"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:hint="@string/purpose_iran"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/last_visit_iran"
+                        android:maxLines="1"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:hint="@string/last_visit_iran"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/visa_number"
+                        android:maxLines="1"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:hint="@string/no_of_visit_iran"
+                        android:inputType="numberDecimal" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/visit_date"
+                        android:maxLines="1"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:hint="@string/visit_date_iran"
+                        android:inputType="date" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/other_country_iran"
+                    android:maxLines="1"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:hint="@string/other_countries_visited"
+                    android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/previous_citizenship"
+                    android:maxLines="1"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:hint="@string/previous_citizenship"
+                    android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 

@@ -65,5 +65,13 @@
     <string name="oman_visa_departure_hint">Departure Date from UAE</string>
     <string name="iran_visa_arrival_hint">Arrival Date in UAE</string>
     <string name="iran_visa_departure_hint">Departure Date from UAE</string>
+    <string name="visited_iran">Have you visited to Iran before?</string>
+    <string name="no_of_visit_iran">No. of visit to Iran</string>
+    <string name="purpose_iran">Purpose of visit</string>
+    <string name="last_visit_iran">Last visit of Iran</string>
+    <string name="visa_no_iran">Visa No.</string>
+    <string name="visit_date_iran">Visit Date</string>
+    <string name="other_countries_visited">Which Countries have you travelled before?</string>
+    <string name="previous_citizenship">If having previous citizenship or name, please mention?</string>
     
 </resources>

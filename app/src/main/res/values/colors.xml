@@ -4,7 +4,6 @@
     <color name="colorPrimaryDark">#0e3063</color>
     <color name="colorAccent">#ec407a</color>
     <color name="buttonTextColour">#fff</color>
-    <color name="viewColour">#cacaca</color>
-
+    <color name="viewColour">#9b9999</color>
     <color name="black_overlay">#66000000</color>
 </resources>

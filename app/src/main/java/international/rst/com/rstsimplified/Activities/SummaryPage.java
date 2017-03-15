@@ -495,13 +495,13 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("delRemark", "")
                 .addFormDataPart("service_type", "")
                 .addFormDataPart("duration_stay", "")
-                .addFormDataPart("visit_purpose", "")
-                .addFormDataPart("visit_before_iran", "")
-                .addFormDataPart("no_of_visit_iran", "")
-                .addFormDataPart("last_visit", "")
-                .addFormDataPart("visa_no", "")
-                .addFormDataPart("visit_date", "")
-                .addFormDataPart("country_visited", "")
+                .addFormDataPart("visit_purpose", sharedPreferences.getString("purpose_of_visit",""))
+                .addFormDataPart("visit_before_iran", sharedPreferences.getString("visited_iran",""))
+                .addFormDataPart("no_of_visit_iran", sharedPreferences.getString("no_of_visit",""))
+                .addFormDataPart("last_visit", sharedPreferences.getString("last_visit_iran",""))
+                .addFormDataPart("visa_no", sharedPreferences.getString("visa_no_iran",""))
+                .addFormDataPart("visit_date", sharedPreferences.getString("visit_date_iran",""))
+                .addFormDataPart("country_visited", sharedPreferences.getString("other_country_visited",""))
                 .build();
         Request request = new Request.Builder().url(IRAN_APPLICANT_FORM).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);

@@ -91,22 +91,11 @@ import java.util.Objects;
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     String title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6, resp;
     View view;
-    String livingInId;
-    String nationalityId;
-    String selectedGCC;
-    int selectedAddressType;
-    String selectedPort;
-    String serviceType;
-    String livingId;
-    String serviceFeeCs;
-    String processingTime;
-    String deviceType;
-    String deviceOS;
-    String fullNameVisa;
-    int visaTypeId, selectedVisaId;
+    String livingInId, nationalityId, selectedGCC, selectedPort, serviceType, livingId, serviceFeeCs, processingTime, deviceType, deviceOS, fullNameVisa;
+    int visaTypeId, selectedVisaId, selectedAddressType;
     float govtFee, mngFee, serviceFee;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
-    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay;
+    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay, noVisitIran, purposeVisitIran, lastVisitIran, visaNoIran, visitDateIran, otherCountryVisited;
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification, occupation, jobTitle, companyName, acticvityField, companyTelephone, previousNationality;
     TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputdeparture, previousNation;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
@@ -127,9 +116,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<String> professionData = new ArrayList<>();
     private List<String> consulateData = new ArrayList<>();
     private List<Integer> professionNumber = new ArrayList<>();
-    RadioButton radioButton1, radioButton2, singaporeRb1, singaporeRb2, singaporeRb3, singaporeRb4, singaporeRb5,singaporeRb6,singaporeRb7,singaporeRb8,singaporeRb9,singaporeRb10;
-    RadioGroup radioGrpSingapore1, radioGrpSingapore2, radioGrpSingapore3, radioGrpSingapore4, radioGrpSingapore5;
-    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose, layoutIranConsult, layoutCompanyDetails;
+    RadioButton radioButton1, radioButton2, singaporeRb1, singaporeRb2, singaporeRb3, singaporeRb4, singaporeRb5,singaporeRb6,singaporeRb7,singaporeRb8,singaporeRb9,singaporeRb10, radioButtonIran1, radioButtonIran2;
+    RadioGroup radioGrpSingapore1, radioGrpSingapore2, radioGrpSingapore3, radioGrpSingapore4, radioGrpSingapore5, radioGroupIran;
+    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose, layoutIranConsult, layoutCompanyDetails, visitedIranLayout, visitedIranInfoLayout;
     Button button2, button3;
     SharedPreferences sharedPreferences;
     public String nationalityID, livingIn, codePhone;
@@ -531,6 +520,30 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         companyName = (EditText)view.findViewById(R.id.name_company);
         acticvityField = (EditText)view.findViewById(R.id.field_activity);
         companyTelephone = (EditText)view.findViewById(R.id.telephone_company);
+        visitedIranLayout = (LinearLayout)view.findViewById(R.id.iran_visited_layout);
+        visitedIranInfoLayout = (LinearLayout)view.findViewById(R.id.visited_iran_info_layout);
+        visitedIranInfoLayout.setVisibility(View.GONE);
+        radioGroupIran = (RadioGroup)view.findViewById(R.id.radio_group_iran);
+        radioButtonIran1 = (RadioButton)view.findViewById(R.id.rb_iran1);
+        radioButtonIran2 = (RadioButton)view.findViewById(R.id.rb_iran2);
+        noVisitIran = (EditText)view.findViewById(R.id.no_visit_iran);
+        purposeVisitIran = (EditText)view.findViewById(R.id.purpose_iran);
+        lastVisitIran = (EditText)view.findViewById(R.id.last_visit_iran);
+        visaNoIran = (EditText)view.findViewById(R.id.visa_number);
+        visitDateIran = (EditText)view.findViewById(R.id.visit_date);
+        otherCountryVisited = (EditText)view.findViewById(R.id.other_country_iran);
+        radioGroupIran.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if(radioButtonIran1.isChecked()){
+                    visitedIranInfoLayout.setVisibility(View.VISIBLE);
+                    sharedPreferences.edit().putString("visited_iran","Yes").apply();
+                }else{
+                    visitedIranInfoLayout.setVisibility(View.GONE);
+                    sharedPreferences.edit().putString("visited_iran","No").apply();
+                }
+            }
+        });
 
         radioGrpSingapore1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -615,6 +628,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         previousNation = (TextInputLayout)view.findViewById(R.id.edt_previous_nation);
         previousNationality = (EditText)view.findViewById(R.id.previous_nationality);
         if(selectedVisaId == 2){
+            visitedIranLayout.setVisibility(View.GONE);
             passportLayoutSingapore.setVisibility(View.VISIBLE);
             profession.setVisibility(View.GONE);
             previousNation.setVisibility(View.GONE);
@@ -625,6 +639,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         }
         else if(selectedVisaId == 4){
+            visitedIranLayout.setVisibility(View.VISIBLE);
             previousNation.setVisibility(View.VISIBLE);
             layoutCompanyDetails.setVisibility(View.VISIBLE);
             passportLayoutSingapore.setVisibility(View.GONE);
@@ -634,8 +649,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             layoutPurpose.setVisibility(View.GONE);
             inputOccupation.setVisibility(View.GONE);
             inputRace.setVisibility(View.GONE);
+
         }
         else {
+            visitedIranLayout.setVisibility(View.GONE);
             passportLayoutSingapore.setVisibility(View.GONE);
             layoutCompanyDetails.setVisibility(View.GONE);
             profession.setVisibility(View.VISIBLE);
@@ -758,7 +775,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         passportNumberApplicant = passportNumber.getText().toString();
         sharedPreferences.edit().putString("passport_number", passportNumberApplicant).apply();
         sharedPreferences.edit().putString("gender", selectedGender).apply();
-
         sharedPreferences.edit().putString("profession", selectedProfession).apply();
         sharedPreferences.edit().putString("profession_id", selectedProfessionID).apply();
         sharedPreferences.edit().putString("email", emailEdt.getText().toString()).apply();
@@ -791,6 +807,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("field_activity",acticvityField.getText().toString()).apply();
         sharedPreferences.edit().putString("telephone_company",companyTelephone.getText().toString()).apply();
         sharedPreferences.edit().putString("previous_nationality",previousNationality.getText().toString()).apply();
+        sharedPreferences.edit().putString("no_of_visit",previousNationality.getText().toString()).apply();
+        sharedPreferences.edit().putString("purpose_of_visit",previousNationality.getText().toString()).apply();
+        sharedPreferences.edit().putString("last_visit_iran",previousNationality.getText().toString()).apply();
+        sharedPreferences.edit().putString("visa_no_iran",previousNationality.getText().toString()).apply();
+        sharedPreferences.edit().putString("visit_date_iran",previousNationality.getText().toString()).apply();
+        sharedPreferences.edit().putString("other_country_visited",otherCountryVisited.getText().toString()).apply();
 
 
     }
