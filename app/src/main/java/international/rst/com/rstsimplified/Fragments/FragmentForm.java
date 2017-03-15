@@ -99,7 +99,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification, occupation, jobTitle, companyName, acticvityField, companyTelephone, previousNationality;
     TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputdeparture, previousNation;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
-    String[] gender, religion, gccList, addressType, purpose, duration;
+    String[] gender, religion, gccList, addressType, purpose, duration, visaType;
     String emailFinal = null;
     String selectedPurpose;
     String selectedDuration;
@@ -389,6 +389,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
     private void intializeConsultViews() {
         loadConsulateData();
+        intializeVisaForSpinner();
         layoutIranConsult = (LinearLayout)view.findViewById(R.id.iran_consult_layout);
         inputArrival = (TextInputLayout)view.findViewById(R.id.input_layout_arrival);
         inputdeparture = (TextInputLayout)view.findViewById(R.id.input_layout_departure);
@@ -447,6 +448,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         }
     }
+
+
 
     private void removeUploadPrefData() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -1198,6 +1201,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 break;
             case R.id.spnr_apply_visa:
                 selectedConsulateId = i;
+                break;
+            case R.id.spnr_visa_type:
+                if(i== 1){
+                    sharedPreferences.edit().putString("visa_type_iran", "Tourist").apply();
+                }
+                else if(i==2){
+                    sharedPreferences.edit().putString("visa_type_iran", "Business").apply();
+                }
 
 
         }
@@ -1450,6 +1461,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         ArrayAdapter<String> cousulateAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, consulateData);
         cousulateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrApplyingFrom.setAdapter(cousulateAdapter);
+    }
+    private void intializeVisaForSpinner() {
+        spnrVisaFor = (Spinner)view.findViewById(R.id.spnr_visa_type);
+        spnrVisaFor.setOnItemSelectedListener(this);
+        visaType = new String[]{"Select One","Tourist","Business"};
+        ArrayAdapter<String> visaArrayAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, visaType);
+        visaArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrVisaFor.setAdapter(visaArrayAdapter);
     }
     private void sendConsultData() {
         RequestBody requestBody = new MultipartBody.Builder()
