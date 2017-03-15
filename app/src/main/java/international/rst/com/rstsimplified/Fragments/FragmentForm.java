@@ -33,7 +33,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -53,19 +52,12 @@ import com.checkout.models.CardTokenResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 
 import international.rst.com.rstsimplified.Activities.SummaryPage;
-import international.rst.com.rstsimplified.Custom.CustomScrollView;
-import international.rst.com.rstsimplified.Custom.CustomViewPager;
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
 import international.rst.com.rstsimplified.Model.ArrivalPort;
 import international.rst.com.rstsimplified.Model.Consulate;
@@ -92,8 +84,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.app.Activity.RESULT_OK;
-import static android.content.ContentValues.TAG;
-import java.util.Date;
+
 import java.util.Objects;
 
 
@@ -116,8 +107,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     float govtFee, mngFee, serviceFee;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay;
-    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification;
-    TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputdeparture;
+    EditText nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification, occupation, jobTitle, companyName, acticvityField, companyTelephone, previousNationality;
+    TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputdeparture, previousNation;
     private  static String publicKey = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     String[] gender, religion, gccList, addressType, purpose, duration;
     String emailFinal = null;
@@ -138,7 +129,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private List<Integer> professionNumber = new ArrayList<>();
     RadioButton radioButton1, radioButton2, singaporeRb1, singaporeRb2, singaporeRb3, singaporeRb4, singaporeRb5,singaporeRb6,singaporeRb7,singaporeRb8,singaporeRb9,singaporeRb10;
     RadioGroup radioGrpSingapore1, radioGrpSingapore2, radioGrpSingapore3, radioGrpSingapore4, radioGrpSingapore5;
-    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose, layoutIranConsult;
+    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose, layoutIranConsult, layoutCompanyDetails;
     Button button2, button3;
     SharedPreferences sharedPreferences;
     public String nationalityID, livingIn, codePhone;
@@ -218,7 +209,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 emailEdt.setText(sharedPreferences.getString("email_contact",""));
             }
             latestDate.setOnClickListener(this);
-            System.out.println(emailFinal + "     " + sharedPreferences.getString("email_contact", ""));
             if(sharedPreferences!=null) {
                 livingInId = sharedPreferences.getString("living_id", "");
                 System.out.println(sharedPreferences.getString("email_contact",""));
@@ -233,23 +223,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     gccLayout.setVisibility(View.GONE);
                 }
             }
-
-
-
-            /*if(sharedPreferences != null){
-                //visaId = sharedPreferences.getString("visa_id", "");
-                new SharedPreferences.OnSharedPreferenceChangeListener() {
-                    @Override
-                    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-                        visaId = sharedPreferences.getString("visa_id", "");
-                        System.out.println(visaId);
-                    }
-                };
-            //}
-           // else{
-               // Toast.makeText(getContext(),"No Data Available", Toast.LENGTH_SHORT).show();
-            //}*/
-
             profession.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -296,8 +269,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println(sharedPreferences.getString("email_contact", ""));
-                    if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && profession.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
+                    if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
                         if(isValidEmail(emailEdt.getText().toString())) {
                             if(radioButton1.isChecked() || radioButton2.isChecked()){
                                 if (radioButton1.isChecked()){
@@ -553,6 +525,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         edtOtherAddress = (EditText)view.findViewById(R.id.other_country_address);
         edtOtherStart = (EditText)view.findViewById(R.id.other_country_start);
         edtOtherEnd = (EditText)view.findViewById(R.id.other_country_end);
+        layoutCompanyDetails = (LinearLayout)view.findViewById(R.id.company_detail_layout);
+        occupation = (EditText)view.findViewById(R.id.occupation);
+        jobTitle = (EditText)view.findViewById(R.id.job_title);
+        companyName = (EditText)view.findViewById(R.id.name_company);
+        acticvityField = (EditText)view.findViewById(R.id.field_activity);
+        companyTelephone = (EditText)view.findViewById(R.id.telephone_company);
+
         radioGrpSingapore1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -611,7 +590,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             }
         });
         disableInput(birthDate);
-        System.out.println("Applicant Email:    " +emailFinal);
         birthPlace = (EditText)view.findViewById(R.id.edt_place_birth);
         emailEdt = (EditText)view.findViewById(R.id.edittext_email);
         disableInput(emailEdt);
@@ -634,17 +612,34 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         edtSponsorName = (EditText)view.findViewById(R.id.sponsor_name);
         edtSponsorAddress = (EditText)view.findViewById(R.id.sponsor_address);
         edtSponsorCotact = (EditText)view.findViewById(R.id.sponsor_contact);
+        previousNation = (TextInputLayout)view.findViewById(R.id.edt_previous_nation);
+        previousNationality = (EditText)view.findViewById(R.id.previous_nationality);
         if(selectedVisaId == 2){
             passportLayoutSingapore.setVisibility(View.VISIBLE);
             profession.setVisibility(View.GONE);
+            previousNation.setVisibility(View.GONE);
             inputLayoutQualification.setVisibility(View.VISIBLE);
             layoutPurpose.setVisibility(View.VISIBLE);
             layoutDuration.setVisibility(View.VISIBLE);
+            layoutCompanyDetails.setVisibility(View.GONE);
 
+        }
+        else if(selectedVisaId == 4){
+            previousNation.setVisibility(View.VISIBLE);
+            layoutCompanyDetails.setVisibility(View.VISIBLE);
+            passportLayoutSingapore.setVisibility(View.GONE);
+            profession.setVisibility(View.GONE);
+            inputLayoutQualification.setVisibility(View.GONE);
+            layoutDuration.setVisibility(View.GONE);
+            layoutPurpose.setVisibility(View.GONE);
+            inputOccupation.setVisibility(View.GONE);
+            inputRace.setVisibility(View.GONE);
         }
         else {
             passportLayoutSingapore.setVisibility(View.GONE);
+            layoutCompanyDetails.setVisibility(View.GONE);
             profession.setVisibility(View.VISIBLE);
+            previousNation.setVisibility(View.GONE);
             inputLayoutQualification.setVisibility(View.GONE);
             layoutDuration.setVisibility(View.GONE);
             layoutPurpose.setVisibility(View.GONE);
@@ -791,6 +786,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("highest_qualification",highestQualification.getText().toString()).apply();
         sharedPreferences.edit().putString("purpose_singapore", selectedPurpose).apply();
         sharedPreferences.edit().putString("duration_singapore",selectedDuration).apply();
+        sharedPreferences.edit().putString("job_title",jobTitle.getText().toString()).apply();
+        sharedPreferences.edit().putString("company_name",companyName.getText().toString()).apply();
+        sharedPreferences.edit().putString("field_activity",acticvityField.getText().toString()).apply();
+        sharedPreferences.edit().putString("telephone_company",companyTelephone.getText().toString()).apply();
+        sharedPreferences.edit().putString("previous_nationality",previousNationality.getText().toString()).apply();
+
 
     }
 

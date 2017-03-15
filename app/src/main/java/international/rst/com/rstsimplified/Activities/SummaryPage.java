@@ -53,6 +53,7 @@ public class SummaryPage extends AppCompatActivity
     private static final String BASE_URL_APLLICANT_FORM = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=mobile_data";
     private static final String BASE_URL_UPLOAD_DOCS_UAE = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=";
     private static final String BASE_URL_UPLOAD_DOCS_SINGAPORE = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=";
+    private static final String BASE_URL_UPLOAD_DOCS_IRAN = "http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=";
 
     String resp;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -470,13 +471,13 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart("country_of_issue", selectedIssueCountry)
                 .addFormDataPart("passport_issue_date", dateIssue)
                 .addFormDataPart("passport_expiry_date", dateExpiry)
-                .addFormDataPart("designation","")
-                .addFormDataPart("company_name","")
-                .addFormDataPart("field_activity","")
-                .addFormDataPart("company_tel","")
-                .addFormDataPart("previous_nationality","")
+                .addFormDataPart("designation",sharedPreferences.getString("job_title",""))
+                .addFormDataPart("company_name",sharedPreferences.getString("company_name",""))
+                .addFormDataPart("field_activity",sharedPreferences.getString("field_activity",""))
+                .addFormDataPart("company_tel",sharedPreferences.getString("telephone_company",""))
+                .addFormDataPart("previous_nationality",sharedPreferences.getString("previous_nationality",""))
                 .addFormDataPart("created_data", "")
-                .addFormDataPart("profession_id", professionId)
+                .addFormDataPart("profession_id", "")
                 .addFormDataPart("hightest_qualification", highestQualification)
                 .addFormDataPart("visa_upload", "")
                 .addFormDataPart("visa_number", "")
@@ -519,22 +520,22 @@ public class SummaryPage extends AppCompatActivity
                     Log.v("response", response2);
 
                     if(selectedFile1.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadphoto");
+                        uploadDocuments(responseVisa,selectedFile1,fileType1,fileName1, "uploaded_file", BASE_URL_UPLOAD_DOCS_IRAN +"uploadphoto");
                     }
                     if(selectedFile2.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadpassport");
+                        uploadDocuments(responseVisa,selectedFile2,fileType2,fileName2, "uploaded_file1", BASE_URL_UPLOAD_DOCS_IRAN +"uploadpassport");
                     }
                     if(selectedFile3.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd");
+                        uploadDocuments(responseVisa,selectedFile3,fileType3,fileName3, "uploaded_file2", BASE_URL_UPLOAD_DOCS_IRAN +"uploadadd");
                     }
                     if(selectedFile4.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd1");
+                        uploadDocuments(responseVisa,selectedFile4,fileType4,fileName4, "uploaded_file3", BASE_URL_UPLOAD_DOCS_IRAN +"uploadadd1");
                     }
                     if(selectedFile5.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd2");
+                        uploadDocuments(responseVisa,selectedFile5,fileType5,fileName5, "uploaded_file4", BASE_URL_UPLOAD_DOCS_IRAN +"uploadadd2");
                     }
                     if(selectedFile6.length() != 0){
-                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS_SINGAPORE +"uploadadd3");
+                        uploadDocuments(responseVisa,selectedFile6,fileType6,fileName6, "uploaded_file5", BASE_URL_UPLOAD_DOCS_IRAN +"uploadadd3");
                     }
 
 
