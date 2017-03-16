@@ -54,12 +54,9 @@ public class SummaryPage extends AppCompatActivity
     private static final String BASE_URL_UPLOAD_DOCS_UAE = "http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=";
     private static final String BASE_URL_UPLOAD_DOCS_SINGAPORE = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=";
     private static final String BASE_URL_UPLOAD_DOCS_IRAN = "http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=";
-
-    String resp;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     Context context;
-    File file, file1, file2, file3, file4, file5;
-
+    File file;
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,29 +93,18 @@ public class SummaryPage extends AppCompatActivity
         }
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
         int permissionCheck2 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
         if (permissionCheck != PackageManager.PERMISSION_GRANTED && permissionCheck2 != PackageManager.PERMISSION_GRANTED) {
-
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_EXTERNAL_STORAGE);
         } else {
             //uploadDocuments();
-
-
-
         }
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
                 Intent intent = new Intent(getApplicationContext(), PaymentGateway.class);
                 startActivity(intent);
             }
         });
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -157,35 +143,25 @@ public class SummaryPage extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.summary_page, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-       /// Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.home) {
-
-        } else if (id == R.id.visa_services) {
+        if (id == R.id.home) {}
+        else if (id == R.id.visa_services) {
             Intent intent1=new Intent(this,ActivityServices.class);
             b=new Bundle();
             b.putInt("tab",0);
@@ -209,22 +185,13 @@ public class SummaryPage extends AppCompatActivity
             b.putInt("tab",3);
             intent1.putExtras(b);
             startActivity(intent1);
-        } else if (id == R.id.sight_seeing) {
-
-        }
-        else if (id == R.id.car_parking) {
-
-        }
-        else if (id == R.id.launge_booking) {
-
-        }
-
+        }else if (id == R.id.sight_seeing) {}
+        else if (id == R.id.car_parking) {}
+        else if (id == R.id.launge_booking) {}
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
     private void sendApplicandData(String resp) {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
@@ -265,21 +232,16 @@ public class SummaryPage extends AppCompatActivity
         Request request = new Request.Builder().url(BASE_URL_APLLICANT_FORM).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new Callback() {
-
             @Override
             public void onFailure(Call call, IOException e) {
                 System.out.println("Registration Error" + e.getMessage());
             }
-
             @Override
             public void onResponse(Call call, okhttp3.Response response) throws IOException {
-
                 try {
                     String response2 = response.body().string();
 //                    Log.v(TAG_REGISTER, resp);
                     checkDocuments(BASE_URL_UPLOAD_DOCS_UAE);
-
-
                     if (response.isSuccessful()) {
                         runOnUiThread(new Runnable() {
                             @Override
@@ -313,9 +275,6 @@ public class SummaryPage extends AppCompatActivity
 
         });
     }
-
-
-
     private void singaporeApplicantData(String resp){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
@@ -369,12 +328,10 @@ public class SummaryPage extends AppCompatActivity
         Request request = new Request.Builder().url(SINGAPORE_APPLICANT_FORM).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new Callback() {
-
             @Override
             public void onFailure(Call call, IOException e) {
                 System.out.println("Registration Error" + e.getMessage());
             }
-
             @Override
             public void onResponse(Call call, okhttp3.Response response) throws IOException {
 
@@ -515,11 +472,6 @@ public class SummaryPage extends AppCompatActivity
 
         });
     }
-
-
-
-
-
     private void uploadDocuments(String response2, String selectedFile1,  String fileType1, String fileName1, String uploadedFile,String s) {
         file = new File(selectedFile1);
         RequestBody requestBody = new MultipartBody.Builder()
