@@ -86,9 +86,24 @@
     <string name="refused_us_visa">Have you ever been refused a U.S. Visa, or been refused admission to the United States, or withdrawn your application for admission at the port of entry?</string>
     <string name="contact_person_us">Contact Person or Organization in the United States</string>
     <string name="contact_person_name_us">Full Name</string>
-    <string name="realtion_with_person">Relationship to You</string>
+    <string name="relation_with_person">Relationship to You</string>
     <string name="address">Address of Point of Contact</string>
     <string name="state_us">State</string>
     <string name="phone_no_us">Phone Number of Point of Contact</string>
-    
+    <string name="father_name">Father\'s Full Name</string>
+    <string name="mother_name">Mother\'s Full Name</string>
+    <string name="father_dob">Father\'s Date of Birth</string>
+    <string name="mother_dob">Mother\'s Date of Birth</string>
+    <string name="father_us">Is your Father in the U.S.?</string>
+    <string name="mother_us">Is your Mother in the U.S.?</string>
+    <string name="marital_status">Marital Status</string>
+    <string name="occupation_us">Primary Occupation</string>
+    <string name="employer_name">Present Employer or School Name</string>
+    <string name="employer_address">Present Employer or School Address</string>
+    <string name="country">Country Region</string>
+    <string name="city">City</string>
+    <string name="phone_no">Phone Number</string>
+    <string name="duties">Briefly describe your duties</string>
+
+
 </resources>
