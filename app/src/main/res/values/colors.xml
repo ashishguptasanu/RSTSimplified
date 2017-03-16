@@ -5,5 +5,6 @@
     <color name="colorAccent">#ec407a</color>
     <color name="buttonTextColour">#fff</color>
     <color name="viewColour">#9b9999</color>
+    <color name="viewColour2">#d6d6d6</color>
     <color name="black_overlay">#66000000</color>
 </resources>

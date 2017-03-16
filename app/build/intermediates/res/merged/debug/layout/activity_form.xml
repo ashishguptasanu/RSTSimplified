@@ -1,0 +1,17 @@
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <international.rst.com.rstsimplified.Custom.CustomViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/formViewPager">
+        <international.rst.com.rstsimplified.Custom.CustomPagerTabStrip
+            android:id="@+id/tab_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top" />
+    </international.rst.com.rstsimplified.Custom.CustomViewPager>
+
+
+
+</RelativeLayout>
