@@ -80,5 +80,15 @@
     <string name="no_of_days_us">No. of Days</string>
     <string name="address_stay_us">Address where you will stay in the United State</string>
     <string name="entity_paying">Person/Entity paying for your trip</string>
+    <string name="other_person_travelling">Are there other persons travelling with you?</string>
+    <string name="ever_been_us">Have you ever been in the U.S.?</string>
+    <string name="ever_issued_visa_us">Have you ever been issued a U.S. Visa?</string>
+    <string name="refused_us_visa">Have you ever been refused a U.S. Visa, or been refused admission to the United States, or withdrawn your application for admission at the port of entry?</string>
+    <string name="contact_person_us">Contact Person or Organization in the United States</string>
+    <string name="contact_person_name_us">Full Name</string>
+    <string name="realtion_with_person">Relationship to You</string>
+    <string name="address">Address of Point of Contact</string>
+    <string name="state_us">State</string>
+    <string name="phone_no_us">Phone Number of Point of Contact</string>
     
 </resources>
