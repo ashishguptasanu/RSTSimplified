@@ -73,5 +73,12 @@
     <string name="visit_date_iran">Visit Date</string>
     <string name="other_countries_visited">Which Countries have you travelled before?</string>
     <string name="previous_citizenship">If having previous citizenship or name, please mention?</string>
+    <string name="usa_form6_purpose_trip">Purpose of trip to U.S.</string>
+    <string name="length_stay_in us">Intended length of stay in U.S.</string>
+    <string name="no_of_months_us">No. of Months</string>
+    <string name="no_of_weeks_us">No. of Weeks</string>
+    <string name="no_of_days_us">No. of Days</string>
+    <string name="address_stay_us">Address where you will stay in the United State</string>
+    <string name="entity_paying">Person/Entity paying for your trip</string>
     
 </resources>

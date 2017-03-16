@@ -545,14 +545,11 @@ public class SummaryPage extends AppCompatActivity
                     Log.v("Docs", resp);
                     System.out.println(resp);
                     if (response.isSuccessful()) {
-                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
-                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
 
                     } else {
 
                     }
                 } catch (IOException e) {
-                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
                     System.out.println("Exception caught" + e.getMessage());
                 }
             }
