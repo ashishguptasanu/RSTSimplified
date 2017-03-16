@@ -1,11 +1,8 @@
 <resources>
     <string name="app_name">RST Simplified</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
-
     <string name="title_activity_splash">RST Simplified</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -104,6 +101,13 @@
     <string name="city">City</string>
     <string name="phone_no">Phone Number</string>
     <string name="duties">Briefly describe your duties</string>
+    <string name="previous_employed">Were you previously employed?</string>
+    <string name="languages">Provide a List of Languages You Speak</string>
+    <string name="list_country_travelled">Have you traveled to any countries/regions within the last five years?</string>
+    <string name="charitable_organisation">Have you belonged to, contributed to, or worked for any professional, social, or charitable organization?</string>
+    <string name="specialized_skills">Do you have any specialized skills or training, such as firearms, explosives, nuclear, biological, or chemical experience?</string>
+    <string name="served_military">Have you ever served in the military?</string>
+    <string name="served_paramilitary">Have you ever served in, been a member of, or been involved with a paramilitary unit, vigilante unit, rebel group, guerrilla group, or insurgent organization?</string>
 
 
 </resources>
