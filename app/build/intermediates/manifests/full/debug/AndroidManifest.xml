@@ -37,6 +37,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="international.rst.com.rstsimplified.Activities.MainPage"
+            android:label="@string/title_activity_main_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name="international.rst.com.rstsimplified.Activities.FormActivity"
             android:label="Submit your details"
             android:theme="@style/AppTheme" >

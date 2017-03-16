@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:2:1-59:12
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:2:1-63:12
 	package
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:4:5-50
 		INJECTED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml
@@ -40,7 +40,7 @@ ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\ma
 	android:name
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:11:22-78
 application
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:13:5-57:19
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:13:5-61:19
 MERGED from [com.android.support:design:25.3.0] C:\Users\Ashish\.android\build-cache\0406d0cf0c806bfc2f4a6c58b3c577224a71a38b\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\Ashish\.android\build-cache\f118e525a104ff113749371dab8e03985203c3ae\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\Ashish\.android\build-cache\4c29183f22c2712f4999d9d26c1c8ff21eda9daa\output\AndroidManifest.xml:26:5-20
@@ -85,56 +85,64 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:28:17-77
 	android:name
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:28:27-74
+activity#international.rst.com.rstsimplified.Activities.MainPage
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:31:9-34:59
+	android:label
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:33:13-61
+	android:theme
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:34:13-56
+	android:name
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:32:13-48
 activity#international.rst.com.rstsimplified.Activities.FormActivity
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:31:9-40:20
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:35:9-44:20
 	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:33:13-48
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:37:13-48
 	android:theme
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:34:13-44
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:38:13-44
 	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:32:13-52
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:36:13-52
 intent-filter#android.intent.action.GET_CONTENT+android.intent.category.DEFAULT
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:35:13-39:29
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:39:13-43:29
 action#android.intent.action.GET_CONTENT
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:36:17-76
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:40:17-76
 	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:36:25-73
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:40:25-73
 category#android.intent.category.DEFAULT
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:38:17-76
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:42:17-76
 	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:38:27-73
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:42:27-73
 activity#international.rst.com.rstsimplified.Activities.ActivityServices
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:41:9-44:59
-	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:43:13-60
-	android:theme
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:44:13-56
-	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:42:13-56
-activity#international.rst.com.rstsimplified.Activities.PaymentGateway
 ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:45:9-48:59
 	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:47:13-67
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:47:13-60
 	android:theme
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:48:13-56
 	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:46:13-54
-activity#international.rst.com.rstsimplified.Activities.VisaTypeSelection
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:46:13-56
+activity#international.rst.com.rstsimplified.Activities.PaymentGateway
 ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:49:9-52:59
 	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:51:13-71
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:51:13-67
 	android:theme
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:52:13-56
 	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:50:13-57
-activity#international.rst.com.rstsimplified.Activities.SummaryPage
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:50:13-54
+activity#international.rst.com.rstsimplified.Activities.VisaTypeSelection
 ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:53:9-56:59
 	android:label
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:55:13-64
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:55:13-71
 	android:theme
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:56:13-56
 	android:name
-		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:54:13-51
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:54:13-57
+activity#international.rst.com.rstsimplified.Activities.SummaryPage
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:57:9-60:59
+	android:label
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:59:13-64
+	android:theme
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:60:13-56
+	android:name
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:58:13-51
 uses-sdk
 INJECTED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.3.0] C:\Users\Ashish\.android\build-cache\0406d0cf0c806bfc2f4a6c58b3c577224a71a38b\output\AndroidManifest.xml:21:5-23:62
