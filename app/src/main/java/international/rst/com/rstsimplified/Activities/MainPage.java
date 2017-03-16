@@ -293,33 +293,22 @@ public class MainPage extends AppCompatActivity
 
 
     /*class PostData extends AsyncTask<Void, Void, Void> {
-
         private Exception exception;
-
-
         @Override
         protected Void doInBackground(Void... voids) {
             String  msg = androidID;
-
             HttpClient Client = new DefaultHttpClient();
-
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("id", msg));
             nameValuePairs.add(new BasicNameValuePair("etc", deviceID));
-
             try {
-
                 String SetServerString = "";
-
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httppost = new HttpPost("http://www.uaevisasonline.com/api/getData1.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=new_registeration");
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                 ResponseHandler<String> responseHandler = new BasicResponseHandler();
-
                 httpclient.execute(httppost, responseHandler);
                 System.out.println("Success");
-
-
             }  catch(Exception ex) {
                 System.out.println(ex);
             }

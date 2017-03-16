@@ -134,5 +134,5 @@
     <string name="usa_form_question23">Have you voted in the United States in violation of any law or regulation?</string>
     <string name="usa_form_question24">Have you ever renounced United States citizenship for the purposes of avoiding taxation?</string>
     <string name="usa_form_question25">Are you coming to the United States to engage in prostitution or unlawful commercialized vice or have you been engaged in prostitution or procuring prostitutes within the past 10 years?</string>
-
+    <string name="note">Note</string>
 </resources>
