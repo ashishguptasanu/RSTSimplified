@@ -108,6 +108,31 @@
     <string name="specialized_skills">Do you have any specialized skills or training, such as firearms, explosives, nuclear, biological, or chemical experience?</string>
     <string name="served_military">Have you ever served in the military?</string>
     <string name="served_paramilitary">Have you ever served in, been a member of, or been involved with a paramilitary unit, vigilante unit, rebel group, guerrilla group, or insurgent organization?</string>
-
+    <string name="note_usa_form">Provide the following security and background information. Provide complete and accurate answers to all questions that require an explanation. A visa may not be issued to persons who are within specific categories defined by law as inadmissible to the United States (except when a waiver is obtained in advance). Are any of the following applicable to you? While a YES answer does not automatically signify ineligibility for a visa, if you answer YES you may be required to personally appear before a consular officer.</string>
+    <string name="usa_form_question1">Do you have a communicable disease of public health significance? (Communicable diseases of public significance include chancroid, gonorrhea, granuloma inguinale, infectious leprosy, lymphogranuloma venereum, infectious stage syphilis, active tuberculosis, and other diseases as determined by the Department of Health and Human Services.)</string>
+    <string name="usa_form_question2">Do you have a mental or physical disorder that poses or is likely to pose a threat to the safety or welfare of yourself or others?</string>
+    <string name="usa_form_question3">Are you or have you ever been a drug abuser or addict?</string>
+    <string name="usa_form_question4">Have you ever been arrested or convicted for any offense or crime, even though subject of a pardon, amnesty, or other similar action?</string>
+    <string name="usa_form_question5">Have you ever violated, or engaged in a conspiracy to violate, any law relating to controlled substances?</string>
+    <string name="usa_form_question6">Have you ever been involved in, or do you seek to engage in, money laundering?</string>
+    <string name="usa_form_question7">Have you ever committed or conspired to commit a human trafficking offense in the United States or outside the United States?</string>
+    <string name="usa_form_question8">Have you ever knowingly aided, abetted, assisted or colluded with an individual who has committed, or conspired to commit a severe human trafficking offense in the United States or outside the United States?</string>
+    <string name="usa_form_question9">Are you the spouse, son, or daughter of an individual who has committed or conspired to commit a human trafficking offense in the United States or outside the United States and have you within the last five years, knowingly benefited from the trafficking activities?</string>
+    <string name="usa_form_question10">Do you seek to engage in espionage, sabotage, export control violations, or any other illegal activity while in the United States?</string>
+    <string name="usa_form_question11">Do you seek to engage in terrorist activities while in the United States or have you ever engaged in terrorist activities?</string>
+    <string name="usa_form_question12">Have you ever or do you intend to provide financial assistance or other support to terrorists or terrorist organizations?</string>
+    <string name="usa_form_question13">Are you a member or representative of a terrorist organization?</string>
+    <string name="usa_form_question14">Have you ever ordered, incited, committed, assisted, or otherwise participated in genocide?</string>
+    <string name="usa_form_question15">Have you ever committed, ordered, incited, assisted, or otherwise participated in torture?</string>
+    <string name="usa_form_question16">Have you committed, ordered, incited, assisted, or otherwise participated in extrajudicial killings, political killings, or other acts of violence?</string>
+    <string name="usa_form_question17">Have you ever engaged in the recruitment or the use of child soldiers?</string>
+    <string name="usa_form_question18">Have you, while serving as a government official, been responsible for or directly carried out, at any time, particularly severe violations of religious freedom?</string>
+    <string name="usa_form_question19">Have you ever been directly involved in the establishment or enforcement of population controls forcing a woman to undergo an abortion against her free choice or a man or a woman to undergo sterilization against his or her free will?</string>
+    <string name="usa_form_question20">Have you ever been directly involved in the coercive transplantation of human organs or bodily tissue?</string>
+    <string name="usa_form_question21">Have you ever sought to obtain or assist others to obtain a visa, entry into the United States, or any other United States immigration benefit by fraud or willful misrepresentation or other unlawful means?</string>
+    <string name="usa_form_question22">Have you ever withheld custody of a U.S. citizen child outside the United States from a person granted legal custody by a U.S. court?</string>
+    <string name="usa_form_question23">Have you voted in the United States in violation of any law or regulation?</string>
+    <string name="usa_form_question24">Have you ever renounced United States citizenship for the purposes of avoiding taxation?</string>
+    <string name="usa_form_question25">Are you coming to the United States to engage in prostitution or unlawful commercialized vice or have you been engaged in prostitution or procuring prostitutes within the past 10 years?</string>
 
 </resources>
