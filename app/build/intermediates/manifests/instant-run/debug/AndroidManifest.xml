@@ -66,6 +66,10 @@
             android:name="international.rst.com.rstsimplified.Activities.SummaryPage"
             android:label="@string/title_activity_summary_page"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="international.rst.com.rstsimplified.Activities.UsaFormActivity"
+            android:label="@string/title_activity_usa_form"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <service
             android:name="com.android.tools.fd.runtime.InstantRunService"

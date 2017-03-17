@@ -267,7 +267,7 @@ public class MainPage extends AppCompatActivity
                 //new PostData();
                 break;
             case R.id.card2:
-                Intent intent2=new Intent(this,ActivityServices.class);
+                Intent intent2=new Intent(this,UsaFormActivity.class);
                 b=new Bundle();
                 b.putInt("tab",1);
                 intent2.putExtras(b);
