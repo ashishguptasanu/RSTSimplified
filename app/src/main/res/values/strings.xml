@@ -147,4 +147,8 @@
     <string name="delivery_address">Preferred Delivery Address</string>
     <string name="address">Address</string>
     <string name="postal_code">Postal Code</string>
+    <string name="passport_scanned_copy">Coloured Passport Scanned Copy (Front Page)</string>
+    <string name="passport_scanned_copy2">Coloured Passport Scanned Copy (Last Page)</string>
+    <string name="photo_copy">Photo in white background &amp; Size 2"x2"(Latest photo is required)</string>
+    <string name="miscellaneous_docs">Miscellaneous Documents</string>
 </resources>
