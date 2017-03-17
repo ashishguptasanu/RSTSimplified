@@ -135,4 +135,16 @@
     <string name="usa_form_question24">Have you ever renounced United States citizenship for the purposes of avoiding taxation?</string>
     <string name="usa_form_question25">Are you coming to the United States to engage in prostitution or unlawful commercialized vice or have you been engaged in prostitution or procuring prostitutes within the past 10 years?</string>
     <string name="note">Note</string>
+    <string name="select_consulate">Select Consulate</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="consulate">Consulate</string>
+    <string name="date_of_interview">Preferred Date of Interview</string>
+    <string name="choice1">1st Priority</string>
+    <string name="choice2">2nd Priority</string>
+    <string name="choice3">3rd Priority</string>
+    <string name="biometric_date">Preferred Date of Biometric Interview</string>
+    <string name="delivery_address">Preferred Delivery Address</string>
+    <string name="address">Address</string>
+    <string name="postal_code">Postal Code</string>
 </resources>
