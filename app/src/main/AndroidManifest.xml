@@ -58,6 +58,10 @@
             android:name=".Activities.SummaryPage"
             android:label="@string/title_activity_summary_page"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.UsaFormActivity"
+            android:label="@string/title_activity_usa_form"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

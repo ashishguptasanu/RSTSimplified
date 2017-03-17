@@ -84,7 +84,7 @@
     <string name="contact_person_us">Contact Person or Organization in the United States</string>
     <string name="contact_person_name_us">Full Name</string>
     <string name="relation_with_person">Relationship to You</string>
-    <string name="address">Address of Point of Contact</string>
+    <string name="address_point">Address of Point of Contact</string>
     <string name="state_us">State</string>
     <string name="phone_no_us">Phone Number of Point of Contact</string>
     <string name="father_name">Father\'s Full Name</string>
@@ -136,7 +136,6 @@
     <string name="usa_form_question25">Are you coming to the United States to engage in prostitution or unlawful commercialized vice or have you been engaged in prostitution or procuring prostitutes within the past 10 years?</string>
     <string name="note">Note</string>
     <string name="select_consulate">Select Consulate</string>
-    <string name="city">City</string>
     <string name="state">State</string>
     <string name="consulate">Consulate</string>
     <string name="date_of_interview">Preferred Date of Interview</string>
@@ -151,4 +150,5 @@
     <string name="passport_scanned_copy2">Coloured Passport Scanned Copy (Last Page)</string>
     <string name="photo_copy">Photo in white background &amp; Size 2"x2"(Latest photo is required)</string>
     <string name="miscellaneous_docs">Miscellaneous Documents</string>
+    <string name="title_activity_usa_form">Fill USA Consult Form</string>
 </resources>

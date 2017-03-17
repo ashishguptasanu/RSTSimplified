@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:2:1-63:12
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:2:1-67:12
 	package
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:4:5-50
 		INJECTED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml
@@ -40,7 +40,7 @@ ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\ma
 	android:name
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:11:22-78
 application
-ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:13:5-61:19
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:13:5-65:19
 MERGED from [com.android.support:design:25.3.0] C:\Users\Ashish\.android\build-cache\0406d0cf0c806bfc2f4a6c58b3c577224a71a38b\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\Ashish\.android\build-cache\f118e525a104ff113749371dab8e03985203c3ae\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\Ashish\.android\build-cache\4c29183f22c2712f4999d9d26c1c8ff21eda9daa\output\AndroidManifest.xml:26:5-20
@@ -143,6 +143,14 @@ ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\ma
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:60:13-56
 	android:name
 		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:58:13-51
+activity#international.rst.com.rstsimplified.Activities.UsaFormActivity
+ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:61:9-64:68
+	android:label
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:63:13-60
+	android:theme
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:64:13-56
+	android:name
+		ADDED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml:62:13-55
 uses-sdk
 INJECTED from C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.3.0] C:\Users\Ashish\.android\build-cache\0406d0cf0c806bfc2f4a6c58b3c577224a71a38b\output\AndroidManifest.xml:21:5-23:62
