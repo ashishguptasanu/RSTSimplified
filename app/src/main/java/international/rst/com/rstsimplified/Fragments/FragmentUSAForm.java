@@ -63,6 +63,9 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         else if(title.equalsIgnoreCase("form14")){
             view = inflater.inflate(R.layout.usa_form14,container,false);
         }
+        else if(title.equalsIgnoreCase("form15")){
+            view = inflater.inflate(R.layout.usa_form15,container,false);
+        }
         return view;
     }
 }

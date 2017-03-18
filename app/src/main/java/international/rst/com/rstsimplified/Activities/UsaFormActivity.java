@@ -37,7 +37,7 @@ public class UsaFormActivity extends AppCompatActivity
         usaViewPager = (CustomViewPager)findViewById(R.id.usa_form_view_pager);
         customPagerTabStrip = (CustomPagerTabStrip)findViewById(R.id.usa_form_tab_strip);
         mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        usaTabDataSet = new String[]{"Contact Details","Applicant Information", "Personal Information","Address & Phone Information","Travel Information","Travel Companion","Previous US Travel Information","US Point of Contact Information","Family Information","Present Work/Education/Training Information","Additional Work/Educational/Training Information","Security & Background","Interview Schedule","Document Upload"};
+        usaTabDataSet = new String[]{"Contact Details","Applicant Information", "Personal Information","Address & Phone Information","Passport Information","Travel Information","Travel Companion","Previous US Travel Information","US Point of Contact Information","Family Information","Present Work/Education/Training Information","Additional Work/Educational/Training Information","Security & Background","Interview Schedule","Document Upload"};
         usaViewPager.setAdapter(mFormPagerAdapter);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -169,6 +169,8 @@ public class UsaFormActivity extends AppCompatActivity
                     return FragmentUSAForm.newFormInstance("form13");
                 case 13:
                     return FragmentUSAForm.newFormInstance("form14");
+                case 14:
+                    return FragmentUSAForm.newFormInstance("form15");
                 default:
                     return  PlaceholderFragment.newFormInstance(1,"");
             }
