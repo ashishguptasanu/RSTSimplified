@@ -151,4 +151,19 @@
     <string name="photo_copy">Photo in white background &amp; Size 2"x2"(Latest photo is required)</string>
     <string name="miscellaneous_docs">Miscellaneous Documents</string>
     <string name="title_activity_usa_form">Fill USA Consult Form</string>
+    <string name="usa_form_tab1">Contact Details</string>
+    <string name="usa_form_tab2">Applicant Information</string>
+    <string name="usa_form_tab3">Personal Information</string>
+    <string name="usa_form_tab4">Address &amp; Phone Information</string>
+    <string name="usa_form_tab5">Travel</string>
+    <string name="usa_form_tab6">Contact Details</string>
+    <string name="usa_form_tab7">Contact Details</string>
+    <string name="usa_form_tab8">Contact Details</string>
+    <string name="usa_form_tab9">Contact Details</string>
+    <string name="usa_form_tab10">Contact Details</string>
+    <string name="usa_form_tab11">Contact Details</string>
+    <string name="usa_form_tab12">Contact Details</string>
+    <string name="usa_form_tab13">Contact Details</string>
+    <string name="usa_form_tab14">Contact Details</string>
+
 </resources>

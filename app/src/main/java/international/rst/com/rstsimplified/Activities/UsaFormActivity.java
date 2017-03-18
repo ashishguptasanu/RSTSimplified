@@ -26,12 +26,19 @@ public class UsaFormActivity extends AppCompatActivity
     Bundle b;
     CustomViewPager usaViewPager;
     CustomPagerTabStrip customPagerTabStrip;
+    PagerAdapter mFormPagerAdapter;
+    String[] usaTabDataSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usa_form);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        usaViewPager = (CustomViewPager)findViewById(R.id.usa_form_view_pager);
+        customPagerTabStrip = (CustomPagerTabStrip)findViewById(R.id.usa_form_tab_strip);
+        mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        usaTabDataSet = new String[]{};
+        usaViewPager.setAdapter(mFormPagerAdapter);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -148,11 +155,6 @@ public class UsaFormActivity extends AppCompatActivity
             }
         }
 
-        /*public void setCustomIconsFortabs(){
-            for (int i=0; i< getCount(); i++){
-                tabLayout.getTabAt(i).setIcon(selectors[i]);
-            }
-        }*/
 
 
 
