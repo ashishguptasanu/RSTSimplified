@@ -450,14 +450,21 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         spinnerTravellingFor.setAdapter(travellingAdapter);
     }
     private void intializeLivingInSpinner() {
-        dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, livingInData);
+        spinnerLivingIn = (Spinner)view.findViewById(R.id.spnr_living_in);
+        dataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, livingInData);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerLivingIn.setAdapter(dataAdapter);
+        if(getActivity() != null){
+            spinnerLivingIn.setAdapter(dataAdapter);
+        }
     }
     private void intializeNationalitySpinner() {
-        dataAdapter2 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, nationalityData);
+        spinnerNationality = (Spinner)view.findViewById(R.id.spnr_nationality);
+        dataAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, nationalityData);
         dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerNationality.setAdapter(dataAdapter2);
+        if(getActivity() != null){
+            spinnerNationality.setAdapter(dataAdapter2);
+        }
+
     }
     private void loadSpinnerData(String urlNationality, String urlLivingIn){
         loadLivingIn(urlLivingIn);
