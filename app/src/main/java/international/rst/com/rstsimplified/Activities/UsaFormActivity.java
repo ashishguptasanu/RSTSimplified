@@ -37,7 +37,7 @@ public class UsaFormActivity extends AppCompatActivity
         usaViewPager = (CustomViewPager)findViewById(R.id.usa_form_view_pager);
         customPagerTabStrip = (CustomPagerTabStrip)findViewById(R.id.usa_form_tab_strip);
         mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        usaTabDataSet = new String[]{"Contact Details","Applicant Information", "Personal Information","Address & Phone Information","Travel Information","Travel Companion","Previous US Travel Information","US Point of Contact Information","Family Information","Present Work/Education/Traning Information","Additional Work/Educational/Traning Information"};
+        usaTabDataSet = new String[]{"Contact Details","Applicant Information", "Personal Information","Address & Phone Information","Travel Information","Travel Companion","Previous US Travel Information","US Point of Contact Information","Family Information","Present Work/Education/Training Information","Additional Work/Educational/Training Information","Security & Background","Interview Schedule","Document Upload"};
         usaViewPager.setAdapter(mFormPagerAdapter);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -142,14 +142,33 @@ public class UsaFormActivity extends AppCompatActivity
         public android.support.v4.app.Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return FragmentUSAForm.newFormInstance("visa");
-
+                    return FragmentUSAForm.newFormInstance("form1");
                 case 1:
-                    return FragmentUSAForm.newFormInstance("airport");
+                    return FragmentUSAForm.newFormInstance("form2");
                 case 2:
-                    return FragmentUSAForm.newFormInstance("hotel");
+                    return FragmentUSAForm.newFormInstance("form3");
                 case 3:
-                    return FragmentUSAForm.newFormInstance("meet");
+                    return FragmentUSAForm.newFormInstance("form4");
+                case 4:
+                    return FragmentUSAForm.newFormInstance("form5");
+                case 5:
+                    return FragmentUSAForm.newFormInstance("form6");
+                case 6:
+                    return FragmentUSAForm.newFormInstance("form7");
+                case 7:
+                    return FragmentUSAForm.newFormInstance("form8");
+                case 8:
+                    return FragmentUSAForm.newFormInstance("form9");
+                case 9:
+                    return FragmentUSAForm.newFormInstance("form10");
+                case 10:
+                    return FragmentUSAForm.newFormInstance("form11");
+                case 11:
+                    return FragmentUSAForm.newFormInstance("form12");
+                case 12:
+                    return FragmentUSAForm.newFormInstance("form13");
+                case 13:
+                    return FragmentUSAForm.newFormInstance("form14");
                 default:
                     return  PlaceholderFragment.newFormInstance(1,"");
             }
@@ -164,7 +183,7 @@ public class UsaFormActivity extends AppCompatActivity
 
         @Override
         public int getCount() {
-            return 4;
+            return 14;
         }
     }
 }
