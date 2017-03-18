@@ -240,7 +240,6 @@ public class FormActivity extends AppCompatActivity {
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             args.putString("name", name);
-
             fragment.setArguments(args);
             return fragment;
         }

@@ -1,10 +1,16 @@
-<android.support.v4.widget.NestedScrollView
+<RelativeLayout
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent">
-    <LinearLayout
+    <international.rst.com.rstsimplified.Custom.CustomViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+        android:id="@+id/usa_form_view_pager">
+        <international.rst.com.rstsimplified.Custom.CustomPagerTabStrip
+            android:id="@+id/usa_form_tab_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top" />
+    </international.rst.com.rstsimplified.Custom.CustomViewPager>
+
+</RelativeLayout>
