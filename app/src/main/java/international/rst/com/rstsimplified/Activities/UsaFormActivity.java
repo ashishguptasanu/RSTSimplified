@@ -37,7 +37,7 @@ public class UsaFormActivity extends AppCompatActivity
         usaViewPager = (CustomViewPager)findViewById(R.id.usa_form_view_pager);
         customPagerTabStrip = (CustomPagerTabStrip)findViewById(R.id.usa_form_tab_strip);
         mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        usaTabDataSet = new String[]{};
+        usaTabDataSet = new String[]{""};
         usaViewPager.setAdapter(mFormPagerAdapter);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -157,7 +157,10 @@ public class UsaFormActivity extends AppCompatActivity
 
 
 
-
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return usaTabDataSet[position];
+        }
 
         @Override
         public int getCount() {
