@@ -155,15 +155,15 @@
     <string name="usa_form_tab2">Applicant Information</string>
     <string name="usa_form_tab3">Personal Information</string>
     <string name="usa_form_tab4">Address &amp; Phone Information</string>
-    <string name="usa_form_tab5">Travel</string>
-    <string name="usa_form_tab6">Contact Details</string>
-    <string name="usa_form_tab7">Contact Details</string>
-    <string name="usa_form_tab8">Contact Details</string>
-    <string name="usa_form_tab9">Contact Details</string>
-    <string name="usa_form_tab10">Contact Details</string>
-    <string name="usa_form_tab11">Contact Details</string>
-    <string name="usa_form_tab12">Contact Details</string>
-    <string name="usa_form_tab13">Contact Details</string>
-    <string name="usa_form_tab14">Contact Details</string>
+    <string name="usa_form_tab5">Travel Information</string>
+    <string name="usa_form_tab6">Travel Companion</string>
+    <string name="usa_form_tab7">Previous US Travel Information</string>
+    <string name="usa_form_tab8">US Point of Contact Information</string>
+    <string name="usa_form_tab9">Family Information</string>
+    <string name="usa_form_tab10">Present Work/ Education/ Training Information</string>
+    <string name="usa_form_tab11">Additional Work/ Education/ Training Information</string>
+    <string name="usa_form_tab12">Security &amp; Background</string>
+    <string name="usa_form_tab13">Interview Schedule</string>
+    <string name="usa_form_tab14">Documents Upload</string>
 
 </resources>
