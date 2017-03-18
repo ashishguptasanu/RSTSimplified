@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.checkout.CheckoutKit;
@@ -38,6 +39,7 @@ public class PaymentGateway extends AppCompatActivity
     int ammount = 100;
     Bundle b;
     SharedPreferences sharedPreferences;
+    Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,14 @@ public class PaymentGateway extends AppCompatActivity
         setContentView(R.layout.activity_payment_gateway);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mButton = (Button)findViewById(R.id.button_payment);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UsaFormActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
