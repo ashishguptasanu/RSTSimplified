@@ -478,7 +478,8 @@ public class SummaryPage extends AppCompatActivity
                 .setType(MultipartBody.FORM)
                 .addFormDataPart(uploadedFile, fileName1,
                         RequestBody.create(MediaType.parse(fileType1), file))
-                .addFormDataPart("visa_id", response2)
+                .addFormDataPart("visa_id", responseVisa)
+
                 .build();
         Request request = new Request.Builder().url(s).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
