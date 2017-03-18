@@ -37,7 +37,7 @@ public class UsaFormActivity extends AppCompatActivity
         usaViewPager = (CustomViewPager)findViewById(R.id.usa_form_view_pager);
         customPagerTabStrip = (CustomPagerTabStrip)findViewById(R.id.usa_form_tab_strip);
         mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        usaTabDataSet = new String[]{""};
+        usaTabDataSet = new String[]{"Contact Details","Applicant Information", "Personal Information","Address & Phone Information","Travel Information","Travel Companion","Previous US Travel Information","US Point of Contact Information","Family Information","Present Work/Education/Traning Information","Additional Work/Educational/Traning Information"};
         usaViewPager.setAdapter(mFormPagerAdapter);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
