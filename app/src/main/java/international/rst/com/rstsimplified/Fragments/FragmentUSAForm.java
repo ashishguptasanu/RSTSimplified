@@ -28,40 +28,40 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
             view = inflater.inflate(R.layout.contact_form,container,false);
         }
         else if(title.equalsIgnoreCase("form3")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form3,container,false);
         }
         else if(title.equalsIgnoreCase("form4")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form4,container,false);
         }
         else if(title.equalsIgnoreCase("form5")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form5,container,false);
         }
         else if(title.equalsIgnoreCase("form6")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form6,container,false);
         }
         else if(title.equalsIgnoreCase("form7")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form7,container,false);
         }
         else if(title.equalsIgnoreCase("form8")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form8,container,false);
         }
         else if(title.equalsIgnoreCase("form9")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form9,container,false);
         }
         else if(title.equalsIgnoreCase("form10")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form10,container,false);
         }
         else if(title.equalsIgnoreCase("form11")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form11,container,false);
         }
         else if(title.equalsIgnoreCase("form12")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form12,container,false);
         }
         else if(title.equalsIgnoreCase("form13")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form13,container,false);
         }
         else if(title.equalsIgnoreCase("form14")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form14,container,false);
         }
         return view;
     }
