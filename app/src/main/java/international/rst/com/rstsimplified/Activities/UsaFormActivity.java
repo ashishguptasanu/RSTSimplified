@@ -36,6 +36,8 @@ public class UsaFormActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         usaViewPager = (CustomViewPager)findViewById(R.id.usa_form_view_pager);
         customPagerTabStrip = (CustomPagerTabStrip)findViewById(R.id.usa_form_tab_strip);
+        customPagerTabStrip.setTabIndicatorColorResource(R.color.colorAccent);
+        customPagerTabStrip.setTabSwitchEnabled(false);
         mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         usaTabDataSet = new String[]{"Contact Details","Applicant Information", "Personal Information","Address & Phone Information","Passport Information","Travel Information","Travel Companion","Previous US Travel Information","US Point of Contact Information","Family Information","Present Work/Education/Training Information","Additional Work/Educational/Training Information","Security & Background","Interview Schedule","Document Upload"};
         usaViewPager.setAdapter(mFormPagerAdapter);
