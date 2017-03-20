@@ -479,6 +479,7 @@ public class SummaryPage extends AppCompatActivity
                 .addFormDataPart(uploadedFile, fileName1,
                         RequestBody.create(MediaType.parse(fileType1), file))
                 .addFormDataPart("visa_id", responseVisa)
+                .addFormDataPart("last_id",response2)
 
                 .build();
         Request request = new Request.Builder().url(s).post(requestBody).build();

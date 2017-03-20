@@ -13,10 +13,10 @@ import international.rst.com.rstsimplified.R;
 public class FragmentUSAForm extends android.support.v4.app.Fragment {
     String title;
     View view;
-    EditText surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, dateOfBirth;
-    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr;
-    RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident;
-    RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2;
+    EditText surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, expiryDate;
+    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport;
+    RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress;
+    RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddrerss2;
     public static FragmentUSAForm newFormInstance( String title) {
         FragmentUSAForm fragmentUsaForm = new FragmentUSAForm();
         Bundle args = new Bundle();
