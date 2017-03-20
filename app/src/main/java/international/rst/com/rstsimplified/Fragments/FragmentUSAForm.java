@@ -4,11 +4,19 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import international.rst.com.rstsimplified.R;
 public class FragmentUSAForm extends android.support.v4.app.Fragment {
     String title;
     View view;
+    EditText surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, dateOfBirth;
+    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr;
+    RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident;
+    RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2;
     public static FragmentUSAForm newFormInstance( String title) {
         FragmentUSAForm fragmentUsaForm = new FragmentUSAForm();
         Bundle args = new Bundle();
@@ -29,43 +37,83 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         }
         else if(title.equalsIgnoreCase("form3")){
             view = inflater.inflate(R.layout.usa_form3,container,false);
+            initializeForm3View();
         }
         else if(title.equalsIgnoreCase("form4")){
             view = inflater.inflate(R.layout.usa_form4,container,false);
+            initializeForm4View();
         }
         else if(title.equalsIgnoreCase("form5")){
             view = inflater.inflate(R.layout.usa_form5,container,false);
+            initializeForm5View();
         }
         else if(title.equalsIgnoreCase("form6")){
             view = inflater.inflate(R.layout.usa_form6,container,false);
+            initializeForm6View();
         }
         else if(title.equalsIgnoreCase("form7")){
             view = inflater.inflate(R.layout.usa_form7,container,false);
+            initializeForm7View();
         }
         else if(title.equalsIgnoreCase("form8")){
             view = inflater.inflate(R.layout.usa_form8,container,false);
+            initializeForm8View();
         }
         else if(title.equalsIgnoreCase("form9")){
             view = inflater.inflate(R.layout.usa_form9,container,false);
+            initializeForm9View();
         }
         else if(title.equalsIgnoreCase("form10")){
             view = inflater.inflate(R.layout.usa_form10,container,false);
+            initializeForm10View();
         }
         else if(title.equalsIgnoreCase("form11")){
             view = inflater.inflate(R.layout.usa_form11,container,false);
+            initializeForm11View();
         }
         else if(title.equalsIgnoreCase("form12")){
             view = inflater.inflate(R.layout.usa_form12,container,false);
+            initializeForm12View();
         }
         else if(title.equalsIgnoreCase("form13")){
             view = inflater.inflate(R.layout.usa_form13,container,false);
+            initializeForm13View();
         }
         else if(title.equalsIgnoreCase("form14")){
             view = inflater.inflate(R.layout.usa_form14,container,false);
+            initializeForm14View();
         }
         else if(title.equalsIgnoreCase("form15")){
             view = inflater.inflate(R.layout.usa_form15,container,false);
+            initializeForm15View();
         }
         return view;
+    }
+
+    private void initializeForm3View() {
+    }
+    private void initializeForm4View() {
+    }
+    private void initializeForm5View() {
+    }
+    private void initializeForm6View() {
+    }
+    private void initializeForm7View() {
+    }
+    private void initializeForm8View() {
+    }
+    private void initializeForm9View() {
+    }
+    private void initializeForm10View() {
+    }
+    private void initializeForm11View() {
+    }
+    private void initializeForm12View() {
+    }
+    private void initializeForm13View() {
+    }
+    private void initializeForm14View() {
+    }
+    private void initializeForm15View() {
     }
 }

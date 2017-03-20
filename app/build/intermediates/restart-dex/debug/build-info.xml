@@ -6,7 +6,7 @@
     density="xhdpi"
     format="10"
     plugin-version="2.3.0"
-    timestamp="1489990715432"
+    timestamp="1489991110637"
     token="-315265450245951108"
     verifier="COMPATIBLE" >
 
@@ -84,7 +84,7 @@
     </build>
     <build
         build-mode="HOT_WARM"
-        timestamp="1489990715432"
+        timestamp="1489991110637"
         verifier="COMPATIBLE" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
