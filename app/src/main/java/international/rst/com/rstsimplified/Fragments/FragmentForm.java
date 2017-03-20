@@ -22,6 +22,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -104,6 +105,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String selectedPurpose;
     String selectedDuration;
     int selectedConsulateId;
+    CardView cardDocs5, cardDocs6;
     Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose, spnrVisaFor, spnrApplyingFrom;
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
@@ -677,6 +679,24 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         name4 = (TextView)view.findViewById(R.id.doc4);
         name5 = (TextView)view.findViewById(R.id.doc5);
         name6 = (TextView)view.findViewById(R.id.doc6);
+        cardDocs5 = (CardView)view.findViewById(R.id.card_doc5);
+        cardDocs6 = (CardView)view.findViewById(R.id.card_doc6);
+        if(selectedVisaId == 4){
+            name1.setText("Coloured Passport Scanned Copy");
+            name2.setText("Colour Photo");
+            name3.setText("Miscellaneous Documents");
+            name4.setText("Miscellaneous Documents");
+            cardDocs5.setVisibility(View.GONE);
+            cardDocs6.setVisibility(View.GONE);
+        }
+        else if(selectedVisaId == 2){
+            name1.setText("Coloured Passport Scanned Copy");
+            name2.setText("Colour Photo");
+            name3.setText("Miscellaneous Documents");
+            name4.setText("Miscellaneous Documents");
+            cardDocs5.setVisibility(View.GONE);
+            cardDocs6.setVisibility(View.GONE);
+        }
         checked1 = (ImageView)view.findViewById(R.id.attach_file_checked1);
         checked2 = (ImageView)view.findViewById(R.id.attach_file_checked2);
         checked3 = (ImageView)view.findViewById(R.id.attach_file_checked3);
