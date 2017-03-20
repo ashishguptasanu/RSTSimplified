@@ -10,16 +10,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
 
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
+    <international.rst.com.rstsimplified.Custom.CustomViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:id="@+id/usa_form_view_pager">
+        <international.rst.com.rstsimplified.Custom.CustomPagerTabStrip
+            android:id="@+id/usa_form_tab_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"/>
+    </international.rst.com.rstsimplified.Custom.CustomViewPager>
 
-    <include layout="@layout/content_usa_form" />
+    <include layout="@layout/content_usa_form"/>
 
 </android.support.design.widget.CoordinatorLayout>
