@@ -31,9 +31,11 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         title = getArguments().getString("title");
         if(title.equalsIgnoreCase("form1")){
             view = inflater.inflate(R.layout.consult_form,container, false);
+            initializeForm1View();
         }
         else if(title.equalsIgnoreCase("form2")){
             view = inflater.inflate(R.layout.contact_form,container,false);
+            initializeForm2View();
         }
         else if(title.equalsIgnoreCase("form3")){
             view = inflater.inflate(R.layout.usa_form3,container,false);
@@ -90,6 +92,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         return view;
     }
 
+    private void initializeForm1View() {
+    }
+    private void initializeForm2View() {
+    }
     private void initializeForm3View() {
     }
     private void initializeForm4View() {
