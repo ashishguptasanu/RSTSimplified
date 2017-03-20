@@ -1,5 +1,6 @@
 package international.rst.com.rstsimplified.Fragments;
 
+import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -179,7 +180,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             latestDate.setOnClickListener(this);
             if(sharedPreferences!=null) {
                 livingInId = sharedPreferences.getString("living_id", "");
-                System.out.println(sharedPreferences.getString("email_contact",""));
                 nationalityID = sharedPreferences.getString("nationality_id", "");
                 if(Objects.equals(livingInId, "17") || Objects.equals(livingInId, "114") || Objects.equals(livingInId, "187") || Objects.equals(livingInId, "174") || Objects.equals(livingInId, "161")){
                     sponsorLayout.setVisibility(View.VISIBLE);
@@ -203,7 +203,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     }
                     int id = professionNumber.get(pos);
                     selectedProfessionID = String.valueOf(id);
-                    System.out.println("Position " + selectedProfessionID);
                     selectedProfession = adapter.getItem(i);
                 }
             });
@@ -220,7 +219,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
                             birthDate.setText(selectedyear +"-"+(selectedmonth+1)+"-"+selectedday);
                             age = mYear - selectedyear;
-                            System.out.println(age);
                         }
                     },mYear, mMonth, mDay);
                     mDatePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -403,7 +401,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         nricSingapore = (EditText)view.findViewById(R.id.singapore_nric);
         addressUaeLayout = (LinearLayout)view.findViewById(R.id.address_uae_layout);
         addressSingaporeLayout = (LinearLayout)view.findViewById(R.id.address_singapore_layout);
-        System.out.println(selectedVisaId);
         if(selectedVisaId == 0){
             addressUaeLayout.setVisibility(View.VISIBLE);
             addressSingaporeLayout.setVisibility(View.GONE);
@@ -443,8 +440,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         public void afterTextChanged(Editable editable) {
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             sharedPreferences.edit().putString("email_contact", editable.toString()).apply();
-            //System.out.println(edtEmailContact.getText().toString());
-            //emailFinal = edtEmailContact.getText().toString();
 
 
         }
@@ -813,7 +808,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .build();
         AllCountryResponse request = retrofit.create(AllCountryResponse.class);
         retrofit2.Call<Country> call = request.getCountry();
-        //
         call.enqueue(new retrofit2.Callback<Country>() {
             @Override
             public void onResponse(retrofit2.Call<Country> call, retrofit2.Response<Country> response) {
@@ -845,7 +839,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .build();
         Port request = retrofit.create(Port.class);
         retrofit2.Call<ArrivalPort> call = request.getPortofarrival();
-        //
         call.enqueue(new retrofit2.Callback<ArrivalPort>() {
             @Override
             public void onResponse(retrofit2.Call<ArrivalPort> call, retrofit2.Response<ArrivalPort> response) {
@@ -895,7 +888,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     Intent.createChooser(intent, "Select a File to Upload"),
                     one);
         } catch (android.content.ActivityNotFoundException ex) {
-            // Potentially direct the user to the Market with a Dialog
             Toast.makeText(getContext(), "Please install a File Manager.",
                     Toast.LENGTH_SHORT).show();
         }
@@ -999,9 +991,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 
-        // DocumentProvider
         if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
-            // ExternalStorageProvider
             if (isExternalStorageDocument(uri)) {
                 final String docId = DocumentsContract.getDocumentId(uri);
                 final String[] split = docId.split(":");
@@ -1011,9 +1001,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     return Environment.getExternalStorageDirectory() + "/" + split[1];
                 }
 
-                // TODO handle non-primary volumes
             }
-            // DownloadsProvider
             else if (isDownloadsDocument(uri)) {
 
                 final String id = DocumentsContract.getDocumentId(uri);
@@ -1022,7 +1010,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                 return getDataColumn(context, contentUri, null, null);
             }
-            // MediaProvider
             else if (isMediaDocument(uri)) {
                 final String docId = DocumentsContract.getDocumentId(uri);
                 final String[] split = docId.split(":");
@@ -1045,11 +1032,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 return getDataColumn(context, contentUri, selection, selectionArgs);
             }
         }
-        // MediaStore (and general)
         else if ("content".equalsIgnoreCase(uri.getScheme())) {
             return getDataColumn(context, uri, null, null);
         }
-        // File
         else if ("file".equalsIgnoreCase(uri.getScheme())) {
 
             return uri.getPath();
@@ -1188,78 +1173,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         emailEdt.setText(sharedPreferences.getString("email_contact", ""));
 
     }
-    private void datePicker(final EditText edtDate1) {
-        Calendar mcurrentDate=Calendar.getInstance();
-        final int mYear = mcurrentDate.get(Calendar.YEAR);
-        int mMonth=mcurrentDate.get(Calendar.MONTH);
-        int mDay=mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog mDatePicker=new DatePickerDialog(getActivity(),android.R.style.Theme_Holo_Light_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
-            public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                edtDate1.setText(selectedyear +"-"+(selectedmonth+1)+"-"+selectedday);
-            }
-        },mYear, mMonth, mDay);
-        mDatePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        mDatePicker.setTitle("Select date");
-        mDatePicker.show();
-    }
-    private void loadProfession() {
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.uaevisasonline.com")
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-        ProfessionResponse request = retrofit.create(ProfessionResponse.class);
-        retrofit2.Call<Profession> call = request.getProfession();
-        //
-        call.enqueue(new retrofit2.Callback<Profession>() {
-            @Override
-            public void onResponse(retrofit2.Call<Profession> call, retrofit2.Response<Profession> response) {
-                Profession jsonResponse = response.body();
-                professionList = jsonResponse.getProfession();
-                for(int i=0;i<professionList.size();i++){
-                    professionData.add(professionList.get(i).getProfession());
-                }
-                for(int i=0;i<professionList.size();i++){
-                    professionNumber.add(professionList.get(i).getProfessionNo());
-                }
-            }
-            @Override
-            public void onFailure(retrofit2.Call<Profession> call, Throwable t) {
-                Log.v("Error",t.getMessage());
-            }
-        });
-    }
-    private void loadEmirates(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.uaevisasonline.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        EmirateResponse request = retrofit.create(EmirateResponse.class);
-        retrofit2.Call<Emirate> call = request.getEmirates();
-        //
-        call.enqueue(new retrofit2.Callback<Emirate>() {
-            @Override
-            public void onResponse(retrofit2.Call<Emirate> call, retrofit2.Response<Emirate> response) {
-                Emirate jsonResponse = response.body();
-                emirates = jsonResponse.getEmirates();
-                for(int i=0;i<emirates.size();i++){
-                    emiratesData.add(emirates.get(i).getName());
-                }
-                populateEmiratesSpinner();
-
-                /*for(int i=0;i<professionList.size();i++){
-                    professionNumber.add(professionList.get(i).getProfessionNo());
-                }*/
-            }
-            @Override
-            public void onFailure(retrofit2.Call<Emirate> call, Throwable t) {
-                Log.v("Error",t.getMessage());
-            }
-        });
-    }
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -1503,19 +1417,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sendVerificationEmail(resp, edtEmailContact.getText().toString(), UAE_EMAIL_URL);
                     sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
-
-
-
-                        //sendApplicandData(resp);
-                        //sendVerificationEmail(resp, emailEdt);
-
-
-                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
                     }else {
-
+                        //
                     }
                 } catch (IOException e) {
-                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
                     System.out.println("Exception caught" + e.getMessage());
                 }
             }
@@ -1583,19 +1488,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sendVerificationEmail(resp, edtEmailContact.getText().toString(), UAE_EMAIL_URL);
                     sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
-
-
-
-                        //sendApplicandData(resp);
-                        //sendVerificationEmail(resp, emailEdt);
-
-
-                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
                     }else {
-
+                        //
                     }
                 } catch (IOException e) {
-                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
                     System.out.println("Exception caught" + e.getMessage());
                 }
             }
@@ -1737,16 +1633,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sendVerificationEmail(resp, edtEmailContact.getText().toString(), IRAN_EMAIL_URL);
                     sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
-
-
-
-                        //sendApplicandData(resp);
-                        //sendVerificationEmail(resp, emailEdt);
-
-
-                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
                     }else {
-
+                        //
                     }
                 } catch (IOException e) {
                     // Log.e(TAG_REGISTER, "Exception caught: ", e);
@@ -1776,16 +1664,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                 try {
                     String resp = response.body().string();
-//                    Log.v(TAG_REGISTER, resp);
                     if (response.isSuccessful()) {
-                        //sharedPreferences.edit().putString("Device ID", deviceID).apply();
-                        //sharedPreferences.edit().putString("Android ID",androidID).apply();
 
                     } else {
 
                     }
                 } catch (IOException e) {
-                    // Log.e(TAG_REGISTER, "Exception caught: ", e);
                     System.out.println("Exception caught" + e.getMessage());
                 }
             }
@@ -1799,7 +1683,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .build();
         ConsulateInterface request = retrofit.create(ConsulateInterface.class);
         retrofit2.Call<Consulate> call = request.getConsulate();
-        //
+
         call.enqueue(new retrofit2.Callback<Consulate>() {
             @Override
             public void onResponse(retrofit2.Call<Consulate> call, retrofit2.Response<Consulate> response) {
@@ -1809,10 +1693,65 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     consulateData.add(consulate.get(i).getConsulateName());
                 }
                 populateConsulateSpinner();
-
             }
             @Override
             public void onFailure(retrofit2.Call<Consulate> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
+    private void loadProfession() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.uaevisasonline.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        ProfessionResponse request = retrofit.create(ProfessionResponse.class);
+        retrofit2.Call<Profession> call = request.getProfession();
+
+        call.enqueue(new retrofit2.Callback<Profession>() {
+            @Override
+            public void onResponse(retrofit2.Call<Profession> call, retrofit2.Response<Profession> response) {
+                Profession jsonResponse = response.body();
+                professionList = jsonResponse.getProfession();
+                for(int i=0;i<professionList.size();i++){
+                    professionData.add(professionList.get(i).getProfession());
+                }
+                for(int i=0;i<professionList.size();i++){
+                    professionNumber.add(professionList.get(i).getProfessionNo());
+                }
+            }
+            @Override
+            public void onFailure(retrofit2.Call<Profession> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
+    private void loadEmirates(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.uaevisasonline.com")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        EmirateResponse request = retrofit.create(EmirateResponse.class);
+        retrofit2.Call<Emirate> call = request.getEmirates();
+        call.enqueue(new retrofit2.Callback<Emirate>() {
+            @Override
+            public void onResponse(retrofit2.Call<Emirate> call, retrofit2.Response<Emirate> response) {
+                Emirate jsonResponse = response.body();
+                emirates = jsonResponse.getEmirates();
+                for(int i=0;i<emirates.size();i++){
+                    emiratesData.add(emirates.get(i).getName());
+                }
+                populateEmiratesSpinner();
+
+                /*for(int i=0;i<professionList.size();i++){
+                    professionNumber.add(professionList.get(i).getProfessionNo());
+                }*/
+            }
+            @Override
+            public void onFailure(retrofit2.Call<Emirate> call, Throwable t) {
                 Log.v("Error",t.getMessage());
             }
         });
@@ -1828,6 +1767,22 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     }
     private void showToast(String s) {
         Toast.makeText(getContext(),s,Toast.LENGTH_SHORT).show();
+    }
+    @TargetApi(Build.VERSION_CODES.N)
+    private void datePicker(final EditText edtDate1) {
+        Calendar mcurrentDate=Calendar.getInstance();
+        final int mYear = mcurrentDate.get(Calendar.YEAR);
+        int mMonth=mcurrentDate.get(Calendar.MONTH);
+        int mDay=mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog mDatePicker=new DatePickerDialog(getActivity(),android.R.style.Theme_Holo_Light_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
+            public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                edtDate1.setText(selectedyear +"-"+(selectedmonth+1)+"-"+selectedday);
+            }
+        },mYear, mMonth, mDay);
+        mDatePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mDatePicker.setTitle("Select date");
+        mDatePicker.show();
     }
 
 
