@@ -16,6 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/father_name"
+                android:id="@+id/full_name_father"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -25,6 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/father_dob"
+                android:id="@+id/father_date_of_birth"
+                android:inputType="date"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
         <LinearLayout
@@ -42,15 +45,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:id="@+id/rg_father_usa"
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_father_usa1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_father_usa2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -61,6 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/mother_name"
+                android:id="@+id/full_name_mother"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -70,6 +77,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/mother_dob"
+                android:id="@+id/mother_date_of_birth"
+                android:inputType="date"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
         <LinearLayout
@@ -88,14 +97,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_mother_usa"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_mother_usa1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_mother_usa2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -105,6 +117,7 @@
             android:background="@drawable/buttonshape"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
+            android:id="@+id/button_form10"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:text="Save &amp; Submit"
             android:textColor="#fff"/>

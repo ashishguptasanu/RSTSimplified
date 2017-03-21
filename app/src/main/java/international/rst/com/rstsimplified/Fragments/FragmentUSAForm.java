@@ -183,8 +183,26 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         buttonForm8 = (Button)view.findViewById(R.id.button_form8);
     }
     private void initializeForm9View() {
+        contactUs = (Spinner)view.findViewById(R.id.spnr_contact_person_us);
+        nameContactUs = (EditText)view.findViewById(R.id.full_name_contact_us);
+        relationContactUs = (Spinner)view.findViewById(R.id.spnr_relation_contact_us);
+        addressContactUs = (EditText) view.findViewById(R.id.address_contact_us);
+        stateContactUs = (Spinner)view.findViewById(R.id.spnr_state_contact_us);
+        codeContactUs = (EditText)view.findViewById(R.id.phone_code_contact_us);
+        numberContactUs = (EditText)view.findViewById(R.id.contact_number_us);
+        buttonForm9 = (Button)view.findViewById(R.id.button_form9);
     }
     private void initializeForm10View() {
+        fatherName = (EditText)view.findViewById(R.id.full_name_father);
+        fatherDateBirth = (EditText)view.findViewById(R.id.father_date_of_birth);
+        rgFatherUs = (RadioGroup)view.findViewById(R.id.rg_father_usa);
+        rbFatherUs1 = (RadioButton)view.findViewById(R.id.rb_father_usa1);
+        rbFatherUs2 = (RadioButton)view.findViewById(R.id.rb_father_usa2);
+        motherName = (EditText)view.findViewById(R.id.full_name_mother);
+        motherDateBirth = (EditText)view.findViewById(R.id.mother_date_of_birth);
+        rgMotherUs = (RadioGroup)view.findViewById(R.id.rg_mother_usa);
+        buttonForm10 = (Button)view.findViewById(R.id.button_form10);
+
     }
     private void initializeForm11View() {
     }
