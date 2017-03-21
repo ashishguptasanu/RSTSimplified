@@ -17,8 +17,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
     Button buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15;
     EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, expiryDate, purposeUS, stayLenght, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode;
     Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate;
-    RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution;
-    RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddrerss2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbCgildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2;
+    RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution;
+    RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddrerss2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2;
     public static FragmentUSAForm newFormInstance( String title) {
         FragmentUSAForm fragmentUsaForm = new FragmentUSAForm();
         Bundle args = new Bundle();
@@ -275,6 +275,43 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         rgTerroristMember = (RadioGroup)view.findViewById(R.id.rg_terrorist1);
         rbTerrorist1 = (RadioButton)view.findViewById(R.id.rb_terrorist1);
         rbTerrorist2 = (RadioButton)view.findViewById(R.id.rb_terrorist2);
+        rgGenocide = (RadioGroup)view.findViewById(R.id.rg_genocide);
+        rbGenocide1 = (RadioButton)view.findViewById(R.id.rb_genocide1);
+        rbGenocide2 = (RadioButton)view.findViewById(R.id.rb_genocide2);
+        rgTorture = (RadioGroup)view.findViewById(R.id.rg_participated_torture);
+        rbTorture1 = (RadioButton)view.findViewById(R.id.rb_torture1);
+        rbTorture2 = (RadioButton)view.findViewById(R.id.rb_torture2);
+        rgKilling = (RadioGroup)view.findViewById(R.id.rg_killing);
+        rbKilling1 = (RadioButton)view.findViewById(R.id.rb_killing1);
+        rbKilling2 = (RadioButton)view.findViewById(R.id.rb_killing2);
+        rgChildSoldiers = (RadioGroup)view.findViewById(R.id.rg_child_soldiers);
+        rbChildSoldier1 = (RadioButton)view.findViewById(R.id.rb_child_soldier1);
+        rbChildSoldier2 = (RadioButton)view.findViewById(R.id.rb_child_soldier2);
+        rgReligiousFreedom = (RadioGroup)view.findViewById(R.id.rg_religious_freedom);
+        rbReligiousFreedom1 = (RadioButton)view.findViewById(R.id.rb_religious_freedom1);
+        rbReligiousFreedom2 = (RadioButton)view.findViewById(R.id.rb_religious_freedom2);
+        rgAbortion = (RadioGroup)view.findViewById(R.id.rg_abortion);
+        rbAbortion1 = (RadioButton)view.findViewById(R.id.rb_abortion1);
+        rbAbortion2 = (RadioButton)view.findViewById(R.id.rb_abortion2);
+        rgTransplantation = (RadioGroup)view.findViewById(R.id.rg_transplant);
+        rbTransplant1 = (RadioButton)view.findViewById(R.id.rb_transplant1);
+        rbTransplant2 = (RadioButton)view.findViewById(R.id.rb_transplant2);
+        rgFraudVisa = (RadioGroup)view.findViewById(R.id.rg_fraud_visa);
+        rbFraudVisa1 = (RadioButton)view.findViewById(R.id.rb_fraud_visa1);
+        rbFraudVisa2 = (RadioButton)view.findViewById(R.id.rb_fraud_visa2);
+        rgCustody = (RadioGroup)view.findViewById(R.id.rg_custody_court);
+        rbCustody1 = (RadioButton)view.findViewById(R.id.rb_custody_court1);
+        rbCustody2 = (RadioButton)view.findViewById(R.id.rb_custody_court2);
+        rgViolatedLaw = (RadioGroup)view.findViewById(R.id.rg_violated);
+        rbVoted1  = (RadioButton)view.findViewById(R.id.rb_violated1);
+        rbVoted2 = (RadioButton)view.findViewById(R.id.rb_violated2);
+        rgAvoidingTaxation = (RadioGroup)view.findViewById(R.id.rg_avoiding_taxation);
+        rbAvoidingTaxation1 = (RadioButton)view.findViewById(R.id.rb_avoiding_taxation1);
+        rbAvoidingTaxation2 = (RadioButton)view.findViewById(R.id.rb_avoiding_taxation2);
+        rgProstitution = (RadioGroup)view.findViewById(R.id.rg_prostitution);
+        rbProstitution1 = (RadioButton)view.findViewById(R.id.rb_prostitution1);
+        rbProstitution2 = (RadioButton)view.findViewById(R.id.rb_prostitution2);
+
     }
     private void initializeForm14View() {
     }
