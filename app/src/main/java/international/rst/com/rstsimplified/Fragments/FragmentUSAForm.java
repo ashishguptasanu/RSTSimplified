@@ -165,8 +165,22 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         buttonForm6 = (Button)view.findViewById(R.id.button_form6);
     }
     private void initializeForm7View() {
+        rgotherPersonTravelling = (RadioGroup)view.findViewById(R.id.rg_travelling_with);
+        rbPersonTravelling1 = (RadioButton)view.findViewById(R.id.rb_person_travelling1);
+        rbPersonTravelling2 = (RadioButton)view.findViewById(R.id.rb_person_travelling2);
+        buttonForm7 = (Button)view.findViewById(R.id.button_form7);
     }
     private void initializeForm8View() {
+        rgTravelledUS = (RadioGroup)view.findViewById(R.id.rg_visited_us);
+        rbTravelledUs1 = (RadioButton)view.findViewById(R.id.rb_visited_us1);
+        rbTravelledUs2 = (RadioButton)view.findViewById(R.id.rb_visited_us2);
+        rgIssuedUsVisa = (RadioGroup)view.findViewById(R.id.rg_issued_us_visa);
+        rbIssued1 = (RadioButton)view.findViewById(R.id.rb_issued_us_visa1);
+        rbIssued2 = (RadioButton)view.findViewById(R.id.rb_issued_us_visa2);
+        rgRefusedUsVisa = (RadioGroup)view.findViewById(R.id.rg_refused_us_visa);
+        rbRefused1 = (RadioButton)view.findViewById(R.id.rb_refused_us_visa1);
+        rbRefused2 = (RadioButton)view.findViewById(R.id.rb_refused_us_visa2);
+        buttonForm8 = (Button)view.findViewById(R.id.button_form8);
     }
     private void initializeForm9View() {
     }
