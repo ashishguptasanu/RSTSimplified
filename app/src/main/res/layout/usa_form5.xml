@@ -21,6 +21,7 @@
             <android.support.v7.widget.AppCompatSpinner
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:id="@+id/spnr_document_type"
                 android:layout_weight="1">
             </android.support.v7.widget.AppCompatSpinner>
             <View
@@ -35,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Passport/Travel Document Number"
+                android:id="@+id/travel_document_number"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -44,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Passport Book Number"
+                android:id="@+id/passport_book_number"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -53,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Country/Authority that Issued Passport/Travel Document"
+                android:id="@+id/issue_country_name"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
         <TextView
@@ -74,6 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="City"
+                    android:id="@+id/issued_city"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -84,6 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Country"
+                    android:id="@+id/issued_country"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -99,6 +105,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Issue Date"
+                    android:id="@+id/issued_date"
+                    android:inputType="date"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -109,6 +117,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Expiry Date"
+                    android:id="@+id/expiry_date"
+                    android:inputType="date"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -126,6 +136,7 @@
             <android.support.v7.widget.AppCompatSpinner
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:id="@+id/spnr_lost_passport"
                 android:layout_weight="1">
             </android.support.v7.widget.AppCompatSpinner>
             <View
@@ -139,6 +150,7 @@
             android:background="@drawable/buttonshape"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
+            android:id="@+id/button_form5"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:text="Save &amp; Submit"
             android:textColor="#fff"/>

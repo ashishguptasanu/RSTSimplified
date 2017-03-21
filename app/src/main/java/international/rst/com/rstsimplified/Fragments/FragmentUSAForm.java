@@ -14,7 +14,7 @@ import international.rst.com.rstsimplified.R;
 public class FragmentUSAForm extends android.support.v4.app.Fragment {
     String title;
     View view;
-    Button buttonForm3;
+    Button buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15;
     EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, expiryDate, purposeUS, stayLenght, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, schoolName, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode;
     Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate;
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution;
@@ -130,8 +130,31 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
 
     }
     private void initializeForm4View() {
+        currentAddress = (EditText)view.findViewById(R.id.current_address);
+        currentCity = (EditText)view.findViewById(R.id.current_city);
+        pinCode = (EditText)view.findViewById(R.id.current_city_postal);
+        state = (EditText)view.findViewById(R.id.current_state);
+        countryCurrent = (EditText)view.findViewById(R.id.current_country);
+        rgMailAddress = (RadioGroup)view.findViewById(R.id.rg_mailing_address);
+        rbMailAddress1 = (RadioButton)view.findViewById(R.id.rb_mailing_address1);
+        rbMailAddrerss2 = (RadioButton)view.findViewById(R.id.rb_mailing_address2);
+        countryCode = (EditText)view.findViewById(R.id.country_code);
+        primaryPhoneNumber = (EditText)view.findViewById(R.id.primary_phone_number);
+        secondaryPhoneNumber = (EditText)view.findViewById(R.id.secondary_phone_number);
+        emailAddress = (EditText)view.findViewById(R.id.email_address);
+        buttonForm4 = (Button)view.findViewById(R.id.button_form4);
     }
     private void initializeForm5View() {
+        travelDocType = (Spinner)view.findViewById(R.id.spnr_document_type);
+        passportNumber = (EditText)view.findViewById(R.id.travel_document_number);
+        passportBookNumber = (EditText)view.findViewById(R.id.passport_book_number);
+        issueCountry = (EditText)view.findViewById(R.id.issue_country_name);
+        issueCity = (EditText)view.findViewById(R.id.issued_city);
+        issueCountry = (EditText)view.findViewById(R.id.issued_country);
+        issueDate = (EditText)view.findViewById(R.id.issued_date);
+        expiryDate = (EditText)view.findViewById(R.id.expiry_date);
+        stolenPassport = (Spinner) view.findViewById(R.id.spnr_lost_passport);
+        buttonForm5 = (Button)view.findViewById(R.id.button_form5);
     }
     private void initializeForm6View() {
     }
