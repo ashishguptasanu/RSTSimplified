@@ -4,6 +4,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -13,7 +14,8 @@ import international.rst.com.rstsimplified.R;
 public class FragmentUSAForm extends android.support.v4.app.Fragment {
     String title;
     View view;
-    EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, expiryDate, purposeUS, stayLenght, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, schoolName, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode;
+    Button buttonForm3;
+    EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, expiryDate, purposeUS, stayLenght, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, schoolName, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode;
     Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate;
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution;
     RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddrerss2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2;
@@ -97,6 +99,35 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
     private void initializeForm2View() {
     }
     private void initializeForm3View() {
+        surName = (EditText)view.findViewById(R.id.surname);
+        givenName = (EditText)view.findViewById(R.id.given_name);
+        rgOtherName = (RadioGroup)view.findViewById(R.id.rg_other_name);
+        rbOtherName1 = (RadioButton)view.findViewById(R.id.rb_other_name1);
+        rbOtherName2 = (RadioButton)view.findViewById(R.id.rb_other_name2);
+        rgTelecode = (RadioGroup)view.findViewById(R.id.rg_telecode);
+        rbTelecode1 = (RadioButton)view.findViewById(R.id.rb_telecode1);
+        rbTelecode2 = (RadioButton)view.findViewById(R.id.rb_telecode2);
+        rgGender = (RadioGroup)view.findViewById(R.id.rg_gender);
+        rbGender1 = (RadioButton)view.findViewById(R.id.rb_gender1);
+        rbGender2 = (RadioButton)view.findViewById(R.id.rb_gender2);
+        maritalStatus  = (EditText)view.findViewById(R.id.marital_status);
+        dateOfBirth = (EditText)view.findViewById(R.id.date_of_birth);
+        placeOfBirth = (EditText)view.findViewById(R.id.place_of_birth);
+        birthCountrySpnr = (Spinner) view.findViewById(R.id.spnr_birth_country);
+        birthStateSpnr = (Spinner)view.findViewById(R.id.spnr_birth_state);
+        nationalitySpnr = (Spinner)view.findViewById(R.id.country_origin);
+        rgOtherNationality = (RadioGroup)view.findViewById(R.id.rg_other_nationality);
+        rbotherNationality1 = (RadioButton)view.findViewById(R.id.rb_other_nationality1);
+        rbOtherNationality2 = (RadioButton)view.findViewById(R.id.rb_other_nationality2);
+        rgPermanentResident = (RadioGroup)view.findViewById(R.id.rg_permanent_resident_country);
+        rbPermanentResident1 = (RadioButton)view.findViewById(R.id.rb_permanent_country1);
+        rbPermanentResident2 = (RadioButton)view.findViewById(R.id.rb_permanent_country2);
+        nationalIdentificationNumber = (EditText)view.findViewById(R.id.identification_number);
+        usSecurityNumber = (EditText)view.findViewById(R.id.security_number);
+        taxPayerId = (EditText)view.findViewById(R.id.tax_payer_id);
+        buttonForm3 = (Button)view.findViewById(R.id.button_form3);
+
+
     }
     private void initializeForm4View() {
     }

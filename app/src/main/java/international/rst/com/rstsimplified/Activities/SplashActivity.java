@@ -41,6 +41,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        fixClassLoaderIssue();
         View yourView = findViewById(R.id.your_view);
         sharedPreferences = SplashActivity.this.getPreferences(Context.MODE_PRIVATE);
         //sendData();
@@ -117,6 +118,11 @@ public class SplashActivity extends AppCompatActivity {
         androidID = Settings.Secure.getString(this.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
+    }
+    private static void fixClassLoaderIssue()
+    {
+        ClassLoader myClassLoader = SplashActivity.class.getClassLoader();
+        Thread.currentThread().setContextClassLoader(myClassLoader);
     }
 
 
