@@ -157,6 +157,12 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         buttonForm5 = (Button)view.findViewById(R.id.button_form5);
     }
     private void initializeForm6View() {
+        purposeUS = (EditText)view.findViewById(R.id.purpose_us);
+        stayLenght = (EditText)view.findViewById(R.id.length_stay);
+        noMonths = (EditText)view.findViewById(R.id.no_of_months);
+        addressStayUS = (EditText)view.findViewById(R.id.address_us_stay);
+        personPayingTrip = (EditText)view.findViewById(R.id.person_paying);
+        buttonForm6 = (Button)view.findViewById(R.id.button_form6);
     }
     private void initializeForm7View() {
     }
