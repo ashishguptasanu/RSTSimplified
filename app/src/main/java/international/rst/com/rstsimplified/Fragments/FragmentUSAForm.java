@@ -2,6 +2,7 @@ package international.rst.com.rstsimplified.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +13,33 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import international.rst.com.rstsimplified.Model.OccupationResponseUsa;
+import international.rst.com.rstsimplified.Model.Profession;
+import international.rst.com.rstsimplified.Model.ProfessionRes;
+import international.rst.com.rstsimplified.Model.ProfessionResponse;
 import international.rst.com.rstsimplified.R;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener {
     String title;
     View view;
     ViewPager mViewPager;
     int atTab;
-    Button buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15;
-    EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, expiryDate, purposeUS, stayLenght, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast;
-    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate;
+    Button buttonForm1, buttonForm2, buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15;
+    EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, purposeUS, stayLenght, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality;
+    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital;
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution;
     RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddrerss2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2;
     ImageView checked1, checked2, checked3, checked4,  attach1, attach2, attach3, attach4;
+    private List<ProfessionRes> professionList = new ArrayList<>();
+    private List<String> occupation = new ArrayList<>();
     public static FragmentUSAForm newFormInstance( String title) {
         FragmentUSAForm fragmentUsaForm = new FragmentUSAForm();
         Bundle args = new Bundle();
@@ -42,7 +58,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             initializeForm1View();
         }
         else if(title.equalsIgnoreCase("form2")){
-            view = inflater.inflate(R.layout.contact_form,container,false);
+            view = inflater.inflate(R.layout.usa_form2,container,false);
             initializeForm2View();
         }
         else if(title.equalsIgnoreCase("form3")){
@@ -107,8 +123,25 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         mobileNumberCurrent = (EditText)view.findViewById(R.id.phone_applicant_usa);
         arrivingDate = (EditText)view.findViewById(R.id.edt_arrival_usa);
         departureDate = (EditText)view.findViewById(R.id.edt_departure_usa);
+        buttonForm1 = (Button)view.findViewById(R.id.button_form1);
     }
     private void initializeForm2View() {
+        currentNationality = (EditText)view.findViewById(R.id.current_nationality);
+        spnrGender = (Spinner)view.findViewById(R.id.spnr_gender);
+        spnrMarital  = (Spinner)view.findViewById(R.id.marital_status_form2);
+        currentAddress = (EditText) view.findViewById(R.id.current_address);
+        currentCity = (EditText)view.findViewById(R.id.current_city_form2);
+        placeOfBirthForm2 = (EditText)view.findViewById(R.id.place_of_birth_form2);
+        stateCurrent = (EditText)view.findViewById(R.id.current_state_form2);
+        postalCodeCurrent = (EditText)view.findViewById(R.id.postal_code_current);
+        countryCurrent = (EditText)view.findViewById(R.id.current_country);
+        passportNumberForm2 = (EditText)view.findViewById(R.id.passport_number_form2);
+        issueCity = (EditText)view.findViewById(R.id.city_issued_form2);
+        issuedCountry = (EditText)view.findViewById(R.id.country_issued_form2);
+        issueDate = (EditText)view.findViewById(R.id.issue_date_form2);
+        expiryDateForm2 = (EditText)view.findViewById(R.id.expiry_date_form2);
+        stolenPassport = (Spinner)view.findViewById(R.id.spnr_lost_passport);
+        buttonForm2 = (Button)view.findViewById(R.id.button_form2);
     }
     private void initializeForm3View() {
         surName = (EditText)view.findViewById(R.id.surname);
@@ -417,5 +450,35 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void moveToNextForm() {
         atTab = mViewPager.getCurrentItem();
         mViewPager.setCurrentItem(atTab + 1);
+    }
+    private void loadDataApi(){
+        loadOccupation();
+    }
+    private void loadOccupation(){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://usa-visahub.in")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        OccupationResponseUsa request = retrofit.create(OccupationResponseUsa.class);
+        retrofit2.Call<Profession> call = request.getProfession();
+
+        call.enqueue(new retrofit2.Callback<Profession>() {
+            @Override
+            public void onResponse(retrofit2.Call<Profession> call, retrofit2.Response<Profession> response) {
+                Profession jsonResponse = response.body();
+                professionList = jsonResponse.getProfession();
+                for(int i=0;i<professionList.size();i++){
+                    occupation.add(professionList.get(i).getProfession());
+                }
+                Log.v("Occupation Size", String.valueOf(occupation.size()));
+            }
+            @Override
+            public void onFailure(retrofit2.Call<Profession> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
     }
 }

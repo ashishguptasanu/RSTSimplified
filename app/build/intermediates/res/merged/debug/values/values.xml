@@ -661,10 +661,14 @@
     <string name="choice3">3rd Priority</string>
     <string name="citizen">I am a citizen of</string>
     <string name="city">City</string>
+    <string name="city_issued">City where issued</string>
     <string name="consulate">Consulate</string>
     <string name="contact_person_name_us">Full Name</string>
     <string name="contact_person_us">Contact Person or Organization in the United States</string>
     <string name="country">Country Region</string>
+    <string name="country_form1">Country</string>
+    <string name="country_issued">Country/Authority that issued Passport</string>
+    <string name="current_address">Current Address</string>
     <string name="date_of_interview">Preferred Date of Interview</string>
     <string name="delivery_address">Preferred Delivery Address</string>
     <string name="drawer_email">ashishkumar@rstintl.com</string>
@@ -676,15 +680,18 @@
     <string name="entity_paying">Person/Entity paying for your trip</string>
     <string name="ever_been_us">Have you ever been in the U.S.?</string>
     <string name="ever_issued_visa_us">Have you ever been issued a U.S. Visa?</string>
+    <string name="expiry_date">Expiry Date</string>
     <string name="father_dob">Father\'s Date of Birth</string>
     <string name="father_name">Father\'s Full Name</string>
     <string name="father_us">Is your Father in the U.S.?</string>
+    <string name="gender">Gender</string>
     <string name="iran_form_accompanying">No. of Persons Accompanying you to Iran</string>
     <string name="iran_form_apply_visa">Where are you going to apply for your visa?</string>
     <string name="iran_form_border">Border of entry</string>
     <string name="iran_form_duration_stay">Duration of stay in Iran</string>
     <string name="iran_visa_arrival_hint">Arrival Date in UAE</string>
     <string name="iran_visa_departure_hint">Departure Date from UAE</string>
+    <string name="issue_date">Issue Date</string>
     <string name="languages">Provide a List of Languages You Speak</string>
     <string name="last_visit_iran">Last visit of Iran</string>
     <string name="length_stay_in_us">Intended length of stay in U.S.</string>
@@ -698,6 +705,7 @@
     <string name="name_friend">Name of your Friend</string>
     <string name="name_kin">Name of your Next-of-Kin</string>
     <string name="name_relative">Name of your Relative</string>
+    <string name="nationality">Nationality</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="no_of_days_us">No. of Days</string>
@@ -714,6 +722,8 @@
     <string name="oman_visa_departure_hint">Departure Date from UAE</string>
     <string name="other_countries_visited">Which Countries have you travelled before?</string>
     <string name="other_person_travelling">Are there other persons travelling with you?</string>
+    <string name="passport_information">Passport Information</string>
+    <string name="passport_number">Passport Number</string>
     <string name="passport_scanned_copy">Coloured Passport Scanned Copy (Front Page)</string>
     <string name="passport_scanned_copy2">Coloured Passport Scanned Copy (Last Page)</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
@@ -727,6 +737,7 @@
     <string name="phone_no_us">Phone Number of Point of Contact</string>
     <string name="phone_relative">Phone No. of your Relative</string>
     <string name="photo_copy">Photo in white background &amp; Size 2"x2"(Latest photo is required)</string>
+    <string name="place_birth">Place of Birth</string>
     <string name="postal_code">Postal Code</string>
     <string name="previous_citizenship">If having previous citizenship or name, please mention?</string>
     <string name="previous_employed">Were you previously employed?</string>
@@ -749,6 +760,7 @@
     <string name="state">State</string>
     <string name="state_us">State</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="stolen_passport">Have you ever lost a Passport or had one stolen?</string>
     <string name="title_activity_main_page">RST Simplified</string>
     <string name="title_activity_payment_gateway">Complete Payment</string>
     <string name="title_activity_services">Our Services</string>
