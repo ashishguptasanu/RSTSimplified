@@ -51,11 +51,16 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         return fragmentUsaForm;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         title = getArguments().getString("title");
-        loadDataApi();
+        //loadDataApi();
         mViewPager = (ViewPager)getActivity().findViewById(R.id.usa_form_view_pager);
         if(title.equalsIgnoreCase("form1")){
             view = inflater.inflate(R.layout.usa_form1,container, false);
@@ -131,6 +136,9 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         buttonForm1.setOnClickListener(this);
     }
     private void initializeForm2View() {
+        spnrGender = (Spinner)view.findViewById(R.id.spnr_gender);
+        spnrMarital = (Spinner)view.findViewById(R.id.marital_status_form2);
+        stolenPassport = (Spinner)view.findViewById(R.id.stolen_passport);
         currentNationality = (EditText)view.findViewById(R.id.current_nationality);
         currentAddress = (EditText) view.findViewById(R.id.current_address);
         currentCity = (EditText)view.findViewById(R.id.current_city_form2);
@@ -192,6 +200,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         buttonForm4.setOnClickListener(this);
     }
     private void initializeForm5View() {
+        travelDocType = (Spinner)view.findViewById(R.id.spnr_document_type);
         passportNumber = (EditText)view.findViewById(R.id.travel_document_number);
         passportBookNumber = (EditText)view.findViewById(R.id.passport_book_number);
         issueCountry = (EditText)view.findViewById(R.id.issue_country_name);
@@ -203,6 +212,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         buttonForm5.setOnClickListener(this);
     }
     private void initializeForm6View() {
+        stayLenght = (Spinner)view.findViewById(R.id.spnr_indented_length);
+        personPaying = (Spinner)view.findViewById(R.id.spnr_person_paying);
         purposeUS = (EditText)view.findViewById(R.id.purpose_us);
         noMonths = (EditText)view.findViewById(R.id.no_of_months);
         addressStayUS = (EditText)view.findViewById(R.id.address_us_stay);
@@ -230,6 +241,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         buttonForm8.setOnClickListener(this);
     }
     private void initializeForm9View() {
+        relationContactUs = (Spinner)view.findViewById(R.id.spnr_relation_contact_us);
+        contactUs = (Spinner)view.findViewById(R.id.spnr_contact_person_us);
         nameContactUs = (EditText)view.findViewById(R.id.full_name_contact_us);
         addressContactUs = (EditText) view.findViewById(R.id.address_contact_us);
         stateContactUs = (Spinner)view.findViewById(R.id.spnr_state_contact_us);
@@ -392,6 +405,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         attach4 = (ImageView)view.findViewById(R.id.attach_usa_file4);
         buttonForm15 = (Button)view.findViewById(R.id.button_form15);
         buttonForm15.setOnClickListener(this);
+        intializeSpinners();
     }
 
     @Override
@@ -455,7 +469,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
 
     }
     private void populateGenderSpinner(){
-        spnrGender = (Spinner)view.findViewById(R.id.spnr_gender);
         gender = new String[]{"Select One", "Male", "Female"};
         ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, gender);
         dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -464,7 +477,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
 
     }
     private void populateMaritalStatusSpinner(){
-        spnrMarital = (Spinner)view.findViewById(R.id.marital_status_form2);
         martialStatus = new String[]{"Select One", "Single", "Married", "Common Law Marriage", "Civil Union/Domestic Partnership", "Widowed","Divorce", "Legally Separated", "Other"};
         ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, martialStatus);
         dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -472,7 +484,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         spnrMarital.setOnItemSelectedListener(this);
     }
     private void populateDocumentTypeSpinner(){
-        travelDocType = (Spinner)view.findViewById(R.id.spnr_document_type);
         documentType = new String[]{"Select One","Passport", "Travel Document"};
         ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, documentType);
         dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -480,7 +491,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         travelDocType.setOnItemSelectedListener(this);
     }
     private void populateStolenPassportSpinner(){
-        stolenPassport = (Spinner)view.findViewById(R.id.stolen_passport);
         stolen = new String[]{"Select One","Yes","No"};
         ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item,stolen);
         dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -488,7 +498,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         stolenPassport.setOnItemSelectedListener(this);
     }
     private void populateContactPersonUsSpinner(){
-        contactUs = (Spinner)view.findViewById(R.id.spnr_contact_person_us);
         contactPersonUs = new String[]{"Select One","Organisation","Person"};
         ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, contactPersonUs);
         dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -496,7 +505,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         contactUs.setOnItemSelectedListener(this);
     }
     private void populateRelationPersonSpinner(){
-        relationContactUs = (Spinner)view.findViewById(R.id.spnr_relation_contact_us);
         relationPerson = new String[]{"Select One", "Relative", "Spouse", "Friend", "Biusness Associate", "Employer", "School Official", "other"};
         ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, relationPerson);
         dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -504,7 +512,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         relationContactUs.setOnItemSelectedListener(this);
     }
     private void populateIndentedLength(){
-        stayLenght = (Spinner)view.findViewById(R.id.spnr_indented_length);
         indentedLength = new String[]{"Select One","Year(s)","Month(s)","Week(s)","Day(s)","Less than 24 hours"};
         ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, indentedLength);
         dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -512,7 +519,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         stayLenght.setOnItemSelectedListener(this);
     }
     private void populatePersonPayingTrip(){
-        personPaying = (Spinner)view.findViewById(R.id.spnr_person_paying);
         payingTrip = new String[]{"Select One","Self","Other Person/Organisation"};
         ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, payingTrip);
         dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -528,7 +534,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     private void loadDataApi(){
         loadOccupation();
-        intializeSpinners();
     }
     private void intializeSpinners(){
         populateContactPersonUsSpinner();
@@ -559,7 +564,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 for(int i=0;i<professionList.size();i++){
                     occupation.add(professionList.get(i).getProfession());
                 }
-                Log.v("Occupation Size", String.valueOf(occupation.size()));
+
+                //Log.v("Occupation Size", String.valueOf(occupation.size()));
             }
             @Override
             public void onFailure(retrofit2.Call<Profession> call, Throwable t) {
