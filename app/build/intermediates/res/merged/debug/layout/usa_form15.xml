@@ -39,7 +39,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:id="@+id/attach_file_checked1"
+                    android:id="@+id/attach_usa_checked1"
                     android:src="@drawable/unchecked"
                     android:layout_gravity="left"
                     android:layout_marginRight="10dp"
@@ -47,7 +47,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:id="@+id/attach_file1"
+                    android:id="@+id/attach_usa_file1"
                     android:src="@drawable/link"
                     android:layout_gravity="left"
                     android:layout_marginRight="10dp"
@@ -87,7 +87,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:id="@+id/attach_file_checked2"
+                    android:id="@+id/attach_usa_checked2"
                     android:src="@drawable/unchecked"
                     android:layout_gravity="left"
                     android:layout_marginRight="10dp"
@@ -96,7 +96,7 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:src="@drawable/link"
-                    android:id="@+id/attach_file2"
+                    android:id="@+id/attach_usa_file2"
                     android:layout_gravity="left"
                     android:layout_marginRight="10dp"
                     android:layout_weight="0.10"/>
@@ -136,7 +136,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:id="@+id/attach_file_checked3"
+                    android:id="@+id/attach_usa_checked3"
                     android:src="@drawable/unchecked"
                     android:layout_gravity="left"
                     android:layout_marginRight="10dp"
@@ -145,7 +145,7 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:src="@drawable/link"
-                    android:id="@+id/attach_file3"
+                    android:id="@+id/attach_usa_file3"
                     android:layout_gravity="left"
                     android:layout_marginRight="10dp"
                     android:layout_weight="0.10"/>
@@ -184,7 +184,7 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:id="@+id/attach_file_checked4"
+                    android:id="@+id/attach_usa_checked4"
                     android:src="@drawable/unchecked"
                     android:layout_gravity="left"
                     android:layout_marginRight="10dp"
@@ -193,7 +193,7 @@
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:src="@drawable/link"
-                    android:id="@+id/attach_file4"
+                    android:id="@+id/attach_usa_file4"
                     android:layout_gravity="left"
                     android:layout_marginRight="10dp"
                     android:layout_weight="0.10"/>
@@ -207,16 +207,15 @@
             android:text="@string/upload_form_note"/>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="28dp"
             android:background="@drawable/buttonshape"
-            android:text="Submit"
-            android:textColor="#fff"
-            android:id="@+id/button_docs"
             android:layout_gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginTop="25dp"
+            android:id="@+id/button_form15"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:text="Save &amp; Submit"
+            android:layout_marginBottom="10dp"
+            android:textColor="#fff"/>
 
     </LinearLayout>
 

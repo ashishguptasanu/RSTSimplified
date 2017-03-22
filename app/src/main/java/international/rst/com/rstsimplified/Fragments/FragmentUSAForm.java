@@ -1,6 +1,7 @@
 package international.rst.com.rstsimplified.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,11 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import international.rst.com.rstsimplified.R;
-public class FragmentUSAForm extends android.support.v4.app.Fragment {
+public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener {
     String title;
     View view;
+    ViewPager mViewPager;
+    int atTab;
     Button buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15;
     EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, expiryDate, purposeUS, stayLenght, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode;
     Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate;
@@ -33,6 +36,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         title = getArguments().getString("title");
+        mViewPager = (ViewPager)getActivity().findViewById(R.id.usa_form_view_pager);
         if(title.equalsIgnoreCase("form1")){
             view = inflater.inflate(R.layout.consult_form,container, false);
             initializeForm1View();
@@ -128,6 +132,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         usSecurityNumber = (EditText)view.findViewById(R.id.security_number);
         taxPayerId = (EditText)view.findViewById(R.id.tax_payer_id);
         buttonForm3 = (Button)view.findViewById(R.id.button_form3);
+        buttonForm3.setOnClickListener(this);
 
 
     }
@@ -145,6 +150,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         secondaryPhoneNumber = (EditText)view.findViewById(R.id.secondary_phone_number);
         emailAddress = (EditText)view.findViewById(R.id.email_address);
         buttonForm4 = (Button)view.findViewById(R.id.button_form4);
+        buttonForm4.setOnClickListener(this);
     }
     private void initializeForm5View() {
         travelDocType = (Spinner)view.findViewById(R.id.spnr_document_type);
@@ -157,6 +163,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         expiryDate = (EditText)view.findViewById(R.id.expiry_date);
         stolenPassport = (Spinner) view.findViewById(R.id.spnr_lost_passport);
         buttonForm5 = (Button)view.findViewById(R.id.button_form5);
+        buttonForm5.setOnClickListener(this);
     }
     private void initializeForm6View() {
         purposeUS = (EditText)view.findViewById(R.id.purpose_us);
@@ -165,12 +172,14 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         addressStayUS = (EditText)view.findViewById(R.id.address_us_stay);
         personPayingTrip = (EditText)view.findViewById(R.id.person_paying);
         buttonForm6 = (Button)view.findViewById(R.id.button_form6);
+        buttonForm6.setOnClickListener(this);
     }
     private void initializeForm7View() {
         rgotherPersonTravelling = (RadioGroup)view.findViewById(R.id.rg_travelling_with);
         rbPersonTravelling1 = (RadioButton)view.findViewById(R.id.rb_person_travelling1);
         rbPersonTravelling2 = (RadioButton)view.findViewById(R.id.rb_person_travelling2);
         buttonForm7 = (Button)view.findViewById(R.id.button_form7);
+        buttonForm7.setOnClickListener(this);
     }
     private void initializeForm8View() {
         rgTravelledUS = (RadioGroup)view.findViewById(R.id.rg_visited_us);
@@ -183,6 +192,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         rbRefused1 = (RadioButton)view.findViewById(R.id.rb_refused_us_visa1);
         rbRefused2 = (RadioButton)view.findViewById(R.id.rb_refused_us_visa2);
         buttonForm8 = (Button)view.findViewById(R.id.button_form8);
+        buttonForm8.setOnClickListener(this);
     }
     private void initializeForm9View() {
         contactUs = (Spinner)view.findViewById(R.id.spnr_contact_person_us);
@@ -193,6 +203,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         codeContactUs = (EditText)view.findViewById(R.id.phone_code_contact_us);
         numberContactUs = (EditText)view.findViewById(R.id.contact_number_us);
         buttonForm9 = (Button)view.findViewById(R.id.button_form9);
+        buttonForm9.setOnClickListener(this);
     }
     private void initializeForm10View() {
         fatherName = (EditText)view.findViewById(R.id.full_name_father);
@@ -203,7 +214,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         motherName = (EditText)view.findViewById(R.id.full_name_mother);
         motherDateBirth = (EditText)view.findViewById(R.id.mother_date_of_birth);
         rgMotherUs = (RadioGroup)view.findViewById(R.id.rg_mother_usa);
+        rbMotherUs1 = (RadioButton)view.findViewById(R.id.rb_mother_usa1);
+        rbMotherUs2 = (RadioButton)view.findViewById(R.id.rb_mother_usa2);
         buttonForm10 = (Button)view.findViewById(R.id.button_form10);
+        buttonForm10.setOnClickListener(this);
     }
     private void initializeForm11View() {
         primaryOccupation = (Spinner)view.findViewById(R.id.spnr_primary_occupation);
@@ -214,6 +228,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         codeEmployment = (EditText)view.findViewById(R.id.employer_code);
         contactNumberEmployment = (EditText)view.findViewById(R.id.employer_number);
         buttonForm11 = (Button)view.findViewById(R.id.button_form11);
+        buttonForm11.setOnClickListener(this);
     }
     private void initializeForm12View() {
         rgPriviousEmployed = (RadioGroup)view.findViewById(R.id.rg_previous_employed);
@@ -236,6 +251,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         rbParamilitary1 = (RadioButton)view.findViewById(R.id.rb_paramilitary1);
         rbParamilitary2 = (RadioButton)view.findViewById(R.id.rb_paramilitary2);
         buttonForm12 = (Button)view.findViewById(R.id.button_form12);
+        buttonForm12.setOnClickListener(this);
     }
     private void initializeForm13View() {
         rgCommunicableDisease = (RadioGroup)view.findViewById(R.id.rg_communicable_disease);
@@ -314,6 +330,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         rbProstitution1 = (RadioButton)view.findViewById(R.id.rb_prostitution1);
         rbProstitution2 = (RadioButton)view.findViewById(R.id.rb_prostitution2);
         buttonForm13 = (Button)view.findViewById(R.id.button_form13);
+        buttonForm13.setOnClickListener(this);
 
     }
     private void initializeForm14View() {
@@ -331,6 +348,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         deliveryCity = (EditText)view.findViewById(R.id.city_delivery);
         deliveryPinCode = (EditText)view.findViewById(R.id.postal_delivery);
         buttonForm14 = (Button)view.findViewById(R.id.button_form14);
+        buttonForm14.setOnClickListener(this);
     }
     private void initializeForm15View() {
         checked1 = (ImageView)view.findViewById(R.id.attach_usa_checked1);
@@ -342,5 +360,56 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         attach3 = (ImageView)view.findViewById(R.id.attach_usa_file3);
         attach4 = (ImageView)view.findViewById(R.id.attach_usa_file4);
         buttonForm15 = (Button)view.findViewById(R.id.button_form15);
+        buttonForm15.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.button_form3:
+                moveToNextForm();
+                break;
+            case R.id.button_form4:
+                moveToNextForm();
+                break;
+            case R.id.button_form5:
+                moveToNextForm();
+                break;
+            case R.id.button_form6:
+                moveToNextForm();
+                break;
+            case R.id.button_form7:
+                moveToNextForm();
+                break;
+            case R.id.button_form8:
+                moveToNextForm();
+                break;
+            case R.id.button_form9:
+                moveToNextForm();
+                break;
+            case R.id.button_form10:
+                moveToNextForm();
+                break;
+            case R.id.button_form11:
+                moveToNextForm();
+                break;
+            case R.id.button_form12:
+                moveToNextForm();
+                break;
+            case R.id.button_form13:
+                moveToNextForm();
+                break;
+            case R.id.button_form14:
+                moveToNextForm();
+                break;
+            case R.id.button_form15:
+                break;
+        }
+
+    }
+
+    private void moveToNextForm() {
+        atTab = mViewPager.getCurrentItem();
+        mViewPager.setCurrentItem(atTab + 1);
     }
 }
