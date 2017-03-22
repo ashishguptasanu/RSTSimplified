@@ -41,14 +41,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_communicable_disease"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_communicable_disease1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_communicable_disease2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -68,14 +71,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_mental_disorder"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_mental_disorder1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_mental_disorder2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -95,14 +101,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_drug_addict"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_drug_addict1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_drug_addict2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -122,14 +131,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_arrested"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_arrested1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_arrested2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -149,14 +161,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_violated"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_violated1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_violated2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -176,14 +191,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_money_laundering"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_money_laundering1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_money_laundering2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -203,14 +221,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_human_trafficking"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_human_trafficking1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_human_trafficking2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -230,14 +251,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_aided_human_trafficking"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_aided_human_trafficking1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_aided_human_trafficking2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -257,14 +281,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_human_trafficking_relative"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_human_trafficking_relative1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_human_trafficking_relative2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -283,15 +310,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:id="@+id/rg_illegal_us"
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_illegal1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_illegal2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -311,14 +341,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_terrorist_activity"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_terrorist_activity1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_terrorist_activity2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -338,14 +371,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_support_terrorist"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_support_terrorist1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_support_terrorist2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -365,14 +401,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_terrorist1"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_terrorist1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_terrorist2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -391,15 +430,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:id="@+id/rg_genocide"
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_genocide1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_genocide2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -419,14 +461,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_participated_torture"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_torture1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_torture2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -446,14 +491,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_killing"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_killing1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_killing2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -473,14 +521,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_child_soldiers"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_child_soldier1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_child_soldier2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -500,14 +551,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_religious_freedom"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_religious_freedom1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_religious_freedom2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -526,15 +580,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="right"
+                android:id="@+id/rg_abortion"
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_abortion1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_abortion2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -554,14 +611,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_transplant"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_transplant1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_transplant2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -581,14 +641,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_fraud_visa"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_fraud_visa1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_fraud_visa2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -608,14 +671,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_custody_court"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_custody_court1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_custody_court2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -635,14 +701,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_violation_law"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_violation_law1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_violation_law2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -662,14 +731,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_avoiding_taxation"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_avoiding_taxation1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_avoiding_taxation2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -689,16 +761,29 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_prostitution"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_prostitution1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_prostitution2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:background="@drawable/buttonshape"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:id="@+id/button_form13"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:text="Save &amp; Submit"
+            android:textColor="#fff"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

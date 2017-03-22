@@ -16,6 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/usa_form6_purpose_trip"
+                android:id="@+id/purpose_us"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
         </android.support.design.widget.TextInputLayout>
         <LinearLayout
@@ -30,6 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/length_stay_in_us"
+                    android:id="@+id/length_stay"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -40,6 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/no_of_months_us"
+                    android:id="@+id/no_of_months"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -50,6 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/address_stay_us"
+                android:id="@+id/address_us_stay"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -59,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/entity_paying"
+                android:id="@+id/person_paying"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
         </android.support.design.widget.TextInputLayout>
         <Button
@@ -66,6 +71,7 @@
             android:layout_height="28dp"
             android:background="@drawable/buttonshape"
             android:layout_gravity="center"
+            android:id="@+id/button_form6"
             android:layout_marginTop="25dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:text="Save &amp; Submit"

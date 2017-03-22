@@ -27,6 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/city"
+                    android:id="@+id/city_interview"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <LinearLayout
@@ -42,6 +43,7 @@
                 <android.support.v7.widget.AppCompatSpinner
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:id="@+id/spnr_state_interview"
                     android:layout_weight="1">
                 </android.support.v7.widget.AppCompatSpinner>
                 <View
@@ -62,6 +64,7 @@
                 <android.support.v7.widget.AppCompatSpinner
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:id="@+id/spnr_consulate_interview"
                     android:layout_weight="1">
                 </android.support.v7.widget.AppCompatSpinner>
                 <View
@@ -95,6 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/choice1"
+                    android:id="@+id/interview_priority1"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -104,6 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/choice2"
+                    android:id="@+id/interview_priority2"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -113,6 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/choice3"
+                    android:id="@+id/interview_priority3"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
 
@@ -137,6 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/choice1"
+                    android:id="@+id/biometric_priority1"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -146,6 +153,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/choice2"
+                    android:id="@+id/biometric_priority2"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -155,6 +163,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/choice3"
+                    android:id="@+id/biometric_priority3"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
 
@@ -179,6 +188,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/address"
+                    android:id="@+id/address_delivery"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -188,6 +198,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/state"
+                    android:id="@+id/state_delivery"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -197,6 +208,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/city"
+                    android:id="@+id/city_delivery"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -206,6 +218,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/postal_code"
+                    android:id="@+id/postal_delivery"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
 
@@ -216,6 +229,7 @@
             android:background="@drawable/buttonshape"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
+            android:id="@+id/button_form14"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:text="Save &amp; Submit"
             android:layout_marginBottom="10dp"

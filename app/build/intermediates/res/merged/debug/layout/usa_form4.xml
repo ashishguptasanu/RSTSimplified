@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Address"
+                android:id="@+id/current_address"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
         <LinearLayout
@@ -36,6 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="City"
+                    android:id="@+id/current_city"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -46,6 +48,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Pin Code"
+                    android:id="@+id/current_city_postal"
+                    android:inputType="numberDecimal"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -61,6 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="State"
+                    android:id="@+id/current_state"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -71,6 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Country"
+                    android:id="@+id/current_country"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -87,14 +93,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/rg_mailing_address"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_mailing_address1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_mailing_address2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -116,6 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Country Code"
+                    android:id="@+id/country_code"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
@@ -126,6 +136,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Primary Phone Number"
+                    android:id="@+id/primary_phone_number"
+                    android:inputType="numberDecimal"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -136,6 +148,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Secondary Phone Number"
+                android:id="@+id/secondary_phone_number"
+                android:inputType="numberDecimal"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -145,6 +159,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email Address"
+                android:id="@+id/email_address"
+                android:inputType="textEmailAddress"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
         <Button
@@ -153,6 +169,7 @@
             android:background="@drawable/buttonshape"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
+            android:id="@+id/button_form4"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:text="Save &amp; Submit"
             android:textColor="#fff"/>

@@ -24,14 +24,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_visited_us"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_visited_us1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_visited_us2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -50,14 +53,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
+                android:id="@+id/rg_issued_us_visa"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_issued_us_visa1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_issued_us_visa2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -76,15 +82,18 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_marginTop="15dp"
+                android:id="@+id/rg_refused_us_visa"
                 android:layout_weight="1"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_refused_us_visa1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/rb_refused_us_visa2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -94,6 +103,7 @@
             android:background="@drawable/buttonshape"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
+            android:id="@+id/button_form8"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:text="Save &amp; Submit"
             android:textColor="#fff"/>

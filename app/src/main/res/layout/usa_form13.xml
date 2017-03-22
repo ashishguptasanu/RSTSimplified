@@ -775,5 +775,15 @@
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:background="@drawable/buttonshape"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:id="@+id/button_form13"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:text="Save &amp; Submit"
+            android:textColor="#fff"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

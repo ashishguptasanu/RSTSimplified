@@ -21,7 +21,7 @@
                 android:text="@string/other_person_travelling"/>
             <RadioGroup
                 android:layout_width="0dp"
-                android:id="@+id/radio_group_usa1"
+                android:id="@+id/rg_travelling_with"
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:layout_weight="1"
@@ -29,12 +29,12 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rb_other_person1"
+                    android:id="@+id/rb_person_travelling1"
                     android:hint="Yes"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rb_other_person2"
+                    android:id="@+id/rb_person_travelling2"
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
@@ -44,6 +44,7 @@
             android:background="@drawable/buttonshape"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
+            android:id="@+id/button_form7"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:text="Save &amp; Submit"
             android:textColor="#fff"/>

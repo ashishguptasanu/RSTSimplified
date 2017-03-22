@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -19,6 +20,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
     Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate;
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution;
     RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddrerss2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2;
+    ImageView checked1, checked2, checked3, checked4,  attach1, attach2, attach3, attach4;
     public static FragmentUSAForm newFormInstance( String title) {
         FragmentUSAForm fragmentUsaForm = new FragmentUSAForm();
         Bundle args = new Bundle();
@@ -311,10 +313,34 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment {
         rgProstitution = (RadioGroup)view.findViewById(R.id.rg_prostitution);
         rbProstitution1 = (RadioButton)view.findViewById(R.id.rb_prostitution1);
         rbProstitution2 = (RadioButton)view.findViewById(R.id.rb_prostitution2);
+        buttonForm13 = (Button)view.findViewById(R.id.button_form13);
 
     }
     private void initializeForm14View() {
+        consulateCity = (EditText)view.findViewById(R.id.city_interview);
+        interViewState = (Spinner)view.findViewById(R.id.spnr_state_interview);
+        interviewConsulate = (Spinner)view.findViewById(R.id.spnr_consulate_interview);
+        interviewPriority1 = (EditText)view.findViewById(R.id.interview_priority1);
+        interviewPriority2 = (EditText)view.findViewById(R.id.interview_priority2);
+        interviewPriority3 = (EditText)view.findViewById(R.id.interview_priority3);
+        biometricPriority1 = (EditText)view.findViewById(R.id.biometric_priority1);
+        biometricPriority2 = (EditText)view.findViewById(R.id.biometric_priority2);
+        biometricPriority3 = (EditText)view.findViewById(R.id.biometric_priority3);
+        deliveryAddress = (EditText)view.findViewById(R.id.address_delivery);
+        deliveryState = (EditText)view.findViewById(R.id.state_delivery);
+        deliveryCity = (EditText)view.findViewById(R.id.city_delivery);
+        deliveryPinCode = (EditText)view.findViewById(R.id.postal_delivery);
+        buttonForm14 = (Button)view.findViewById(R.id.button_form14);
     }
     private void initializeForm15View() {
+        checked1 = (ImageView)view.findViewById(R.id.attach_usa_checked1);
+        checked2 = (ImageView)view.findViewById(R.id.attach_usa_checked2);
+        checked3 = (ImageView)view.findViewById(R.id.attach_usa_checked3);
+        checked4 = (ImageView)view.findViewById(R.id.attach_usa_checked4);
+        attach1 = (ImageView)view.findViewById(R.id.attach_usa_file1);
+        attach2 = (ImageView)view.findViewById(R.id.attach_usa_file2);
+        attach3 = (ImageView)view.findViewById(R.id.attach_usa_file3);
+        attach4 = (ImageView)view.findViewById(R.id.attach_usa_file4);
+        buttonForm15 = (Button)view.findViewById(R.id.button_form15);
     }
 }
