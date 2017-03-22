@@ -3,9 +3,7 @@ package international.rst.com.rstsimplified.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Ashish on 06-02-2017.
- */
+
 
 public class ProfessionRes {
     @SerializedName("0")

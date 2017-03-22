@@ -2,6 +2,7 @@ package international.rst.com.rstsimplified.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.LayoutInflater;
@@ -69,14 +70,11 @@ public class UsaFormActivity extends AppCompatActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.home) {
             Intent intent = new Intent(this,MainPage.class);
@@ -129,14 +127,11 @@ public class UsaFormActivity extends AppCompatActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.usa_form3, container, false);
-            return rootView;
+            return inflater.inflate(R.layout.usa_form3, container, false);
         }
     }
-    public class PagerAdapter extends FragmentPagerAdapter {
-        int[] selectors = {R.drawable.selector_tab_one, R.drawable.selector_tab_two, R.drawable.selector_tab_three,R.drawable.selector_tab_four};
-
-        public PagerAdapter(FragmentManager fm) {
+    private class PagerAdapter extends FragmentPagerAdapter {
+        PagerAdapter(FragmentManager fm) {
             super(fm);
         }
 

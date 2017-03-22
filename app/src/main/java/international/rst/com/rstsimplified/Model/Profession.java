@@ -5,9 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by Ashish on 06-02-2017.
- */
 
 public class Profession {
     @SerializedName("profession")
