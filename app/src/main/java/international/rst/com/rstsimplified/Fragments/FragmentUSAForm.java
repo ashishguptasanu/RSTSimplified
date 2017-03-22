@@ -405,6 +405,12 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.button_form1:
+                moveToNextForm();
+                break;
+            case R.id.button_form2:
+                moveToNextForm();
+                break;
             case R.id.button_form3:
                 moveToNextForm();
                 break;
