@@ -3157,7 +3157,6 @@ containing a value of this type.
         public static final int layout_state_usa=0x7f0d0142;
         public static final int layout_travelling_for=0x7f0d00d3;
         public static final int left=0x7f0d0033;
-        public static final int length_stay=0x7f0d0233;
         public static final int line1=0x7f0d015d;
         public static final int line3=0x7f0d015f;
         public static final int linear_layout_services=0x7f0d013b;
@@ -3205,7 +3204,6 @@ containing a value of this type.
         public static final int passport_book_number=0x7f0d022a;
         public static final int passport_number_form2=0x7f0d01fb;
         public static final int person_accompanying=0x7f0d00d6;
-        public static final int person_paying=0x7f0d0236;
         public static final int phone_applicant_usa=0x7f0d0165;
         public static final int phone_code=0x7f0d00dd;
         public static final int phone_code_contact_us=0x7f0d024b;
@@ -3431,9 +3429,11 @@ containing a value of this type.
         public static final int spnr_document_type=0x7f0d0228;
         public static final int spnr_duration=0x7f0d0092;
         public static final int spnr_gender=0x7f0d0082;
+        public static final int spnr_indented_length=0x7f0d0233;
         public static final int spnr_living_in=0x7f0d0140;
         public static final int spnr_lost_passport=0x7f0d0230;
         public static final int spnr_nationality=0x7f0d013d;
+        public static final int spnr_person_paying=0x7f0d0236;
         public static final int spnr_port=0x7f0d00a5;
         public static final int spnr_primary_occupation=0x7f0d0174;
         public static final int spnr_purpose=0x7f0d0090;

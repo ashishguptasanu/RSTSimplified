@@ -1008,7 +1008,6 @@ int id layout_sponsor 0x7f0d00bc
 int id layout_state_usa 0x7f0d0142
 int id layout_travelling_for 0x7f0d00d3
 int id left 0x7f0d0033
-int id length_stay 0x7f0d0233
 int id line1 0x7f0d015d
 int id line3 0x7f0d015f
 int id linear_layout_services 0x7f0d013b
@@ -1056,7 +1055,6 @@ int id parentPanel 0x7f0d0050
 int id passport_book_number 0x7f0d022a
 int id passport_number_form2 0x7f0d01fb
 int id person_accompanying 0x7f0d00d6
-int id person_paying 0x7f0d0236
 int id phone_applicant_usa 0x7f0d0165
 int id phone_code 0x7f0d00dd
 int id phone_code_contact_us 0x7f0d024b
@@ -1282,9 +1280,11 @@ int id spnr_country_issue 0x7f0d009e
 int id spnr_document_type 0x7f0d0228
 int id spnr_duration 0x7f0d0092
 int id spnr_gender 0x7f0d0082
+int id spnr_indented_length 0x7f0d0233
 int id spnr_living_in 0x7f0d0140
 int id spnr_lost_passport 0x7f0d0230
 int id spnr_nationality 0x7f0d013d
+int id spnr_person_paying 0x7f0d0236
 int id spnr_port 0x7f0d00a5
 int id spnr_primary_occupation 0x7f0d0174
 int id spnr_purpose 0x7f0d0090

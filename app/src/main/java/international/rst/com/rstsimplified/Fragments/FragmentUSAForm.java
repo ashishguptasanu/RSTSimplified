@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,14 +29,15 @@ import international.rst.com.rstsimplified.R;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener {
+public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     String title;
     View view;
     ViewPager mViewPager;
     int atTab;
+    String[] gender, martialStatus, documentType, stolen, contactPersonUs, relationPerson, indentedLength, payingTrip;
     Button buttonForm1, buttonForm2, buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15;
-    EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, purposeUS, stayLenght, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality;
-    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital;
+    EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, purposeUS, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality;
+    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital, stayLenght, personPaying;
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution;
     RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddrerss2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2;
     ImageView checked1, checked2, checked3, checked4,  attach1, attach2, attach3, attach4;
@@ -52,6 +55,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         title = getArguments().getString("title");
+        loadDataApi();
         mViewPager = (ViewPager)getActivity().findViewById(R.id.usa_form_view_pager);
         if(title.equalsIgnoreCase("form1")){
             view = inflater.inflate(R.layout.usa_form1,container, false);
@@ -124,11 +128,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         arrivingDate = (EditText)view.findViewById(R.id.edt_arrival_usa);
         departureDate = (EditText)view.findViewById(R.id.edt_departure_usa);
         buttonForm1 = (Button)view.findViewById(R.id.button_form1);
+        buttonForm1.setOnClickListener(this);
     }
     private void initializeForm2View() {
         currentNationality = (EditText)view.findViewById(R.id.current_nationality);
-        spnrGender = (Spinner)view.findViewById(R.id.spnr_gender);
-        spnrMarital  = (Spinner)view.findViewById(R.id.marital_status_form2);
         currentAddress = (EditText) view.findViewById(R.id.current_address);
         currentCity = (EditText)view.findViewById(R.id.current_city_form2);
         placeOfBirthForm2 = (EditText)view.findViewById(R.id.place_of_birth_form2);
@@ -140,8 +143,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         issuedCountry = (EditText)view.findViewById(R.id.country_issued_form2);
         issueDate = (EditText)view.findViewById(R.id.issue_date_form2);
         expiryDateForm2 = (EditText)view.findViewById(R.id.expiry_date_form2);
-        stolenPassport = (Spinner)view.findViewById(R.id.spnr_lost_passport);
         buttonForm2 = (Button)view.findViewById(R.id.button_form2);
+        buttonForm2.setOnClickListener(this);
     }
     private void initializeForm3View() {
         surName = (EditText)view.findViewById(R.id.surname);
@@ -158,9 +161,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         maritalStatus  = (EditText)view.findViewById(R.id.marital_status);
         dateOfBirth = (EditText)view.findViewById(R.id.date_of_birth);
         placeOfBirth = (EditText)view.findViewById(R.id.place_of_birth);
-        birthCountrySpnr = (Spinner) view.findViewById(R.id.spnr_birth_country);
-        birthStateSpnr = (Spinner)view.findViewById(R.id.spnr_birth_state);
-        nationalitySpnr = (Spinner)view.findViewById(R.id.country_origin);
         rgOtherNationality = (RadioGroup)view.findViewById(R.id.rg_other_nationality);
         rbotherNationality1 = (RadioButton)view.findViewById(R.id.rb_other_nationality1);
         rbOtherNationality2 = (RadioButton)view.findViewById(R.id.rb_other_nationality2);
@@ -192,7 +192,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         buttonForm4.setOnClickListener(this);
     }
     private void initializeForm5View() {
-        travelDocType = (Spinner)view.findViewById(R.id.spnr_document_type);
         passportNumber = (EditText)view.findViewById(R.id.travel_document_number);
         passportBookNumber = (EditText)view.findViewById(R.id.passport_book_number);
         issueCountry = (EditText)view.findViewById(R.id.issue_country_name);
@@ -200,16 +199,13 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         issueCountry = (EditText)view.findViewById(R.id.issued_country);
         issueDate = (EditText)view.findViewById(R.id.issued_date);
         expiryDate = (EditText)view.findViewById(R.id.expiry_date);
-        stolenPassport = (Spinner) view.findViewById(R.id.spnr_lost_passport);
         buttonForm5 = (Button)view.findViewById(R.id.button_form5);
         buttonForm5.setOnClickListener(this);
     }
     private void initializeForm6View() {
         purposeUS = (EditText)view.findViewById(R.id.purpose_us);
-        stayLenght = (EditText)view.findViewById(R.id.length_stay);
         noMonths = (EditText)view.findViewById(R.id.no_of_months);
         addressStayUS = (EditText)view.findViewById(R.id.address_us_stay);
-        personPayingTrip = (EditText)view.findViewById(R.id.person_paying);
         buttonForm6 = (Button)view.findViewById(R.id.button_form6);
         buttonForm6.setOnClickListener(this);
     }
@@ -234,9 +230,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         buttonForm8.setOnClickListener(this);
     }
     private void initializeForm9View() {
-        contactUs = (Spinner)view.findViewById(R.id.spnr_contact_person_us);
         nameContactUs = (EditText)view.findViewById(R.id.full_name_contact_us);
-        relationContactUs = (Spinner)view.findViewById(R.id.spnr_relation_contact_us);
         addressContactUs = (EditText) view.findViewById(R.id.address_contact_us);
         stateContactUs = (Spinner)view.findViewById(R.id.spnr_state_contact_us);
         codeContactUs = (EditText)view.findViewById(R.id.phone_code_contact_us);
@@ -259,7 +253,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         buttonForm10.setOnClickListener(this);
     }
     private void initializeForm11View() {
-        primaryOccupation = (Spinner)view.findViewById(R.id.spnr_primary_occupation);
         employerName = (EditText)view.findViewById(R.id.employer_name);
         addressEmployer = (EditText)view.findViewById(R.id.employer_address);
         cityEmployment = (EditText)view.findViewById(R.id.employer_city);
@@ -374,7 +367,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     private void initializeForm14View() {
         consulateCity = (EditText)view.findViewById(R.id.city_interview);
-        interViewState = (Spinner)view.findViewById(R.id.spnr_state_interview);
         interviewConsulate = (Spinner)view.findViewById(R.id.spnr_consulate_interview);
         interviewPriority1 = (EditText)view.findViewById(R.id.interview_priority1);
         interviewPriority2 = (EditText)view.findViewById(R.id.interview_priority2);
@@ -451,14 +443,102 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 break;
         }
 
+
+    }
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
     }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+    private void populateGenderSpinner(){
+        spnrGender = (Spinner)view.findViewById(R.id.spnr_gender);
+        gender = new String[]{"Select One", "Male", "Female"};
+        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, gender);
+        dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrGender.setAdapter(dataAdapterPort);
+        spnrGender.setOnItemSelectedListener(this);
+
+    }
+    private void populateMaritalStatusSpinner(){
+        spnrMarital = (Spinner)view.findViewById(R.id.marital_status_form2);
+        martialStatus = new String[]{"Select One", "Single", "Married", "Common Law Marriage", "Civil Union/Domestic Partnership", "Widowed","Divorce", "Legally Separated", "Other"};
+        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, martialStatus);
+        dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrMarital.setAdapter(dataAdapterPort);
+        spnrMarital.setOnItemSelectedListener(this);
+    }
+    private void populateDocumentTypeSpinner(){
+        travelDocType = (Spinner)view.findViewById(R.id.spnr_document_type);
+        documentType = new String[]{"Select One","Passport", "Travel Document"};
+        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, documentType);
+        dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        travelDocType.setAdapter(dataAdapterPort);
+        travelDocType.setOnItemSelectedListener(this);
+    }
+    private void populateStolenPassportSpinner(){
+        stolenPassport = (Spinner)view.findViewById(R.id.stolen_passport);
+        stolen = new String[]{"Select One","Yes","No"};
+        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item,stolen);
+        dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        stolenPassport.setAdapter(dataAdapterPort);
+        stolenPassport.setOnItemSelectedListener(this);
+    }
+    private void populateContactPersonUsSpinner(){
+        contactUs = (Spinner)view.findViewById(R.id.spnr_contact_person_us);
+        contactPersonUs = new String[]{"Select One","Organisation","Person"};
+        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, contactPersonUs);
+        dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        contactUs.setAdapter(dataAdapterPort);
+        contactUs.setOnItemSelectedListener(this);
+    }
+    private void populateRelationPersonSpinner(){
+        relationContactUs = (Spinner)view.findViewById(R.id.spnr_relation_contact_us);
+        relationPerson = new String[]{"Select One", "Relative", "Spouse", "Friend", "Biusness Associate", "Employer", "School Official", "other"};
+        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, relationPerson);
+        dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        relationContactUs.setAdapter(dataAdapterPort);
+        relationContactUs.setOnItemSelectedListener(this);
+    }
+    private void populateIndentedLength(){
+        stayLenght = (Spinner)view.findViewById(R.id.spnr_indented_length);
+        indentedLength = new String[]{"Select One","Year(s)","Month(s)","Week(s)","Day(s)","Less than 24 hours"};
+        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, indentedLength);
+        dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        stayLenght.setAdapter(dataAdapterPort);
+        stayLenght.setOnItemSelectedListener(this);
+    }
+    private void populatePersonPayingTrip(){
+        personPaying = (Spinner)view.findViewById(R.id.spnr_person_paying);
+        payingTrip = new String[]{"Select One","Self","Other Person/Organisation"};
+        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, payingTrip);
+        dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        personPaying.setAdapter(dataAdapterPort);
+        personPaying.setOnItemSelectedListener(this);
+    }
+    private void stateUsSpinner(){
+
+    }
     private void moveToNextForm() {
         atTab = mViewPager.getCurrentItem();
         mViewPager.setCurrentItem(atTab + 1);
     }
     private void loadDataApi(){
         loadOccupation();
+        intializeSpinners();
+    }
+    private void intializeSpinners(){
+        populateContactPersonUsSpinner();
+        populateDocumentTypeSpinner();
+        populateGenderSpinner();
+        populateIndentedLength();
+        populateMaritalStatusSpinner();
+        populatePersonPayingTrip();
+        populateRelationPersonSpinner();
+        populateStolenPassportSpinner();
     }
     private void loadOccupation(){
         Gson gson = new GsonBuilder()
@@ -487,4 +567,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             }
         });
     }
+
+
 }
