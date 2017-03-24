@@ -19,12 +19,12 @@
                 android:layout_weight="1"
                 android:text="@string/occupation_us"
                 android:textColor="@color/colorAccent"/>
-            <android.support.v7.widget.AppCompatSpinner
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:id="@+id/spnr_primary_occupation"
                 android:layout_weight="1">
-            </android.support.v7.widget.AppCompatSpinner>
+            </Spinner>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

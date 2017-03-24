@@ -54,7 +54,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //intializeSpinners();
+
     }
 
     @Nullable
@@ -111,6 +111,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         else if(title.equalsIgnoreCase("form11")){
             view = inflater.inflate(R.layout.usa_form11,container,false);
             initializeForm11View();
+
         }
         else if(title.equalsIgnoreCase("form12")){
             view = inflater.inflate(R.layout.usa_form12,container,false);
@@ -268,6 +269,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         buttonForm10.setOnClickListener(this);
     }
     private void initializeForm11View() {
+        primaryOccupation = (Spinner)view.findViewById(R.id.spnr_primary_occupation);
+        loadDataApi();
         employerName = (EditText)view.findViewById(R.id.employer_name);
         addressEmployer = (EditText)view.findViewById(R.id.employer_address);
         cityEmployment = (EditText)view.findViewById(R.id.employer_city);
@@ -533,6 +536,9 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void stateUsSpinner(){
 
     }
+    private void populateOccupationSpinner(){
+
+    }
     private void moveToNextForm() {
         atTab = mViewPager.getCurrentItem();
         mViewPager.setCurrentItem(atTab + 1);
@@ -568,6 +574,13 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 professionList = jsonResponse.getProfession();
                 for(int i=0;i<professionList.size();i++){
                     occupation.add(professionList.get(i).getProfession());
+                }
+                if(occupation != null){
+                    //populateOccupationSpinner();
+                    //primaryOccupation = (Spinner)view.findViewById(R.id.spnr_primary_occupation);
+                    ArrayAdapter<String> occupationAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, occupation);
+                    occupationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    primaryOccupation.setAdapter(occupationAdapter);
                 }
 
             }
