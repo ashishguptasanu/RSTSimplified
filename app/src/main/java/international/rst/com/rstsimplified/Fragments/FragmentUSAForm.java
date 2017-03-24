@@ -519,7 +519,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     private void populateContactPersonUsSpinner(){
         contactUs = (Spinner)view.findViewById(R.id.spnr_contact_person_us);
-        contactPersonUs = new String[]{"Select One"};
+        contactPersonUs = new String[]{"Select One", "Organisation", "Person"};
         ArrayAdapter<String> personUsAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, contactPersonUs);
         personUsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         contactUs.setAdapter(personUsAdapter);
