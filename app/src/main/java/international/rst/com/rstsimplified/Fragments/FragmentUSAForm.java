@@ -21,6 +21,9 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import international.rst.com.rstsimplified.Model.AllCountryResponse;
+import international.rst.com.rstsimplified.Model.Country;
+import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.Model.OccupationResponseUsa;
 import international.rst.com.rstsimplified.Model.Profession;
 import international.rst.com.rstsimplified.Model.ProfessionRes;
@@ -43,6 +46,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     ImageView checked1, checked2, checked3, checked4,  attach1, attach2, attach3, attach4;
     private List<ProfessionRes> professionList = new ArrayList<>();
     private List<String> occupation = new ArrayList<>();
+    private List<String> allCountriesData = new ArrayList<>();
+    private List<CountryRes> allcountry = new ArrayList<>();
     public static FragmentUSAForm newFormInstance( String title) {
         FragmentUSAForm fragmentUsaForm = new FragmentUSAForm();
         Bundle args = new Bundle();
@@ -533,6 +538,20 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         personPaying.setAdapter(personPayingAdapter);
         personPaying.setOnItemSelectedListener(this);
     }
+    private void populateAllCountrySpinner(){
+        birthCountrySpnr = (Spinner)view.findViewById(R.id.spnr_birth_country);
+        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
+        dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        birthCountrySpnr.setAdapter(dataAdapterCountries);
+        birthCountrySpnr.setOnItemSelectedListener(this);
+    }
+    private void populateNationalitySpinner(){
+        nationalitySpnr = (Spinner)view.findViewById(R.id.spnr_nationality);
+        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
+        dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        nationalitySpnr.setAdapter(dataAdapterCountries);
+        nationalitySpnr.setOnItemSelectedListener(this);
+    }
     private void stateUsSpinner(){
 
     }
@@ -545,6 +564,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     private void loadDataApi(){
         loadOccupation();
+        loadAllCountries();
     }
     /*private void intializeSpinners(){
         populateContactPersonUsSpinner();
@@ -586,6 +606,38 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             }
             @Override
             public void onFailure(retrofit2.Call<Profession> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
+    private void loadAllCountries() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.uaevisasonline.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        AllCountryResponse request = retrofit.create(AllCountryResponse.class);
+        retrofit2.Call<Country> call = request.getCountry();
+        call.enqueue(new retrofit2.Callback<Country>() {
+            @Override
+            public void onResponse(retrofit2.Call<Country> call, retrofit2.Response<Country> response) {
+
+
+                Country jsonResponse = response.body();
+                allcountry = jsonResponse.getCountry();
+                for(int i=0;i<allcountry.size();i++){
+                    allCountriesData.add(allcountry.get(i).getName());
+                }
+
+                populateAllCountrySpinner();
+                populateNationalitySpinner();
+
+
+            }
+            @Override
+            public void onFailure(retrofit2.Call<Country> call, Throwable t) {
                 Log.v("Error",t.getMessage());
             }
         });
