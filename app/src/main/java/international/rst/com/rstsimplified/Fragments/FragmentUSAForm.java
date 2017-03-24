@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
+import international.rst.com.rstsimplified.Model.Consulate;
+import international.rst.com.rstsimplified.Model.ConsulateInterface;
+import international.rst.com.rstsimplified.Model.ConsulateResponse;
 import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.Model.OccupationResponseUsa;
@@ -29,6 +32,9 @@ import international.rst.com.rstsimplified.Model.Profession;
 import international.rst.com.rstsimplified.Model.ProfessionRes;
 import international.rst.com.rstsimplified.Model.ProfessionResponse;
 import international.rst.com.rstsimplified.R;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -48,6 +54,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private List<String> occupation = new ArrayList<>();
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
+    private List<ConsulateResponse> consulate = new ArrayList<>();
+    private List<String> consulateData = new ArrayList<>();
     public static FragmentUSAForm newFormInstance( String title) {
         FragmentUSAForm fragmentUsaForm = new FragmentUSAForm();
         Bundle args = new Bundle();
@@ -603,6 +611,38 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             }
             @Override
             public void onFailure(retrofit2.Call<Profession> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
+    private void loadConsulate(){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://iranvisas.in")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        ConsulateInterface request = retrofit.create(ConsulateInterface.class);
+        retrofit2.Call<Consulate> call = request.getConsulate();
+
+        call.enqueue(new Callback<Consulate>() {
+            @Override
+            public void onResponse(Call<Consulate> call, Response<Consulate> response) {
+                Consulate jsonResponse = response.body();
+                consulate = jsonResponse.getConsulate();
+                for(int i=0;i<consulate.size();i++){
+                    consulateData.add( consulate.get(i).getConsulateName());
+                }
+                if(consulateData != null){
+                    ArrayAdapter<String> occupationAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, consulateData);
+                    occupationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    primaryOccupation.setAdapter(occupationAdapter);
+                }
+
+            }
+            @Override
+            public void onFailure(retrofit2.Call<Consulate> call, Throwable t) {
                 Log.v("Error",t.getMessage());
             }
         });
