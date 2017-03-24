@@ -167,6 +167,9 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         populateStolenPassportSpinner();
     }
     private void initializeForm3View() {
+        birthCountrySpnr = (Spinner)view.findViewById(R.id.spnr_birth_country);
+        nationalitySpnr = (Spinner)view.findViewById(R.id.country_origin);
+        loadAllCountries();
         surName = (EditText)view.findViewById(R.id.surname);
         givenName = (EditText)view.findViewById(R.id.given_name);
         rgOtherName = (RadioGroup)view.findViewById(R.id.rg_other_name);
@@ -539,14 +542,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         personPaying.setOnItemSelectedListener(this);
     }
     private void populateAllCountrySpinner(){
-        birthCountrySpnr = (Spinner)view.findViewById(R.id.spnr_birth_country);
-        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
-        dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        birthCountrySpnr.setAdapter(dataAdapterCountries);
-        birthCountrySpnr.setOnItemSelectedListener(this);
+
     }
     private void populateNationalitySpinner(){
-        nationalitySpnr = (Spinner)view.findViewById(R.id.spnr_nationality);
+        //nationalitySpnr = (Spinner)view.findViewById(R.id.);
         ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
         dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         nationalitySpnr.setAdapter(dataAdapterCountries);
@@ -564,7 +563,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     private void loadDataApi(){
         loadOccupation();
-        loadAllCountries();
+
     }
     /*private void intializeSpinners(){
         populateContactPersonUsSpinner();
@@ -596,8 +595,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                     occupation.add(professionList.get(i).getProfession());
                 }
                 if(occupation != null){
-                    //populateOccupationSpinner();
-                    //primaryOccupation = (Spinner)view.findViewById(R.id.spnr_primary_occupation);
                     ArrayAdapter<String> occupationAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, occupation);
                     occupationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     primaryOccupation.setAdapter(occupationAdapter);
@@ -631,8 +628,12 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                     allCountriesData.add(allcountry.get(i).getName());
                 }
 
-                populateAllCountrySpinner();
-                populateNationalitySpinner();
+                //populateAllCountrySpinner();
+                //populateNationalitySpinner();
+                ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
+                dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                birthCountrySpnr.setAdapter(dataAdapterCountries);
+                nationalitySpnr.setAdapter(dataAdapterCountries);
 
 
             }
