@@ -127,7 +127,7 @@ public class UsaFormActivity extends AppCompatActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.usa_form3, container, false);
+            return inflater.inflate(R.layout.usa_form1, container, false);
         }
     }
     private class PagerAdapter extends FragmentPagerAdapter {

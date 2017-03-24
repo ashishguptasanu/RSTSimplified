@@ -1246,14 +1246,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            Toast.makeText(getContext(),"Success",Toast.LENGTH_SHORT).show();
+            showToast("success");
 
         }
 
         @Override
         protected void onCancelled() {
             super.onCancelled();
-            Toast.makeText(getContext(),"Payment Unsuccessful",Toast.LENGTH_SHORT);
+            showToast("Payment Unsuccessful");
         }
     }
     private void populateAllCountrySpinner() {
