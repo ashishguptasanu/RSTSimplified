@@ -462,12 +462,9 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
     }
-
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
     private void populateGenderSpinner(){
         spnrGender = (Spinner)view.findViewById(R.id.spnr_usa_gender);
@@ -573,7 +570,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                     occupation.add(professionList.get(i).getProfession());
                 }
 
-                //Log.v("Occupation Size", String.valueOf(occupation.size()));
             }
             @Override
             public void onFailure(retrofit2.Call<Profession> call, Throwable t) {
