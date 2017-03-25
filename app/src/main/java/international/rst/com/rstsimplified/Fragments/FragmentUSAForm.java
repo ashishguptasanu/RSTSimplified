@@ -32,7 +32,6 @@ import international.rst.com.rstsimplified.Model.CountryRes;
 import international.rst.com.rstsimplified.Model.OccupationResponseUsa;
 import international.rst.com.rstsimplified.Model.Profession;
 import international.rst.com.rstsimplified.Model.ProfessionRes;
-import international.rst.com.rstsimplified.Model.ProfessionResponse;
 import international.rst.com.rstsimplified.R;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,7 +49,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, purposeUS, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality;
     Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital, stayLenght, personPaying;
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution;
-    RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddrerss2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2;
+    RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddress2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2;
     ImageView checked1, checked2, checked3, checked4,  attach1, attach2, attach3, attach4;
     private List<ProfessionRes> professionList = new ArrayList<>();
     private List<String> occupation = new ArrayList<>();
@@ -209,31 +208,61 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgOtherName.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbOtherName1.isChecked()){
+                }
+                else if(rbOtherName2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
         rgTelecode.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbTelecode1.isChecked()){
+                }
+                else if(rbTelecode2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbGender1.isChecked()){
+                }
+                else if(rbGender2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgOtherNationality.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbotherNationality1.isChecked()){
+                }
+                else if(rbOtherNationality2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
         rgPermanentResident.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbPermanentResident1.isChecked()){
+                }
+                else if(rbPermanentResident2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
     }
@@ -245,7 +274,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         countryCurrent = (EditText)view.findViewById(R.id.current_country);
         rgMailAddress = (RadioGroup)view.findViewById(R.id.rg_mailing_address);
         rbMailAddress1 = (RadioButton)view.findViewById(R.id.rb_mailing_address1);
-        rbMailAddrerss2 = (RadioButton)view.findViewById(R.id.rb_mailing_address2);
+        rbMailAddress2 = (RadioButton)view.findViewById(R.id.rb_mailing_address2);
         countryCode = (EditText)view.findViewById(R.id.country_code);
         primaryPhoneNumber = (EditText)view.findViewById(R.id.primary_phone_number);
         secondaryPhoneNumber = (EditText)view.findViewById(R.id.secondary_phone_number);
@@ -255,7 +284,13 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgMailAddress.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbMailAddress1.isChecked()){
+                }
+                else if(rbMailAddress2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
     }
@@ -286,7 +321,13 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgotherPersonTravelling.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbPersonTravelling1.isChecked()){
+                }
+                else if(rbPersonTravelling2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
     }
@@ -304,19 +345,37 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgTravelledUS.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbTravelledUs1.isChecked()){
+                }
+                else if(rbTravelledUs2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgIssuedUsVisa.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbIssued1.isChecked()){
+                }
+                else if(rbIssued2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgRefusedUsVisa.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbRefused1.isChecked()){
+                }
+                else if(rbRefused2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         buttonForm8.setOnClickListener(this);
@@ -347,13 +406,26 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgFatherUs.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbFatherUs1.isChecked()){
+                }
+                else if(rbFatherUs2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgMotherUs.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+                if(rbMotherUs1.isChecked()){
+                }
+                else if(rbMotherUs2.isChecked()){
 
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
     }
@@ -475,6 +547,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rbTorture1 = (RadioButton)view.findViewById(R.id.rb_torture1);
         rbTorture2 = (RadioButton)view.findViewById(R.id.rb_torture2);
         rgKilling = (RadioGroup)view.findViewById(R.id.rg_killing);
+
         rbKilling1 = (RadioButton)view.findViewById(R.id.rb_killing1);
         rbKilling2 = (RadioButton)view.findViewById(R.id.rb_killing2);
         rgChildSoldiers = (RadioGroup)view.findViewById(R.id.rg_child_soldiers);
@@ -509,151 +582,289 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgCommunicableDisease.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbCommunicable1.isChecked()){
+                    showToast("One");
+                }
+                else if(rbCommunicable2.isChecked()){
+                    showToast("TWO");
+                }
             }
         });
         rgMentalDisorder.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbMental1.isChecked()){
+                }
+                else if(rbMental2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
         rgdrugAbuser.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbDrugAddict1.isChecked()){
+                }
+                else if(rbDrugAddict2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
         rgArrested.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbArrested1.isChecked()){
+                }
+                else if(rbArrested2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgViolatedLaw.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbViolatedLaw1.isChecked()){
+                }
+                else if(rbViolatedLaw2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
         rgMoneyLaundering.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbMoney1.isChecked()){
+                }
+                else if(rbMoney2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgHumanTrafficing.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbHumanTraffic1.isChecked()){
+                }
+                else if(rbHumanTraffic2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
         rgHumanTrafficingAided.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbAidedHuman1.isChecked()){
+                }
+                else if(rbAidedHuman2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgRelativeHumanTrafficing.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbRelativeHuman1.isChecked()){
+                }
+                else if(rbRelativeHuman2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgIllegal.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbIllegalActivity1.isChecked()){
+                }
+                else if(rbIllegalActivity2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
+
         });
         rgTerrorist.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbTerroristActivity1.isChecked()){
+                }
+                else if(rbTerroristActivity1.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgTerroristMember.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbSupportTerrorist1.isChecked()){
+                }
+                else if(rbSupportTerrorist2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgSupportTerrorist.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbTerrorist1.isChecked()){
+                }
+                else if(rbTerrorist2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgGenocide.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbGenocide1.isChecked()){
+                }
+                else if(rbGenocide2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
         rgTorture.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbTorture1.isChecked()){
+                }
+                else if(rbTorture2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
         rgKilling.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbKilling1.isChecked()){
+                }
+                else if(rbKilling2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
         rgChildSoldiers.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbChildSoldier1.isChecked()){
+                }
+                else if(rbChildSoldier2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgReligiousFreedom.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbReligiousFreedom1.isChecked()){
+                }
+                else if(rbReligiousFreedom2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
         rgAbortion.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbAbortion1.isChecked()){
+                }
+                else if(rbAbortion2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgTransplantation.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbTransplant1.isChecked()){
+                }
+                else if(rbTransplant2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgFraudVisa.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbFraudVisa1.isChecked()){
+                }
+                else if(rbFraudVisa2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgCustody.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
-            }
-        });
-        rgViolated.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbCustody1.isChecked()){
+                }
+                else if(rbCustody2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgAvoidingTaxation.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbAvoidingTaxation1.isChecked()){
+                }
+                else if(rbAvoidingTaxation2.isChecked()){
+                }
+                else {
+                    showToast("Check all field");
+                }
             }
         });
         rgProstitution.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbProstitution1.isChecked()){
+                }
+                else if(rbProstitution2.isChecked()){
+                }
+                else{
+                    showToast("Check all field");
+                }
             }
         });
 
