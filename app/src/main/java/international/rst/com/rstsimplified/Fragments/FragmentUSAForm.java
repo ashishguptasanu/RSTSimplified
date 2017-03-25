@@ -1,5 +1,6 @@
 package international.rst.com.rstsimplified.Fragments;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,7 +40,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
     String title;
     View view;
     ViewPager mViewPager;
@@ -204,6 +206,36 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         taxPayerId = (EditText)view.findViewById(R.id.tax_payer_id);
         buttonForm3 = (Button)view.findViewById(R.id.button_form3);
         buttonForm3.setOnClickListener(this);
+        rgOtherName.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgTelecode.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgOtherNationality.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgPermanentResident.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
     }
     private void initializeForm4View() {
         currentAddress = (EditText)view.findViewById(R.id.current_address);
@@ -220,6 +252,12 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         emailAddress = (EditText)view.findViewById(R.id.email_address);
         buttonForm4 = (Button)view.findViewById(R.id.button_form4);
         buttonForm4.setOnClickListener(this);
+        rgMailAddress.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
     }
     private void initializeForm5View() {
         passportNumber = (EditText)view.findViewById(R.id.travel_document_number);
@@ -245,6 +283,12 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rbPersonTravelling2 = (RadioButton)view.findViewById(R.id.rb_person_travelling2);
         buttonForm7 = (Button)view.findViewById(R.id.button_form7);
         buttonForm7.setOnClickListener(this);
+        rgotherPersonTravelling.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
     }
     private void initializeForm8View() {
         rgTravelledUS = (RadioGroup)view.findViewById(R.id.rg_visited_us);
@@ -257,6 +301,24 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rbRefused1 = (RadioButton)view.findViewById(R.id.rb_refused_us_visa1);
         rbRefused2 = (RadioButton)view.findViewById(R.id.rb_refused_us_visa2);
         buttonForm8 = (Button)view.findViewById(R.id.button_form8);
+        rgTravelledUS.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgIssuedUsVisa.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgRefusedUsVisa.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
         buttonForm8.setOnClickListener(this);
     }
     private void initializeForm9View() {
@@ -282,6 +344,18 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rbMotherUs2 = (RadioButton)view.findViewById(R.id.rb_mother_usa2);
         buttonForm10 = (Button)view.findViewById(R.id.button_form10);
         buttonForm10.setOnClickListener(this);
+        rgFatherUs.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgMotherUs.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
     }
     private void initializeForm11View() {
         primaryOccupation = (Spinner)view.findViewById(R.id.spnr_primary_occupation);
@@ -317,6 +391,42 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rbParamilitary2 = (RadioButton)view.findViewById(R.id.rb_paramilitary2);
         buttonForm12 = (Button)view.findViewById(R.id.button_form12);
         buttonForm12.setOnClickListener(this);
+        rgPriviousEmployed.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgTravelledCountries.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgContributedOrg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgSpecializedSkill.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgServedMilitary.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgParamilitary.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
     }
     private void initializeForm13View() {
         rgCommunicableDisease = (RadioGroup)view.findViewById(R.id.rg_communicable_disease);
@@ -396,6 +506,156 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rbProstitution2 = (RadioButton)view.findViewById(R.id.rb_prostitution2);
         buttonForm13 = (Button)view.findViewById(R.id.button_form13);
         buttonForm13.setOnClickListener(this);
+        rgCommunicableDisease.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgMentalDisorder.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgdrugAbuser.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgArrested.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgViolatedLaw.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgMoneyLaundering.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgHumanTrafficing.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgHumanTrafficingAided.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgRelativeHumanTrafficing.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgIllegal.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgTerrorist.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgTerroristMember.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgSupportTerrorist.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgGenocide.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgTorture.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgKilling.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgChildSoldiers.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgReligiousFreedom.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgAbortion.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgTransplantation.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgFraudVisa.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgCustody.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgViolated.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgAvoidingTaxation.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
+        rgProstitution.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+
+            }
+        });
 
     }
     private void initializeForm14View() {
@@ -480,6 +740,32 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        /*switch (view.getId()){
+            case R.id.spnr_usa_gender:
+                break;
+            case R.id.marital_status_form2:
+                break;
+            case R.id.stolen_passport:
+                break;
+            case R.id.spnr_birth_country:
+                break;
+            case R.id.country_origin:
+                break;
+            case R.id.spnr_document_type:
+                break;
+            case R.id.spnr_indented_length:
+                break;
+            case R.id.spnr_person_paying:
+                break;
+            case R.id.spnr_contact_person_us:
+                break;
+            case R.id.spnr_relation_contact_us:
+                break;
+            case R.id.spnr_primary_occupation:
+                break;
+            case R.id.spnr_consulate_interview:
+                break;
+        }*/
     }
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
@@ -684,4 +970,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
 
 
+    private void showToast(String mString){
+        Toast.makeText(getContext(),mString,Toast.LENGTH_SHORT).show();
+    }
 }
