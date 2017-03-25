@@ -124,7 +124,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         else if(title.equalsIgnoreCase("form11")){
             view = inflater.inflate(R.layout.usa_form11,container,false);
             initializeForm11View();
-
         }
         else if(title.equalsIgnoreCase("form12")){
             view = inflater.inflate(R.layout.usa_form12,container,false);
@@ -136,6 +135,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         }
         else if(title.equalsIgnoreCase("form14")){
             view = inflater.inflate(R.layout.usa_form14,container,false);
+            interviewConsulate = (Spinner)view.findViewById(R.id.spnr_consulate_interview);
+            loadConsulate();
             initializeForm14View();
         }
         else if(title.equalsIgnoreCase("form15")){
@@ -203,8 +204,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         taxPayerId = (EditText)view.findViewById(R.id.tax_payer_id);
         buttonForm3 = (Button)view.findViewById(R.id.button_form3);
         buttonForm3.setOnClickListener(this);
-
-
     }
     private void initializeForm4View() {
         currentAddress = (EditText)view.findViewById(R.id.current_address);
@@ -637,7 +636,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 if(consulateData != null){
                     ArrayAdapter<String> occupationAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, consulateData);
                     occupationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    primaryOccupation.setAdapter(occupationAdapter);
+                    interviewConsulate.setAdapter(occupationAdapter);
                 }
 
             }

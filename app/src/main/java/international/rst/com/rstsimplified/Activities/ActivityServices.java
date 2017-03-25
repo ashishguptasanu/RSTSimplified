@@ -36,8 +36,6 @@ public class ActivityServices extends AppCompatActivity
         setSupportActionBar(toolbar);
         Bundle b=getIntent().getExtras();
         tab = b.getInt("tab");
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -146,7 +144,6 @@ public class ActivityServices extends AppCompatActivity
             switch (position) {
                 case 0:
                     return FragmentServices.newInstance("visa");
-
                 case 1:
                     return FragmentServices.newInstance("airport");
                 case 2:
