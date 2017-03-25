@@ -56,6 +56,7 @@ public class VisaTypeSelection extends AppCompatActivity
             livingID = bundle.getInt("livingid");
             nationalityID = bundle.getInt("nationid");
             url = bundle.getString("visa_type_url");
+
         }
         System.out.println(livingID);
         System.out.println(nationalityID);

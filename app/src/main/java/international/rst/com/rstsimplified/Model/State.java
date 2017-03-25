@@ -10,16 +10,16 @@ import com.google.gson.annotations.SerializedName;
 public class State {
     @SerializedName("0")
     @Expose
-    private String _0;
+    private int _0;
     @SerializedName("StateName")
     @Expose
     private String stateName;
 
-    public String get0() {
+    public int get0() {
         return _0;
     }
 
-    public void set0(String _0) {
+    public void set0(int _0) {
         this._0 = _0;
     }
 
