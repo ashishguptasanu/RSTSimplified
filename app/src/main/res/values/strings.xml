@@ -169,4 +169,6 @@
     <string name="other_name_given_name">Other Given Names Used</string>
     <string name="telecode_surname">Telecode Surnames</string>
     <string name="telecode_given_name">Telecode Given Names</string>
+    <string name="other_country_nationality">Other Country/Region of Origin(Nationality)</string>
+    <string name="other_country_passport">Do you hold apassport for the other country/region of origin(Nationality) above?</string>
 </resources>
