@@ -171,4 +171,18 @@
     <string name="telecode_given_name">Telecode Given Names</string>
     <string name="other_country_nationality">Other Country/Region of Origin(Nationality)</string>
     <string name="other_country_passport">Do you hold apassport for the other country/region of origin(Nationality) above?</string>
+    <string name="surname_person_paying">Surname of Person Paying for Trip</string>
+    <string name="given_name_paying">Given Name of Person Paying for Trip</string>
+    <string name="organisation_name_payee">Name of Company/Organisation Paying for Trip</string>
+    <string name="address_organisation_paying">Address of Company/Organisation Paying </string>
+    <string name="travelling_with_group">Are you travelling as part of a group or organisation?</string>
+    <string name="surname_travelling_with">Surname of Person travelling with you</string>
+    <string name="given_name_travelling_with">Given name of person travelling with you</string>
+    <string name="name_group_travelling_with">Name of the Group you are travelling with</string>
+    <string name="applying_same_visa">Are you applying for same type of visa?</string>
+    <string name="applying_same_country">Are you applying in the same country or location where the visa above was issued?</string>
+    <string name="ten_printed">Have you been ten-printed?</string>
+    <string name="lost_us_visa">Has your U.S. visa ever been lost or Stolen?</string>
+    <string name="year_visa_stolen">Enter the year in which visa was lost or stolen?</string>
+    <string name="visa_cancelled">Has your U.S. visa ever been cancelled or revoked?</string>
 </resources>

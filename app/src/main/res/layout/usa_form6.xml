@@ -90,6 +90,89 @@
                 android:layout_height="1dp"
                 android:background="@color/colorAccent"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/person_paying_other_person_layout">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/surname_person_paying"
+                        android:id="@+id/person_paying_surname"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/given_name_paying"
+                        android:id="@+id/person_paying_given_name"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone_no"
+                    android:id="@+id/phone_no_payee"
+                    android:inputType="phone"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            </android.support.design.widget.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/relation_with_person"
+                    android:textColor="@color/colorAccent"/>
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/spnr_relation_payee_trip"
+                    android:layout_weight="1">
+                </android.support.v7.widget.AppCompatSpinner>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/organisation_paying_trip_layout">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone_no"
+                    android:id="@+id/phone_no_payee"
+                    android:inputType="phone"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="28dp"

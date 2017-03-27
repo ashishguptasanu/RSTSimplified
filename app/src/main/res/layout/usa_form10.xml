@@ -60,6 +60,28 @@
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Father's Status"
+                android:textColor="@color/colorAccent"/>
+            <android.support.v7.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/spnr_father_status"
+                android:layout_weight="1">
+            </android.support.v7.widget.AppCompatSpinner>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorAccent"/>
+        </LinearLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -110,6 +132,28 @@
                     android:id="@+id/rb_mother_usa2"
                     android:hint="No"/>
             </RadioGroup>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Mother's Status"
+                android:textColor="@color/colorAccent"/>
+            <android.support.v7.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/spnr_status_mother"
+                android:layout_weight="1">
+            </android.support.v7.widget.AppCompatSpinner>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorAccent"/>
         </LinearLayout>
         <Button
             android:layout_width="wrap_content"

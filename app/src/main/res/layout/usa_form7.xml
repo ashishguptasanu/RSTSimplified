@@ -38,6 +38,95 @@
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/person_travelling_layout"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="@string/other_person_travelling"/>
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:id="@+id/rg_travelling_with"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rb_person_travelling1"
+                        android:hint="Yes"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rb_person_travelling2"
+                        android:hint="No"/>
+                </RadioGroup>
+            </LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/surname_travelling_with"
+                    android:id="@+id/surname_travel_with"
+                    android:inputType="phone"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/given_name_travelling_with"
+                    android:id="@+id/given_name_travel_with"
+                    android:inputType="phone"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            </android.support.design.widget.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/relation_with_person"
+                    android:textColor="@color/colorAccent"/>
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/spnr_relation_payee_trip"
+                    android:layout_weight="1">
+                </android.support.v7.widget.AppCompatSpinner>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent"/>
+            </LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name_group_travelling_with"
+                    android:id="@+id/group_name"
+                    android:inputType="phone"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="28dp"
