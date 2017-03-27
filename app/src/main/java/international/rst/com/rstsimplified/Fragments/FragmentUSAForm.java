@@ -1210,9 +1210,12 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart("per_other_name", "")
                 .addFormDataPart("per_other_sur", "")
                 .addFormDataPart("per_other_given", "")
-                .addFormDataPart("per_dob", "")
-                .addFormDataPart("per_birth_state", "")
-                .addFormDataPart("per_birth_country", "")
+                .addFormDataPart("telecode_name", "")
+                .addFormDataPart("telecode_sur", "")
+                .addFormDataPart("telecode_given", "")
+                .addFormDataPart("date_of_birth", "")
+                .addFormDataPart("birth_state", "")
+                .addFormDataPart("birth_country", "")
                 .addFormDataPart("per_other_nationality", "")
                 .addFormDataPart("per_other_nation_name", "")
                 .addFormDataPart("per_other_pass", "")
@@ -1298,8 +1301,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void sendForm5Data(){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("per_doc_type", "")
-                .addFormDataPart("per_pass_bookNum", "")
+                .addFormDataPart("traveldocument", "")
+                .addFormDataPart("traveldocumentnum", "")
                 .build();
         Request request = new Request.Builder().url(BASE_URL_FORM5).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
