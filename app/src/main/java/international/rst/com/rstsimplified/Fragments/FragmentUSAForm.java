@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,10 @@ import international.rst.com.rstsimplified.Model.OccupationResponseUsa;
 import international.rst.com.rstsimplified.Model.Profession;
 import international.rst.com.rstsimplified.Model.ProfessionRes;
 import international.rst.com.rstsimplified.R;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,7 +45,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
-    String title;
+    String title, resp;
     View view;
     ViewPager mViewPager;
     int atTab;
@@ -51,12 +56,25 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution;
     RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddress2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2;
     ImageView checked1, checked2, checked3, checked4,  attach1, attach2, attach3, attach4;
+    private OkHttpClient client = new OkHttpClient();
     private List<ProfessionRes> professionList = new ArrayList<>();
     private List<String> occupation = new ArrayList<>();
     private List<String> allCountriesData = new ArrayList<>();
     private List<CountryRes> allcountry = new ArrayList<>();
     private List<ConsulateResponse> consulate = new ArrayList<>();
     private List<String> consulateData = new ArrayList<>();
+    private static final String BASE_URL_FORM3 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM4 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM5 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM6 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM7 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM8 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM9 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM10 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM11 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM12 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM13 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_FORM14 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
     public static FragmentUSAForm newFormInstance( String title) {
         FragmentUSAForm fragmentUsaForm = new FragmentUSAForm();
         Bundle args = new Bundle();
@@ -1183,5 +1201,835 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
 
     private void showToast(String mString){
         Toast.makeText(getContext(),mString,Toast.LENGTH_SHORT).show();
+    }
+    private void sendForm3Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM3).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    //sendVerificationEmail(resp, edtEmailContact.getText().toString(), UAE_EMAIL_URL);
+                    //sharedPreferences.edit().putString("response",resp).apply();
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm4Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM4).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm5Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM5).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm6Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM6).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm7Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM7).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm8Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM8).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm9Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM9).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm10Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM10).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm11Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM11).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm12Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM12).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm13Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM13).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendForm14Data(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("start_date", "")
+                .addFormDataPart("end_date", "")
+                .addFormDataPart("pnrNo", "")
+                .addFormDataPart("address1", "")
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", "")
+                .addFormDataPart("country", "")
+                .addFormDataPart("country_code", "")
+                .addFormDataPart("mobile", "")
+                .addFormDataPart("emergency_contact_name", "")
+                .addFormDataPart("emergency_contact_number", "")
+                .addFormDataPart("hotel_address", "")
+                .addFormDataPart("contact_uae", "")
+                .addFormDataPart("created_date", "")
+                .addFormDataPart("order_id", "")
+                .addFormDataPart("service_type", "")
+                .addFormDataPart("nationality_id","")
+                .addFormDataPart("living_in_id", "")
+                .addFormDataPart("currency_id", "")
+                .addFormDataPart("govt_fee", "")
+                .addFormDataPart("service_fee", "")
+                .addFormDataPart("processing_time","")
+                .addFormDataPart("visa_type_id", "")
+                .addFormDataPart("email_id", "")
+                .addFormDataPart("email_varified", "")
+                .addFormDataPart("comments_added", "")
+                .addFormDataPart("insertedTimeIst", "")
+                .addFormDataPart("agentid", "")
+                .addFormDataPart("service_fee_cs","")
+                .addFormDataPart("termConditions", "")
+                .addFormDataPart("mng_fee", "")
+                .addFormDataPart("application_type", "")
+                .addFormDataPart("agentType", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_FORM14).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
     }
 }
