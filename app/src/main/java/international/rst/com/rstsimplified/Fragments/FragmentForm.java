@@ -1673,6 +1673,98 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         });
     }
+    private void sendUsaFormData1(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("vad_id", "")
+                .addFormDataPart("first_name", "")
+                .addFormDataPart("last_name", "")
+                .addFormDataPart("phone_code", "")
+                .addFormDataPart("mobile_num", "")
+                .addFormDataPart("email", "")
+                .addFormDataPart("arrival", "")
+                .addFormDataPart("departure", "")
+                .addFormDataPart("insertedtimeist", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    //sendVerificationEmail(resp, edtEmailContact.getText().toString(), UAE_EMAIL_URL);
+                    //sharedPreferences.edit().putString("response",resp).apply();
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void sendUsaFormData2(){
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("gender", "")
+                .addFormDataPart("MaritalStatus", "")
+                .addFormDataPart("Address1", "")
+                .addFormDataPart("Address2", "")
+                .addFormDataPart("City", "")
+                .addFormDataPart("placeBirth", "")
+                .addFormDataPart("zipcode", "")
+                .addFormDataPart("passportnumber", "")
+                .addFormDataPart("placeOfissue", "")
+                .addFormDataPart("issuecountry", "")
+                .addFormDataPart("issuedate", "")
+                .addFormDataPart("expirydate", "")
+                .build();
+        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("Response", resp);
+                    //sendVerificationEmail(resp, edtEmailContact.getText().toString(), UAE_EMAIL_URL);
+                    //sharedPreferences.edit().putString("response",resp).apply();
+                    if (response.isSuccessful()) {
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
     private void sendVerificationEmail(String resp, String emailEdt, String uaeEmailUrl) {
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
