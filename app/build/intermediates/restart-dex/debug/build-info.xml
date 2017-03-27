@@ -2,47 +2,35 @@
 <instant-run
     abi="armeabi-v7a,armeabi"
     api-level="23"
-    build-mode="COLD"
+    build-mode="HOT_WARM"
     density="xhdpi"
     format="10"
     plugin-version="2.3.0"
-    timestamp="1490595425282"
+    timestamp="1490600170784"
     token="-315265450245951108"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="1584" />
+        duration="1482" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="311" />
     <task
         name="instant-run-transform"
-        duration="90" />
+        duration="573" />
     <task
         name="verifier"
-        duration="13" />
+        duration="76" />
 
     <artifact
-        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
-        type="SPLIT" />
-    <artifact
-        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
-        type="SPLIT_MAIN" />
+        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
 
     <build
         build-mode="FULL"
-        timestamp="1490593217985"
+        timestamp="1490599132075"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
@@ -59,6 +47,9 @@
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
             type="SPLIT" />
         <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
+        <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
@@ -68,27 +59,47 @@
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1490594884978"
-        verifier="COLD_SWAP_REQUESTED" >
+        timestamp="1490599893431"
+        verifier="R_CLASS_CHANGE" >
         <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        timestamp="1490595425282"
-        verifier="COLD_SWAP_REQUESTED" >
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
             type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1490600097268"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\builds\debug\1490600097268\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1490600170784"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>

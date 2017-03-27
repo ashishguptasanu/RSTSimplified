@@ -93,15 +93,15 @@ import java.util.Objects;
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     View view;
     String livingInId, nationalityId, selectedGCC, selectedPort, serviceType, livingId, serviceFeeCs, processingTime, deviceType, deviceOS, fullNameVisa, title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6, resp, arrivalDate, departureDate, fullNameApplicant, birthDateApplicant, passportNumberApplicant, savedArrivalDate, savedDepartureDate, selectedDuration, selectedPurpose, nationalityID, livingIn, codePhone;
-    String[] gender, religion, gccList, addressType, purpose, duration, visaType;
+    String[] gender, religion, gccList, addressType, purpose, duration, visaType, marital;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay, noVisitIran, purposeVisitIran, lastVisitIran, visaNoIran, visitDateIran, otherCountryVisited,nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification, occupation, jobTitle, companyName, acticvityField, companyTelephone, previousNationality;
     TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputDeparture, previousNation;
     CardView cardDocs5, cardDocs6;
-    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose, spnrVisaFor, spnrApplyingFrom;
+    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose, spnrVisaFor, spnrApplyingFrom, spnrMaritalUsa;
     RadioButton radioButton1, radioButton2, singaporeRb1, singaporeRb2, singaporeRb3, singaporeRb4, singaporeRb5,singaporeRb6,singaporeRb7,singaporeRb8,singaporeRb9,singaporeRb10, radioButtonIran1, radioButtonIran2;
     RadioGroup radioGrpSingapore1, radioGrpSingapore2, radioGrpSingapore3, radioGrpSingapore4, radioGrpSingapore5, radioGroupIran;
-    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose, layoutIranConsult, layoutCompanyDetails, visitedIranLayout, visitedIranInfoLayout;
+    LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose, layoutIranConsult, layoutCompanyDetails, visitedIranLayout, visitedIranInfoLayout, layoutContactOther, layoutContactUsa, layoutApplicantOther, layoutApplicantUsa;
     Button button2, button3;
     SharedPreferences sharedPreferences;
     TextView  name1, name2, name3, name4, name5, name6;
@@ -395,6 +395,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     }
     private void intializeContactView() {
         populateAddressTypeSpinner();
+        layoutContactUsa = (LinearLayout)view.findViewById(R.id.contact_layout_usa);
+        layoutContactOther = (LinearLayout)view.findViewById(R.id.contact_layout_other);
         addressSingapore = (EditText)view.findViewById(R.id.singapore_address);
         phoneSingapore = (EditText)view.findViewById(R.id.singapore_phone);
         nameSingapore = (EditText)view.findViewById(R.id.singapore_name);
@@ -404,6 +406,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         if(selectedVisaId == 0){
             addressUaeLayout.setVisibility(View.VISIBLE);
             addressSingaporeLayout.setVisibility(View.GONE);
+        }
+        else if(selectedVisaId == 1){
+            layoutContactUsa.setVisibility(View.VISIBLE);
+            layoutContactOther.setVisibility(View.GONE);
         }
         else if(selectedVisaId == 2){
             addressSingaporeLayout.setVisibility(View.VISIBLE);
@@ -445,6 +451,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
     };
     private void intializeApplicantViews() {
+        layoutApplicantOther = (LinearLayout)view.findViewById(R.id.applicant_layout_other);
+        layoutApplicantUsa = (LinearLayout)view.findViewById(R.id.applicant_layout_usa);
         nameFirst = (EditText)view.findViewById(R.id.name_first);
         nameLast = (EditText)view.findViewById(R.id.name_last);
         birthDate = (EditText)view.findViewById(R.id.edt_dob );
@@ -598,6 +606,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             layoutDuration.setVisibility(View.VISIBLE);
             layoutCompanyDetails.setVisibility(View.GONE);
 
+
+        }
+        else if(selectedVisaId == 1){
+            layoutApplicantUsa.setVisibility(View.VISIBLE);
+            layoutApplicantOther.setVisibility(View.GONE);
         }
         else if(selectedVisaId == 4){
             visitedIranLayout.setVisibility(View.VISIBLE);
@@ -1286,6 +1299,22 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         ArrayAdapter<String> genderDataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, gender);
         genderDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrGender.setAdapter(genderDataAdapter);
+    }
+    private void populateGenderUsaSpinner() {
+        spnrGender = (Spinner)view.findViewById(R.id.spnr_usa_gender_applicant);
+        spnrGender.setOnItemSelectedListener(this);
+        gender = new String[]{"Select One","Male","Female","Other"};
+        ArrayAdapter<String> genderDataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, gender);
+        genderDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrGender.setAdapter(genderDataAdapter);
+    }
+    private void populateMaritalUsaSpinner() {
+        spnrMaritalUsa = (Spinner)view.findViewById(R.id.marital_status_form2_applicant);
+        spnrMaritalUsa.setOnItemSelectedListener(this);
+        marital = new String[]{"Select One","Male","Female","Other"};
+        ArrayAdapter<String> maritalAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, marital);
+        maritalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrMaritalUsa.setAdapter(maritalAdapter);
     }
     private void populateGCCSpinner() {
         spnrGCC = (Spinner)view.findViewById(R.id.spnr_sponsor);
