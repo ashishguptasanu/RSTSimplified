@@ -2,6 +2,7 @@ package international.rst.com.rstsimplified.Activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerTabStrip;
@@ -28,7 +29,7 @@ public class FormActivity extends AppCompatActivity {
     Context context;
     Button btnSavePref;
     String livingID, nationalityID, serviceFeeCs,serviceType;
-    public int visaTypeId, currencyId;
+    public int visaTypeId, currencyId, viewPagerCount;
     float govtFee, mngFee, serviceFee;
     SharedPreferences.Editor editor;
     SharedPreferences sharedPreferences;
@@ -36,7 +37,8 @@ public class FormActivity extends AppCompatActivity {
     AlertDialog b;
     CustomPagerTabStrip mTabStrip;
     PagerAdapter mFormPagerAdapter;
-    String[] tabDataSet;
+    PagerAdapter2 mFormPagerAdapter2;
+    String[] tabDataSet, tabDataSet2;
 
     int atTab;
     @Override
@@ -76,10 +78,22 @@ public class FormActivity extends AppCompatActivity {
         mTabStrip.setTabIndicatorColorResource(R.color.colorAccent);
         mTabStrip.setTabSwitchEnabled(false);
         tabDataSet = new String[]{"Travelling Information","Contact Details","Applicant Information","Upload Documents"};
+        tabDataSet2 = new String[]{"Contact Details", "Applicant Information"};
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        viewPagerCount = sharedPreferences.getInt("visa_id",0);
+        if(viewPagerCount == 1){
+            mFormPagerAdapter2 = new PagerAdapter2(getSupportFragmentManager());
+            mFormPager = (CustomViewPager) findViewById(R.id.formViewPager);
+            mFormPager.setAdapter(mFormPagerAdapter2);
+        }
+        else {
+            mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
+            mFormPager = (CustomViewPager) findViewById(R.id.formViewPager);
+            mFormPager.setAdapter(mFormPagerAdapter);
 
-        mFormPagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        mFormPager = (CustomViewPager) findViewById(R.id.formViewPager);
-        mFormPager.setAdapter(mFormPagerAdapter);
+
+        }
+
 
         mFormPager.setOnTouchListener(new OnSwipeTouchListener(FormActivity.this) {
 
@@ -288,6 +302,39 @@ public class FormActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             return 4;
+        }
+    }
+    public class PagerAdapter2 extends FragmentPagerAdapter {
+        public PagerAdapter2(FragmentManager fm2) {
+            super(fm2);
+        }
+
+        @Override
+        public android.support.v4.app.Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return FragmentForm.newFormInstance("contact");
+                case 1:
+                    return FragmentForm.newFormInstance("applicant");
+                default:
+                    return  PlaceholderFragment.newFormInstance(1, "");
+            }
+        }
+
+        /*public void setCustomIconsFortabs(){
+            for (int i=0; i< getCount(); i++){
+                tabLayout.getTabAt(i).setIcon(selectors[i]);
+            }
+        }*/
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return tabDataSet2[position];
+        }
+
+
+        @Override
+        public int getCount() {
+            return 2;
         }
     }
 
