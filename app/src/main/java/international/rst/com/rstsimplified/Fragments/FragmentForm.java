@@ -263,6 +263,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     else {
                         showToast("Enter all Fields");
                     }
+                    if(selectedVisaId == 1){
+                        Intent intent = new Intent(getContext(), SummaryPage.class);
+                        startActivity(intent);
+                    }
                 }
             });
             adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, professionData);
@@ -1416,7 +1420,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("address2", "")
                 .addFormDataPart("city", edtLivingCity.getText().toString())
                 .addFormDataPart("country", livingIn)
-                .addFormDataPart("country_code", livingId)
+                .addFormDataPart("country_code", codePhone)
                 .addFormDataPart("mobile", edtMobile.getText().toString())
                 .addFormDataPart("emirates_uae", selectedEmirate)
                 .addFormDataPart("emergency_contact_name", edtEmergencyContactName.getText().toString())
@@ -1735,7 +1739,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sharedPreferences.edit().putString("date_arrival_usa", firstNameUsa.getText().toString()).apply();
                     sharedPreferences.edit().putString("date_departure_usa", firstNameUsa.getText().toString()).apply();
                     sendVerificationEmail(resp, emailUsa.getText().toString(), USA_EMAIL_URL);
-                    sharedPreferences.edit().putString("response",resp).apply();
+                    sharedPreferences.edit().putString("response_usa",resp).apply();
                     if (response.isSuccessful()) {
                     }else {
 
@@ -1750,7 +1754,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void sendUsaFormData2(){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("last_id",sharedPreferences.getString("response",""))
+                .addFormDataPart("last_id",sharedPreferences.getString("response_usa",""))
                 .addFormDataPart("gender", "Male")
                 .addFormDataPart("MaritalStatus", "Single")
                 .addFormDataPart("Address1", addressApplicantUsa.getText().toString())

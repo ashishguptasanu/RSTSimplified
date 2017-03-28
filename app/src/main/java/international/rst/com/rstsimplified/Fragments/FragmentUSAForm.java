@@ -173,22 +173,24 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
 
     private void initializeForm1View() {
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
         nameFirst = (EditText)view.findViewById(R.id.name_first_usa);
-        nameFirst.setText(sharedPreferences.getString("first_name_usa",""));
         nameLast = (EditText)view.findViewById(R.id.name_last_usa);
-        nameLast.setText(sharedPreferences.getString("last_name_usa",""));
         email = (EditText)view.findViewById(R.id.email_usa);
-        email.setText(sharedPreferences.getString("email_usa",""));
         mobileNumberCurrent = (EditText)view.findViewById(R.id.phone_applicant_usa);
-        mobileNumberCurrent.setText(sharedPreferences.getString("phone_usa",""));
         arrivingDate = (EditText)view.findViewById(R.id.edt_arrival_usa);
-        arrivingDate.setText(sharedPreferences.getString("date_arrival_usa", ""));
         departureDate = (EditText)view.findViewById(R.id.edt_departure_usa);
-        departureDate.setText(sharedPreferences.getString("date-departure_usa",""));
         buttonForm1 = (Button)view.findViewById(R.id.button_form1);
+        nameFirst.setText(sharedPreferences.getString("first_name_usa",""));
+        nameLast.setText(sharedPreferences.getString("last_name_usa",""));
+        email.setText(sharedPreferences.getString("email_usa",""));
+        mobileNumberCurrent.setText(sharedPreferences.getString("phone_usa",""));
+        arrivingDate.setText(sharedPreferences.getString("date_arrival_usa", ""));
+        departureDate.setText(sharedPreferences.getString("date-departure_usa",""));
         buttonForm1.setOnClickListener(this);
     }
     private void initializeForm2View() {
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
         currentNationality = (EditText)view.findViewById(R.id.current_nationality);
         currentNationality.setText(sharedPreferences.getString("nationality_usa",""));
         currentAddress = (EditText) view.findViewById(R.id.current_address);
@@ -207,8 +209,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         passportNumberForm2.setText(sharedPreferences.getString("passport_num_usa",""));
         issueCity = (EditText)view.findViewById(R.id.city_issued_form2);
         issueCity.setText(sharedPreferences.getString("city_issued_usa",""));
-        issuedCountry = (EditText)view.findViewById(R.id.country_issued_form2);
-        issueCountry.setText(sharedPreferences.getString("countru_issued_usa",""));
+        issuedCountry = (EditText)view.findViewById(R.id.country_issue_form2);
+//        issueCountry.setText(sharedPreferences.getString("country_issued_usa",""));
         issueDate = (EditText)view.findViewById(R.id.issue_date_form2);
         issueDate.setText(sharedPreferences.getString("issue_date_usa",""));
         expiryDateForm2 = (EditText)view.findViewById(R.id.expiry_date_form2);
