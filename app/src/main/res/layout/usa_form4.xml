@@ -195,7 +195,7 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Country Code"
+                    android:hint="Phone Code"
                     android:id="@+id/country_code"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
             </android.support.design.widget.TextInputLayout>

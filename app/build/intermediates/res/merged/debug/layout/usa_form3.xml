@@ -398,7 +398,7 @@
                 android:text="@string/country"/>
             <android.support.v7.widget.AppCompatSpinner
                 android:layout_width="match_parent"
-                android:id="@+id/spnr_country_region"
+                android:id="@+id/spnr_resident_other_country"
                 android:layout_height="wrap_content">
             </android.support.v7.widget.AppCompatSpinner>
             <View
