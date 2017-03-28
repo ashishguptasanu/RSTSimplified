@@ -647,11 +647,14 @@
     <string name="address">Address</string>
     <string name="address_friend">Address of your Friend</string>
     <string name="address_kin">Address of your Next-of-Kin</string>
+    <string name="address_organisation_paying">Address of Company/Organisation Paying </string>
     <string name="address_point">Address of Point of Contact</string>
     <string name="address_relative">Address of your Relative</string>
     <string name="address_stay_us">Address where you will stay in the United State</string>
     <string name="app_name">RST Simplified</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="applying_same_country">Are you applying in the same country or location where the visa above was issued?</string>
+    <string name="applying_same_visa">Are you applying for same type of visa?</string>
     <string name="biometric_date">Preferred Date of Biometric Interview</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
@@ -685,6 +688,8 @@
     <string name="father_name">Father\'s Full Name</string>
     <string name="father_us">Is your Father in the U.S.?</string>
     <string name="gender">Gender</string>
+    <string name="given_name_paying">Given Name of Person Paying for Trip</string>
+    <string name="given_name_travelling_with">Given name of person travelling with you</string>
     <string name="iran_form_accompanying">No. of Persons Accompanying you to Iran</string>
     <string name="iran_form_apply_visa">Where are you going to apply for your visa?</string>
     <string name="iran_form_border">Border of entry</string>
@@ -697,12 +702,14 @@
     <string name="length_stay_in_us">Intended length of stay in U.S.</string>
     <string name="list_country_travelled">Have you traveled to any countries/regions within the last five years?</string>
     <string name="living">I am living in</string>
+    <string name="lost_us_visa">Has your U.S. visa ever been lost or Stolen?</string>
     <string name="marital_status">Marital Status</string>
     <string name="miscellaneous_docs">Miscellaneous Documents</string>
     <string name="mother_dob">Mother\'s Date of Birth</string>
     <string name="mother_name">Mother\'s Full Name</string>
     <string name="mother_us">Is your Mother in the U.S.?</string>
     <string name="name_friend">Name of your Friend</string>
+    <string name="name_group_travelling_with">Name of the Group you are travelling with</string>
     <string name="name_kin">Name of your Next-of-Kin</string>
     <string name="name_relative">Name of your Relative</string>
     <string name="nationality">Nationality</string>
@@ -720,7 +727,10 @@
     <string name="occupation_us">Primary Occupation</string>
     <string name="oman_visa_arrival_hint">Arrival Date in UAE</string>
     <string name="oman_visa_departure_hint">Departure Date from UAE</string>
+    <string name="organisation_name_payee">Name of Company/Organisation Paying for Trip</string>
     <string name="other_countries_visited">Which Countries have you travelled before?</string>
+    <string name="other_country_nationality">Other Country/Region of Origin(Nationality)</string>
+    <string name="other_country_passport">Do you hold apassport for the other country/region of origin(Nationality) above?</string>
     <string name="other_name_given_name">Other Given Names Used</string>
     <string name="other_name_surname">Other Surname Used</string>
     <string name="other_person_travelling">Are there other persons travelling with you?</string>
@@ -765,8 +775,11 @@
     <string name="stolen_passport">Have you ever lost a Passport or had one stolen?</string>
     <string name="stolen_passport_field1">Country/Authority that issued Passport/Travel Document</string>
     <string name="stolen_passport_field2">Explain</string>
+    <string name="surname_person_paying">Surname of Person Paying for Trip</string>
+    <string name="surname_travelling_with">Surname of Person travelling with you</string>
     <string name="telecode_given_name">Telecode Given Names</string>
     <string name="telecode_surname">Telecode Surnames</string>
+    <string name="ten_printed">Have you been ten-printed?</string>
     <string name="title_activity_main_page">RST Simplified</string>
     <string name="title_activity_payment_gateway">Complete Payment</string>
     <string name="title_activity_services">Our Services</string>
@@ -775,6 +788,7 @@
     <string name="title_activity_usa_form">Fill USA Consult Form</string>
     <string name="title_activity_visa_services_options">Enter Details</string>
     <string name="title_activity_visa_type_selection">Select Visa Type</string>
+    <string name="travelling_with_group">Are you travelling as part of a group or organisation?</string>
     <string name="uae_visa_arrival_hint">Arrival Date in UAE</string>
     <string name="uae_visa_departure_hint">Departure Date from UAE</string>
     <string name="upload_form_note">Note: You can skip this page by clicking on Submit button. you can submit documents later.</string>
@@ -820,9 +834,11 @@
     <string name="usa_visa_arrival_hint">Arrival Date in UAE</string>
     <string name="usa_visa_departure_hint">Departure Date from UAE</string>
     <string name="visa">Select Visa For</string>
+    <string name="visa_cancelled">Has your U.S. visa ever been cancelled or revoked?</string>
     <string name="visa_no_iran">Visa No.</string>
     <string name="visit_date_iran">Visit Date</string>
     <string name="visited_iran">Have you visited to Iran before?</string>
+    <string name="year_visa_stolen">Enter the year in which visa was lost or stolen?</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

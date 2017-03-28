@@ -95,7 +95,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String livingInId, nationalityId, selectedGCC, selectedPort, serviceType, livingId, serviceFeeCs, processingTime, deviceType, deviceOS, fullNameVisa, title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6, resp, arrivalDate, departureDate, fullNameApplicant, birthDateApplicant, passportNumberApplicant, savedArrivalDate, savedDepartureDate, selectedDuration, selectedPurpose, nationalityID, livingIn, codePhone;
     String[] gender, religion, gccList, addressType, purpose, duration, visaType, marital;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
-    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay, noVisitIran, purposeVisitIran, lastVisitIran, visaNoIran, visitDateIran, otherCountryVisited,nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification, occupation, jobTitle, companyName, acticvityField, companyTelephone, previousNationality;
+    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay, noVisitIran, purposeVisitIran, lastVisitIran, visaNoIran, visitDateIran, otherCountryVisited,nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification, occupation, jobTitle, companyName, acticvityField, companyTelephone, previousNationality, firstNameUsa, lastNameUsa, emailUsa, phoneUsa, arrivalDateUsa, departureDateUsa, nationalityUsa, addressApplicantUsa, cityApplicantUsa, placeBirthUsa, stateUsa, postalUsa, countryUsa, passportNumberUsa, cityIssuedUsa, countryIssuedUsa, issueDateUsa, expiryDateUsa;
     TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputDeparture, previousNation;
     CardView cardDocs5, cardDocs6;
     Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose, spnrVisaFor, spnrApplyingFrom, spnrMaritalUsa;
@@ -129,6 +129,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private static final String BASE_URL_CONSULT_FORM_OMAN = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
     private static final String PUBLIC_KEY_PAYMENT = "pk_test_73e56b01-8726-4176-9159-db71454ff4af";
     private static final String BASE_URL_CONSULT_FORM_IRAN = "http://iranvisas.in/api/getdatairn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String BASE_URL_USA_FORM1 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=personalinfo";
+    private static final String USA_EMAIL_URL = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=email_send";
+    private static final String BASE_URL_USA_FORM2 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=personalinfo2";
     public FragmentForm() {
     }
     public static FragmentForm newFormInstance(String title) {
@@ -233,6 +236,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    sendUsaFormData2();
                     if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
                         if(isValidEmail(emailEdt.getText().toString())) {
                             if(radioButton1.isChecked() || radioButton2.isChecked()){
@@ -288,6 +292,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    sendUsaFormData1();
                     if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
                         if(isValidEmail(edtEmailContact.getText().toString())){
                             if(isValidMobile(edtEmergencyContactNumber.getText().toString()) && isValidMobile(edtMobile.getText().toString())) {
@@ -429,6 +434,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         edtMobile = (EditText)view.findViewById(R.id.edittext_mobile);
         edtEmailContact = (EditText)view.findViewById(R.id.edt_email_contact);
         edtEmailContact.addTextChangedListener(watcher);
+        firstNameUsa = (EditText)view.findViewById(R.id.name_first_usa);
+        lastNameUsa = (EditText)view.findViewById(R.id.name_last_usa);
+        emailUsa = (EditText)view.findViewById(R.id.email_usa);
+        phoneUsa = (EditText)view.findViewById(R.id.phone_applicant_usa);
+        arrivalDateUsa = (EditText)view.findViewById(R.id.edt_arrival_usa);
+        departureDateUsa = (EditText)view.findViewById(R.id.edt_departure_usa);
         loadEmirates();
     }
     private TextWatcher watcher = new TextWatcher() {
@@ -596,6 +607,18 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         edtSponsorCotact = (EditText)view.findViewById(R.id.sponsor_contact);
         previousNation = (TextInputLayout)view.findViewById(R.id.edt_previous_nation);
         previousNationality = (EditText)view.findViewById(R.id.previous_nationality);
+        nationalityUsa = (EditText)view.findViewById(R.id.current_nationality);
+        addressApplicantUsa = (EditText)view.findViewById(R.id.current_address);
+        cityApplicantUsa = (EditText)view.findViewById(R.id.current_city_form2);
+        placeBirthUsa = (EditText)view.findViewById(R.id.place_of_birth_form2);
+        stateUsa = (EditText)view.findViewById(R.id.current_state_form2);
+        postalUsa = (EditText)view.findViewById(R.id.postal_code_current);
+        countryUsa = (EditText)view.findViewById(R.id.current_country);
+        passportNumberUsa = (EditText)view.findViewById(R.id.passport_number_form2);
+        cityIssuedUsa = (EditText)view.findViewById(R.id.city_issued_form2);
+        countryIssuedUsa = (EditText)view.findViewById(R.id.country_issued_form2);
+        issueDateUsa = (EditText)view.findViewById(R.id.issue_date_form2);
+        expiryDateUsa = (EditText)view.findViewById(R.id.expiry_date_form2);
         if(selectedVisaId == 2){
             visitedIranLayout.setVisibility(View.GONE);
             passportLayoutSingapore.setVisibility(View.VISIBLE);
@@ -1678,16 +1701,16 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("visa_id", "")
                 .addFormDataPart("vad_id", "")
-                .addFormDataPart("first_name", "")
-                .addFormDataPart("last_name", "")
+                .addFormDataPart("first_name", firstNameUsa.getText().toString())
+                .addFormDataPart("last_name", lastNameUsa.getText().toString())
                 .addFormDataPart("phonecode", "")
-                .addFormDataPart("mobile_num", "")
-                .addFormDataPart("email", "")
-                .addFormDataPart("arrival", "")
-                .addFormDataPart("departure", "")
+                .addFormDataPart("mobile_num", phoneUsa.getText().toString())
+                .addFormDataPart("email", emailUsa.getText().toString())
+                .addFormDataPart("arrival", arrivalDateUsa.getText().toString())
+                .addFormDataPart("departure", departureDateUsa.getText().toString())
                 .addFormDataPart("insertedtimeist", "")
                 .build();
-        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM).post(requestBody).build();
+        Request request = new Request.Builder().url(BASE_URL_USA_FORM1).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new okhttp3.Callback() {
 
@@ -1705,11 +1728,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 try {
                     resp = response.body().string();
                     Log.v("Response", resp);
-                    //sendVerificationEmail(resp, edtEmailContact.getText().toString(), UAE_EMAIL_URL);
-                    //sharedPreferences.edit().putString("response",resp).apply();
+                    sendVerificationEmail(resp, emailUsa.getText().toString(), USA_EMAIL_URL);
+                    sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
                     }else {
-                        //
+
                     }
                 } catch (IOException e) {
                     System.out.println("Exception caught" + e.getMessage());
@@ -1721,20 +1744,21 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void sendUsaFormData2(){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("gender", "")
-                .addFormDataPart("MaritalStatus", "")
-                .addFormDataPart("Address1", "")
+                .addFormDataPart("last_id",sharedPreferences.getString("response",""))
+                .addFormDataPart("gender", "Male")
+                .addFormDataPart("MaritalStatus", "Single")
+                .addFormDataPart("Address1", addressApplicantUsa.getText().toString())
                 .addFormDataPart("Address2", "")
-                .addFormDataPart("City", "")
-                .addFormDataPart("placeBirth", "")
-                .addFormDataPart("zipcode", "")
-                .addFormDataPart("passportnumber", "")
-                .addFormDataPart("placeOfissue", "")
-                .addFormDataPart("issuecountry", "")
-                .addFormDataPart("issuedate", "")
-                .addFormDataPart("expirydate", "")
+                .addFormDataPart("City", cityApplicantUsa.getText().toString())
+                .addFormDataPart("placeBirth", placeBirthUsa.getText().toString())
+                .addFormDataPart("zipcode", postalUsa.getText().toString())
+                .addFormDataPart("passportnumber", passportNumberUsa.getText().toString())
+                .addFormDataPart("placeOfissue", cityIssuedUsa.getText().toString())
+                .addFormDataPart("issuecountry", countryIssuedUsa.getText().toString())
+                .addFormDataPart("issuedate", issueDateUsa.getText().toString())
+                .addFormDataPart("expirydate", expiryDateUsa.getText().toString())
                 .build();
-        Request request = new Request.Builder().url(BASE_URL_CONSULT_FORM).post(requestBody).build();
+        Request request = new Request.Builder().url(BASE_URL_USA_FORM2).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new okhttp3.Callback() {
 
