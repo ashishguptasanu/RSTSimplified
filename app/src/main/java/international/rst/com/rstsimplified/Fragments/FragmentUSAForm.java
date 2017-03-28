@@ -186,7 +186,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         email.setText(sharedPreferences.getString("email_usa",""));
         mobileNumberCurrent.setText(sharedPreferences.getString("phone_usa",""));
         arrivingDate.setText(sharedPreferences.getString("date_arrival_usa", ""));
-        departureDate.setText(sharedPreferences.getString("date-departure_usa",""));
+        departureDate.setText(sharedPreferences.getString("date_departure_usa",""));
         buttonForm1.setOnClickListener(this);
     }
     private void initializeForm2View() {
