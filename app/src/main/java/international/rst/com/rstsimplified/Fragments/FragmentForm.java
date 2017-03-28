@@ -1710,9 +1710,13 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("phone_code", "")
                 .addFormDataPart("mobile_num", phoneUsa.getText().toString())
                 .addFormDataPart("email", emailUsa.getText().toString())
+                .addFormDataPart("email_varified","N")
+                .addFormDataPart("service_type","")
+                .addFormDataPart("consulate_status", "")
+                .addFormDataPart("visa_status","")
+                .addFormDataPart("created_date","")
                 .addFormDataPart("arrival", arrivalDateUsa.getText().toString())
                 .addFormDataPart("departure", departureDateUsa.getText().toString())
-                .addFormDataPart("insertedtimeist", "")
                 .build();
         Request request = new Request.Builder().url(BASE_URL_USA_FORM1).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
