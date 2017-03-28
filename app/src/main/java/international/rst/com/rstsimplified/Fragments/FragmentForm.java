@@ -1728,6 +1728,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 try {
                     resp = response.body().string();
                     Log.v("Response", resp);
+                    sharedPreferences.edit().putString("first_name_usa", firstNameUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("last_name_usa", firstNameUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("email_usa", firstNameUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("phone_usa", firstNameUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("date_arrival_usa", firstNameUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("date_departure_usa", firstNameUsa.getText().toString()).apply();
                     sendVerificationEmail(resp, emailUsa.getText().toString(), USA_EMAIL_URL);
                     sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
@@ -1776,6 +1782,18 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 try {
                     resp = response.body().string();
                     Log.v("Response", resp);
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
                     //sendVerificationEmail(resp, edtEmailContact.getText().toString(), UAE_EMAIL_URL);
                     //sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
