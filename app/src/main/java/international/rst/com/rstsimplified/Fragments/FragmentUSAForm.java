@@ -1,5 +1,7 @@
 package international.rst.com.rstsimplified.Fragments;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -49,6 +51,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     View view;
     ViewPager mViewPager;
     int atTab;
+    SharedPreferences sharedPreferences;
     String[] gender, martialStatus, documentType, stolen, contactPersonUs, relationPerson, indentedLength, payingTrip;
     Button buttonForm1, buttonForm2, buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15;
     EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, purposeUS, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality;
@@ -86,8 +89,12 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
+        getSharedPreferences();
 
     }
+
+
 
     @Nullable
     @Override
@@ -167,27 +174,45 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
 
     private void initializeForm1View() {
         nameFirst = (EditText)view.findViewById(R.id.name_first_usa);
+        nameFirst.setText(sharedPreferences.getString("first_name_usa",""));
         nameLast = (EditText)view.findViewById(R.id.name_last_usa);
+        nameLast.setText(sharedPreferences.getString("last_name_usa",""));
         email = (EditText)view.findViewById(R.id.email_usa);
+        email.setText(sharedPreferences.getString("email_usa",""));
         mobileNumberCurrent = (EditText)view.findViewById(R.id.phone_applicant_usa);
+        mobileNumberCurrent.setText(sharedPreferences.getString("phone_usa",""));
         arrivingDate = (EditText)view.findViewById(R.id.edt_arrival_usa);
+        arrivingDate.setText(sharedPreferences.getString("date_arrival_usa", ""));
         departureDate = (EditText)view.findViewById(R.id.edt_departure_usa);
+        departureDate.setText(sharedPreferences.getString("date-departure_usa",""));
         buttonForm1 = (Button)view.findViewById(R.id.button_form1);
         buttonForm1.setOnClickListener(this);
     }
     private void initializeForm2View() {
         currentNationality = (EditText)view.findViewById(R.id.current_nationality);
+        currentNationality.setText(sharedPreferences.getString("nationality_usa",""));
         currentAddress = (EditText) view.findViewById(R.id.current_address);
+        currentAddress.setText(sharedPreferences.getString("address_usa",""));
         currentCity = (EditText)view.findViewById(R.id.current_city_form2);
+        currentCity.setText(sharedPreferences.getString("city_usa",""));
         placeOfBirthForm2 = (EditText)view.findViewById(R.id.place_of_birth_form2);
+        placeOfBirthForm2.setText(sharedPreferences.getString("place_birth_usa",""));
         stateCurrent = (EditText)view.findViewById(R.id.current_state_form2);
+        stateCurrent.setText(sharedPreferences.getString("state_usa",""));
         postalCodeCurrent = (EditText)view.findViewById(R.id.postal_code_current);
+        postalCodeCurrent.setText(sharedPreferences.getString("postal_code_usa",""));
         countryCurrent = (EditText)view.findViewById(R.id.current_country);
+        countryCurrent.setText(sharedPreferences.getString("country_usa",""));
         passportNumberForm2 = (EditText)view.findViewById(R.id.passport_number_form2);
+        passportNumberForm2.setText(sharedPreferences.getString("passport_num_usa",""));
         issueCity = (EditText)view.findViewById(R.id.city_issued_form2);
+        issueCity.setText(sharedPreferences.getString("city_issued_usa",""));
         issuedCountry = (EditText)view.findViewById(R.id.country_issued_form2);
+        issueCountry.setText(sharedPreferences.getString("countru_issued_usa",""));
         issueDate = (EditText)view.findViewById(R.id.issue_date_form2);
+        issueDate.setText(sharedPreferences.getString("issue_date_usa",""));
         expiryDateForm2 = (EditText)view.findViewById(R.id.expiry_date_form2);
+        expiryDateForm2.setText(sharedPreferences.getString("expiry_date_usa",""));
         buttonForm2 = (Button)view.findViewById(R.id.button_form2);
         buttonForm2.setOnClickListener(this);
         populateGenderSpinner();
@@ -1782,5 +1807,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             }
 
         });
+    }
+    private void getSharedPreferences() {
+
     }
 }

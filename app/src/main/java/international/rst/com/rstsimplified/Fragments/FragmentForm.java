@@ -1703,7 +1703,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("vad_id", "")
                 .addFormDataPart("first_name", firstNameUsa.getText().toString())
                 .addFormDataPart("last_name", lastNameUsa.getText().toString())
-                .addFormDataPart("phonecode", "")
+                .addFormDataPart("phone_code", "")
                 .addFormDataPart("mobile_num", phoneUsa.getText().toString())
                 .addFormDataPart("email", emailUsa.getText().toString())
                 .addFormDataPart("arrival", arrivalDateUsa.getText().toString())
@@ -1783,17 +1783,17 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     resp = response.body().string();
                     Log.v("Response", resp);
                     sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("nationality_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("address_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("city_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("place_birth_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("state_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("postal_code_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("country_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("passport_num_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("city_issued_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("country_issued_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("issue_date_usa",nationalityUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("expiry_date_usa",nationalityUsa.getText().toString()).apply();
                     //sendVerificationEmail(resp, edtEmailContact.getText().toString(), UAE_EMAIL_URL);
                     //sharedPreferences.edit().putString("response",resp).apply();
                     if (response.isSuccessful()) {
