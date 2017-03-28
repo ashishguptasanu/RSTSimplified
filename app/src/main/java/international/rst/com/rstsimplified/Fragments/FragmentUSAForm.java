@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -52,12 +54,14 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     ViewPager mViewPager;
     int atTab;
     SharedPreferences sharedPreferences;
+    TextInputLayout otherPassportLayout;
+    LinearLayout mailingLayout, otherNameLayout, telecodeLayout, otherNationalityLayout, permanentResidentLayout;
     String[] gender, martialStatus, documentType, stolen, contactPersonUs, relationPerson, indentedLength, payingTrip;
     Button buttonForm1, buttonForm2, buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15;
     EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, purposeUS, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality, otherSurName, otherGivenName, telecodeSurname, telecodeGivenName, otherNationality, otherPassportNumber, otherMailingAddress, otherCityMailing, otherStateMailing, otherPostalMailing, phoneCodeUsa;
     Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital, stayLenght, personPaying, residentOtherCountry;
-    RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution;
-    RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddress2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2;
+    RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution, rgOtherPassport;
+    RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddress2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2, rbOtherPassport1, rbOtherPassport2;
     ImageView checked1, checked2, checked3, checked4,  attach1, attach2, attach3, attach4;
     private OkHttpClient client = new OkHttpClient();
     private List<ProfessionRes> professionList = new ArrayList<>();
@@ -258,12 +262,33 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         taxPayerId = (EditText)view.findViewById(R.id.tax_payer_id);
         buttonForm3 = (Button)view.findViewById(R.id.button_form3);
         buttonForm3.setOnClickListener(this);
+        otherNameLayout = (LinearLayout)view.findViewById(R.id.other_name_layout);
+        telecodeLayout = (LinearLayout)view.findViewById(R.id.telecode_layout);
+        otherNationalityLayout = (LinearLayout)view.findViewById(R.id.other_country_layout);
+        otherPassportLayout = (TextInputLayout)view.findViewById(R.id.input_other_passport);
+        permanentResidentLayout = (LinearLayout)view.findViewById(R.id.resident_other_layout);
+        rgOtherPassport = (RadioGroup)view.findViewById(R.id.rg_other_passport);
+        rbOtherPassport1  = (RadioButton)view.findViewById(R.id.rb_other_passport1);
+        rbOtherPassport2 = (RadioButton)view.findViewById(R.id.rb_other_passport2);
+        rgOtherPassport.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+                if(rbOtherPassport1.isChecked()){
+                    otherPassportLayout.setVisibility(View.VISIBLE);
+                }
+                else if(rbOtherPassport2.isChecked()){
+                    otherPassportLayout.setVisibility(View.GONE);
+                }
+            }
+        });
         rgOtherName.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbOtherName1.isChecked()){
+                    otherNameLayout.setVisibility(View.VISIBLE);
                 }
                 else if(rbOtherName2.isChecked()){
+                    otherNameLayout.setVisibility(View.GONE);
                 }
                 else{
                     showToast("Check all field");
@@ -274,8 +299,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbTelecode1.isChecked()){
+                    telecodeLayout.setVisibility(View.VISIBLE);
                 }
                 else if(rbTelecode2.isChecked()){
+                    telecodeLayout.setVisibility(View.GONE);
                 }
                 else {
                     showToast("Check all field");
@@ -298,8 +325,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbotherNationality1.isChecked()){
+                    otherNationalityLayout.setVisibility(View.VISIBLE);
                 }
                 else if(rbOtherNationality2.isChecked()){
+                    otherNationalityLayout.setVisibility(View.GONE);
                 }
                 else{
                     showToast("Check all field");
@@ -310,8 +339,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbPermanentResident1.isChecked()){
+                    permanentResidentLayout.setVisibility(View.VISIBLE);
                 }
                 else if(rbPermanentResident2.isChecked()){
+                    permanentResidentLayout.setVisibility(View.GONE);
                 }
                 else {
                     showToast("Check all field");
@@ -343,6 +374,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         emailAddress.setText(sharedPreferences.getString("email_usa",""));
         buttonForm4 = (Button)view.findViewById(R.id.button_form4);
         buttonForm4.setOnClickListener(this);
+        mailingLayout = (LinearLayout)view.findViewById(R.id.layout_mailing_address);
         otherMailingAddress = (EditText)view.findViewById(R.id.mailing_address);
         otherCityMailing = (EditText)view.findViewById(R.id.mailing_city);
         otherStateMailing = (EditText)view.findViewById(R.id.mailing_state);
@@ -351,8 +383,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbMailAddress1.isChecked()){
+                    mailingLayout.setVisibility(View.VISIBLE);
                 }
                 else if(rbMailAddress2.isChecked()){
+                    mailingLayout.setVisibility(View.GONE);
                 }
                 else {
                     showToast("Check all field");
