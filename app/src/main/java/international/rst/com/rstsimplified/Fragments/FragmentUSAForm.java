@@ -90,8 +90,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private static final String BASE_URL_FORM10 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=pretravelupdate";
     private static final String BASE_URL_FORM11 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=pointofcontactinfo";
     private static final String BASE_URL_FORM12 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=presentworkinfo";
-    private static final String BASE_URL_FORM13 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=additionalworkinfo";
-    private static final String BASE_URL_FORM14 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=security";
+    //private static final String BASE_URL_FORM12 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=additionalworkinfo";
+    private static final String BASE_URL_FORM13 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=security";
     private static final String STATES_USA = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=231";
     public static FragmentUSAForm newFormInstance( String title) {
         FragmentUSAForm fragmentUsaForm = new FragmentUSAForm();
@@ -108,9 +108,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         getSharedPreferences();
 
     }
-
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -710,7 +707,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgCustody = (RadioGroup)view.findViewById(R.id.rg_custody_court);
         rbCustody1 = (RadioButton)view.findViewById(R.id.rb_custody_court1);
         rbCustody2 = (RadioButton)view.findViewById(R.id.rb_custody_court2);
-        rgViolatedLaw = (RadioGroup)view.findViewById(R.id.rg_violated);
+        rgViolated = (RadioGroup)view.findViewById(R.id.rg_violated);
         rbVoted1  = (RadioButton)view.findViewById(R.id.rb_violated1);
         rbVoted2 = (RadioButton)view.findViewById(R.id.rb_violated2);
         rgAvoidingTaxation = (RadioGroup)view.findViewById(R.id.rg_avoiding_taxation);
@@ -725,10 +722,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbCommunicable1.isChecked()){
-                    securityQuestion1 = "Yes";
+                    securityQuestion1 = "Y";
                 }
                 else if(rbCommunicable2.isChecked()){
-                    securityQuestion1 = "No";
+                    securityQuestion1 = "N";
                 }
             }
         });
@@ -736,10 +733,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbMental1.isChecked()){
-                    securityQuestion2 = "Yes";
+                    securityQuestion2 = "Y";
                 }
                 else if(rbMental2.isChecked()){
-                    securityQuestion2 = "No";
+                    securityQuestion2 = "N";
                 }
                 else{
                     showToast("Check all field");
@@ -750,10 +747,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbDrugAddict1.isChecked()){
-                    securityQuestion3 = "Yes";
+                    securityQuestion3 = "Y";
                 }
                 else if(rbDrugAddict2.isChecked()){
-                    securityQuestion3 = "No";
+                    securityQuestion3 = "N";
                 }
                 else{
                     showToast("Check all field");
@@ -764,10 +761,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbArrested1.isChecked()){
-                    securityQuestion4 = "Yes";
+                    securityQuestion4 = "Y";
                 }
                 else if(rbArrested2.isChecked()){
-                    securityQuestion4 = "No";
+                    securityQuestion4 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -778,10 +775,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbViolatedLaw1.isChecked()){
-                    securityQuestion5 = "Yes";
+                    securityQuestion5 = "Y";
                 }
                 else if(rbViolatedLaw2.isChecked()){
-                    securityQuestion5 = "No";
+                    securityQuestion5 = "N";
                 }
                 else{
                     showToast("Check all field");
@@ -792,10 +789,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbMoney1.isChecked()){
-                    securityQuestion6 = "Yes";
+                    securityQuestion6 = "Y";
                 }
                 else if(rbMoney2.isChecked()){
-                    securityQuestion6 = "No";
+                    securityQuestion6 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -806,10 +803,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbHumanTraffic1.isChecked()){
-                    securityQuestion7 = "Yes";
+                    securityQuestion7 = "Y";
                 }
                 else if(rbHumanTraffic2.isChecked()){
-                    securityQuestion7 = "No";
+                    securityQuestion7 = "N";
                 }
                 else{
                     showToast("Check all field");
@@ -820,10 +817,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbAidedHuman1.isChecked()){
-                    securityQuestion8 = "Yes";
+                    securityQuestion8 = "Y";
                 }
                 else if(rbAidedHuman2.isChecked()){
-                    securityQuestion8 = "No";
+                    securityQuestion8 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -834,10 +831,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbRelativeHuman1.isChecked()){
-                    securityQuestion9 = "Yes";
+                    securityQuestion9 = "Y";
                 }
                 else if(rbRelativeHuman2.isChecked()){
-                    securityQuestion9 = "No";
+                    securityQuestion9 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -848,10 +845,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbIllegalActivity1.isChecked()){
-                    securityQuestion10 = "Yes";
+                    securityQuestion10 = "Y";
                 }
                 else if(rbIllegalActivity2.isChecked()){
-                    securityQuestion10 = "No";
+                    securityQuestion10 = "N";
                 }
                 else{
                     showToast("Check all field");
@@ -863,10 +860,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbTerroristActivity1.isChecked()){
-                    securityQuestion11 = "Yes";
+                    securityQuestion11 = "Y";
                 }
                 else if(rbTerroristActivity1.isChecked()){
-                    securityQuestion11 = "No";
+                    securityQuestion11 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -876,11 +873,11 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgTerroristMember.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                if(rbSupportTerrorist1.isChecked()){
-                    securityQuestion12 = "Yes";
+                if(rbTerrorist1.isChecked()){
+                    securityQuestion12 = "Y";
                 }
-                else if(rbSupportTerrorist2.isChecked()){
-                    securityQuestion12 = "No";
+                else if(rbTerrorist2.isChecked()){
+                    securityQuestion12 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -890,11 +887,11 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgSupportTerrorist.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                if(rbTerrorist1.isChecked()){
-                    securityQuestion13 = "Yes";
+                if(rbSupportTerrorist1.isChecked()){
+                    securityQuestion13 = "Y";
                 }
-                else if(rbTerrorist2.isChecked()){
-                    securityQuestion13 = "No";
+                else if(rbSupportTerrorist2.isChecked()){
+                    securityQuestion13 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -905,10 +902,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbGenocide1.isChecked()){
-                    securityQuestion14 = "Yes";
+                    securityQuestion14 = "Y";
                 }
                 else if(rbGenocide2.isChecked()){
-                    securityQuestion14 = "No";
+                    securityQuestion14 = "N";
                 }
                 else{
                     showToast("Check all field");
@@ -919,10 +916,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbTorture1.isChecked()){
-                    securityQuestion15 = "Yes";
+                    securityQuestion15 = "Y";
                 }
                 else if(rbTorture2.isChecked()){
-                    securityQuestion15 = "No";
+                    securityQuestion15 = "N";
                 }
                 else{
                     showToast("Check all field");
@@ -933,10 +930,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbKilling1.isChecked()){
-                    securityQuestion16 = "Yes";
+                    securityQuestion16 = "Y";
                 }
                 else if(rbKilling2.isChecked()){
-                    securityQuestion16 = "No";
+                    securityQuestion16 = "N";
                 }
                 else{
                     showToast("Check all field");
@@ -947,10 +944,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbChildSoldier1.isChecked()){
-                    securityQuestion17 = "Yes";
+                    securityQuestion17 = "Y";
                 }
                 else if(rbChildSoldier2.isChecked()){
-                    securityQuestion17 = "No";
+                    securityQuestion17 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -961,10 +958,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbReligiousFreedom1.isChecked()){
-                    securityQuestion18= "Yes";
+                    securityQuestion18= "Y";
                 }
                 else if(rbReligiousFreedom2.isChecked()){
-                    securityQuestion18 = "No";
+                    securityQuestion18 = "N";
                 }
                 else{
                     showToast("Check all field");
@@ -975,10 +972,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbAbortion1.isChecked()){
-                    securityQuestion19 = "Yes";
+                    securityQuestion19 = "Y";
                 }
                 else if(rbAbortion2.isChecked()){
-                    securityQuestion19 = "No";
+                    securityQuestion19 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -989,10 +986,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbTransplant1.isChecked()){
-                    securityQuestion20 = "Yes";
+                    securityQuestion20 = "Y";
                 }
                 else if(rbTransplant2.isChecked()){
-                    securityQuestion20 = "No";
+                    securityQuestion20 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -1003,10 +1000,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbFraudVisa1.isChecked()){
-                    securityQuestion21 = "Yes";
+                    securityQuestion21 = "Y";
                 }
                 else if(rbFraudVisa2.isChecked()){
-                    securityQuestion21 = "No";
+                    securityQuestion21 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -1017,13 +1014,24 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbCustody1.isChecked()){
-                    securityQuestion22 = "Yes";
+                    securityQuestion22 = "Y";
                 }
                 else if(rbCustody2.isChecked()){
-                    securityQuestion22 = "No";
+                    securityQuestion22 = "N";
                 }
                 else {
                     showToast("Check all field");
+                }
+            }
+        });
+        rgViolated.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+                if(rbVoted1.isChecked()){
+                    securityQuestion23 = "Y";
+                }
+                else if(rbVoted2.isChecked()){
+                    securityQuestion23 = "N";
                 }
             }
         });
@@ -1031,10 +1039,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbAvoidingTaxation1.isChecked()){
-                    securityQuestion23 = "Yes";
+                    securityQuestion24 = "Y";
                 }
                 else if(rbAvoidingTaxation2.isChecked()){
-                    securityQuestion23 = "No";
+                    securityQuestion24 = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -1045,10 +1053,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbProstitution1.isChecked()){
-                    securityQuestion24 = "Yes";
+                    securityQuestion25 = "Y";
                 }
                 else if(rbProstitution2.isChecked()){
-                    securityQuestion24 = "No";
+                    securityQuestion25 = "N";
                 }
                 else{
                     showToast("Check all field");
@@ -1127,6 +1135,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 break;
             case R.id.button_form13:
                 moveToNextForm();
+                sendForm13Data();
                 break;
             case R.id.button_form14:
                 moveToNextForm();
@@ -1927,7 +1936,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart("ques_24", securityQuestion24)
                 .addFormDataPart("ques_25", securityQuestion25)
                 .build();
-        Request request = new Request.Builder().url(BASE_URL_FORM14).post(requestBody).build();
+        Request request = new Request.Builder().url(BASE_URL_FORM13).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new okhttp3.Callback() {
 
@@ -1996,7 +2005,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart("device_type", "app")
                 .addFormDataPart("device_os", "")
                 .build();
-        Request request = new Request.Builder().url(BASE_URL_FORM14).post(requestBody).build();
+        Request request = new Request.Builder().url(BASE_URL_FORM13).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new okhttp3.Callback() {
 
