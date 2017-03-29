@@ -9,16 +9,29 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp">
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/usa_form6_purpose_trip"
-                android:id="@+id/purpose_us"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="Purpose of Trip to the U.S."
+                android:textColor="@color/colorAccent"/>
+            <android.support.v7.widget.AppCompatSpinner
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/spnr_purpose_trip"
+                android:spinnerMode="dialog"
+                android:layout_weight="1">
+            </android.support.v7.widget.AppCompatSpinner>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorAccent"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
