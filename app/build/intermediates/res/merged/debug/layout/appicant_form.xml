@@ -1097,6 +1097,7 @@
                     <android.support.v7.widget.AppCompatSpinner
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:spinnerMode="dialog"
                         android:id="@+id/marital_status_form2_applicant"
                         android:layout_weight="1">
                     </android.support.v7.widget.AppCompatSpinner>

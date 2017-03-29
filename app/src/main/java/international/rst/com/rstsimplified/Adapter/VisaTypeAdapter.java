@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,17 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import international.rst.com.rstsimplified.Activities.FormActivity;
 import international.rst.com.rstsimplified.Model.VisaType_;
 import international.rst.com.rstsimplified.R;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTypeHolder> {
 
@@ -37,6 +43,8 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     public SharedPreferences sharedPreferences;
     String finalVisaName;
     float mngComboFee;
+    private OkHttpClient client = new OkHttpClient();
+    private static String URL_USA_FORM1 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
 
 
     public VisaTypeAdapter(Context context, List<VisaType_> visaTypes){
@@ -82,6 +90,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
             switch (view.getId()){
                 case R.id.button_submit_combo:
                     serviceType = visaTypes.get(position).getEntryType();
@@ -116,6 +125,9 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
                     sharedPreferences.edit().putString("device_name", deviceName).apply();
                     sharedPreferences.edit().putString("device_os", deviceOS).apply();
                     sharedPreferences.edit().putString("visa_name", finalVisaName).apply();
+                    if(sharedPreferences.getInt("visa_id",0) == 1){
+                        //sendForm1Data();
+                    }
                     break;
                 case R.id.button_submit_regular:
                     serviceType = visaTypes.get(position).getEntryType();
@@ -149,6 +161,9 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
                     sharedPreferences.edit().putString("device_name", deviceName).apply();
                     sharedPreferences.edit().putString("device_os", deviceOS).apply();
                     sharedPreferences.edit().putString("visa_name", finalVisaName).apply();
+                    if(sharedPreferences.getInt("visa_id",0) == 1){
+                        //sendForm1Data();
+                    }
                     break;
             }
         }
@@ -216,6 +231,65 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     @Override
     public int getItemCount() {
         return visaTypes.size();
+    }
+    private void sendForm1Data(){
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        int stateId = sharedPreferences.getInt("state_id",0);
+        String state  = String.valueOf(stateId);
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("NationalityId", "")
+                .addFormDataPart("LivingInId", "")
+                .addFormDataPart("StateId",state )
+                .addFormDataPart("MissionId", "")
+                .addFormDataPart("VisaTypeId", String.valueOf(visaTypeID))
+                .addFormDataPart("VisaDurationId", "")
+                .addFormDataPart("NoOfEntries", "")
+                .addFormDataPart("VisaIssuedType", "")
+                .addFormDataPart("service_type", serviceType)
+                .addFormDataPart("CurrencyId", String.valueOf(currencyID))
+                .addFormDataPart("govtFee", String.valueOf(govtFee))
+                .addFormDataPart("serviceFee", String.valueOf(serviceFee))
+                .addFormDataPart("processingTime", processingTime)
+                .addFormDataPart("createdDate", "")
+                .addFormDataPart("EnterdBy", "")
+                .addFormDataPart("ip", "")
+                .addFormDataPart("modifiedDate", "")
+                .addFormDataPart("modifiedBy", "")
+                .addFormDataPart("device_type", "app")
+                .addFormDataPart("device_os", "Android")
+
+
+                .build();
+        Request request = new Request.Builder().url(URL_USA_FORM1).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+
+            public static final String MODE_PRIVATE = "";
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    resp = response.body().string();
+                    Log.v("response", resp);
+                    if (response.isSuccessful()) {
+                        sharedPreferences.edit().putString("response", "").apply();
+                    }else {
+                        //
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
     }
 
 

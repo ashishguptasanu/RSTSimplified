@@ -1218,11 +1218,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 break;
             case R.id.spnr_usa_gender_applicant:
                 sharedPreferences.edit().putInt("gender_usa", i).apply();
+                selectedUsaGender = genderUsa[i];
                 break;
             case R.id.marital_status_form2_applicant:
                 sharedPreferences.edit().putInt("marital_usa", i).apply();
-
-
+                selectedUsaMarital = maritalUsa[i];
+                break;
         }
     }
 
@@ -1790,8 +1791,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("last_id",sharedPreferences.getString("response_usa",""))
-                .addFormDataPart("gender", "Male")
-                .addFormDataPart("MaritalStatus", "Single")
+                .addFormDataPart("gender", selectedUsaGender)
+                .addFormDataPart("MaritalStatus", selectedUsaMarital)
                 .addFormDataPart("Address1", addressApplicantUsa.getText().toString())
                 .addFormDataPart("Address2", "")
                 .addFormDataPart("City", cityApplicantUsa.getText().toString())
