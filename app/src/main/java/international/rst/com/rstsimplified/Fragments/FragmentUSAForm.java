@@ -55,7 +55,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
-    String title, resp, securityQuestion1, securityQuestion2, securityQuestion3, securityQuestion4, securityQuestion5, securityQuestion6, securityQuestion7, securityQuestion8, securityQuestion9, securityQuestion10, securityQuestion11, securityQuestion12, securityQuestion13, securityQuestion14, securityQuestion15, securityQuestion16, securityQuestion17, securityQuestion18, securityQuestion19, securityQuestion20, securityQuestion21, securityQuestion22, securityQuestion23, securityQuestion24, securityQuestion25;
+    String title, resp, securityQuestion1, securityQuestion2, securityQuestion3, securityQuestion4, securityQuestion5, securityQuestion6, securityQuestion7, securityQuestion8, securityQuestion9, securityQuestion10, securityQuestion11, securityQuestion12, securityQuestion13, securityQuestion14, securityQuestion15, securityQuestion16, securityQuestion17, securityQuestion18, securityQuestion19, securityQuestion20, securityQuestion21, securityQuestion22, securityQuestion23, securityQuestion24, securityQuestion25, selectedGenderSpnr, selectedMaritalSpnr, selectedLostPassportSpnr, selectedPlaceBirthSpnr, selectedBirthStateSpnr, selectedNationalitySpnr, selectedMailingCountrySpnr, selectedDocumentTypeSpnr, selectedPurposeSpnr, selectedLengthSpnr, selectedStateusSpnr, selectedPayeeSpnr, selectedRelationSpnr, selectedPersonTypeSpnr, selectedrelationUsSpnr, selectedStateStaySpnr;
     View view;
     ViewPager mViewPager;
     int atTab;
@@ -240,6 +240,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void initializeForm3View() {
         birthCountrySpnr = (Spinner)view.findViewById(R.id.spnr_birth_country);
         nationalitySpnr = (Spinner)view.findViewById(R.id.country_origin);
+        birthCountrySpnr.setOnItemSelectedListener(this);
+        nationalitySpnr.setOnItemSelectedListener(this);
         loadAllCountries();
         surName = (EditText)view.findViewById(R.id.surname);
         givenName = (EditText)view.findViewById(R.id.given_name);
@@ -256,6 +258,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         otherNationality = (EditText)view.findViewById(R.id.other_country_nationality);
         otherPassportNumber = (EditText)view.findViewById(R.id.other_passport_number);
         residentOtherCountry = (Spinner)view.findViewById(R.id.spnr_resident_other_country);
+        residentOtherCountry.setOnItemSelectedListener(this);
         rgGender = (RadioGroup)view.findViewById(R.id.rg_gender);
         rbGender1 = (RadioButton)view.findViewById(R.id.rb_gender1);
         rbGender2 = (RadioButton)view.findViewById(R.id.rb_gender2);
@@ -424,6 +427,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         addressStayUS = (EditText)view.findViewById(R.id.address_us_stay);
         cityStayUs = (EditText)view.findViewById(R.id.stay_us_city);
         stateStayUs  = (Spinner)view.findViewById(R.id.spnr_state_us);
+        stateStayUs.setOnItemSelectedListener(this);
         buttonForm6 = (Button)view.findViewById(R.id.button_form6);
         buttonForm6.setOnClickListener(this);
 
@@ -523,6 +527,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         nameContactUs = (EditText)view.findViewById(R.id.full_name_contact_us);
         addressContactUs = (EditText) view.findViewById(R.id.address_contact_us);
         stateContactUs = (Spinner)view.findViewById(R.id.spnr_state_contact_us);
+        stateContactUs.setOnItemSelectedListener(this);
         codeContactUs = (EditText)view.findViewById(R.id.phone_code_contact_us);
         numberContactUs = (EditText)view.findViewById(R.id.contact_number_us);
         buttonForm9 = (Button)view.findViewById(R.id.button_form9);
@@ -685,7 +690,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rbTorture1 = (RadioButton)view.findViewById(R.id.rb_torture1);
         rbTorture2 = (RadioButton)view.findViewById(R.id.rb_torture2);
         rgKilling = (RadioGroup)view.findViewById(R.id.rg_killing);
-
         rbKilling1 = (RadioButton)view.findViewById(R.id.rb_killing1);
         rbKilling2 = (RadioButton)view.findViewById(R.id.rb_killing2);
         rgChildSoldiers = (RadioGroup)view.findViewById(R.id.rg_child_soldiers);
@@ -1135,32 +1139,41 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        /*switch (view.getId()){
-            case R.id.spnr_usa_gender:
-                break;
-            case R.id.marital_status_form2:
-                break;
-            case R.id.stolen_passport:
-                break;
+        switch (adapterView.getId()){
             case R.id.spnr_birth_country:
                 break;
             case R.id.country_origin:
                 break;
+            case R.id.spnr_resident_other_country:
+                break;
+            case R.id.spnr_birth_state:
+                break;
+            case R.id.country_region_spnr:
+                break;
             case R.id.spnr_document_type:
                 break;
-            case R.id.spnr_indented_length:
+            case R.id.spnr_lost_passport:
+                break;
+            case R.id.spnr_country_stolen_passport:
                 break;
             case R.id.spnr_person_paying:
                 break;
-            case R.id.spnr_contact_person_us:
+            case R.id.spnr_relation_payee_trip:
                 break;
-            case R.id.spnr_relation_contact_us:
+            case R.id.spnr_state_contact_us:
+                break;
+            case R.id.spnr_father_status:
+                break;
+            case R.id.spnr_status_mother:
                 break;
             case R.id.spnr_primary_occupation:
                 break;
             case R.id.spnr_consulate_interview:
                 break;
-        }*/
+            case R.id.spnr_state_interview:
+                break;
+
+        }
     }
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
