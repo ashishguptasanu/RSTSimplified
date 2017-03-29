@@ -442,7 +442,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         lastNameUsa = (EditText)view.findViewById(R.id.name_last_usa);
         emailUsa = (EditText)view.findViewById(R.id.email_usa);
         phoneCodeUsa = (EditText)view.findViewById(R.id.phone_code_usa);
-        phoneCodeUsa.setText("+" + sharedPreferences.getString("code",""));
+        phoneCodeUsa.setText(sharedPreferences.getString("phone_code_usa",""));
         phoneUsa = (EditText)view.findViewById(R.id.phone_applicant_usa);
         arrivalDateUsa = (EditText)view.findViewById(R.id.edt_arrival_usa);
         departureDateUsa = (EditText)view.findViewById(R.id.edt_departure_usa);
@@ -1709,7 +1709,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("vad_id", "")
                 .addFormDataPart("first_name", firstNameUsa.getText().toString())
                 .addFormDataPart("last_name", lastNameUsa.getText().toString())
-                .addFormDataPart("phone_code", "")
+                .addFormDataPart("phone_code", sharedPreferences.getString("phone_code_usa",""))
                 .addFormDataPart("mobile_num", phoneUsa.getText().toString())
                 .addFormDataPart("email", emailUsa.getText().toString())
                 .addFormDataPart("email_varified","N")

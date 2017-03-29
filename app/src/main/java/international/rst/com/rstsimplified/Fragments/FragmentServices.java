@@ -320,6 +320,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 final String code= ("+" + phoneCode);
                 sharedPreferences.edit().putString("code", code).apply();
                 if(selectedVisaId == 1 && selectedLiving != 0){
+                    sharedPreferences.edit().putString("phone_code_usa", phoneCode).apply();
                     mProgressBar.setVisibility(View.VISIBLE);
                     linearLayoutStates.setVisibility(View.GONE);
                     urlStates = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=" + selectedLivingIn;

@@ -193,7 +193,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         email = (EditText)view.findViewById(R.id.email_usa);
         mobileNumberCurrent = (EditText)view.findViewById(R.id.phone_applicant_usa);
         phoneCodeUsa = (EditText)view.findViewById(R.id.phone_code_usa);
-        phoneCodeUsa.setText(sharedPreferences.getString("code",""));
+        phoneCodeUsa.setText(sharedPreferences.getString("phone_code_usa",""));
         arrivingDate = (EditText)view.findViewById(R.id.edt_arrival_usa);
         departureDate = (EditText)view.findViewById(R.id.edt_departure_usa);
         buttonForm1 = (Button)view.findViewById(R.id.button_form1);
@@ -377,7 +377,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rbMailAddress1 = (RadioButton)view.findViewById(R.id.rb_mailing_address1);
         rbMailAddress2 = (RadioButton)view.findViewById(R.id.rb_mailing_address2);
         countryCode = (EditText)view.findViewById(R.id.country_code);
-        countryCode.setText(sharedPreferences.getString("code",""));
+        countryCode.setText(sharedPreferences.getString("phone_code_usa",""));
         primaryPhoneNumber = (EditText)view.findViewById(R.id.primary_phone_number);
         primaryPhoneNumber.setText(sharedPreferences.getString("phone_usa",""));
         secondaryPhoneNumber = (EditText)view.findViewById(R.id.secondary_phone_number);
