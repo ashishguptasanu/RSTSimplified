@@ -1712,7 +1712,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("phone_code", sharedPreferences.getString("phone_code_usa",""))
                 .addFormDataPart("mobile_num", phoneUsa.getText().toString())
                 .addFormDataPart("email", emailUsa.getText().toString())
-                .addFormDataPart("email_varified","N")
+                .addFormDataPart("email_verified","N")
                 .addFormDataPart("service_type","")
                 .addFormDataPart("consulate_status", "")
                 .addFormDataPart("visa_status","")
