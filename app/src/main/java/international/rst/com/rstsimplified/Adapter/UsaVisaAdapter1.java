@@ -1,6 +1,8 @@
 package international.rst.com.rstsimplified.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,8 @@ import international.rst.com.rstsimplified.R;
 public class UsaVisaAdapter1 extends RecyclerView.Adapter<UsaVisaAdapter1.MyViewHolder> {
     private List<VisaType_> visaTypes1 = new ArrayList<>();
     Context context;
+    SharedPreferences sharedPreferences;
+    float totalFeeVisa;
     private TextView visaName, visaType, visaValidity, processingTime, visaFee, serviceFee, totalFee;
     private Button button_submit;
 
@@ -27,7 +31,7 @@ public class UsaVisaAdapter1 extends RecyclerView.Adapter<UsaVisaAdapter1.MyView
 
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -39,6 +43,21 @@ public class UsaVisaAdapter1 extends RecyclerView.Adapter<UsaVisaAdapter1.MyView
             serviceFee = (TextView)itemView.findViewById(R.id.service_fee1_usa1);
             totalFee = (TextView)itemView.findViewById(R.id.total_fee1_usa);
             button_submit = (Button)itemView.findViewById(R.id.button_submit_usa);
+            button_submit.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+            sharedPreferences.edit().putFloat("govt_fee", visaTypes1.get(position).getGovtFee()).apply();
+            sharedPreferences.edit().putFloat("service_fee", visaTypes1.get(position).getServiceFee()).apply();
+            sharedPreferences.edit().putString("processing_time", visaTypes1.get(position).getProcessingTime()).apply();
+            sharedPreferences.edit().putInt("visa_type_id", visaTypes1.get(position).getVisaTypeId()).apply();
+            sharedPreferences.edit().putString("visa_name", visaTypes1.get(position).getName()).apply();
+            totalFeeVisa = visaTypes1.get(position).getGovtFee() + visaTypes1.get(position).getServiceFee();
+            sharedPreferences.edit().putFloat("total_fee",totalFeeVisa).apply();
+
         }
     }
     @Override
@@ -56,6 +75,8 @@ public class UsaVisaAdapter1 extends RecyclerView.Adapter<UsaVisaAdapter1.MyView
         processingTime.setText(visaTypes1.get(position).getProcessingTime());
         visaFee.setText(String.valueOf(visaTypes1.get(position).getGovtFee()));
         serviceFee.setText(String.valueOf(visaTypes1.get(position).getServiceFee()));
+        totalFeeVisa = visaTypes1.get(position).getGovtFee() + visaTypes1.get(position).getServiceFee();
+        totalFee.setText(String.valueOf(totalFeeVisa));
 
     }
 
