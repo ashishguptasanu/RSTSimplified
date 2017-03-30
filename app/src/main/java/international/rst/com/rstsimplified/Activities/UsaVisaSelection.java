@@ -148,13 +148,15 @@ public class UsaVisaSelection extends AppCompatActivity
         public android.support.v4.app.Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return FragementUsaVisaType.newFormInstance("consult");
+                    return FragementUsaVisaType.newFormInstance("business");
                 case 1:
-                    return FragementUsaVisaType.newFormInstance("contact");
+                    return FragementUsaVisaType.newFormInstance("family");
                 case 2:
-                    return FragementUsaVisaType.newFormInstance("applicant");
+                    return FragementUsaVisaType.newFormInstance("tourist");
                 case 3:
-                    return FragementUsaVisaType.newFormInstance("docs");
+                    return FragementUsaVisaType.newFormInstance("work");
+                case 4:
+                    return FragementUsaVisaType.newFormInstance("treaty");
                 default:
                     return  PlaceholderFragment.newFormInstance(1, "");
             }
