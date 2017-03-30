@@ -147,41 +147,48 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
             android:visibility="gone"
-            android:layout_marginRight="10dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/stolen_passport_field1"/>
-            <android.support.v7.widget.AppCompatSpinner
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/spnr_country_stolen_passport"
-                android:layout_weight="1">
-            </android.support.v7.widget.AppCompatSpinner>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorAccent"/>
-        </LinearLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:id="@+id/stolen_field2">
-
-            <EditText
-                android:id="@+id/stolen_passport_field2"
+            android:id="@+id/stolen_passport_layout5">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/stolen_passport_field2"
-                android:inputType="text"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:visibility="gone"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/stolen_passport_field1"/>
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/spnr_country_stolen_passport"
+                    android:layout_weight="1">
+                </android.support.v7.widget.AppCompatSpinner>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent"/>
+            </LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:id="@+id/stolen_field2">
+
+                <EditText
+                    android:id="@+id/stolen_passport_field2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/stolen_passport_field2"
+                    android:inputType="text"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="28dp"

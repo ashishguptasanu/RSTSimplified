@@ -93,12 +93,12 @@ import java.util.Objects;
 public class FragmentForm extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     View view;
     String livingInId, nationalityId, selectedGCC, selectedPort, serviceType, livingId, serviceFeeCs, processingTime, deviceType, deviceOS, fullNameVisa, title, selectedProfession,selectedProfessionID, selectedIssueCountry, selectedGender, selectedReligion,selectedCountry, selectedEmirate, selectedPhoneCode, selectedMaritalStatus, fileName, selectedFile1, selectedFile2,selectedFile3,selectedFile4,selectedFile5,selectedFile6, resp, arrivalDate, departureDate, fullNameApplicant, birthDateApplicant, passportNumberApplicant, savedArrivalDate, savedDepartureDate, selectedDuration, selectedPurpose, nationalityID, livingIn, codePhone, selectedUsaGender, selectedUsaMarital;
-    String[] gender, religion, gccList, addressType, purpose, duration, visaType, genderUsa, maritalUsa;
+    String[] gender, religion, gccList, addressType, purpose, duration, visaType, genderUsa, maritalUsa, stolenPassport;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay, noVisitIran, purposeVisitIran, lastVisitIran, visaNoIran, visitDateIran, otherCountryVisited,nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification, occupation, jobTitle, companyName, acticvityField, companyTelephone, previousNationality, firstNameUsa, lastNameUsa, emailUsa, phoneUsa, arrivalDateUsa, departureDateUsa, nationalityUsa, addressApplicantUsa, cityApplicantUsa, placeBirthUsa, stateUsa, postalUsa, countryUsa, passportNumberUsa, cityIssuedUsa, countryIssuedUsa, issueDateUsa, expiryDateUsa, phoneCodeUsa;
     TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputDeparture, previousNation;
     CardView cardDocs5, cardDocs6;
-    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose, spnrVisaFor, spnrApplyingFrom, spnrMaritalUsa;
+    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose, spnrVisaFor, spnrApplyingFrom, spnrMaritalUsa, spnrStolenPassport;
     RadioButton radioButton1, radioButton2, singaporeRb1, singaporeRb2, singaporeRb3, singaporeRb4, singaporeRb5,singaporeRb6,singaporeRb7,singaporeRb8,singaporeRb9,singaporeRb10, radioButtonIran1, radioButtonIran2;
     RadioGroup radioGrpSingapore1, radioGrpSingapore2, radioGrpSingapore3, radioGrpSingapore4, radioGrpSingapore5, radioGroupIran;
     LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose, layoutIranConsult, layoutCompanyDetails, visitedIranLayout, visitedIranInfoLayout, layoutContactOther, layoutContactUsa, layoutApplicantOther, layoutApplicantUsa;
@@ -1224,6 +1224,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 sharedPreferences.edit().putInt("marital_usa", i).apply();
                 selectedUsaMarital = maritalUsa[i];
                 break;
+            case R.id.stolen_passport:
+                sharedPreferences.edit().putInt("stolen_passport", i).apply();
         }
     }
 
@@ -1373,6 +1375,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         ArrayAdapter<String> maritalAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, maritalUsa);
         maritalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrMaritalUsa.setAdapter(maritalAdapter);
+    }
+    private void populateStolenPassportSpinner() {
+        spnrStolenPassport = (Spinner)view.findViewById(R.id.stolen_passport);
+        spnrStolenPassport.setOnItemSelectedListener(this);
+        stolenPassport = new String[]{"Select One", "Yes", "No"};
+        ArrayAdapter<String> stolenPassportAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, stolenPassport);
+        stolenPassportAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnrStolenPassport.setAdapter(stolenPassportAdapter);
     }
     private void populateGCCSpinner() {
         spnrGCC = (Spinner)view.findViewById(R.id.spnr_sponsor);

@@ -61,7 +61,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     int atTab;
     SharedPreferences sharedPreferences;
     TextInputLayout otherPassportLayout, groupNameLayout;
-    LinearLayout mailingLayout, otherNameLayout, telecodeLayout, otherNationalityLayout, permanentResidentLayout, personTravellingLayout, layoutOtherPerson;
+    LinearLayout mailingLayout, otherNameLayout, telecodeLayout, otherNationalityLayout, permanentResidentLayout, personTravellingLayout, layoutOtherPerson, stolenPassportLayout;
     String[] gender, martialStatus, documentType, stolen, contactPersonUs, relationPerson, indentedLength, payingTrip;
     Button buttonForm1, buttonForm2, buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15;
     EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality, otherSurName, otherGivenName, telecodeSurname, telecodeGivenName, otherNationality, otherPassportNumber, otherMailingAddress, otherCityMailing, otherStateMailing, otherPostalMailing, phoneCodeUsa, cityStayUs;
@@ -406,6 +406,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         });
     }
     private void initializeForm5View() {
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
         passportNumber = (EditText)view.findViewById(R.id.travel_document_number);
         passportBookNumber = (EditText)view.findViewById(R.id.passport_book_number);
         issueCountry = (EditText)view.findViewById(R.id.issue_country_name);
@@ -414,6 +415,13 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         issueDate = (EditText)view.findViewById(R.id.issued_date);
         expiryDate = (EditText)view.findViewById(R.id.expiry_date);
         buttonForm5 = (Button)view.findViewById(R.id.button_form5);
+        stolenPassportLayout = (LinearLayout)view.findViewById(R.id.stolen_passport_layout5);
+        if(sharedPreferences.getInt("stolen_passport",0) == 1){
+            stolenPassportLayout.setVisibility(View.VISIBLE);
+        }
+        else{
+            stolenPassportLayout.setVisibility(View.GONE);
+        }
         buttonForm5.setOnClickListener(this);
     }
     private void initializeForm6View() {
