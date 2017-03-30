@@ -32,6 +32,11 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
     String title, visaUrl;
     SharedPreferences sharedPreferences;
     private List<VisaType_> visaTypes = new ArrayList<>();
+    private List<VisaType_> visaTypes1 = new ArrayList<>();
+    private List<VisaType_> visaTypes2 = new ArrayList<>();
+    private List<VisaType_> visaTypes3 = new ArrayList<>();
+    private List<VisaType_> visaTypes4 = new ArrayList<>();
+    private List<VisaType_> visaTypes5 = new ArrayList<>();
     public FragementUsaVisaType() {
     }
     public static FragementUsaVisaType newFormInstance(String title) {
@@ -73,6 +78,24 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
                 if(response != null){
                     VisaType jsonResponse = response.body();
                     visaTypes = jsonResponse.getVisaType();
+                    for(int i=0; i<visaTypes.size();i++){
+                        if (visaTypes.get(i).getVisaTypeId() == 1){
+                            visaTypes1.add(visaTypes.get(i));
+                        }
+                        else if(visaTypes.get(i).getVisaTypeId() == 2){
+                            visaTypes2.add(visaTypes2.get(i));
+                        }
+                        else if(visaTypes.get(i).getVisaTypeId() == 3){
+                            visaTypes2.add(visaTypes2.get(i));
+                        }
+                        else if(visaTypes.get(i).getVisaTypeId() == 4){
+                            visaTypes2.add(visaTypes2.get(i));
+                        }
+                        else if(visaTypes.get(i).getVisaTypeId() == 5){
+                            visaTypes2.add(visaTypes2.get(i));
+                        }
+
+                    }
                     //adapter = new VisaTypeAdapter(getApplicationContext(),visaTypes);
                     //recyclerView.setAdapter(adapter);
                 }
