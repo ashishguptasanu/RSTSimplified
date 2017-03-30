@@ -26,6 +26,7 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import international.rst.com.rstsimplified.Activities.UsaVisaSelection;
 import international.rst.com.rstsimplified.Activities.VisaTypeSelection;
 import international.rst.com.rstsimplified.Model.Country;
 import international.rst.com.rstsimplified.Model.CountryRes;
@@ -375,7 +376,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                 }
                 else if(selectedVisaId == 1){
                     if (selectedLivingIn != 0 && selectedNationality != 0 && stateItemNumber !=0) {
-                        Intent intent = new Intent(getContext(), VisaTypeSelection.class);
+                        Intent intent = new Intent(getContext(), UsaVisaSelection.class);
                         intent.putExtra("livingid", selectedLivingIn);
                         intent.putExtra("nationid", selectedNationality);
                         intent.putExtra("stateid", selectedStateId);

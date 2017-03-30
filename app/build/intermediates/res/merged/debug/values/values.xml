@@ -786,6 +786,7 @@
     <string name="title_activity_splash">RST Simplified</string>
     <string name="title_activity_summary_page">Order Summary</string>
     <string name="title_activity_usa_form">Fill USA Consult Form</string>
+    <string name="title_activity_usa_visa_selection">Select Visa</string>
     <string name="title_activity_visa_services_options">Enter Details</string>
     <string name="title_activity_visa_type_selection">Select Visa Type</string>
     <string name="travelling_with_group">Are you travelling as part of a group or organisation?</string>

@@ -416,6 +416,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         expiryDate = (EditText)view.findViewById(R.id.expiry_date);
         buttonForm5 = (Button)view.findViewById(R.id.button_form5);
         stolenPassportLayout = (LinearLayout)view.findViewById(R.id.stolen_passport_layout5);
+        populateStolenPassportSpinner();
         if(sharedPreferences.getInt("stolen_passport",0) == 1){
             stolenPassportLayout.setVisibility(View.VISIBLE);
         }

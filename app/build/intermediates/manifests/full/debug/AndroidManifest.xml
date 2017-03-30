@@ -70,6 +70,10 @@
             android:name="international.rst.com.rstsimplified.Activities.UsaFormActivity"
             android:label="@string/title_activity_usa_form"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="international.rst.com.rstsimplified.Activities.UsaVisaSelection"
+            android:label="@string/title_activity_usa_visa_selection"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

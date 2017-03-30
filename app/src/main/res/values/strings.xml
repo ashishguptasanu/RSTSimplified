@@ -185,4 +185,5 @@
     <string name="lost_us_visa">Has your U.S. visa ever been lost or Stolen?</string>
     <string name="year_visa_stolen">Enter the year in which visa was lost or stolen?</string>
     <string name="visa_cancelled">Has your U.S. visa ever been cancelled or revoked?</string>
+    <string name="title_activity_usa_visa_selection">Select Visa</string>
 </resources>
