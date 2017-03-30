@@ -1,6 +1,7 @@
 package international.rst.com.rstsimplified.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import international.rst.com.rstsimplified.Activities.UsaFormActivity;
 import international.rst.com.rstsimplified.Model.VisaType_;
 import international.rst.com.rstsimplified.R;
 
@@ -57,6 +59,8 @@ public class UsaVisaAdapter1 extends RecyclerView.Adapter<UsaVisaAdapter1.MyView
             sharedPreferences.edit().putString("visa_name", visaTypes1.get(position).getName()).apply();
             totalFeeVisa = visaTypes1.get(position).getGovtFee() + visaTypes1.get(position).getServiceFee();
             sharedPreferences.edit().putFloat("total_fee",totalFeeVisa).apply();
+            Intent intent = new Intent(context, UsaFormActivity.class);
+            context.startActivity(intent);
 
         }
     }

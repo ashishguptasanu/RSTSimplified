@@ -128,6 +128,11 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
         call.enqueue(new Callback<VisaType>() {
             @Override
             public void onResponse(Call<VisaType> call, Response<VisaType> response) {
+                visaTypes1.clear();
+                visaTypes2.clear();
+                visaTypes3.clear();
+                visaTypes4.clear();
+                visaTypes5.clear();
                 if(response != null){
                     VisaType jsonResponse = response.body();
                     visaTypes = jsonResponse.getVisaType();
@@ -159,6 +164,7 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
                     //adapter = new VisaTypeAdapter(getApplicationContext(),visaTypes);
                     //recyclerView.setAdapter(adapter);
                 }
+                System.out.println(visaTypes.size()+ "  " + visaTypes1.size()+ "  "+ visaTypes2.size()+ "  "+ visaTypes3.size()+ "  "+ visaTypes4.size());
 
             }
             @Override
