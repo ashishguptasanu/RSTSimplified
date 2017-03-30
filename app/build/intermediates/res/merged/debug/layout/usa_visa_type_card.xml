@@ -22,9 +22,8 @@
             android:background="@color/viewColour2"
             android:text="14 days Visa"
             android:textColor="@color/colorPrimary"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold" />
-
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -39,7 +38,7 @@
                     android:layout_width="0dp"
                     android:layout_height="2dp"
                     android:layout_marginTop="1dp"
-                    android:layout_weight="1" />
+                    android:layout_weight=".7" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -64,7 +63,7 @@
                     android:id="@+id/textView4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight=".7"
                     android:text="Type of Visa"
                     android:textColor="@color/colorPrimary" />
 
@@ -91,7 +90,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight=".7"
                     android:text="Visa Validity"
                     android:textColor="@color/colorPrimary" />
 
@@ -116,7 +115,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight=".7"
                     android:text="Processing Time"
                     android:textColor="@color/colorPrimary" />
 
@@ -142,7 +141,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight=".7"
                     android:text="Visa Fee($)"
                     android:textColor="@color/colorPrimary" />
 
@@ -169,7 +168,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight=".7"
                     android:text="Service Fee($)"
                     android:textColor="@color/colorPrimary" />
 
@@ -194,7 +193,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight=".7"
                     android:text="Total Fee($)"
                     android:textColor="@color/colorPrimary" />
 
@@ -222,7 +221,7 @@
             <Button
                 android:id="@+id/button_submit_usa"
                 android:layout_width="0dp"
-                android:layout_height="22dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight=".5"
