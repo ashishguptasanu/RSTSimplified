@@ -16,11 +16,11 @@ import international.rst.com.rstsimplified.R;
  * Created by Ashish on 30-03-2017.
  */
 
-public class UsaVisaAdapter1 extends RecyclerView.Adapter<UsaVisaAdapter1.MyViewHolder> {
+public class UsaVisaAdapter4 extends RecyclerView.Adapter<UsaVisaAdapter1.MyViewHolder> {
     private List<VisaType_> visaTypes1 = new ArrayList<>();
     Context context;
 
-    public UsaVisaAdapter1(Context context, List<VisaType_> visaTypes1){
+    public UsaVisaAdapter4(Context context, List<VisaType_> visaTypes1){
         this.context = context;
         this.visaTypes1 = visaTypes1;
 

@@ -86,15 +86,14 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
                             visaTypes2.add(visaTypes2.get(i));
                         }
                         else if(visaTypes.get(i).getVisaTypeId() == 3){
-                            visaTypes2.add(visaTypes2.get(i));
+                            visaTypes3.add(visaTypes2.get(i));
                         }
                         else if(visaTypes.get(i).getVisaTypeId() == 4){
-                            visaTypes2.add(visaTypes2.get(i));
+                            visaTypes4.add(visaTypes2.get(i));
                         }
-                        else if(visaTypes.get(i).getVisaTypeId() == 5){
-                            visaTypes2.add(visaTypes2.get(i));
+                        else if(visaTypes.get(i).getVisaTypeId() == 8){
+                            visaTypes5.add(visaTypes2.get(i));
                         }
-
                     }
                     //adapter = new VisaTypeAdapter(getApplicationContext(),visaTypes);
                     //recyclerView.setAdapter(adapter);
