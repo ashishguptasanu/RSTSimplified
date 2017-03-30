@@ -2940,7 +2940,7 @@ containing a value of this type.
         public static final int always=0x7f0d003d;
         public static final int applicant_layout_other=0x7f0d0081;
         public static final int applicant_layout_usa=0x7f0d00cf;
-        public static final int apply=0x7f0d0288;
+        public static final int apply=0x7f0d0292;
         public static final int arriving_from_uae=0x7f0d00a8;
         public static final int attach_file1=0x7f0d0144;
         public static final int attach_file2=0x7f0d0147;
@@ -2991,8 +2991,8 @@ containing a value of this type.
         public static final int button_form8=0x7f0d027e;
         public static final int button_form9=0x7f0d0285;
         public static final int button_payment=0x7f0d0123;
-        public static final int button_submit_combo=0x7f0d029a;
-        public static final int button_submit_regular=0x7f0d029b;
+        public static final int button_submit_combo=0x7f0d029c;
+        public static final int button_submit_regular=0x7f0d028e;
         public static final int cancel_action=0x7f0d016c;
         public static final int car_parking=0x7f0d02a4;
         public static final int card1=0x7f0d010f;
@@ -3058,7 +3058,7 @@ containing a value of this type.
         public static final int design_menu_item_action_area_stub=0x7f0d013f;
         public static final int design_menu_item_text=0x7f0d013e;
         public static final int design_navigation_view=0x7f0d013d;
-        public static final int details=0x7f0d029c;
+        public static final int details=0x7f0d028f;
         public static final int disableHome=0x7f0d0013;
         public static final int doc1=0x7f0d0142;
         public static final int doc2=0x7f0d0145;
@@ -3117,7 +3117,7 @@ containing a value of this type.
         public static final int fill_horizontal=0x7f0d0031;
         public static final int fill_vertical=0x7f0d0032;
         public static final int fixed=0x7f0d0042;
-        public static final int flag_image=0x7f0d0289;
+        public static final int flag_image=0x7f0d0293;
         public static final int formViewPager=0x7f0d0076;
         public static final int full_name_contact_us=0x7f0d0280;
         public static final int full_name_father=0x7f0d0180;
@@ -3252,8 +3252,8 @@ containing a value of this type.
         public static final int previous_citizenship=0x7f0d00ce;
         public static final int previous_nationality=0x7f0d0089;
         public static final int primary_phone_number=0x7f0d0247;
-        public static final int processing_time=0x7f0d0293;
-        public static final int processing_time1=0x7f0d0292;
+        public static final int processing_time=0x7f0d0298;
+        public static final int processing_time1=0x7f0d028a;
         public static final int progress=0x7f0d0162;
         public static final int progress_circular=0x7f0d0006;
         public static final int progress_horizontal=0x7f0d0007;
@@ -3441,8 +3441,8 @@ containing a value of this type.
         public static final int secondary_phone_number=0x7f0d0248;
         public static final int security_number=0x7f0d0237;
         public static final int select_dialog_listview=0x7f0d0075;
-        public static final int service_fee=0x7f0d0297;
-        public static final int service_fee1=0x7f0d0296;
+        public static final int service_fee=0x7f0d029a;
+        public static final int service_fee1=0x7f0d028c;
         public static final int services_submission=0x7f0d0163;
         public static final int shortcut=0x7f0d005f;
         public static final int showCustom=0x7f0d0016;
@@ -3533,7 +3533,7 @@ containing a value of this type.
         public static final int textView=0x7f0d0167;
         public static final int textView2=0x7f0d007a;
         public static final int textView3=0x7f0d015c;
-        public static final int textView4=0x7f0d028b;
+        public static final int textView4=0x7f0d0287;
         public static final int textView5=0x7f0d00f5;
         public static final int textView6=0x7f0d00e6;
         public static final int text_input_password_toggle=0x7f0d0141;
@@ -3547,8 +3547,8 @@ containing a value of this type.
         public static final int toolbar=0x7f0d007b;
         public static final int top=0x7f0d0036;
         public static final int topPanel=0x7f0d0059;
-        public static final int total_fee=0x7f0d0299;
-        public static final int total_fee1=0x7f0d0298;
+        public static final int total_fee=0x7f0d029b;
+        public static final int total_fee1=0x7f0d028d;
         public static final int total_fee_summary=0x7f0d012f;
         public static final int touch_outside=0x7f0d0138;
         public static final int transition_current_scene=0x7f0d000b;
@@ -3561,7 +3561,7 @@ containing a value of this type.
         public static final int tv_departure_date=0x7f0d012c;
         public static final int tv_passport_number=0x7f0d012a;
         public static final int tv_service_fee=0x7f0d012e;
-        public static final int tv_visa=0x7f0d0287;
+        public static final int tv_visa=0x7f0d0291;
         public static final int tv_visa_fee=0x7f0d012d;
         public static final int up=0x7f0d000d;
         public static final int usa_form_tab_strip=0x7f0d007e;
@@ -3573,20 +3573,20 @@ containing a value of this type.
         public static final int view_offset_helper=0x7f0d000e;
         public static final int viewpager=0x7f0d010b;
         public static final int viewpager1=0x7f0d010d;
-        public static final int visa_fee=0x7f0d0295;
-        public static final int visa_fee1=0x7f0d0294;
+        public static final int visa_fee=0x7f0d0299;
+        public static final int visa_fee1=0x7f0d028b;
         public static final int visa_id=0x7f0d0125;
-        public static final int visa_image=0x7f0d0286;
-        public static final int visa_name=0x7f0d028a;
+        public static final int visa_image=0x7f0d0290;
+        public static final int visa_name=0x7f0d0286;
         public static final int visa_name_summary=0x7f0d0126;
         public static final int visa_number=0x7f0d00cb;
         public static final int visa_services=0x7f0d029f;
-        public static final int visa_stay_validity=0x7f0d0291;
-        public static final int visa_stay_validity1=0x7f0d0290;
-        public static final int visa_type=0x7f0d028d;
-        public static final int visa_type1=0x7f0d028c;
-        public static final int visa_validity=0x7f0d028f;
-        public static final int visa_validity1=0x7f0d028e;
+        public static final int visa_stay_validity=0x7f0d0297;
+        public static final int visa_stay_validity1=0x7f0d0296;
+        public static final int visa_type=0x7f0d0294;
+        public static final int visa_type1=0x7f0d0288;
+        public static final int visa_validity=0x7f0d0295;
+        public static final int visa_validity1=0x7f0d0289;
         public static final int visible=0x7f0d029d;
         public static final int visit_date=0x7f0d00cc;
         public static final int visited_iran_info_layout=0x7f0d00c7;
@@ -3719,10 +3719,11 @@ containing a value of this type.
         public static final int usa_form7=0x7f04006e;
         public static final int usa_form8=0x7f04006f;
         public static final int usa_form9=0x7f040070;
-        public static final int viewpager_image=0x7f040071;
-        public static final int visa_card=0x7f040072;
-        public static final int visa_type_dialog=0x7f040073;
-        public static final int visatypecard=0x7f040074;
+        public static final int usa_visa_type_card=0x7f040071;
+        public static final int viewpager_image=0x7f040072;
+        public static final int visa_card=0x7f040073;
+        public static final int visa_type_dialog=0x7f040074;
+        public static final int visatypecard=0x7f040075;
     }
     public static final class menu {
         public static final int activity_home_drawer=0x7f0e0000;

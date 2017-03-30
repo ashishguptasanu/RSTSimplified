@@ -92,6 +92,7 @@
                     android:id="@+id/visa_validity1"
                     android:layout_weight="1"/>
             </TableRow>
+
             <View
                 android:layout_height="2dp"
                 android:layout_width="match_parent"
@@ -104,29 +105,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
-                    android:text="Stay Validity"
-                    android:textColor="@color/colorPrimary"
-                    android:layout_weight="1"/>
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:text="Type of Visa"
-                    android:id="@+id/visa_stay_validity1"
-                    android:layout_weight="1"/>
-            </TableRow>
-            <View
-                android:layout_height="2dp"
-                android:layout_width="match_parent"
-                android:background="@color/viewColour"
-                android:layout_marginTop="5dp"/>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:text="Process Time"
+                    android:text="Processing Time"
                     android:textColor="@color/colorPrimary"
                     android:layout_weight="1"/>
                 <TextView
@@ -148,7 +127,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
-                    android:text="Visa Fee"
+                    android:text="Visa Fee($)"
                     android:textColor="@color/colorPrimary"
                     android:layout_weight="1"/>
                 <TextView
@@ -171,7 +150,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
-                    android:text="Service Fee"
+                    android:text="Service Fee($)"
                     android:textColor="@color/colorPrimary"
                     android:layout_weight="1"/>
                 <TextView
@@ -192,7 +171,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_width="0dp"
-                    android:text="Total Fee"
+                    android:text="Total Fee($)"
                     android:textColor="@color/colorPrimary"
                     android:layout_weight="1"/>
                 <TextView
@@ -221,18 +200,7 @@
                 android:textColor="@color/buttonTextColour"
                 android:textSize="10dp"
                 android:layout_marginRight="15dp"
-                android:layout_weight="1"
-                android:id="@+id/button_submit_combo"
-                android:background="@drawable/buttonshape"/>
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="22dp"
-                android:layout_marginLeft="15dp"
-                android:text="Get Started"
-                android:textColor="@color/buttonTextColour"
-                android:textSize="10dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1"
+                android:layout_weight=".5"
                 android:id="@+id/button_submit_regular"
                 android:background="@drawable/buttonshape"/>
         </LinearLayout>
