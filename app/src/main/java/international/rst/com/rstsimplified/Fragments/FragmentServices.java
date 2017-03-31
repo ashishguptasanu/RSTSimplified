@@ -381,10 +381,11 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                         intent.putExtra("nationid", selectedNationality);
                         intent.putExtra("stateid", selectedStateId);
                         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-                        sharedPreferences.edit().putString("living_in_country", selectedLivingInCountry).apply();
+                        sharedPreferences.edit().putInt("living_in_country", selectedLivingIn).apply();
                         sharedPreferences.edit().putInt("living_in_id", selectedLiving).apply();
                         sharedPreferences.edit().putInt("visa_id", 1).apply();
                         sharedPreferences.edit().putInt("state_id", selectedStateId).apply();
+                        sharedPreferences.edit().putInt("nationality", selectedNationality).apply();
                         urlVisaType = ("https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaType&NationalityId=" + selectedNationality +"&LivingInId=" + selectedLivingIn+ "&StateId=" + selectedStateId);
                         sharedPreferences.edit().putString("url_usa_visa", urlVisaType).apply();
                         intent.putExtra("visa_type_url", urlVisaType);

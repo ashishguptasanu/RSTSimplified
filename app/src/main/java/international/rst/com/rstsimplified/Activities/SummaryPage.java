@@ -83,6 +83,9 @@ public class SummaryPage extends AppCompatActivity
             if(selectedVisaId == 0){
                 sendApplicandData(responseVisa);
             }
+            else if(selectedVisaId == 1){
+
+            }
             else if(selectedVisaId == 2){
                 singaporeApplicantData(responseVisa);
             }

@@ -44,7 +44,6 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     String finalVisaName;
     float mngComboFee;
     private OkHttpClient client = new OkHttpClient();
-    private static String URL_USA_FORM1 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
 
 
     public VisaTypeAdapter(Context context, List<VisaType_> visaTypes){
@@ -232,65 +231,7 @@ public class VisaTypeAdapter extends RecyclerView.Adapter<VisaTypeAdapter.VisaTy
     public int getItemCount() {
         return visaTypes.size();
     }
-    private void sendForm1Data(){
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        int stateId = sharedPreferences.getInt("state_id",0);
-        String state  = String.valueOf(stateId);
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("NationalityId", "")
-                .addFormDataPart("LivingInId", "")
-                .addFormDataPart("StateId",state )
-                .addFormDataPart("MissionId", "")
-                .addFormDataPart("VisaTypeId", String.valueOf(visaTypeID))
-                .addFormDataPart("VisaDurationId", "")
-                .addFormDataPart("NoOfEntries", "")
-                .addFormDataPart("VisaIssuedType", "")
-                .addFormDataPart("service_type", serviceType)
-                .addFormDataPart("CurrencyId", String.valueOf(currencyID))
-                .addFormDataPart("govtFee", String.valueOf(govtFee))
-                .addFormDataPart("serviceFee", String.valueOf(serviceFee))
-                .addFormDataPart("processingTime", processingTime)
-                .addFormDataPart("createdDate", "")
-                .addFormDataPart("EnterdBy", "")
-                .addFormDataPart("ip", "")
-                .addFormDataPart("modifiedDate", "")
-                .addFormDataPart("modifiedBy", "")
-                .addFormDataPart("device_type", "app")
-                .addFormDataPart("device_os", "Android")
 
-
-                .build();
-        Request request = new Request.Builder().url(URL_USA_FORM1).post(requestBody).build();
-        okhttp3.Call call = client.newCall(request);
-        call.enqueue(new okhttp3.Callback() {
-
-
-            public static final String MODE_PRIVATE = "";
-
-            @Override
-            public void onFailure(okhttp3.Call call, IOException e) {
-                System.out.println("Registration Error" + e.getMessage());
-            }
-
-            @Override
-            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
-
-                try {
-                    resp = response.body().string();
-                    Log.v("response", resp);
-                    if (response.isSuccessful()) {
-                        sharedPreferences.edit().putString("response", "").apply();
-                    }else {
-                        //
-                    }
-                } catch (IOException e) {
-                    System.out.println("Exception caught" + e.getMessage());
-                }
-            }
-
-        });
-    }
 
 
 

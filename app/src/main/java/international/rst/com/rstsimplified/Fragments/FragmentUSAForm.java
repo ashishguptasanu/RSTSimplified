@@ -1464,6 +1464,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void showToast(String mString){
         Toast.makeText(getContext(),mString,Toast.LENGTH_SHORT).show();
     }
+
     private void sendForm3Data(){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
