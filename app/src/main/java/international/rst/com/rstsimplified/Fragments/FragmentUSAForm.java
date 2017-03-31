@@ -90,7 +90,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private static final String BASE_URL_FORM10 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=pretravelupdate";
     private static final String BASE_URL_FORM11 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=pointofcontactinfo";
     private static final String BASE_URL_FORM12 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=presentworkinfo";
-    //private static final String BASE_URL_FORM14 = "http://omanvisas.in/api/getdataomn.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=additionalworkinfo";
+    private static final String BASE_URL_FORM14 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=interview";
     private static final String BASE_URL_FORM13 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=security";
     private static final String STATES_USA = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=231";
     public static FragmentUSAForm newFormInstance( String title) {
@@ -1991,44 +1991,25 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void sendForm14Data(){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("visa_id", "")
-                .addFormDataPart("start_date", "")
-                .addFormDataPart("end_date", "")
-                .addFormDataPart("pnrNo", "")
-                .addFormDataPart("address1", "")
-                .addFormDataPart("address2", "")
-                .addFormDataPart("city", "")
-                .addFormDataPart("country", "")
-                .addFormDataPart("country_code", "")
-                .addFormDataPart("mobile", "")
-                .addFormDataPart("emergency_contact_name", "")
-                .addFormDataPart("emergency_contact_number", "")
-                .addFormDataPart("hotel_address", "")
-                .addFormDataPart("contact_uae", "")
-                .addFormDataPart("created_date", "")
-                .addFormDataPart("order_id", "")
-                .addFormDataPart("service_type", "")
-                .addFormDataPart("nationality_id","")
-                .addFormDataPart("living_in_id", "")
-                .addFormDataPart("currency_id", "")
-                .addFormDataPart("govt_fee", "")
-                .addFormDataPart("service_fee", "")
-                .addFormDataPart("processing_time","")
-                .addFormDataPart("visa_type_id", "")
-                .addFormDataPart("email_id", "")
-                .addFormDataPart("email_varified", "")
-                .addFormDataPart("comments_added", "")
-                .addFormDataPart("insertedTimeIst", "")
-                .addFormDataPart("agentid", "")
-                .addFormDataPart("service_fee_cs","")
-                .addFormDataPart("termConditions", "")
-                .addFormDataPart("mng_fee", "")
-                .addFormDataPart("application_type", "")
-                .addFormDataPart("agentType", "")
-                .addFormDataPart("device_type", "app")
-                .addFormDataPart("device_os", "")
+                .addFormDataPart("visa_id",sharedPreferences.getString("response",""))
+                .addFormDataPart("city",consulateCity.getText().toString())
+                .addFormDataPart("consulate_id","")
+                .addFormDataPart("prefer_date_first", interviewPriority1.getText().toString())
+                .addFormDataPart("prefer_date_second",interviewPriority2.getText().toString())
+                .addFormDataPart("prefer_date_third",interviewPriority3.getText().toString())
+                .addFormDataPart("prefer_biomatric_first",biometricPriority1.getText().toString())
+                .addFormDataPart("prefer_biomatric_second",biometricPriority2.getText().toString())
+                .addFormDataPart("prefer_biomatric_third",biometricPriority3.getText().toString())
+                .addFormDataPart("dr_delivery_address1",deliveryAddress.getText().toString())
+                .addFormDataPart("dr_delivery_address2","")
+                .addFormDataPart("dr_delivery_city",deliveryCity.getText().toString())
+                .addFormDataPart("dr_delivery_state",deliveryState.getText().toString())
+                .addFormDataPart("dr_delivery_country","")
+                .addFormDataPart("dr_delivery_country_code","")
+                .addFormDataPart("pk_name","")
+                .addFormDataPart("pr_location","")
                 .build();
-        Request request = new Request.Builder().url(BASE_URL_FORM13).post(requestBody).build();
+        Request request = new Request.Builder().url(BASE_URL_FORM14).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new okhttp3.Callback() {
 
