@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <EditText
-                    android:id="@+id/edt_contact_person"
+                    android:id="@+id/edt_date_arrived_us"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -65,7 +65,7 @@
                 android:layout_weight="1">
 
                 <EditText
-                    android:id="@+id/edt_contact_number"
+                    android:id="@+id/date_departed_us"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"

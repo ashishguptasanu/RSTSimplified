@@ -1407,7 +1407,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void populateAllCountrySpinner() {
         spnrAllCountries = (Spinner)view.findViewById(R.id.spnr_country);
         spnrAllCountries.setOnItemSelectedListener(this);
-        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, allCountriesData);
+        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
         dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrAllCountries.setAdapter(dataAdapterCountries);
         spnrAllCountries.setOnItemSelectedListener(this);
@@ -1415,7 +1415,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void populatePortArrivalSpinner() {
         spnrPort = (Spinner)view.findViewById(R.id.spnr_port);
         spnrPort.setOnItemSelectedListener(this);
-        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, arrivalPortData);
+        ArrayAdapter<String> dataAdapterPort = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arrivalPortData);
         dataAdapterPort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrPort.setAdapter(dataAdapterPort);
         spnrPort.setOnItemSelectedListener(this);
@@ -1423,7 +1423,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void populateIssueCountrySpinner() {
         spnrIssueCountry = (Spinner)view.findViewById(R.id.spnr_country_issue);
         spnrIssueCountry.setOnItemSelectedListener(this);
-        ArrayAdapter<String> issueDataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, allCountriesData);
+        ArrayAdapter<String> issueDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
         issueDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrIssueCountry.setAdapter(issueDataAdapter);
     }
@@ -1431,7 +1431,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         spnrGender = (Spinner)view.findViewById(R.id.spnr_gender);
         spnrGender.setOnItemSelectedListener(this);
         gender = new String[]{"Select One","Male","Female","Other"};
-        ArrayAdapter<String> genderDataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, gender);
+        ArrayAdapter<String> genderDataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, gender);
         genderDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrGender.setAdapter(genderDataAdapter);
     }

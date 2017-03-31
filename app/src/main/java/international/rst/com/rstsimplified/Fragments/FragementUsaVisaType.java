@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,6 +39,7 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
     public RecyclerView mRecyclerView, mRecyclerView2, mRecyclerView3, mRecyclerView4, mRecyclerView5;
     UsaVisaAdapter1 mAdapter1, mAdapter2, mAdapter3, mAdapter4, mAdapter5;
     RecyclerView.LayoutManager layoutManager1, layoutManager2, layoutManager3, layoutManager4, layoutManager5;
+    ProgressBar mProgress1, mProgress2, mProgress3, mProgress4, mProgress5;
     private List<VisaType_> visaTypes = new ArrayList<>();
     private List<VisaType_> visaTypes1 = new ArrayList<>();
     private List<VisaType_> visaTypes2 = new ArrayList<>();
@@ -73,6 +75,8 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
 
         if(title.equalsIgnoreCase("business")){
             view = inflater.inflate(R.layout.fragment_usa_visa1, container, false);
+            mProgress1 = (ProgressBar)view.findViewById(R.id.progress1);
+
             mRecyclerView = (RecyclerView)view.findViewById(R.id.recycler_usa_visa);
             layoutManager1 = new LinearLayoutManager(getContext());
             mRecyclerView.setHasFixedSize(true);
@@ -83,6 +87,7 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
         else if(title.equalsIgnoreCase("family")){
             view = inflater.inflate(R.layout.fragment_usa_visa2, container, false);
             mRecyclerView2 = (RecyclerView)view.findViewById(R.id.recycler_usa_visa2);
+            mProgress2 = (ProgressBar)view.findViewById(R.id.progress2);
             layoutManager2 = new LinearLayoutManager(getContext());
             mRecyclerView2.setHasFixedSize(true);
             mRecyclerView2.setLayoutManager(layoutManager2);
@@ -94,6 +99,7 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
             view = inflater.inflate(R.layout.fragment_usa_visa3, container, false);
             mRecyclerView3 = (RecyclerView)view.findViewById(R.id.recycler_usa_visa3);
             mAdapter3 = new UsaVisaAdapter1(getContext(), visaTypes3);
+            mProgress3 = (ProgressBar)view.findViewById(R.id.progress3);
             mRecyclerView3.setHasFixedSize(true);
             layoutManager3 = new LinearLayoutManager(getContext());
             mRecyclerView3.setLayoutManager(layoutManager3);
@@ -103,6 +109,7 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
             view = inflater.inflate(R.layout.fragment_usa_visa4, container, false);
             mRecyclerView4 = (RecyclerView)view.findViewById(R.id.recycler_usa_visa4);
             mAdapter4 = new UsaVisaAdapter1(getContext(), visaTypes4);
+            mProgress4 = (ProgressBar)view.findViewById(R.id.progress4);
             mRecyclerView4.setHasFixedSize(true);
             layoutManager4 = new LinearLayoutManager(getContext());
             mRecyclerView4.setLayoutManager(layoutManager4);
@@ -112,6 +119,7 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
             view = inflater.inflate(R.layout.fragment_usa_visa5, container, false);
             mRecyclerView5 = (RecyclerView)view.findViewById(R.id.recycler_usa_visa5);
             mAdapter5 = new UsaVisaAdapter1(getContext(), visaTypes5);
+            mProgress5 = (ProgressBar)view.findViewById(R.id.progress5);
             mRecyclerView5.setHasFixedSize(true);
             layoutManager5 = new LinearLayoutManager(getContext());
             mRecyclerView5.setLayoutManager(layoutManager5);
@@ -120,9 +128,6 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
 
         return view;
     }
-
-
-
     private void loadVisaType1(String url) {
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -137,6 +142,7 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
         call.enqueue(new Callback<VisaType>() {
             @Override
             public void onResponse(Call<VisaType> call, Response<VisaType> response) {
+                mProgress1.setVisibility(View.GONE);
                 visaTypes1.clear();
                 if(response != null){
                     VisaType jsonResponse = response.body();
@@ -184,7 +190,7 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
         call.enqueue(new Callback<VisaType>() {
             @Override
             public void onResponse(Call<VisaType> call, Response<VisaType> response) {
-
+                mProgress2.setVisibility(View.GONE);
                 if(response != null){
                     VisaType jsonResponse = response.body();
                     visaTypes = jsonResponse.getVisaType();
@@ -227,10 +233,10 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
                 .build();
         final VisaResponse request = retrofit.create(VisaResponse.class);
         Call<VisaType> call = request.getVisaType(url);
-        //
         call.enqueue(new Callback<VisaType>() {
             @Override
             public void onResponse(Call<VisaType> call, Response<VisaType> response) {
+                mProgress3.setVisibility(View.GONE);
                 visaTypes3.clear();
                 if(response != null){
                     VisaType jsonResponse = response.body();
@@ -278,6 +284,7 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
         call.enqueue(new Callback<VisaType>() {
             @Override
             public void onResponse(Call<VisaType> call, Response<VisaType> response) {
+                mProgress4.setVisibility(View.GONE);
                 visaTypes4.clear();
                 if(response != null){
                     VisaType jsonResponse = response.body();
@@ -325,6 +332,7 @@ public class FragementUsaVisaType extends android.support.v4.app.Fragment{
         call.enqueue(new Callback<VisaType>() {
             @Override
             public void onResponse(Call<VisaType> call, Response<VisaType> response) {
+                mProgress5.setVisibility(View.GONE);
                 visaTypes5.clear();
                 if(response != null){
                     VisaType jsonResponse = response.body();

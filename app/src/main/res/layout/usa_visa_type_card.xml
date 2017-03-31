@@ -14,19 +14,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
         <TextView
             android:id="@+id/visa_name_usa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/viewColour2"
             android:text="14 days Visa"
+            android:maxLines="1"
             android:textColor="@color/colorPrimary"
-            android:textSize="15sp"
             android:textStyle="bold" />
+
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -72,6 +72,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:maxLines="1"
                     android:text="Single Entry" />
 
             </TableRow>
