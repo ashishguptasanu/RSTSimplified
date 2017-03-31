@@ -97,7 +97,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String selectedGCC;
     String selectedPort;
     String serviceType;
-    String livingId;
+    String livingId, vadId, visaReferenceId;
     String serviceFeeCs;
     String processingTime;
     String deviceType;
@@ -279,7 +279,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    sendUsaFormData2();
+                    if(selectedVisaId == 1){
+                        sendUsaFormData2();
+                        saveUsaPrefApplicant();
+                    }
                     if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
                         if(isValidEmail(emailEdt.getText().toString())) {
                             if(radioButton1.isChecked() || radioButton2.isChecked()){
@@ -340,7 +343,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 @Override
                 public void onClick(View view) {
                     if(selectedVisaId == 1){
-                        sendUsaFormData1(resp);
+                        sendUsaFormData1(visaReferenceId);
+                        saveUsaContactPreferences();
                     }
                     if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
                         if(isValidEmail(edtEmailContact.getText().toString())){
@@ -386,6 +390,18 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
         return view;
     }
+
+    private void saveUsaPrefApplicant() {
+        sharedPreferences.edit().putString("gender_usa",selectedUsaGender).apply();
+        sharedPreferences.edit().putString("passport_num_usa", passportNumberUsa.getText().toString()).apply();
+    }
+
+    private void saveUsaContactPreferences() {
+        sharedPreferences.edit().putString("applicant_name", firstNameUsa.getText().toString() + " " + lastNameUsa.getText().toString()).apply();
+        sharedPreferences.edit().putString("arrival_date_usa",arrivalDateUsa.getText().toString()).apply();
+        sharedPreferences.edit().putString("departure_date_usa", departureDateUsa.getText().toString()).apply();
+    }
+
     private void intializeConsultViews() {
         loadConsulateData();
         intializeVisaForSpinner();
@@ -1265,7 +1281,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 }
                 break;
             case R.id.spnr_usa_gender_applicant:
-                sharedPreferences.edit().putInt("gender_usa", i).apply();
+                sharedPreferences.edit().putString("gender_usa", genderUsa[i]).apply();
                 selectedUsaGender = genderUsa[i];
                 break;
             case R.id.marital_status_form2_applicant:
@@ -1616,9 +1632,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                 try {
                     resp = response.body().string();
-                    Log.v("response", resp);
+                    String[] parts = resp.split("/");
+                     visaReferenceId = parts[0];
+                     vadId = parts[1];
                     if (response.isSuccessful()) {
-                        sharedPreferences.edit().putString("response", "").apply();
+                        sharedPreferences.edit().putString("response", visaReferenceId).apply();
                     }else {
                         //
                     }
@@ -1850,7 +1868,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("visa_id", visaId)
-                .addFormDataPart("vad_id", "")
+                .addFormDataPart("vad_id", vadId)
                 .addFormDataPart("first_name", firstNameUsa.getText().toString())
                 .addFormDataPart("last_name", lastNameUsa.getText().toString())
                 .addFormDataPart("phone_code", sharedPreferences.getString("phone_code_usa",""))

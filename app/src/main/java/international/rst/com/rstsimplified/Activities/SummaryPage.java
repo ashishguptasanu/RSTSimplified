@@ -84,7 +84,17 @@ public class SummaryPage extends AppCompatActivity
                 sendApplicandData(responseVisa);
             }
             else if(selectedVisaId == 1){
-
+                tvVisaId.setText(sharedPreferences.getString("response",""));
+                visaName.setText(sharedPreferences.getString("visa_name",""));
+                visaFee.setText((int) sharedPreferences.getFloat("govt_fee",0));
+                finalServiceFee.setText((int) sharedPreferences.getFloat("service_fee", 0));
+                totalVisaFee.setText((int) sharedPreferences.getFloat("total_fee", 0));
+                tvName.setText(sharedPreferences.getString("applicant_name",""));
+                tvArrivalDate.setText(sharedPreferences.getString("arrival_date_usa",""));
+                tvDepartureDate.setText(sharedPreferences.getString("departure_date_usa",""));
+                tvBirthDate.setText("");
+                tvPassportNumber.setText(sharedPreferences.getString("passport_num_usa",""));
+                tvGender.setText(sharedPreferences.getString("gender_usa",""));
             }
             else if(selectedVisaId == 2){
                 singaporeApplicantData(responseVisa);
