@@ -416,7 +416,6 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         expiryDate = (EditText)view.findViewById(R.id.expiry_date);
         buttonForm5 = (Button)view.findViewById(R.id.button_form5);
         stolenPassportLayout = (LinearLayout)view.findViewById(R.id.stolen_passport_layout5);
-        populateStolenPassportSpinner();
         if(sharedPreferences.getInt("stolen_passport",0) == 1){
             stolenPassportLayout.setVisibility(View.VISIBLE);
         }
@@ -1107,39 +1106,50 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button_form1:
+
                 moveToNextForm();
                 break;
             case R.id.button_form2:
                 moveToNextForm();
                 break;
             case R.id.button_form3:
+                sendForm3Data();
                 moveToNextForm();
                 break;
             case R.id.button_form4:
+                sendForm4Data();
                 moveToNextForm();
                 break;
             case R.id.button_form5:
+                sendForm5Data();
                 moveToNextForm();
                 break;
             case R.id.button_form6:
+                sendForm6Data();
                 moveToNextForm();
                 break;
             case R.id.button_form7:
+                sendForm7Data();
                 moveToNextForm();
                 break;
             case R.id.button_form8:
+                sendForm8Data();
                 moveToNextForm();
                 break;
             case R.id.button_form9:
+                sendForm9Data();
                 moveToNextForm();
                 break;
             case R.id.button_form10:
+                sendForm10Data();
                 moveToNextForm();
                 break;
             case R.id.button_form11:
+                sendForm11Data();
                 moveToNextForm();
                 break;
             case R.id.button_form12:
+                sendForm12Data();
                 moveToNextForm();
                 break;
             case R.id.button_form13:
@@ -1147,6 +1157,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 sendForm13Data();
                 break;
             case R.id.button_form14:
+                sendForm14Data();
                 moveToNextForm();
                 break;
             case R.id.button_form15:
@@ -1831,13 +1842,13 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart("work_visa_id", "")
                 .addFormDataPart("work_vad_id", "")
                 .addFormDataPart("work_occupation", "")
-                .addFormDataPart("work_name", "")
-                .addFormDataPart("work_add", "")
-                .addFormDataPart("work_city", "")
-                .addFormDataPart("work_code", "")
-                .addFormDataPart("country", "")
-                .addFormDataPart("work_phone", "")
-                .addFormDataPart("work_country", "")
+                .addFormDataPart("work_name", employerName.getText().toString())
+                .addFormDataPart("work_add", addressEmployer.getText().toString())
+                .addFormDataPart("work_city", cityEmployment.getText().toString())
+                .addFormDataPart("work_code", codeEmployment.getText().toString())
+                .addFormDataPart("country", countryEmployment.getText().toString())
+                .addFormDataPart("work_phone", contactNumberEmployment.getText().toString())
+                .addFormDataPart("work_country", countryEmployment.getText().toString())
                 .addFormDataPart("work_duties", "")
                 .build();
         Request request = new Request.Builder().url(BASE_URL_FORM11).post(requestBody).build();

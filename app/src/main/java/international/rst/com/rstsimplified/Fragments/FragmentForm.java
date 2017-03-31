@@ -135,7 +135,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String codePhone;
     String selectedUsaGender;
     String selectedUsaMarital;
-    String[] gender, religion, gccList, addressType, purpose, duration, visaType, genderUsa, maritalUsa, stolenPassport;
+    String[] gender, religion, gccList, addressType, purpose, duration, visaType, genderUsa, maritalUsa, stolenPassport, parts;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
     EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay, noVisitIran, purposeVisitIran, lastVisitIran, visaNoIran, visitDateIran, otherCountryVisited,nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification, occupation, jobTitle, companyName, acticvityField, companyTelephone, previousNationality, firstNameUsa, lastNameUsa, emailUsa, phoneUsa, arrivalDateUsa, departureDateUsa, nationalityUsa, addressApplicantUsa, cityApplicantUsa, placeBirthUsa, stateUsa, postalUsa, countryUsa, passportNumberUsa, cityIssuedUsa, countryIssuedUsa, issueDateUsa, expiryDateUsa, phoneCodeUsa;
     TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputDeparture, previousNation;
@@ -175,6 +175,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private static final String USA_EMAIL_URL = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=email_send";
     private static final String BASE_URL_USA_FORM2 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=personalinfo2";
     private static final String URL_USA_FORM1 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data1";
+    private static final String URL_USA_FORM_TEST = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=test";
     public FragmentForm() {
     }
     public static FragmentForm newFormInstance(String title) {
@@ -1642,7 +1643,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
                 try {
                     resp = response.body().string();
-                    String[] parts = resp.split("/");
+                     parts = resp.split("/");
                      visaReferenceId = parts[0];
                      vadId = parts[1];
                     sharedPreferences.edit().putString("vad_id","").apply();
@@ -1938,7 +1939,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void sendUsaFormData2(String id){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("id", sharedPreferences.getString("vad_id", ""))
+                .addFormDataPart("visa_id", sharedPreferences.getString("response",""))
                 .addFormDataPart("gender", selectedUsaGender)
                 .addFormDataPart("maritalStatus", selectedUsaMarital)
                 .addFormDataPart("address1", addressApplicantUsa.getText().toString())
@@ -1948,10 +1949,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("zipcode", postalUsa.getText().toString())
                 .addFormDataPart("passportNumber", passportNumberUsa.getText().toString())
                 .addFormDataPart("placeOfIssue", cityIssuedUsa.getText().toString())
-                .addFormDataPart("IssueCountry", countryIssuedUsa.getText().toString())
+                .addFormDataPart("issueCounrty", countryIssuedUsa.getText().toString())
                 .addFormDataPart("issueDate", issueDateUsa.getText().toString())
                 .addFormDataPart("expiryDate", expiryDateUsa.getText().toString())
                 .build();
+        System.out.println("Hello Akash" + sharedPreferences.getString("response","") + selectedMaritalStatus + cityApplicantUsa.getText().toString());
         Request request = new Request.Builder().url(BASE_URL_USA_FORM2).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new okhttp3.Callback() {
