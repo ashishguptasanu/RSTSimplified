@@ -1202,7 +1202,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, gender);
         genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrGender.setAdapter(genderAdapter);
-        spnrGender.setSelection(sharedPreferences.getInt("gender_usa", 0));
+        spnrGender.setSelection(sharedPreferences.getInt("gender_usa_num", 0));
         spnrGender.setOnItemSelectedListener(this);
     }
     private void populateMaritalStatusSpinner(){

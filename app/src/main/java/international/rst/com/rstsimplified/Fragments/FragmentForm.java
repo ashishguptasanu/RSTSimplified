@@ -131,7 +131,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String selectedDuration;
     String selectedPurpose;
     String nationalityID;
-    int livingIn;
+    String livingIn;
     String codePhone;
     String selectedUsaGender;
     String selectedUsaMarital;
@@ -149,7 +149,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     TextView  name1, name2, name3, name4, name5, name6;
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
-    int visaTypeId, selectedVisaId, selectedAddressType, selectedConsulateId, selectedCountryID, selectedIssueCountryID, age, selectedEmirateId;
+    int visaTypeId, selectedVisaId, selectedAddressType, selectedConsulateId, selectedCountryID, selectedIssueCountryID, age, selectedEmirateId, selectedGenderUsa;
     float govtFee, mngFee, serviceFee;
     private OkHttpClient client = new OkHttpClient();
     private List<String> allCountriesData = new ArrayList<>();
@@ -280,38 +280,40 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 @Override
                 public void onClick(View view) {
                     if(selectedVisaId == 1){
-                        sendUsaFormData2();
+                        System.out.println(vadId);
+                        sendUsaFormData2(vadId);
                         saveUsaPrefApplicant();
+                        Intent intent = new Intent(getContext(), SummaryPage.class);
+                        startActivity(intent);
                     }
-                    if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
-                        if(isValidEmail(emailEdt.getText().toString())) {
-                            if(radioButton1.isChecked() || radioButton2.isChecked()){
-                                if (radioButton1.isChecked()){
-                                    selectedMaritalStatus = "Single";
-                                    saveSharedPreferences();
+                    else{
+                        if(nameFirst.getText().toString().length() != 0 && nameLast.getText().toString().length() != 0 && birthDate.getText().toString().length() != 0 && passportNumber.getText().toString().length() != 0 && emailEdt.getText().toString().length() != 0 && birthPlace.getText().toString().length() != 0 && nameFather.getText().toString().length() != 0 && nameMother.getText().toString().length() != 0 && dateIssue.getText().toString().length() != 0 && dateExpiry.getText().toString().length() != 0){
+                            if(isValidEmail(emailEdt.getText().toString())) {
+                                if(radioButton1.isChecked() || radioButton2.isChecked()){
+                                    if (radioButton1.isChecked()){
+                                        selectedMaritalStatus = "Single";
+                                        saveSharedPreferences();
+                                    }
+                                    else{
+                                        selectedMaritalStatus = "Married";
+                                        saveSharedPreferences();
+                                    }
+                                    ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
+                                    int atTab = mFormPager.getCurrentItem();
+                                    mFormPager.setCurrentItem(atTab + 1);
                                 }
-                                else{
-                                    selectedMaritalStatus = "Married";
-                                    saveSharedPreferences();
+                                else {
+                                    showToast("Select marital status");
                                 }
-                                ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
-                                int atTab = mFormPager.getCurrentItem();
-                                mFormPager.setCurrentItem(atTab + 1);
                             }
                             else {
-                                showToast("Select marital status");
+                                showToast("Email is not valid");
                             }
                         }
                         else {
-                            showToast("Email is not valid");
+                            showToast("Enter all Fields");
                         }
-                    }
-                    else {
-                        showToast("Enter all Fields");
-                    }
-                    if(selectedVisaId == 1){
-                        Intent intent = new Intent(getContext(), SummaryPage.class);
-                        startActivity(intent);
+
                     }
                 }
             });
@@ -325,12 +327,12 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             if(sharedPreferences!=null){
                 codePhone = sharedPreferences.getString("code","");
                 phoneCodeEdt.setText(codePhone);
-                livingIn = sharedPreferences.getInt("living_in_country",0);
+                //livingIn = sharedPreferences.getString("living_in_country","");
                 String hotelAddress = sharedPreferences.getString("hotel_address","");
                 String address = sharedPreferences.getString("current_address","");
                 String emergencyName = sharedPreferences.getString("emergency_name","");
                 String emergencyNumber = sharedPreferences.getString("emergency_number","");
-                livingInEdt.setText(String.valueOf(livingIn));
+                //livingInEdt.setText(String.valueOf(livingIn));
                 edtEmergencyContactName.setText(emergencyName);
                 edtEmergencyContactNumber.setText(emergencyNumber);
                 edtAddress.setText(address);
@@ -345,42 +347,47 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     if(selectedVisaId == 1){
                         sendUsaFormData1(visaReferenceId);
                         saveUsaContactPreferences();
+                        ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
+                        int atTab = mFormPager.getCurrentItem();
+                        mFormPager.setCurrentItem(atTab + 1);
                     }
-                    if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
-                        if(isValidEmail(edtEmailContact.getText().toString())){
-                            if(isValidMobile(edtEmergencyContactNumber.getText().toString()) && isValidMobile(edtMobile.getText().toString())) {
-                                saveContactSharedPref();
-                                ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
-                                int atTab = mFormPager.getCurrentItem();
-                                mFormPager.setCurrentItem(atTab + 1);
-                                getSharedPreferences();
-                                if(sharedPreferences != null){
-                                    if(sharedPreferences.getInt("visa_id",0) == 0){
-                                        sendConsultData();
+                    else{
+                        if(edtAddress.getText().toString().length() != 0 && edtHotelAddress.getText().toString().length() != 0 && edtEmergencyContactName.getText().toString().length() != 0 && edtEmergencyContactNumber.getText().toString().length() != 0 && edtLivingCity.getText().toString().length() != 0){
+                            if(isValidEmail(edtEmailContact.getText().toString())){
+                                if(isValidMobile(edtEmergencyContactNumber.getText().toString()) && isValidMobile(edtMobile.getText().toString())) {
+                                    saveContactSharedPref();
+                                    ViewPager mFormPager = (ViewPager) getActivity().findViewById(R.id.formViewPager);
+                                    int atTab = mFormPager.getCurrentItem();
+                                    mFormPager.setCurrentItem(atTab + 1);
+                                    getSharedPreferences();
+                                    if(sharedPreferences != null){
+                                        if(sharedPreferences.getInt("visa_id",0) == 0){
+                                            sendConsultData();
+                                        }
+                                        else if(sharedPreferences.getInt("visa_id",0) == 2){
+                                            sendSingaporeConsultData();
+                                        }
+                                        else if(sharedPreferences.getInt("visa_id",0) == 3){
+                                            sendOmanConsultData();
+                                        }
+                                        else if(sharedPreferences.getInt("visa_id",0) == 4){
+                                            sendIranConsultData();
+                                        }
                                     }
-                                    else if(sharedPreferences.getInt("visa_id",0) == 2){
-                                        sendSingaporeConsultData();
-                                    }
-                                    else if(sharedPreferences.getInt("visa_id",0) == 3){
-                                        sendOmanConsultData();
-                                    }
-                                    else if(sharedPreferences.getInt("visa_id",0) == 4){
-                                        sendIranConsultData();
-                                    }
+                                }
+                                else {
+                                    showToast("Mobile Number is not valid");
                                 }
                             }
                             else {
-                                showToast("Mobile Number is not valid");
+                                showToast("Email is not valid");
                             }
                         }
                         else {
-                            showToast("Email is not valid");
+                            showToast("Enter all Fields");
                         }
                     }
-                    else {
-                        showToast("Enter all Fields");
                     }
-                }
             });
         }
         else if(title.equalsIgnoreCase("docs")){
@@ -394,6 +401,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void saveUsaPrefApplicant() {
         sharedPreferences.edit().putString("gender_usa",selectedUsaGender).apply();
         sharedPreferences.edit().putString("passport_num_usa", passportNumberUsa.getText().toString()).apply();
+        sharedPreferences.edit().putInt("gender_usa_num",selectedGenderUsa).apply();
     }
 
     private void saveUsaContactPreferences() {
@@ -740,6 +748,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         }
         populateMaritalUsaSpinner();
         populateGenderUsaSpinner();
+        populateStolenPassportSpinner();
     }
     private void intializeDocsView() {
         button3 = (Button)view.findViewById(R.id.button_docs);
@@ -1283,6 +1292,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
             case R.id.spnr_usa_gender_applicant:
                 sharedPreferences.edit().putString("gender_usa", genderUsa[i]).apply();
                 selectedUsaGender = genderUsa[i];
+                selectedGenderUsa = i;
                 break;
             case R.id.marital_status_form2_applicant:
                 sharedPreferences.edit().putInt("marital_usa", i).apply();
@@ -1635,6 +1645,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     String[] parts = resp.split("/");
                      visaReferenceId = parts[0];
                      vadId = parts[1];
+                    sharedPreferences.edit().putString("vad_id","").apply();
                     if (response.isSuccessful()) {
                         sharedPreferences.edit().putString("response", visaReferenceId).apply();
                     }else {
@@ -1865,14 +1876,17 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         });
     }
     private void sendUsaFormData1(String visaId){
+        String phoneCode = sharedPreferences.getString("phone_code_usa","");
+        String phoneCodeFinal = phoneCode.replaceAll("\\+","");
+        System.out.println("Hello"+ phoneCodeFinal);
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("visa_id", visaId)
                 .addFormDataPart("vad_id", vadId)
                 .addFormDataPart("first_name", firstNameUsa.getText().toString())
                 .addFormDataPart("last_name", lastNameUsa.getText().toString())
-                .addFormDataPart("phone_code", sharedPreferences.getString("phone_code_usa",""))
-                .addFormDataPart("mobile_num", sharedPreferences.getString("phone_code_usa","") + phoneUsa.getText().toString())
+                .addFormDataPart("phone_code", phoneCodeFinal)
+                .addFormDataPart("mobile_num", phoneUsa.getText().toString())
                 .addFormDataPart("email", emailUsa.getText().toString())
                 .addFormDataPart("email_verified","N")
                 .addFormDataPart("service_type","")
@@ -1910,6 +1924,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sendVerificationEmail(resp, emailUsa.getText().toString(), USA_EMAIL_URL);
                     sharedPreferences.edit().putString("response_usa",resp).apply();
                     if (response.isSuccessful()) {
+                        //
                     }else {
 
                     }
@@ -1920,22 +1935,22 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
         });
     }
-    private void sendUsaFormData2(){
+    private void sendUsaFormData2(String id){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("last_id",sharedPreferences.getString("response_usa",""))
+                .addFormDataPart("id", sharedPreferences.getString("vad_id", ""))
                 .addFormDataPart("gender", selectedUsaGender)
-                .addFormDataPart("MaritalStatus", selectedUsaMarital)
-                .addFormDataPart("Address1", addressApplicantUsa.getText().toString())
-                .addFormDataPart("Address2", "")
-                .addFormDataPart("City", cityApplicantUsa.getText().toString())
-                .addFormDataPart("placeBirth", placeBirthUsa.getText().toString())
+                .addFormDataPart("maritalStatus", selectedUsaMarital)
+                .addFormDataPart("address1", addressApplicantUsa.getText().toString())
+                .addFormDataPart("address2", "")
+                .addFormDataPart("city", cityApplicantUsa.getText().toString())
+                .addFormDataPart("placeOfBirth", placeBirthUsa.getText().toString())
                 .addFormDataPart("zipcode", postalUsa.getText().toString())
-                .addFormDataPart("passportnumber", passportNumberUsa.getText().toString())
-                .addFormDataPart("placeOfissue", cityIssuedUsa.getText().toString())
-                .addFormDataPart("issuecountry", countryIssuedUsa.getText().toString())
-                .addFormDataPart("issuedate", issueDateUsa.getText().toString())
-                .addFormDataPart("expirydate", expiryDateUsa.getText().toString())
+                .addFormDataPart("passportNumber", passportNumberUsa.getText().toString())
+                .addFormDataPart("placeOfIssue", cityIssuedUsa.getText().toString())
+                .addFormDataPart("IssueCountry", countryIssuedUsa.getText().toString())
+                .addFormDataPart("issueDate", issueDateUsa.getText().toString())
+                .addFormDataPart("expiryDate", expiryDateUsa.getText().toString())
                 .build();
         Request request = new Request.Builder().url(BASE_URL_USA_FORM2).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
