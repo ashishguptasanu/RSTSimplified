@@ -1,5 +1,6 @@
 package international.rst.com.rstsimplified.Fragments;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.content.ContentResolver;
@@ -12,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.util.Calendar;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.format.Formatter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,7 +58,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 
@@ -86,6 +93,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.Context.WIFI_SERVICE;
 
 import java.util.Objects;
 
@@ -1608,19 +1616,19 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("NationalityId", String.valueOf(sharedPreferences.getInt("nationality", 0)))
                 .addFormDataPart("LivingInId", String.valueOf(sharedPreferences.getInt("living_in_country", 0)))
                 .addFormDataPart("StateId",state)
-                .addFormDataPart("MissionId", "")
+                .addFormDataPart("MissionId", sharedPreferences.getString("mission_id",""))
                 .addFormDataPart("VisaTypeId", String.valueOf(sharedPreferences.getInt("visa_type_id",1)))
-                .addFormDataPart("VisaDurationId", "")
-                .addFormDataPart("NoOfEntries", "")
-                .addFormDataPart("VisaIssuedType", "")
-                .addFormDataPart("service_type", "")
-                .addFormDataPart("CurrencyId", "")
+                .addFormDataPart("VisaDurationId", sharedPreferences.getString("visa_duration_id",""))
+                .addFormDataPart("NoOfEntries", sharedPreferences.getString("no_of_entries",""))
+                .addFormDataPart("VisaIssuedType", sharedPreferences.getString("visa_issued_type",""))
+                .addFormDataPart("service_type", "Regular Service")
+                .addFormDataPart("CurrencyId", sharedPreferences.getString("currency_id",""))
                 .addFormDataPart("govtFee", String.valueOf(sharedPreferences.getFloat("govt_fee",0)))
                 .addFormDataPart("serviceFee", String.valueOf(sharedPreferences.getFloat("service_fee",0)))
                 .addFormDataPart("proceessingTime", sharedPreferences.getString("processing_time",""))
                 .addFormDataPart("createdDate", "")
                 .addFormDataPart("EnterdBy", "")
-                .addFormDataPart("ip", "")
+                .addFormDataPart("ip", getLocalIpAddress())
                 .addFormDataPart("modifiedDate", "")
                 .addFormDataPart("modifiedBy", "")
                 .addFormDataPart("device_type", "app")
@@ -2134,6 +2142,11 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         mDatePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mDatePicker.setTitle("Select date");
         mDatePicker.show();
+    }
+    public String getLocalIpAddress() {
+        @SuppressLint("WifiManagerLeak") WifiManager wifiManager = (WifiManager)getContext().getSystemService(WIFI_SERVICE);
+        String ipAddress = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+        return ipAddress;
     }
 
 
