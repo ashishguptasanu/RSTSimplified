@@ -1606,7 +1606,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("NationalityId", String.valueOf(sharedPreferences.getInt("nationality", 0)))
-                .addFormDataPart("LivingInId", String.valueOf(sharedPreferences.getInt("living_in_id", 0)))
+                .addFormDataPart("LivingInId", String.valueOf(sharedPreferences.getInt("living_in_country", 0)))
                 .addFormDataPart("StateId",state)
                 .addFormDataPart("MissionId", "")
                 .addFormDataPart("VisaTypeId", String.valueOf(sharedPreferences.getInt("visa_type_id",1)))
