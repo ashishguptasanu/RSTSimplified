@@ -1143,9 +1143,13 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         checked3 = (ImageView)view.findViewById(R.id.attach_usa_checked3);
         checked4 = (ImageView)view.findViewById(R.id.attach_usa_checked4);
         attach1 = (ImageView)view.findViewById(R.id.attach_usa_file1);
+        attach1.setOnClickListener(this);
         attach2 = (ImageView)view.findViewById(R.id.attach_usa_file2);
+        attach2.setOnClickListener(this);
         attach3 = (ImageView)view.findViewById(R.id.attach_usa_file3);
+        attach3.setOnClickListener(this);
         attach4 = (ImageView)view.findViewById(R.id.attach_usa_file4);
+        attach4.setOnClickListener(this);
         attachFileName1 = (TextView)view.findViewById(R.id.doc1);
         attachFileName2 = (TextView)view.findViewById(R.id.doc2);
         attachFileName3 = (TextView)view.findViewById(R.id.doc3);
@@ -2270,7 +2274,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .setType(MultipartBody.FORM)
                 .addFormDataPart(uploadedFile, fileName1,
                         RequestBody.create(MediaType.parse(fileType1), file))
-                .addFormDataPart("visa_id", "")
+                .addFormDataPart("visa_id", response2)
                 .addFormDataPart("last_id","")
 
                 .build();
@@ -2304,16 +2308,16 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     private void checkDocuments(String baseUrlUploadDocs) {
         String visaId = sharedPreferences.getString("response","");
-        if(selectedFile1.length() != 0){
+        if(filePath1.length() != 0){
             uploadDocuments(visaId,filePath1,fileType1,name1, "uploaded_file", baseUrlUploadDocs +"uploadphoto");
         }
-        if(selectedFile2.length() != 0){
+        if(filePath2.length() != 0){
             uploadDocuments(visaId,filePath2,fileType2,name2, "uploaded_file1", baseUrlUploadDocs +"uploadpassport");
         }
-        if(selectedFile3.length() != 0){
+        if(filePath3.length() != 0){
             uploadDocuments(visaId,filePath3,fileType3,name3, "uploaded_file2", baseUrlUploadDocs +"uploadadd");
         }
-        if(selectedFile4.length() != 0){
+        if(filePath4.length() != 0){
             uploadDocuments(visaId,filePath4,fileType4,name4, "uploaded_file3", baseUrlUploadDocs +"uploadadd1");
         }
     }
