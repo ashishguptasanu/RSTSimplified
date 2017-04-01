@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\19a41a24365c60fc2efd6569bc0f3ba8b7eb1365\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d6a04527c17597019dad82777c5094a3d60d1c33">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_3e87756ccf6409730ed3d4182687596f23406013.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\ebd51118f459ae2f10e49c682c958aa7f2b3877a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5cc5ef8347a6bafa14556cbd35230aa9b3431bb0">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_37b0aa47732d6633ac414a8c1498578a5b22cd53.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\12d7ce72df03bb15997343c39f6eb0e999a6b116\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="518768f3200963fbfec652f498da2c9d39245234">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_b8d45147b2bba1e5822ed6e88aefd3ca59761da8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\20d1c1dc4e1f05e349de23deb743de83a725d6cd\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="70f23cb87278f89aa51e6f57e8f0fd5266572d95">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_edef70fdf16028fc27a3f5860a2c3fc50a618762.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\libs\checkoutkit.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0eb4a700db5b016456bcc2545195785830325e8b">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\checkoutkit_5da51221d8b6fc187dbaa5d9828ac5900c049934.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\ec5aacb0d26c067640c508460ec5ef43885cd508\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="425c7b17887e5c3f8cbdf67ba171bc246f29b42c">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_533dc3af5dcd2e161d9c9862a6af97d4432ff1fc.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\libs\checkoutkit.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0eb4a700db5b016456bcc2545195785830325e8b">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\2\checkoutkit_5da51221d8b6fc187dbaa5d9828ac5900c049934\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\6772a96d1c331a4d1b73fe815566abcaf285c64e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="93c1199fcb0a34b980e6fff8350daff62e696ec2">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_43d075209d58873f118f44194e9a7cb0dbb83106.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_dced6bc6792f743a6aa83dbde7415b4d70a84c16\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\269c142eae47c9f64ac69e4e150c41c219fbcb26\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9ab787a20aae245b5b3651ae0b9c38459eb37715">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_09c6a16e2347817c1769225b01d5adf25ed9c70c.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea41a1164753d12be4b9a7414a58decc0bbd7921">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_658c1bfc43545cc5b1b8c1117c552d4a30518eb5\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\601d3c17dc6cd9343ca88b53dce5909e8c2fad79\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c5d103b270b3f3b50d8e6b44aa8e068b0de33426">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_9a1d6a4b39e473021cf6c2c5045802088eaadbf2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\369e883a79f871f2c72e08be354cfe936006327f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fbb206f7a119f66ce171d95aae1225a5b209a8b7">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_66ee76cdaedeaa791892de1d73c483de4edc18ab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\52c7560e366e08376007a975e34cb5914cb4aaa9\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="93c10d68ab5ea070f15782ae6d3a28d1f1d8f45e">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_23ade6a4a50b8aff34a86e1ede1d062d72526a84.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\1a5d3828a1599e48d0b51188c1047dd53b2e0288\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a3e61044038fb54cddf6b8dc79f41d2b57f42caf">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_3ccc0c1f43edeaaa12ce7f13885893aa3f3097e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\087c43a1f86db231d496308a10c0b0b3014a17a3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_ddfe53e18fabc427d1ae8f6a9ef33eaef2ca11bf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Ashish\.android\build-cache\b50c01791e2a5dca44d37bd9a993c3367e7cd470\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b746ef0fd46acb5aaf3d9ab9a4cec22c28d3211">
+        <dex dex="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\pre-dexed\debug\classes_c227ef6d3711cfd08aeea0ea960f377edee1ef7c.jar" />
+    </item>
+
+</items>
