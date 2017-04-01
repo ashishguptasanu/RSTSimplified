@@ -1,7 +1,17 @@
 package international.rst.com.rstsimplified.Fragments;
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -19,11 +29,13 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +56,7 @@ import international.rst.com.rstsimplified.Model.State;
 import international.rst.com.rstsimplified.Model.StateResponse;
 import international.rst.com.rstsimplified.Model.States;
 import international.rst.com.rstsimplified.R;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -54,16 +67,20 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.app.Activity.RESULT_OK;
+
 public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
-    String title, resp, securityQuestion1, securityQuestion2, securityQuestion3, securityQuestion4, securityQuestion5, securityQuestion6, securityQuestion7, securityQuestion8, securityQuestion9, securityQuestion10, securityQuestion11, securityQuestion12, securityQuestion13, securityQuestion14, securityQuestion15, securityQuestion16, securityQuestion17, securityQuestion18, securityQuestion19, securityQuestion20, securityQuestion21, securityQuestion22, securityQuestion23, securityQuestion24, securityQuestion25, selectedGenderSpnr, selectedMaritalSpnr, selectedLostPassportSpnr, selectedPlaceBirthSpnr, selectedBirthStateSpnr, selectedNationalitySpnr, selectedMailingCountrySpnr, selectedDocumentTypeSpnr, selectedPurposeSpnr, selectedLengthSpnr, selectedStateusSpnr, selectedPayeeSpnr, selectedRelationSpnr, selectedPersonTypeSpnr, selectedrelationUsSpnr, selectedStateStaySpnr;
+    String title, resp, securityQuestion1, securityQuestion2, securityQuestion3, securityQuestion4, securityQuestion5, securityQuestion6, securityQuestion7, securityQuestion8, securityQuestion9, securityQuestion10, securityQuestion11, securityQuestion12, securityQuestion13, securityQuestion14, securityQuestion15, securityQuestion16, securityQuestion17, securityQuestion18, securityQuestion19, securityQuestion20, securityQuestion21, securityQuestion22, securityQuestion23, securityQuestion24, securityQuestion25, selectedGenderSpnr, selectedMaritalSpnr, selectedLostPassportSpnr, selectedPlaceBirthSpnr, selectedBirthStateSpnr, selectedNationalitySpnr, selectedMailingCountrySpnr, selectedDocumentTypeSpnr, selectedPurposeSpnr, selectedLengthSpnr, selectedStateusSpnr, selectedPayeeSpnr, selectedRelationSpnr, selectedPersonTypeSpnr, selectedrelationUsSpnr, selectedStateStaySpnr, selectedPreviousEmployed, selectedTravelOtherCountry, selectedCharitable, selectedSpecialSkill, selectedServedMilitary, selectedParamilitary, selectedFile1, selectedFile2, selectedFile3, selectedFile4, name1, name2, name3, name4, filePath1, filePath2, filePath3, filePath4, fileType1, fileType2, fileType3, fileType4;
     View view;
     ViewPager mViewPager;
     int atTab;
+    File file;
+    TextView attachFileName1, attachFileName2, attachFileName3, attchFileName4;
     SharedPreferences sharedPreferences;
     TextInputLayout otherPassportLayout, groupNameLayout;
     LinearLayout mailingLayout, otherNameLayout, telecodeLayout, otherNationalityLayout, permanentResidentLayout, personTravellingLayout, layoutOtherPerson, stolenPassportLayout;
     String[] gender, martialStatus, documentType, stolen, contactPersonUs, relationPerson, indentedLength, payingTrip;
-    Button buttonForm1, buttonForm2, buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15;
+    Button buttonForm1, buttonForm2, buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15, uploadButton1, uploadButton2, uploadButton3, uploadButton4;
     EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality, otherSurName, otherGivenName, telecodeSurname, telecodeGivenName, otherNationality, otherPassportNumber, otherMailingAddress, otherCityMailing, otherStateMailing, otherPostalMailing, phoneCodeUsa, cityStayUs;
     Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital, stayLenght, personPaying, residentOtherCountry, purposeUS, stateStayUs;
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution, rgOtherPassport, rgOtherGroup;
@@ -89,9 +106,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private static final String BASE_URL_FORM9 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=pretravel";
     private static final String BASE_URL_FORM10 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=pretravelupdate";
     private static final String BASE_URL_FORM11 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=pointofcontactinfo";
-    private static final String BASE_URL_FORM12 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=presentworkinfo";
+    private static final String BASE_URL_FORM12 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=additionalworkinfo";
     private static final String BASE_URL_FORM14 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=interview";
     private static final String BASE_URL_FORM13 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=security";
+    private static final String BASE_URL_UPLOAD_DOCS = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=";
     private static final String STATES_USA = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=231";
     public static FragmentUSAForm newFormInstance( String title) {
         FragmentUSAForm fragmentUsaForm = new FragmentUSAForm();
@@ -614,37 +632,67 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgPriviousEmployed.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbPriviousEmployed1.isChecked()){
+                    selectedPreviousEmployed = "Y";
+                }
+                else if(rbPreviousEmployed2.isChecked()){
+                    selectedPreviousEmployed = "N";
+                }
             }
         });
         rgTravelledCountries.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbTravelledCountry1.isChecked()){
+                    selectedTravelOtherCountry = "Y";
+                }
+                else if(rbTravelledCountry2.isChecked()){
+                    selectedTravelOtherCountry = "N";
+                }
             }
         });
         rgContributedOrg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbContributed1.isChecked()){
+                    selectedCharitable = "Y";
+                }
+                else if(rbContributed2.isChecked()){
+                    selectedCharitable = "N";
+                }
             }
         });
         rgSpecializedSkill.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbSpecializedSkill1.isChecked()){
+                    selectedSpecialSkill = "Y";
+                }
+                else if(rbSpecializesSkill2.isChecked()){
+                    selectedSpecialSkill = "N";
+                }
             }
         });
         rgServedMilitary.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbServedMilitary1.isChecked()){
+                    selectedServedMilitary = "Y";
+                }
+                else if(rbServedMilitary2.isChecked()){
+                    selectedServedMilitary = "N";
+                }
             }
         });
         rgParamilitary.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-
+                if(rbParamilitary1.isChecked()){
+                    selectedParamilitary = "Y";
+                }
+                else if(rbParamilitary2.isChecked()){
+                    selectedParamilitary = "N";
+                }
             }
         });
     }
@@ -1098,6 +1146,11 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         attach2 = (ImageView)view.findViewById(R.id.attach_usa_file2);
         attach3 = (ImageView)view.findViewById(R.id.attach_usa_file3);
         attach4 = (ImageView)view.findViewById(R.id.attach_usa_file4);
+        attachFileName1 = (TextView)view.findViewById(R.id.doc1);
+        attachFileName2 = (TextView)view.findViewById(R.id.doc2);
+        attachFileName3 = (TextView)view.findViewById(R.id.doc3);
+        attchFileName4 = (TextView)view.findViewById(R.id.doc4);
+
         buttonForm15 = (Button)view.findViewById(R.id.button_form15);
         buttonForm15.setOnClickListener(this);
     }
@@ -1161,6 +1214,19 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 moveToNextForm();
                 break;
             case R.id.button_form15:
+                checkDocuments(BASE_URL_UPLOAD_DOCS);
+                break;
+            case R.id.attach_usa_file1:
+                showFileChooser(1);
+                break;
+            case R.id.attach_usa_file2:
+                showFileChooser(2);
+                break;
+            case R.id.attach_usa_file3:
+                showFileChooser(3);
+                break;
+            case R.id.attach_usa_file4:
+                showFileChooser(4);
                 break;
         }
 
@@ -1883,22 +1949,22 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void sendForm12Data(){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("work_add_emp", "")
-                .addFormDataPart("work_add_lang", "")
-                .addFormDataPart("work_add_countries", "")
+                .addFormDataPart("work_add_emp", selectedPreviousEmployed)
+                .addFormDataPart("work_add_lang", languageSpeaking.getText().toString())
+                .addFormDataPart("work_add_countries", selectedTravelOtherCountry)
                 .addFormDataPart("work_add_countries_list", "")
-                .addFormDataPart("work_add_charity", "")
+                .addFormDataPart("work_add_charity", selectedCharitable)
                 .addFormDataPart("work_add_charity_list", "")
-                .addFormDataPart("work_add_skill", "")
+                .addFormDataPart("work_add_skill", selectedSpecialSkill)
                 .addFormDataPart("work_add_skill_explain", "")
-                .addFormDataPart("work_add_military", "")
+                .addFormDataPart("work_add_military", selectedServedMilitary)
                 .addFormDataPart("work_add_military_country", "")
                 .addFormDataPart("work_add_military_branch", "")
                 .addFormDataPart("work_add_military_rank", "")
                 .addFormDataPart("work_add_military_speciality", "")
                 .addFormDataPart("work_add_military_from", "")
                 .addFormDataPart("work_add_military_to", "")
-                .addFormDataPart("work_add_paramilitary", "")
+                .addFormDataPart("work_add_paramilitary", selectedParamilitary)
                 .addFormDataPart("work_add_paramilitary_explain", "")
                 .build();
         Request request = new Request.Builder().url(BASE_URL_FORM12).post(requestBody).build();
@@ -2041,4 +2107,216 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void getSharedPreferences() {
 
     }
+    private void showFileChooser(int one) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.putExtra("path", Environment.getExternalStorageDirectory().getPath());
+        intent.setType("*/*");
+        intent.putExtra("count", one);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+        try {
+            startActivityForResult(
+                    Intent.createChooser(intent, "Select a File to Upload"),
+                    one);
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(getContext(), "Please install a File Manager.",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != RESULT_OK) return;
+        Uri uri;
+        String filePath;
+        ContentResolver cR;
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        switch (requestCode){
+            case 1:
+                uri = data.getData();
+                filePath1 = getPath(getContext(),uri);
+                cR = getContext().getContentResolver();
+                 fileType1= cR.getType(uri);
+                selectedFile1=filePath1.substring(filePath1.lastIndexOf("/")+1);
+                attachFileName1.setText(selectedFile1);
+                checked1.setImageResource(R.drawable.checked);
+                buttonForm15.setText("Submit");
+                break;
+            case 2:
+                uri = data.getData();
+                filePath2 = getPath(getContext(),uri);
+                cR = getContext().getContentResolver();
+                fileType2 = cR.getType(uri);
+                selectedFile2=filePath2.substring(filePath2.lastIndexOf("/")+1);
+                attachFileName2.setText(selectedFile2);
+                checked2.setImageResource(R.drawable.checked);
+                buttonForm15.setText("Submit");
+                break;
+            case 3:
+                uri = data.getData();
+                filePath3 = getPath(getContext(),uri);
+                cR = getContext().getContentResolver();
+                fileType3 = cR.getType(uri);
+                selectedFile3=filePath3.substring(filePath3.lastIndexOf("/")+1);
+                attachFileName3.setText(selectedFile3);
+                checked3.setImageResource(R.drawable.checked);
+                buttonForm15.setText("Submit");
+                break;
+            case 4:
+                uri = data.getData();
+                filePath4 = getPath(getContext(),uri);
+                cR = getContext().getContentResolver();
+                fileType4 = cR.getType(uri);
+                selectedFile4=filePath4.substring(filePath4.lastIndexOf("/")+1);
+                attchFileName4.setText(selectedFile4);
+                checked4.setImageResource(R.drawable.checked);
+                buttonForm15.setText("Submit");
+                break;
+
+        }
+
+    }
+    public static String getPath(final Context context, final Uri uri) {
+
+        final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+
+        if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
+            if (isExternalStorageDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+
+                if ("primary".equalsIgnoreCase(type)) {
+                    return Environment.getExternalStorageDirectory() + "/" + split[1];
+                }
+
+            }
+            else if (isDownloadsDocument(uri)) {
+
+                final String id = DocumentsContract.getDocumentId(uri);
+                final Uri contentUri = ContentUris.withAppendedId(
+                        Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+
+                return getDataColumn(context, contentUri, null, null);
+            }
+            else if (isMediaDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+
+                Uri contentUri = null;
+                if ("image".equals(type)) {
+                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                } else if ("video".equals(type)) {
+                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                } else if ("audio".equals(type)) {
+                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                }
+
+                final String selection = "_id=?";
+                final String[] selectionArgs = new String[] {
+                        split[1]
+                };
+
+                return getDataColumn(context, contentUri, selection, selectionArgs);
+            }
+        }
+        else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            return getDataColumn(context, uri, null, null);
+        }
+        else if ("file".equalsIgnoreCase(uri.getScheme())) {
+
+            return uri.getPath();
+        }
+
+
+        return null;
+    }
+
+    public static String getDataColumn(Context context, Uri uri, String selection,
+                                       String[] selectionArgs) {
+
+        Cursor cursor = null;
+        final String column = "_data";
+        final String[] projection = {
+                column
+        };
+
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
+                    null);
+            if (cursor != null && cursor.moveToFirst()) {
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(column_index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
+
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+    private void uploadDocuments(String response2, String selectedFile1,  String fileType1, String fileName1, String uploadedFile,String s) {
+        file = new File(selectedFile1);
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart(uploadedFile, fileName1,
+                        RequestBody.create(MediaType.parse(fileType1), file))
+                .addFormDataPart("visa_id", "")
+                .addFormDataPart("last_id","")
+
+                .build();
+        Request request = new Request.Builder().url(s).post(requestBody).build();
+        okhttp3.Call call = client.newCall(request);
+        call.enqueue(new okhttp3.Callback() {
+
+            @Override
+            public void onFailure(okhttp3.Call call, IOException e) {
+                System.out.println("Registration Error" + e.getMessage());
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+
+                try {
+                    String resp = response.body().string();
+                    Log.v("Docs", resp);
+                    System.out.println(resp);
+                    if (response.isSuccessful()) {
+
+                    } else {
+
+                    }
+                } catch (IOException e) {
+                    System.out.println("Exception caught" + e.getMessage());
+                }
+            }
+
+        });
+    }
+    private void checkDocuments(String baseUrlUploadDocs) {
+        String visaId = sharedPreferences.getString("response","");
+        if(selectedFile1.length() != 0){
+            uploadDocuments(visaId,filePath1,fileType1,name1, "uploaded_file", baseUrlUploadDocs +"uploadphoto");
+        }
+        if(selectedFile2.length() != 0){
+            uploadDocuments(visaId,filePath2,fileType2,name2, "uploaded_file1", baseUrlUploadDocs +"uploadpassport");
+        }
+        if(selectedFile3.length() != 0){
+            uploadDocuments(visaId,filePath3,fileType3,name3, "uploaded_file2", baseUrlUploadDocs +"uploadadd");
+        }
+        if(selectedFile4.length() != 0){
+            uploadDocuments(visaId,filePath4,fileType4,name4, "uploaded_file3", baseUrlUploadDocs +"uploadadd1");
+        }
+    }
+
+
 }
