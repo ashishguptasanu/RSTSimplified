@@ -1879,7 +1879,6 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     private void sendUsaFormData1(String visaId){
         String phoneCode = sharedPreferences.getString("phone_code_usa","");
         String phoneCodeFinal = phoneCode.replaceAll("\\+","");
-        System.out.println("Hello"+ phoneCodeFinal);
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("visa_id", visaId)
@@ -1890,7 +1889,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("mobile_num", phoneUsa.getText().toString())
                 .addFormDataPart("email", emailUsa.getText().toString())
                 .addFormDataPart("email_verified","N")
-                .addFormDataPart("service_type","")
+                .addFormDataPart("service_type","Regular Service")
                 .addFormDataPart("consulate_status", "")
                 .addFormDataPart("visa_status","")
                 .addFormDataPart("created_date","")
