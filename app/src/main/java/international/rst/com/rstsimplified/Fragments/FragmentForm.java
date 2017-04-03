@@ -1308,7 +1308,15 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedUsaMarital = maritalUsa[i];
                 break;
             case R.id.stolen_passport:
-                sharedPreferences.edit().putInt("stolen_passport", i).apply();
+                if(i == 1){
+                    sharedPreferences.edit().putInt("stolen_passport", i).apply();
+                    sharedPreferences.edit().putString("stolen_passport_usa","Yes").apply();
+                }
+                else if(i == 2){
+                    sharedPreferences.edit().putString("stolen_passport_usa","No").apply();
+                }
+
+
         }
     }
 
