@@ -1640,12 +1640,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
 
 
             public static final String MODE_PRIVATE = "";
-
             @Override
             public void onFailure(okhttp3.Call call, IOException e) {
                 System.out.println("Registration Error" + e.getMessage());
             }
-
             @Override
             public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
 

@@ -2269,6 +2269,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
     private void uploadDocuments(String response2, String selectedFile1,  String fileType1, String fileName1, String uploadedFile,String s) {
+        System.out.println(response2 + "+" + selectedFile1 + "+" + fileType1 + "+" + fileName1 + "+" + uploadedFile + "+" + s );
         file = new File(selectedFile1);
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
@@ -2309,16 +2310,16 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void checkDocuments(String baseUrlUploadDocs) {
         String visaId = sharedPreferences.getString("response","");
         if(filePath1.length() != 0){
-            uploadDocuments(visaId,filePath1,fileType1,name1, "uploaded_file", baseUrlUploadDocs +"uploadphoto");
+            uploadDocuments(visaId,filePath1,fileType1,selectedFile1, "uploaded_file", baseUrlUploadDocs +"uploadphoto");
         }
         if(filePath2.length() != 0){
-            uploadDocuments(visaId,filePath2,fileType2,name2, "uploaded_file1", baseUrlUploadDocs +"uploadpassport");
+            uploadDocuments(visaId,filePath2,fileType2,selectedFile2, "uploaded_file1", baseUrlUploadDocs +"uploadpassport");
         }
         if(filePath3.length() != 0){
-            uploadDocuments(visaId,filePath3,fileType3,name3, "uploaded_file2", baseUrlUploadDocs +"uploadadd");
+            uploadDocuments(visaId,filePath3,fileType3,selectedFile3, "uploaded_file2", baseUrlUploadDocs +"uploadadd");
         }
         if(filePath4.length() != 0){
-            uploadDocuments(visaId,filePath4,fileType4,name4, "uploaded_file3", baseUrlUploadDocs +"uploadadd1");
+            uploadDocuments(visaId,filePath4,fileType4,selectedFile4, "uploaded_file3", baseUrlUploadDocs +"uploadadd1");
         }
     }
 

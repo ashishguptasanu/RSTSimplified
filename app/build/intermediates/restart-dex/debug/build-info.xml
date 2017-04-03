@@ -6,22 +6,22 @@
     density="xhdpi"
     format="10"
     plugin-version="2.3.0"
-    timestamp="1491046104961"
+    timestamp="1491197529900"
     token="-315265450245951108"
     verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="1577" />
+        duration="6189" />
     <task
         name="instant-run-dex"
-        duration="184" />
+        duration="305" />
     <task
         name="instant-run-transform"
-        duration="956" />
+        duration="492" />
     <task
         name="verifier"
-        duration="110" />
+        duration="53" />
 
     <artifact
         location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
@@ -29,11 +29,8 @@
 
     <build
         build-mode="FULL"
-        timestamp="1491045726351"
+        timestamp="1491197087525"
         verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
-            type="SPLIT" />
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
             type="SPLIT_MAIN" />
@@ -42,6 +39,9 @@
             type="SPLIT" />
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
@@ -70,7 +70,7 @@
     </build>
     <build
         build-mode="HOT_WARM"
-        timestamp="1491046104961"
+        timestamp="1491197529900"
         verifier="COMPATIBLE" >
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
