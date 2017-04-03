@@ -3490,7 +3490,6 @@ containing a value of this type.
         public static final int spnr_gender=0x7f0d0083;
         public static final int spnr_indented_length=0x7f0d0263;
         public static final int spnr_living_in=0x7f0d015c;
-        public static final int spnr_lost_passport=0x7f0d025c;
         public static final int spnr_nationality=0x7f0d0159;
         public static final int spnr_person_paying=0x7f0d0268;
         public static final int spnr_port=0x7f0d00a6;
@@ -3525,6 +3524,7 @@ containing a value of this type.
         public static final int stolen_field2=0x7f0d025f;
         public static final int stolen_passport=0x7f0d00dd;
         public static final int stolen_passport_field2=0x7f0d0260;
+        public static final int stolen_passport_form6=0x7f0d025c;
         public static final int stolen_passport_layout5=0x7f0d025d;
         public static final int submenuarrow=0x7f0d0061;
         public static final int submit_area=0x7f0d0072;

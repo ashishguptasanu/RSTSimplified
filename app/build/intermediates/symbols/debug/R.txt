@@ -1341,7 +1341,6 @@ int id spnr_father_status 0x7f0d018e
 int id spnr_gender 0x7f0d0083
 int id spnr_indented_length 0x7f0d0263
 int id spnr_living_in 0x7f0d015c
-int id spnr_lost_passport 0x7f0d025c
 int id spnr_nationality 0x7f0d0159
 int id spnr_person_paying 0x7f0d0268
 int id spnr_port 0x7f0d00a6
@@ -1376,6 +1375,7 @@ int id stay_us_city 0x7f0d0266
 int id stolen_field2 0x7f0d025f
 int id stolen_passport 0x7f0d00dd
 int id stolen_passport_field2 0x7f0d0260
+int id stolen_passport_form6 0x7f0d025c
 int id stolen_passport_layout5 0x7f0d025d
 int id submenuarrow 0x7f0d0061
 int id submit_area 0x7f0d0072

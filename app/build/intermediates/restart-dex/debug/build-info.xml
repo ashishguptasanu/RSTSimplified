@@ -6,23 +6,26 @@
     density="xhdpi"
     format="10"
     plugin-version="2.3.0"
-    timestamp="1491203013510"
+    timestamp="1491204755010"
     token="-315265450245951108"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="2625" />
+        duration="3718" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="889" />
+        duration="952" />
     <task
         name="verifier"
-        duration="182" />
+        duration="179" />
 
+    <artifact
+        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+        type="SPLIT" />
     <artifact
         location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
         type="SPLIT" />
@@ -73,8 +76,11 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1491203013510"
+        timestamp="1491204755010"
         verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
+            type="SPLIT" />
         <artifact
             location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
