@@ -1652,7 +1652,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                      parts = resp.split("/");
                      visaReferenceId = parts[0];
                      vadId = parts[1];
-                    sharedPreferences.edit().putString("vad_id","").apply();
+                    sharedPreferences.edit().putString("vad_id",vadId).apply();
+                    System.out.println(visaReferenceId + "=" + vadId);
                     if (response.isSuccessful()) {
                         sharedPreferences.edit().putString("response", visaReferenceId).apply();
                     }else {

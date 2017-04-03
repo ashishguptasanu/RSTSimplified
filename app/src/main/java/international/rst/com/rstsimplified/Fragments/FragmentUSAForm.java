@@ -1271,6 +1271,23 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 break;
             case R.id.spnr_state_interview:
                 break;
+            case R.id.spnr_indented_length:
+                int indentedLength = i;
+                if(indentedLength == 1){
+                    noMonths.setHint("No of years");}
+                else if(indentedLength == 2){
+                    noMonths.setHint(R.string.no_of_months_us);}
+                else if(indentedLength == 3){
+                    noMonths.setHint(R.string.no_of_weeks_us);}
+                else if(indentedLength == 4){
+                    noMonths.setHint(R.string.no_of_days_us);}
+                else if(indentedLength == 5){
+                    noMonths.setHint("No of hours");
+                }
+                else if(indentedLength == 0){
+                    noMonths.setHint("Stay Length");
+                }
+
 
         }
     }
@@ -2276,7 +2293,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart(uploadedFile, fileName1,
                         RequestBody.create(MediaType.parse(fileType1), file))
                 .addFormDataPart("visa_id", response2)
-                .addFormDataPart("last_id","")
+                .addFormDataPart("last_id",sharedPreferences.getString("vad_id",""))
 
                 .build();
         Request request = new Request.Builder().url(s).post(requestBody).build();

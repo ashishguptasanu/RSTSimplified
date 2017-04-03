@@ -2,30 +2,26 @@
 <instant-run
     abi="armeabi-v7a,armeabi"
     api-level="23"
-    build-mode="HOT_WARM"
+    build-mode="COLD"
     density="xhdpi"
     format="10"
     plugin-version="2.3.0"
-    timestamp="1491197529900"
+    timestamp="1491200124219"
     token="-315265450245951108"
-    verifier="COMPATIBLE" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="6189" />
+        duration="0" />
     <task
         name="instant-run-dex"
-        duration="305" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="492" />
+        duration="0" />
     <task
         name="verifier"
-        duration="53" />
-
-    <artifact
-        location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
-        type="RELOAD_DEX" />
+        duration="0" />
 
     <build
         build-mode="FULL"
@@ -69,12 +65,19 @@
             type="SPLIT" />
     </build>
     <build
-        build-mode="HOT_WARM"
-        timestamp="1491197529900"
-        verifier="COMPATIBLE" >
+        build-mode="COLD"
+        timestamp="1491199700848"
+        verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\reload-dex\debug\classes.dex"
-            type="RELOAD_DEX" />
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="C:\Users\Ashish\Desktop\RSTSimplified-master\RSTSimplified\app\build\outputs\apk\app-debug.apk"
+            type="SPLIT_MAIN" />
     </build>
+    <build
+        build-mode="COLD"
+        timestamp="1491200124219"
+        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>
