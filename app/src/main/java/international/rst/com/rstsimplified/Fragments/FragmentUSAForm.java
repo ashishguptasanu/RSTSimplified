@@ -1,10 +1,14 @@
 package international.rst.com.rstsimplified.Fragments;
+import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +18,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -23,6 +28,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -70,7 +76,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static android.app.Activity.RESULT_OK;
 
 public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
-    String title, resp, securityQuestion1, securityQuestion2, securityQuestion3, securityQuestion4, securityQuestion5, securityQuestion6, securityQuestion7, securityQuestion8, securityQuestion9, securityQuestion10, securityQuestion11, securityQuestion12, securityQuestion13, securityQuestion14, securityQuestion15, securityQuestion16, securityQuestion17, securityQuestion18, securityQuestion19, securityQuestion20, securityQuestion21, securityQuestion22, securityQuestion23, securityQuestion24, securityQuestion25, selectedGenderSpnr, selectedMaritalSpnr, selectedLostPassportSpnr, selectedPlaceBirthSpnr, selectedBirthStateSpnr, selectedNationalitySpnr, selectedMailingCountrySpnr, selectedDocumentTypeSpnr, selectedPurposeSpnr, selectedLengthSpnr, selectedStateusSpnr, selectedPayeeSpnr, selectedRelationSpnr, selectedPersonTypeSpnr, selectedrelationUsSpnr, selectedStateStaySpnr, selectedPreviousEmployed, selectedTravelOtherCountry, selectedCharitable, selectedSpecialSkill, selectedServedMilitary, selectedParamilitary, selectedFile1, selectedFile2, selectedFile3, selectedFile4, name1, name2, name3, name4, filePath1, filePath2, filePath3, filePath4, fileType1, fileType2, fileType3, fileType4;
+    String title, resp, securityQuestion1, securityQuestion2, securityQuestion3, securityQuestion4, securityQuestion5, securityQuestion6, securityQuestion7, securityQuestion8, securityQuestion9, securityQuestion10, securityQuestion11, securityQuestion12, securityQuestion13, securityQuestion14, securityQuestion15, securityQuestion16, securityQuestion17, securityQuestion18, securityQuestion19, securityQuestion20, securityQuestion21, securityQuestion22, securityQuestion23, securityQuestion24, securityQuestion25, selectedGenderSpnr, selectedMaritalSpnr, selectedLostPassportSpnr, selectedPlaceBirthSpnr, selectedBirthStateSpnr, selectedNationalitySpnr, selectedMailingCountrySpnr, selectedDocumentTypeSpnr, selectedPurposeSpnr, selectedLengthSpnr, selectedStateusSpnr, selectedPayeeSpnr, selectedRelationSpnr, selectedPersonTypeSpnr, selectedrelationUsSpnr, selectedStateStaySpnr, selectedPreviousEmployed, selectedTravelOtherCountry, selectedCharitable, selectedSpecialSkill, selectedServedMilitary, selectedParamilitary, selectedFile1, selectedFile2, selectedFile3, selectedFile4, name1, name2, name3, name4, filePath1, filePath2, filePath3, filePath4, fileType1, fileType2, fileType3, fileType4, selectedFatherUs, selectedMotherUs;
     View view;
     ViewPager mViewPager;
     int atTab;
@@ -279,6 +285,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rbGender2 = (RadioButton)view.findViewById(R.id.rb_gender2);
         maritalStatus  = (EditText)view.findViewById(R.id.marital_status);
         dateOfBirth = (EditText)view.findViewById(R.id.date_of_birth);
+        disableInput(dateOfBirth);
+        dateOfBirth.setOnClickListener(this);
         placeOfBirth = (EditText)view.findViewById(R.id.place_of_birth);
         rgOtherNationality = (RadioGroup)view.findViewById(R.id.rg_other_nationality);
         rbotherNationality1 = (RadioButton)view.findViewById(R.id.rb_other_nationality1);
@@ -432,6 +440,14 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         issueCountry = (EditText)view.findViewById(R.id.issued_country);
         issueDate = (EditText)view.findViewById(R.id.issued_date);
         expiryDate = (EditText)view.findViewById(R.id.expiry_date);
+        disableInput(issueDate);
+        disableInput(expiryDate);
+        disableInput(issueCity);
+        disableInput(issueCountry);
+        issueDate.setText(sharedPreferences.getString("issue_date_usa",""));
+        expiryDate.setText(sharedPreferences.getString("expiry_date_usa",""));
+        issueCity.setText(sharedPreferences.getString("city_issued_usa",""));
+        issueCountry.setText(sharedPreferences.getString("country_issued_usa",""));
         buttonForm5 = (Button)view.findViewById(R.id.button_form5);
         stolenPassportLayout = (LinearLayout)view.findViewById(R.id.stolen_passport_layout5);
         if(sharedPreferences.getInt("stolen_passport",0) == 1){
@@ -559,11 +575,15 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void initializeForm10View() {
         fatherName = (EditText)view.findViewById(R.id.full_name_father);
         fatherDateBirth = (EditText)view.findViewById(R.id.father_date_of_birth);
+        disableInput(fatherDateBirth);
+        fatherDateBirth.setOnClickListener(this);
         rgFatherUs = (RadioGroup)view.findViewById(R.id.rg_father_usa);
         rbFatherUs1 = (RadioButton)view.findViewById(R.id.rb_father_usa1);
         rbFatherUs2 = (RadioButton)view.findViewById(R.id.rb_father_usa2);
         motherName = (EditText)view.findViewById(R.id.full_name_mother);
         motherDateBirth = (EditText)view.findViewById(R.id.mother_date_of_birth);
+        disableInput(motherDateBirth);
+        motherDateBirth.setOnClickListener(this);
         rgMotherUs = (RadioGroup)view.findViewById(R.id.rg_mother_usa);
         rbMotherUs1 = (RadioButton)view.findViewById(R.id.rb_mother_usa1);
         rbMotherUs2 = (RadioButton)view.findViewById(R.id.rb_mother_usa2);
@@ -573,8 +593,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbFatherUs1.isChecked()){
+                    selectedFatherUs = "Y";
                 }
                 else if(rbFatherUs2.isChecked()){
+                    selectedFatherUs = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -585,9 +607,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if(rbMotherUs1.isChecked()){
+                    selectedMotherUs  = "Y";
                 }
                 else if(rbMotherUs2.isChecked()){
-
+                    selectedMotherUs = "N";
                 }
                 else {
                     showToast("Check all field");
@@ -1130,6 +1153,18 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         biometricPriority1 = (EditText)view.findViewById(R.id.biometric_priority1);
         biometricPriority2 = (EditText)view.findViewById(R.id.biometric_priority2);
         biometricPriority3 = (EditText)view.findViewById(R.id.biometric_priority3);
+        disableInput(interviewPriority1);
+        disableInput(interviewPriority2);
+        disableInput(interviewPriority3);
+        disableInput(biometricPriority1);
+        disableInput(biometricPriority2);
+        disableInput(biometricPriority3);
+        interviewPriority1.setOnClickListener(this);
+        interviewPriority2.setOnClickListener(this);
+        interviewPriority3.setOnClickListener(this);
+        biometricPriority1.setOnClickListener(this);
+        biometricPriority2.setOnClickListener(this);
+        biometricPriority3.setOnClickListener(this);
         deliveryAddress = (EditText)view.findViewById(R.id.address_delivery);
         deliveryState = (EditText)view.findViewById(R.id.state_delivery);
         deliveryCity = (EditText)view.findViewById(R.id.city_delivery);
@@ -1231,6 +1266,33 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 break;
             case R.id.attach_usa_file4:
                 showFileChooser(4);
+                break;
+            case R.id.father_date_of_birth:
+                datePicker(fatherDateBirth);
+                break;
+            case R.id.mother_date_of_birth:
+                datePicker(motherDateBirth);
+                break;
+            case R.id.date_of_birth:
+                datePicker(dateOfBirth);
+                break;
+            case R.id.interview_priority1:
+                datePicker(interviewPriority1);
+                break;
+            case R.id.interview_priority2:
+                datePicker(interviewPriority2);
+                break;
+            case R.id.interview_priority3:
+                datePicker(interviewPriority3);
+                break;
+            case R.id.biometric_priority1:
+                datePicker(biometricPriority1);
+                break;
+            case R.id.biometric_priority2:
+                datePicker(biometricPriority2);
+                break;
+            case R.id.biometric_priority3:
+                datePicker(biometricPriority3);
                 break;
         }
 
@@ -1877,12 +1939,12 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void sendForm10Data(){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("fam_father", "")
-                .addFormDataPart("fam_father_dob", "")
+                .addFormDataPart("fam_father", fatherName.getText().toString())
+                .addFormDataPart("fam_father_dob", fatherDateBirth.getText().toString())
                 .addFormDataPart("fam_father_inus", "")
                 .addFormDataPart("fam_father_status", "")
-                .addFormDataPart("fam_mother", "")
-                .addFormDataPart("fam_mother_dob", "")
+                .addFormDataPart("fam_mother", motherName.getText().toString())
+                .addFormDataPart("fam_mother_dob", motherDateBirth.getText().toString())
                 .addFormDataPart("fam_mother_inus", "")
                 .addFormDataPart("fam_mother_status", "")
                 .addFormDataPart("fam_mar_name", "")
@@ -2293,7 +2355,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart(uploadedFile, fileName1,
                         RequestBody.create(MediaType.parse(fileType1), file))
                 .addFormDataPart("visa_id", response2)
-                .addFormDataPart("last_id",sharedPreferences.getString("vad_id",""))
+                .addFormDataPart("visa_pid",sharedPreferences.getString("vad_id",""))
 
                 .build();
         Request request = new Request.Builder().url(s).post(requestBody).build();
@@ -2338,6 +2400,25 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         if(filePath4.length() != 0){
             uploadDocuments(visaId,filePath4,fileType4,selectedFile4, "uploaded_file3", baseUrlUploadDocs +"uploadadd1");
         }
+    }
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void datePicker(final EditText edtDate1) {
+        Calendar mcurrentDate=Calendar.getInstance();
+        final int mYear = mcurrentDate.get(Calendar.YEAR);
+        int mMonth=mcurrentDate.get(Calendar.MONTH);
+        int mDay=mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog mDatePicker=new DatePickerDialog(getActivity(),android.R.style.Theme_Holo_Light_Dialog_MinWidth, new DatePickerDialog.OnDateSetListener() {
+            public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                edtDate1.setText(selectedyear +"-"+(selectedmonth+1)+"-"+selectedday);
+            }
+        },mYear, mMonth, mDay);
+        mDatePicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mDatePicker.setTitle("Select date");
+        mDatePicker.show();
+    }
+    private void disableInput(EditText editText) {
+        editText.setFocusable(false);
     }
 
 
