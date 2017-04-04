@@ -82,6 +82,18 @@
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/layout_travelled_other">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/list_country_travelled"
+                android:id="@+id/travelled_other_countries"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+        </android.support.design.widget.TextInputLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,6 +125,18 @@
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/layout_contributed">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/charitable_organisation"
+                android:id="@+id/contributed_organisation"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+        </android.support.design.widget.TextInputLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -144,6 +168,18 @@
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/layout_special_skill">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Explain"
+                android:id="@+id/special_skill"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+        </android.support.design.widget.TextInputLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -178,6 +214,96 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/layout_military"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/country"
+                    android:textColor="@color/colorAccent"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/spnr_military_country"
+                    android:layout_weight="1">
+                </Spinner>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent"/>
+            </LinearLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_special_skill">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Branch of Service"
+                    android:id="@+id/branch_service"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_special_skill">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Rank/Position"
+                    android:id="@+id/rank"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_special_skill">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Military Speciality"
+                    android:id="@+id/speciality_military"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+            </android.support.design.widget.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_special_skill"
+                    android:layout_weight="1">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Date of Service From"
+                        android:id="@+id/from_date_service"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_special_skill"
+                    android:layout_weight="1">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Date of Service to"
+                        android:id="@+id/to_date_service"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal">
@@ -206,6 +332,18 @@
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/layout_paramilitary">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Explain"
+                android:id="@+id/explain_paramilitary"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
+        </android.support.design.widget.TextInputLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="28dp"
