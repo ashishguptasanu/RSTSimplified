@@ -47,6 +47,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import international.rst.com.rstsimplified.Model.AllCountryResponse;
+import international.rst.com.rstsimplified.Model.AllCountryUsa;
 import international.rst.com.rstsimplified.Model.Consulate;
 import international.rst.com.rstsimplified.Model.ConsulateInterface;
 import international.rst.com.rstsimplified.Model.ConsulateResponse;
@@ -1417,8 +1418,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         switch (adapterView.getId()){
             case R.id.spnr_birth_country:
                 int countryId = allcountry.get(i).getId();
+                System.out.println("Country Id:"+countryId + "& Country is:" + allcountry.get(i).getName());
                 String urlStates = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=" + countryId;
                 loadStateByCountry(urlStates);
+                System.out.println(urlStates);
                 break;
             case R.id.country_origin:
                 break;
@@ -1769,10 +1772,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .setLenient()
                 .create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.uaevisasonline.com")
+                .baseUrl("http://www.usa-visahub.in")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-        AllCountryResponse request = retrofit.create(AllCountryResponse.class);
+        AllCountryUsa request = retrofit.create(AllCountryUsa.class);
         retrofit2.Call<Country> call = request.getCountry();
         call.enqueue(new retrofit2.Callback<Country>() {
             @Override
@@ -2062,7 +2065,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void sendForm8Data(){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("pre_inus",selectedeverBeenUs)
+               // .addFormDataPart("pre_inus",selectedeverBeenUs)
                 .addFormDataPart("pre_inus_arrive", preArrivalUs.getText().toString())
                 .addFormDataPart("pre_inus_depart", preDepartureUs.getText().toString())
                 .addFormDataPart("pre_inus_licence", "")
@@ -2075,7 +2078,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart("pre_usvisa_lost", "")
                 .addFormDataPart("pre_usvisa_lost_year", "")
                 .addFormDataPart("pre_usvisa_lost_explain", "")
-                .addFormDataPart("pre_usvisa_revoke", selectedRefusedVisa)
+                //.addFormDataPart("pre_usvisa_revoke", selectedRefusedVisa)
                 .addFormDataPart("pre_usvisa_revoke_explain", "")
                 .addFormDataPart("pre_withdraw_app", "")
                 .addFormDataPart("pre_withdraw_app_explain", "")
@@ -2157,12 +2160,12 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("fam_father", fatherName.getText().toString())
                 .addFormDataPart("fam_father_dob", fatherDateBirth.getText().toString())
-                .addFormDataPart("fam_father_inus", selectedFatherUs)
-                .addFormDataPart("fam_father_status", selectedFatherStatus)
+//                .addFormDataPart("fam_father_inus", selectedFatherUs)
+//                .addFormDataPart("fam_father_status", selectedFatherStatus)
                 .addFormDataPart("fam_mother", motherName.getText().toString())
                 .addFormDataPart("fam_mother_dob", motherDateBirth.getText().toString())
-                .addFormDataPart("fam_mother_inus", selectedMotherUs)
-                .addFormDataPart("fam_mother_status", selectedMotherStatus)
+ //               .addFormDataPart("fam_mother_inus", selectedMotherUs)
+ //               .addFormDataPart("fam_mother_status", selectedMotherStatus)
                 .addFormDataPart("fam_mar_name", "")
                 .addFormDataPart("fam_mar_dob", "")
                 .addFormDataPart("fam_mar_birth", "")
@@ -2210,7 +2213,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart("work_name", employerName.getText().toString())
                 .addFormDataPart("work_add", addressEmployer.getText().toString())
                 .addFormDataPart("work_city", cityEmployment.getText().toString())
-                .addFormDataPart("work_code", selectedEmploymentCode)
+                //.addFormDataPart("work_code", String.valueOf(selectedEmploymentCode))
                 .addFormDataPart("country", selectedOccupationCountry)
                 .addFormDataPart("work_phone", contactNumberEmployment.getText().toString())
                 .addFormDataPart("work_country", selectedOccupationCountry)
@@ -2248,15 +2251,15 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void sendForm12Data(){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("work_add_emp", selectedPreviousEmployed)
+//                .addFormDataPart("work_add_emp", selectedPreviousEmployed)
                 .addFormDataPart("work_add_lang", languageSpeaking.getText().toString())
-                .addFormDataPart("work_add_countries", selectedTravelOtherCountry)
+//                .addFormDataPart("work_add_countries", selectedTravelOtherCountry)
                 .addFormDataPart("work_add_countries_list", "")
-                .addFormDataPart("work_add_charity", selectedCharitable)
+//                .addFormDataPart("work_add_charity", selectedCharitable)
                 .addFormDataPart("work_add_charity_list", "")
-                .addFormDataPart("work_add_skill", selectedSpecialSkill)
+//                .addFormDataPart("work_add_skill", selectedSpecialSkill)
                 .addFormDataPart("work_add_skill_explain", "")
-                .addFormDataPart("work_add_military", selectedServedMilitary)
+  //              .addFormDataPart("work_add_military", selectedServedMilitary)
                 .addFormDataPart("work_add_military_country", "")
                 .addFormDataPart("work_add_military_branch", "")
                 .addFormDataPart("work_add_military_rank", "")
