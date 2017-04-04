@@ -76,7 +76,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static android.app.Activity.RESULT_OK;
 
 public class FragmentUSAForm extends android.support.v4.app.Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener{
-    String title, resp, securityQuestion1, securityQuestion2, securityQuestion3, securityQuestion4, securityQuestion5, securityQuestion6, securityQuestion7, securityQuestion8, securityQuestion9, securityQuestion10, securityQuestion11, securityQuestion12, securityQuestion13, securityQuestion14, securityQuestion15, securityQuestion16, securityQuestion17, securityQuestion18, securityQuestion19, securityQuestion20, securityQuestion21, securityQuestion22, securityQuestion23, securityQuestion24, securityQuestion25, selectedGenderSpnr, selectedMaritalSpnr, selectedLostPassportSpnr, selectedPlaceBirthSpnr, selectedBirthStateSpnr, selectedNationalitySpnr, selectedMailingCountrySpnr, selectedDocumentTypeSpnr, selectedPurposeSpnr, selectedLengthSpnr, selectedStateusSpnr, selectedPayeeSpnr, selectedRelationSpnr, selectedPersonTypeSpnr, selectedrelationUsSpnr, selectedStateStaySpnr, selectedPreviousEmployed, selectedTravelOtherCountry, selectedCharitable, selectedSpecialSkill, selectedServedMilitary, selectedParamilitary, selectedFile1, selectedFile2, selectedFile3, selectedFile4, name1, name2, name3, name4, filePath1, filePath2, filePath3, filePath4, fileType1, fileType2, fileType3, fileType4, selectedFatherUs, selectedMotherUs, selectedeverBeenUs, selectedUsLicense, selectedIssuedVisa, selectedApplyingSameVisa, selectedApplyingSameCountry, selectedTenPrinted, selectedVisaLost, selectedVisaCancelled, selectedRefusedVisa, selectedFatherStatus, selectedMotherStatus;
+    String title, resp, securityQuestion1, securityQuestion2, securityQuestion3, securityQuestion4, securityQuestion5, securityQuestion6, securityQuestion7, securityQuestion8, securityQuestion9, securityQuestion10, securityQuestion11, securityQuestion12, securityQuestion13, securityQuestion14, securityQuestion15, securityQuestion16, securityQuestion17, securityQuestion18, securityQuestion19, securityQuestion20, securityQuestion21, securityQuestion22, securityQuestion23, securityQuestion24, securityQuestion25, selectedGenderSpnr, selectedMaritalSpnr, selectedLostPassportSpnr, selectedPlaceBirthSpnr, selectedBirthStateSpnr, selectedNationalitySpnr, selectedMailingCountrySpnr, selectedDocumentTypeSpnr, selectedPurposeSpnr, selectedLengthSpnr, selectedStateusSpnr, selectedPayeeSpnr, selectedRelationSpnr, selectedPersonTypeSpnr, selectedrelationUsSpnr, selectedStateStaySpnr, selectedPreviousEmployed, selectedTravelOtherCountry, selectedCharitable, selectedSpecialSkill, selectedServedMilitary, selectedParamilitary, selectedFile1, selectedFile2, selectedFile3, selectedFile4, name1, name2, name3, name4, filePath1, filePath2, filePath3, filePath4, fileType1, fileType2, fileType3, fileType4, selectedFatherUs, selectedMotherUs, selectedeverBeenUs, selectedUsLicense, selectedIssuedVisa, selectedApplyingSameVisa, selectedApplyingSameCountry, selectedTenPrinted, selectedVisaLost, selectedVisaCancelled, selectedRefusedVisa, selectedFatherStatus, selectedMotherStatus, selectedOccupationCountry, selectedEmploymentCode;
     View view;
     ViewPager mViewPager;
     int atTab, selectedPurposeSpinner;
@@ -87,8 +87,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     LinearLayout mailingLayout, otherNameLayout, telecodeLayout, otherNationalityLayout, permanentResidentLayout, personTravellingLayout, layoutOtherPerson, stolenPassportLayout, fatherUsLayout, motherUsLayout;
     String[] gender, martialStatus, documentType, stolen, contactPersonUs, relationPerson, indentedLength, payingTrip, status;
     Button buttonForm1, buttonForm2, buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15, uploadButton1, uploadButton2, uploadButton3, uploadButton4;
-    EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, countryEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality, otherSurName, otherGivenName, telecodeSurname, telecodeGivenName, otherNationality, otherPassportNumber, otherMailingAddress, otherCityMailing, otherStateMailing, otherPostalMailing, phoneCodeUsa, cityStayUs, stolenPassportForm6, preArrivalUs, preDepartureUs, refusedExplain,issueCountryForm2, previousVisaIssueDate, issueCountry2;
-    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital, stayLenght, personPaying, residentOtherCountry, purposeUS, stateStayUs, fatherStatus, motherStatus;
+    EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality, otherSurName, otherGivenName, telecodeSurname, telecodeGivenName, otherNationality, otherPassportNumber, otherMailingAddress, otherCityMailing, otherStateMailing, otherPostalMailing, phoneCodeUsa, cityStayUs, stolenPassportForm6, preArrivalUs, preDepartureUs, refusedExplain,issueCountryForm2, previousVisaIssueDate, issueCountry2;
+    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital, stayLenght, personPaying, residentOtherCountry, purposeUS, stateStayUs, fatherStatus, motherStatus, countryEmployment;
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution, rgOtherPassport, rgOtherGroup;
     RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddress2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2, rbOtherPassport1, rbOtherPassport2, rbGroupName1, rbGroupName2 ;
     ImageView checked1, checked2, checked3, checked4,  attach1, attach2, attach3, attach4;
@@ -632,6 +632,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         stateContactUs = (Spinner)view.findViewById(R.id.spnr_state_contact_us);
         stateContactUs.setOnItemSelectedListener(this);
         codeContactUs = (EditText)view.findViewById(R.id.phone_code_contact_us);
+        codeContactUs.setText("+1");
+        disableInput(codeContactUs);
         numberContactUs = (EditText)view.findViewById(R.id.contact_number_us);
         buttonForm9 = (Button)view.findViewById(R.id.button_form9);
         buttonForm9.setOnClickListener(this);
@@ -700,9 +702,11 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         employerName = (EditText)view.findViewById(R.id.employer_name);
         addressEmployer = (EditText)view.findViewById(R.id.employer_address);
         cityEmployment = (EditText)view.findViewById(R.id.employer_city);
-        countryEmployment = (EditText)view.findViewById(R.id.employer_country);
+        countryEmployment = (Spinner)view.findViewById(R.id.spnr_country_occupation);
+        countryEmployment.setOnItemSelectedListener(this);
         codeEmployment = (EditText)view.findViewById(R.id.employer_code);
         contactNumberEmployment = (EditText)view.findViewById(R.id.employer_number);
+        loadAllCountriesOccupation();
         buttonForm11 = (Button)view.findViewById(R.id.button_form11);
         buttonForm11.setOnClickListener(this);
     }
@@ -1438,6 +1442,11 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                     noMonths.setHint("Stay Length");
                 }
                 break;
+            case R.id.spnr_country_occupation:
+                selectedOccupationCountry = allCountriesData.get(i);
+                if(i != 0){codeEmployment.setText("+" + allcountry.get(i).getPhoneCode());}
+                selectedEmploymentCode = allcountry.get(i).getPhoneCode();
+                break;
 
 
 
@@ -1757,6 +1766,41 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 birthCountrySpnr.setAdapter(dataAdapterCountries);
                 nationalitySpnr.setAdapter(dataAdapterCountries);
+
+
+            }
+            @Override
+            public void onFailure(retrofit2.Call<Country> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
+    private void loadAllCountriesOccupation() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.uaevisasonline.com")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        AllCountryResponse request = retrofit.create(AllCountryResponse.class);
+        retrofit2.Call<Country> call = request.getCountry();
+        call.enqueue(new retrofit2.Callback<Country>() {
+            @Override
+            public void onResponse(retrofit2.Call<Country> call, retrofit2.Response<Country> response) {
+
+
+                Country jsonResponse = response.body();
+                allcountry = jsonResponse.getCountry();
+                for(int i=0;i<allcountry.size();i++){
+                    allCountriesData.add(allcountry.get(i).getName());
+                }
+
+                //populateAllCountrySpinner();
+                //populateNationalitySpinner();
+                ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
+                dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                countryEmployment.setAdapter(dataAdapterCountries);
 
 
             }
@@ -2141,10 +2185,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart("work_name", employerName.getText().toString())
                 .addFormDataPart("work_add", addressEmployer.getText().toString())
                 .addFormDataPart("work_city", cityEmployment.getText().toString())
-                .addFormDataPart("work_code", codeEmployment.getText().toString())
-                .addFormDataPart("country", countryEmployment.getText().toString())
+                .addFormDataPart("work_code", selectedEmploymentCode)
+                .addFormDataPart("country", selectedOccupationCountry)
                 .addFormDataPart("work_phone", contactNumberEmployment.getText().toString())
-                .addFormDataPart("work_country", countryEmployment.getText().toString())
+                .addFormDataPart("work_country", selectedOccupationCountry)
                 .addFormDataPart("work_duties", "")
                 .build();
         Request request = new Request.Builder().url(BASE_URL_FORM11).post(requestBody).build();

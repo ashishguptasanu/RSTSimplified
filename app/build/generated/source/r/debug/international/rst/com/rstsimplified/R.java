@@ -3105,7 +3105,6 @@ containing a value of this type.
         public static final int employer_address=0x7f0d019e;
         public static final int employer_city=0x7f0d019f;
         public static final int employer_code=0x7f0d01a1;
-        public static final int employer_country=0x7f0d01a0;
         public static final int employer_name=0x7f0d019d;
         public static final int employer_number=0x7f0d01a2;
         public static final int end=0x7f0d002f;
@@ -3488,6 +3487,7 @@ containing a value of this type.
         public static final int spnr_contact_person_us=0x7f0d0293;
         public static final int spnr_country=0x7f0d0086;
         public static final int spnr_country_issue=0x7f0d009f;
+        public static final int spnr_country_occupation=0x7f0d01a0;
         public static final int spnr_country_stolen_passport=0x7f0d0264;
         public static final int spnr_document_type=0x7f0d025a;
         public static final int spnr_duration=0x7f0d0093;

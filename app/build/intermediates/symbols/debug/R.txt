@@ -956,7 +956,6 @@ int id emirates 0x7f0d00f5
 int id employer_address 0x7f0d019e
 int id employer_city 0x7f0d019f
 int id employer_code 0x7f0d01a1
-int id employer_country 0x7f0d01a0
 int id employer_name 0x7f0d019d
 int id employer_number 0x7f0d01a2
 int id end 0x7f0d002f
@@ -1339,6 +1338,7 @@ int id spnr_consulate_interview 0x7f0d0206
 int id spnr_contact_person_us 0x7f0d0293
 int id spnr_country 0x7f0d0086
 int id spnr_country_issue 0x7f0d009f
+int id spnr_country_occupation 0x7f0d01a0
 int id spnr_country_stolen_passport 0x7f0d0264
 int id spnr_document_type 0x7f0d025a
 int id spnr_duration 0x7f0d0093

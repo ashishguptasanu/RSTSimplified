@@ -60,16 +60,28 @@
                 android:id="@+id/employer_city"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
         </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/country"
-                android:id="@+id/employer_country"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
-        </android.support.design.widget.TextInputLayout>
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/country"
+                android:textColor="@color/colorAccent"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:spinnerMode="dialog"
+                android:id="@+id/spnr_country_occupation"
+                android:layout_weight="1">
+            </Spinner>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorAccent"/>
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

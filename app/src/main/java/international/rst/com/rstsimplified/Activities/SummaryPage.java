@@ -90,6 +90,7 @@ public class SummaryPage extends AppCompatActivity
             }
             else if(selectedVisaId == 1){
                 tvDob.setVisibility(View.GONE);
+                tvBirthDate.setVisibility(View.GONE);
                 appliedForLabel.setText("Visa Assistance Required For:");
                 tvArrival.setText("Issue Date");
                 tvDeparture.setText("Expiry Date");
