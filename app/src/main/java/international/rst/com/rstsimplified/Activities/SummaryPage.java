@@ -65,6 +65,7 @@ public class SummaryPage extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         context = getApplicationContext();
+        b = getIntent().getExtras();
         tvVisaId = (TextView)findViewById(R.id.visa_id);
         visaName = (TextView)findViewById(R.id.visa_name_summary);
         visaFee = (TextView)findViewById(R.id.tv_visa_fee);
@@ -98,8 +99,12 @@ public class SummaryPage extends AppCompatActivity
                 finalServiceFee.setText("USD" + String.valueOf(sharedPreferences.getFloat("service_fee", (float) 0.0)));
                 totalVisaFee.setText("USD" + String.valueOf(sharedPreferences.getFloat("total_fee", (float) 0.0)));
                 tvName.setText(sharedPreferences.getString("applicant_name",""));
-                tvArrivalDate.setText(sharedPreferences.getString("issue_date_usa",""));
-                tvDepartureDate.setText(sharedPreferences.getString("expiry_date_usa",""));
+                if(b!= null && b.containsKey("issue_date") && b.containsKey("expiry_date")){
+                    tvArrivalDate.setText(b.getString("issue_date",""));
+                    tvDepartureDate.setText(b.getString("expiry_date",""));
+                }
+                //tvArrivalDate.setText(sharedPreferences.getString("issue_date_usa",""));
+                //tvDepartureDate.setText(sharedPreferences.getString("expiry_date_usa",""));
                 tvPassportNumber.setText(sharedPreferences.getString("passport_num_usa",""));
                 tvGender.setText(sharedPreferences.getString("gender_usa",""));
             }

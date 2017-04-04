@@ -7,4 +7,5 @@
     <color name="viewColour">#9b9999</color>
     <color name="viewColour2">#d6d6d6</color>
     <color name="black_overlay">#66000000</color>
+    <color name="disabled_text">#797979</color>
 </resources>

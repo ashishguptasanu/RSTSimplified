@@ -293,6 +293,8 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                         sendUsaFormData2(vadId);
                         saveUsaPrefApplicant();
                         Intent intent = new Intent(getContext(), SummaryPage.class);
+                        intent.putExtra("issue_date",issueDateUsa.getText().toString());
+                        intent.putExtra("expiry_date", expiryDateUsa.getText().toString());
                         startActivity(intent);
                     }
                     else{

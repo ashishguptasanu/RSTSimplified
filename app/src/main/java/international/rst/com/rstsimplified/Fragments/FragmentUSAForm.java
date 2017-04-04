@@ -225,35 +225,53 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         arrivingDate.setText(sharedPreferences.getString("date_arrival_usa", ""));
         departureDate.setText(sharedPreferences.getString("date_departure_usa",""));
         buttonForm1.setOnClickListener(this);
+        disableInput(nameFirst);
+        disableInput(nameLast);
+        disableInput(email);
+        disableInput(mobileNumberCurrent);
+        disableInput(phoneCodeUsa);
+        disableInput(arrivingDate);
+        disableInput(departureDate);
     }
     private void initializeForm2View() {
         sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
         currentNationality = (EditText)view.findViewById(R.id.current_nationality);
         currentNationality.setText(sharedPreferences.getString("nationality_usa",""));
+        disableInput(currentNationality);
         currentAddress = (EditText) view.findViewById(R.id.current_address);
         currentAddress.setText(sharedPreferences.getString("address_usa",""));
+        disableInput(currentAddress);
         currentCity = (EditText)view.findViewById(R.id.current_city_form2);
         currentCity.setText(sharedPreferences.getString("city_usa",""));
+        disableInput(currentCity);
         placeOfBirthForm2 = (EditText)view.findViewById(R.id.place_of_birth_form2);
         placeOfBirthForm2.setText(sharedPreferences.getString("place_birth_usa",""));
+        disableInput(placeOfBirthForm2);
         stateCurrent = (EditText)view.findViewById(R.id.current_state_form2);
         stateCurrent.setText(sharedPreferences.getString("state_usa",""));
+        disableInput(stateCurrent);
         postalCodeCurrent = (EditText)view.findViewById(R.id.postal_code_current);
         postalCodeCurrent.setText(sharedPreferences.getString("postal_code_usa",""));
+        disableInput(postalCodeCurrent);
         countryCurrent = (EditText)view.findViewById(R.id.current_country);
         countryCurrent.setText(sharedPreferences.getString("country_usa",""));
+        disableInput(countryCurrent);
         passportNumberForm2 = (EditText)view.findViewById(R.id.passport_number_form2);
         passportNumberForm2.setText(sharedPreferences.getString("passport_num_usa",""));
+        disableInput(passportNumberForm2);
         issueCity = (EditText)view.findViewById(R.id.city_issued_form2);
         issueCity.setText(sharedPreferences.getString("city_issued_usa",""));
+        disableInput(issueCity);
         issueCountryForm2 = (EditText)view.findViewById(R.id.country_issue_form2);
         issueCountryForm2.setText(sharedPreferences.getString("issue_country_name",""));
         disableInput(issueCountryForm2);
 //        issueCountry.setText(sharedPreferences.getString("country_issued_usa",""));
         issueDate = (EditText)view.findViewById(R.id.issue_date_form2);
         issueDate.setText(sharedPreferences.getString("issue_date_usa",""));
+        disableInput(issueDate);
         expiryDateForm2 = (EditText)view.findViewById(R.id.expiry_date_form2);
         expiryDateForm2.setText(sharedPreferences.getString("expiry_date_usa",""));
+        disableInput(expiryDateForm2);
         buttonForm2 = (Button)view.findViewById(R.id.button_form2);
         buttonForm2.setOnClickListener(this);
         populateGenderSpinner();
@@ -261,6 +279,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         populateStolenPassportSpinner();
     }
     private void initializeForm3View() {
+        sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
         birthCountrySpnr = (Spinner)view.findViewById(R.id.spnr_birth_country);
         nationalitySpnr = (Spinner)view.findViewById(R.id.country_origin);
         birthCountrySpnr.setOnItemSelectedListener(this);
@@ -285,6 +304,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgGender = (RadioGroup)view.findViewById(R.id.rg_gender);
         rbGender1 = (RadioButton)view.findViewById(R.id.rb_gender1);
         rbGender2 = (RadioButton)view.findViewById(R.id.rb_gender2);
+        rgGender.setEnabled(false);
         int gender = sharedPreferences.getInt("gender_usa_num",0);
         if(gender == 1){
             rbGender1.setChecked(true);}
@@ -402,24 +422,32 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
         currentAddress = (EditText)view.findViewById(R.id.current_address);
         currentAddress.setText(sharedPreferences.getString("address_usa",""));
+        disableInput(currentAddress);
         currentCity = (EditText)view.findViewById(R.id.current_city);
         currentCity.setText(sharedPreferences.getString("city_usa",""));
+        disableInput(currentCity);
         pinCode = (EditText)view.findViewById(R.id.current_city_postal);
         pinCode.setText(sharedPreferences.getString("postal_code_usa",""));
+        disableInput(pinCode);
         state = (EditText)view.findViewById(R.id.current_state);
         state.setText(sharedPreferences.getString("state_usa",""));
+        disableInput(state);
         countryCurrent = (EditText)view.findViewById(R.id.current_country);
         countryCurrent.setText(sharedPreferences.getString("country_usa",""));
+        disableInput(countryCurrent);
         rgMailAddress = (RadioGroup)view.findViewById(R.id.rg_mailing_address);
         rbMailAddress1 = (RadioButton)view.findViewById(R.id.rb_mailing_address1);
         rbMailAddress2 = (RadioButton)view.findViewById(R.id.rb_mailing_address2);
         countryCode = (EditText)view.findViewById(R.id.country_code);
         countryCode.setText(sharedPreferences.getString("phone_code_usa",""));
+        disableInput(countryCode);
         primaryPhoneNumber = (EditText)view.findViewById(R.id.primary_phone_number);
         primaryPhoneNumber.setText(sharedPreferences.getString("phone_usa",""));
+        disableInput(primaryPhoneNumber);
         secondaryPhoneNumber = (EditText)view.findViewById(R.id.secondary_phone_number);
         emailAddress = (EditText)view.findViewById(R.id.email_address);
         emailAddress.setText(sharedPreferences.getString("email_usa",""));
+        disableInput(emailAddress);
         buttonForm4 = (Button)view.findViewById(R.id.button_form4);
         buttonForm4.setOnClickListener(this);
         mailingLayout = (LinearLayout)view.findViewById(R.id.layout_mailing_address);
@@ -2497,6 +2525,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     private void disableInput(EditText editText) {
         editText.setFocusable(false);
+        editText.setTextColor(R.color.disabled_text);
     }
 
 
