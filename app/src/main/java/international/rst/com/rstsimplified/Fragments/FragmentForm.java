@@ -105,7 +105,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String selectedGCC;
     String selectedPort;
     String serviceType;
-    String livingId, vadId, visaReferenceId;
+    String livingId, vadId, visaReferenceId, issueCountryName;
     String serviceFeeCs;
     String processingTime;
     String deviceType;
@@ -411,6 +411,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         sharedPreferences.edit().putString("gender_usa",selectedUsaGender).apply();
         sharedPreferences.edit().putString("passport_num_usa", passportNumberUsa.getText().toString()).apply();
         sharedPreferences.edit().putInt("gender_usa_num",selectedGenderUsa).apply();
+        sharedPreferences.edit().putString("issue_country_name",issueCountryName).apply();
+        sharedPreferences.edit().putString("marital_usa",selectedUsaMarital).apply();
+        sharedPreferences.edit().putString("place_birth_usa",placeBirthUsa.getText().toString()).apply();
+        sharedPreferences.edit().putString("issue_usa_country",issueCountryName).apply();
     }
 
     private void saveUsaContactPreferences() {
@@ -1311,7 +1315,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 selectedGenderUsa = i;
                 break;
             case R.id.marital_status_form2_applicant:
-                sharedPreferences.edit().putInt("marital_usa", i).apply();
+                sharedPreferences.edit().putInt("marital_usa_num", i).apply();
                 selectedUsaMarital = maritalUsa[i];
                 break;
             case R.id.stolen_passport:
@@ -1325,6 +1329,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 break;
             case R.id.country_issued_form2:
                 issueCountry = allcountry.get(i).getId();
+                issueCountryName = allCountriesData.get(i);
 
         }
     }
