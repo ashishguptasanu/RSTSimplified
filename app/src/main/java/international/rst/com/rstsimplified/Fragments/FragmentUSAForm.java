@@ -780,7 +780,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 }
                 else if(rbContributed2.isChecked()){
                     selectedCharitable = "N";
-                    layoutContributed.setVisibility(View.GONE'');
+                    layoutContributed.setVisibility(View.GONE);
                 }
             }
         });
