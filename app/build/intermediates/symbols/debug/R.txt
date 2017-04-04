@@ -896,7 +896,6 @@ int id country_code 0x7f0d0264
 int id country_issue_form2 0x7f0d022c
 int id country_issued_form2 0x7f0d00da
 int id country_origin 0x7f0d0244
-int id country_region_spnr 0x7f0d0263
 int id current_address 0x7f0d00d2
 int id current_city 0x7f0d0258
 int id current_city_form2 0x7f0d00d3
@@ -1045,6 +1044,7 @@ int id living_in_progress 0x7f0d0161
 int id ll1 0x7f0d010f
 int id mailing_address 0x7f0d025f
 int id mailing_city 0x7f0d0260
+int id mailing_country_spnr 0x7f0d0263
 int id mailing_postal_code 0x7f0d0261
 int id mailing_state 0x7f0d0262
 int id marital_status 0x7f0d023f

@@ -3045,7 +3045,6 @@ containing a value of this type.
         public static final int country_issue_form2=0x7f0d022c;
         public static final int country_issued_form2=0x7f0d00da;
         public static final int country_origin=0x7f0d0244;
-        public static final int country_region_spnr=0x7f0d0263;
         public static final int current_address=0x7f0d00d2;
         public static final int current_city=0x7f0d0258;
         public static final int current_city_form2=0x7f0d00d3;
@@ -3194,6 +3193,7 @@ containing a value of this type.
         public static final int ll1=0x7f0d010f;
         public static final int mailing_address=0x7f0d025f;
         public static final int mailing_city=0x7f0d0260;
+        public static final int mailing_country_spnr=0x7f0d0263;
         public static final int mailing_postal_code=0x7f0d0261;
         public static final int mailing_state=0x7f0d0262;
         public static final int marital_status=0x7f0d023f;

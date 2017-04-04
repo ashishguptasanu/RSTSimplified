@@ -63,6 +63,7 @@ public class UsaVisaAdapter1 extends RecyclerView.Adapter<UsaVisaAdapter1.MyView
             sharedPreferences.edit().putString("visa_issued_type",visaTypes1.get(position).getVisaissuedtype()).apply();
             sharedPreferences.edit().putString("visa_duration_id",visaTypes1.get(position).getVisadurationid()).apply();
             sharedPreferences.edit().putString("no_of_entries", visaTypes1.get(position).getNoOfEntries()).apply();
+            sharedPreferences.edit().putString("applied_visa", visaTypes1.get(position).getVisaType()+"("+ visaTypes1.get(position).getName() + " " + visaTypes1.get(position).getEntryType()+ ")").apply();
             totalFeeVisa = visaTypes1.get(position).getGovtFee() + visaTypes1.get(position).getServiceFee();
             sharedPreferences.edit().putFloat("total_fee",totalFeeVisa).apply();
             Intent intent = new Intent(context, FormActivity.class);

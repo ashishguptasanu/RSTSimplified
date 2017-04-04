@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Mar 30 17:04:34 IST 2017
+#Wed Apr 05 00:27:53 IST 2017
 20.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 493.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -28,7 +28,7 @@
 483.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 304.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 330.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-mdpi-v4\\airport_white.png
-501.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_grow_fade_in_from_bottom.xml
+501.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\content_summary_page.xml
 43.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 166.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 60.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png
@@ -214,6 +214,7 @@
 378.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 208.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 225.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png
+505.set=ANDROID_RESOURCE
 438.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_list_pressed_holo_light.9.png
 428.set=ANDROID_RESOURCE
 55.set=ANDROID_RESOURCE
@@ -261,7 +262,7 @@
 485.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 306.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 332.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_015.png
-503.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-mdpi-v4\\meet_white.png
+503.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\hotel_gray.png
 45.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 168.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 237.set=ANDROID_RESOURCE
@@ -513,6 +514,7 @@
 487.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 308.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 334.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\uae_banner.jpg
+505.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_menu_overflow_material.xml
 47.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 257.set=ANDROID_RESOURCE
 196.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml
@@ -866,6 +868,7 @@
 180.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-hdpi-v4\\parking.png
 334.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 351.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\visa_services_gray.png
+505.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 170.set=ANDROID_RESOURCE
 196.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 90.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-hdpi-v4\\airport_white.png
@@ -903,7 +906,7 @@
 484.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 305.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 331.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png
-502.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\hotel_gray.png
+502.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_grow_fade_in_from_bottom.xml
 44.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 167.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 61.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\ic_menu_camera.xml
@@ -1143,7 +1146,7 @@
 486.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 307.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 333.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\departures.png
-504.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_menu_overflow_material.xml
+504.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-mdpi-v4\\meet_white.png
 169.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 46.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 247.set=ANDROID_RESOURCE
@@ -1306,7 +1309,7 @@
 361.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_secondary_text_material_light.xml
 74.base=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_
 394.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-anydpi-v21\\visa_services_gray.xml
-count=505
+count=506
 257.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_action_bar_item_background_material.xml
 428.file=C\:\\Users\\Ashish\\Desktop\\RSTSimplified-master\\RSTSimplified\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_action_mode_close_item_material.xml
 77.set=ANDROID_RESOURCE

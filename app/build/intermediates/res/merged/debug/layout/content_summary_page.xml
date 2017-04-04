@@ -52,23 +52,27 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:layout_marginLeft="60dp"
+                    android:textAlignment="center"
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/applied_for_label"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:textColor="@color/colorPrimary"
-                    android:text="Visa Applied  For:" />
+                    android:text="Visa Applied  For:"
+                    android:layout_weight="1"/>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:maxLines="2"
+                    android:textAlignment="center"
                     android:layout_marginLeft="2dp"
                     android:text="-- --- ----- --"
                     android:id="@+id/visa_name_summary"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight=".5"/>
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

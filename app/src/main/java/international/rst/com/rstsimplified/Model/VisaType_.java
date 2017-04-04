@@ -138,6 +138,11 @@ public class VisaType_ {
     @SerializedName("hotel_min_fee")
     @Expose
     private float hotelMinFee;
+    @SerializedName("visaType")
+    @Expose
+    private String visaType;
+    public String getVisaType(){ return visaType;}
+    public void setVisaType(String visaType){this.visaType = visaType;}
     public float getHotelMinFee(){
         return hotelMinFee;
     }

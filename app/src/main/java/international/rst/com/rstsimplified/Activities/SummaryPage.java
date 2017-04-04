@@ -95,7 +95,7 @@ public class SummaryPage extends AppCompatActivity
                 tvArrival.setText("Issue Date");
                 tvDeparture.setText("Expiry Date");
                 tvVisaId.setText(sharedPreferences.getString("response",""));
-                visaName.setText(sharedPreferences.getString("visa_name",""));
+                visaName.setText(sharedPreferences.getString("applied_visa",""));
                 visaFee.setText("USD" + String.valueOf(sharedPreferences.getFloat("govt_fee", (float) 0.0)));
                 finalServiceFee.setText("USD" + String.valueOf(sharedPreferences.getFloat("service_fee", (float) 0.0)));
                 totalVisaFee.setText("USD" + String.valueOf(sharedPreferences.getFloat("total_fee", (float) 0.0)));
