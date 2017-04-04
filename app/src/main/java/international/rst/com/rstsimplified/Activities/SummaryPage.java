@@ -44,7 +44,7 @@ public class SummaryPage extends AppCompatActivity
     String serviceType, livingId, nationalityId, processingTime, deviceType, deviceOS, serviceFeeCs, nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, fullNameVisa, arrivalDate, departureDate,gender, fullName, profession, professionId, selectedCountry,selectedIssueCountry, religionApplicant, maritalStatus;
     int visaTypeId, age, selectedVisaId;
     String currentCity, hotelAddress, contactperson, contactNumber, currentAddress, selectedEmirate,placeIssue, mobileNumber, countryId, selectedFile1, selectedFile2, selectedFile3, selectedFile4, selectedFile5, selectedFile6, selectedPort, responseVisa, refusedCountry, courtLaw, prohibitedCountry, differentPassport, otherCountryName, otherCountryAddress, startOtherCountry, endOtherCountry, resideOther, highestQualification, purposeSingapore, durationSingapore;
-    TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate ;
+    TextView tvVisaId, visaName, visaFee, finalServiceFee, totalVisaFee, tvName, tvBirthDate, tvPassportNumber, tvGender, tvArrivalDate,tvDepartureDate, appliedForLabel , tvDob, tvArrival, tvDeparture;
     Float govtFee, serviceFee, mngFee, totalFee;
     String fileName1, fileName2, fileName3, fileName4, fileName5, fileName6, fileType1, fileType2, fileType3, fileType4, fileType5, fileType6, sponsorName, sponsorAddress, selectedGcc, sponsorContact;
     private static final String SINGAPORE_APPLICANT_FORM = "http://singaporevisa-online.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=data2";
@@ -76,7 +76,11 @@ public class SummaryPage extends AppCompatActivity
         tvBirthDate = (TextView)findViewById(R.id.tv_applicant_dob);
         tvPassportNumber = (TextView)findViewById(R.id.tv_passport_number);
         tvGender = (TextView)findViewById(R.id.tv_applicant_gender);
+        appliedForLabel = (TextView)findViewById(R.id.applied_for_label);
+        tvDob = (TextView)findViewById(R.id.tv_dob);
         button = (Button)findViewById(R.id.submit_payment);
+        tvArrival = (TextView)findViewById(R.id.tv_arrival);
+        tvDeparture = (TextView)findViewById(R.id.tv_departure);
         getSharedPreferencesData();
         if(sharedPreferences != null){
             System.out.println(selectedVisaId);
@@ -84,15 +88,18 @@ public class SummaryPage extends AppCompatActivity
                 sendApplicandData(responseVisa);
             }
             else if(selectedVisaId == 1){
+                tvDob.setVisibility(View.GONE);
+                appliedForLabel.setText("Visa Assistance Required For:");
+                tvArrival.setText("Issue Date");
+                tvDeparture.setText("Expiry Date");
                 tvVisaId.setText(sharedPreferences.getString("response",""));
                 visaName.setText(sharedPreferences.getString("visa_name",""));
-                visaFee.setText(String.valueOf(sharedPreferences.getFloat("govt_fee", (float) 0.0)));
-                finalServiceFee.setText(String.valueOf(sharedPreferences.getFloat("service_fee", (float) 0.0)));
-                totalVisaFee.setText(String.valueOf(sharedPreferences.getFloat("total_fee", (float) 0.0)));
+                visaFee.setText("USD" + String.valueOf(sharedPreferences.getFloat("govt_fee", (float) 0.0)));
+                finalServiceFee.setText("USD" + String.valueOf(sharedPreferences.getFloat("service_fee", (float) 0.0)));
+                totalVisaFee.setText("USD" + String.valueOf(sharedPreferences.getFloat("total_fee", (float) 0.0)));
                 tvName.setText(sharedPreferences.getString("applicant_name",""));
-                tvArrivalDate.setText(sharedPreferences.getString("arrival_date_usa",""));
-                tvDepartureDate.setText(sharedPreferences.getString("departure_date_usa",""));
-                tvBirthDate.setText("");
+                tvArrivalDate.setText(sharedPreferences.getString("issue_date_usa",""));
+                tvDepartureDate.setText(sharedPreferences.getString("expiry_date_usa",""));
                 tvPassportNumber.setText(sharedPreferences.getString("passport_num_usa",""));
                 tvGender.setText(sharedPreferences.getString("gender_usa",""));
             }

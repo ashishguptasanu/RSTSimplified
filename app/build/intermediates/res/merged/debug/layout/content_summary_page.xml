@@ -56,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:layout_marginLeft="60dp"
+                    android:id="@+id/applied_for_label"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:textColor="@color/colorPrimary"
                     android:text="Visa Applied  For:" />
@@ -63,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:maxLines="1"
+                    android:maxLines="2"
                     android:layout_marginLeft="2dp"
                     android:text="-- --- ----- --"
                     android:id="@+id/visa_name_summary"
@@ -151,8 +152,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-
                             android:gravity="center"
+                            android:id="@+id/tv_dob"
                             android:textColor="@color/colorPrimary"
                             android:text="Date of Birth" />
                         <TextView
@@ -201,6 +202,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
+                            android:id="@+id/tv_arrival"
                             android:textColor="@color/colorPrimary"
                             android:text="Arrival Date" />
                         <TextView
@@ -221,7 +223,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-
+                            android:id="@+id/tv_departure"
                             android:gravity="center"
                             android:textColor="@color/colorPrimary"
                             android:text="Departure Date" />

@@ -145,10 +145,10 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     String selectedUsaMarital;
     String[] gender, religion, gccList, addressType, purpose, duration, visaType, genderUsa, maritalUsa, stolenPassport, parts;
     ImageView attachFile1, attachFile2, attachFile3, attachFile4, attachFile5, attachFile6, checked1, checked2, checked3, checked4, checked5, checked6;
-    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay, noVisitIran, purposeVisitIran, lastVisitIran, visaNoIran, visitDateIran, otherCountryVisited,nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification, occupation, jobTitle, companyName, acticvityField, companyTelephone, previousNationality, firstNameUsa, lastNameUsa, emailUsa, phoneUsa, arrivalDateUsa, departureDateUsa, nationalityUsa, addressApplicantUsa, cityApplicantUsa, placeBirthUsa, stateUsa, postalUsa, countryUsa, passportNumberUsa, cityIssuedUsa, countryIssuedUsa, issueDateUsa, expiryDateUsa, phoneCodeUsa;
+    EditText edtDate1, edtDate2, expiryMonth, expiryYear, cardName, cardNumber, cardCvv, phoneCode, livingInEdt, phoneCodeEdt, latestDate, edtSponsorName, edtSponsorAddress, edtSponsorCotact, edtEmailContact, edtOtherName, edtOtherAddress, edtOtherStart, edtOtherEnd, edtBorderEntry, edtNoPerson, edtDurationStay, noVisitIran, purposeVisitIran, lastVisitIran, visaNoIran, visitDateIran, otherCountryVisited,nameFirst, nameLast, birthDate, birthPlace, emailEdt, nameFather, nameMother, dateIssue, dateExpiry,passportNumber, edtAddress, edtLivingCity, edtHotelAddress, edtEmergencyContactName, edtEmergencyContactNumber, edtIssuePlace, edtMobile, addressSingapore, phoneSingapore, nameSingapore, nricSingapore, highestQualification, occupation, jobTitle, companyName, acticvityField, companyTelephone, previousNationality, firstNameUsa, lastNameUsa, emailUsa, phoneUsa, arrivalDateUsa, departureDateUsa, nationalityUsa, addressApplicantUsa, cityApplicantUsa, placeBirthUsa, stateUsa, postalUsa, countryUsa, passportNumberUsa, cityIssuedUsa, issueDateUsa, expiryDateUsa, phoneCodeUsa;
     TextInputLayout inputLayoutQualification, inputRace, inputOccupation, inputArrival, inputDeparture, previousNation;
     CardView cardDocs5, cardDocs6;
-    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose, spnrVisaFor, spnrApplyingFrom, spnrMaritalUsa, spnrStolenPassport;
+    Spinner spnrAllCountries, spnrIssueCountry,spnrGender,spnrReligion, spnrEmirates, spnrGCC, spnrPort, spnrAddressTypeSingapore, spnrDuration, spnrPurpose, spnrVisaFor, spnrApplyingFrom, spnrMaritalUsa, spnrStolenPassport,  countryIssuedUsa;
     RadioButton radioButton1, radioButton2, singaporeRb1, singaporeRb2, singaporeRb3, singaporeRb4, singaporeRb5,singaporeRb6,singaporeRb7,singaporeRb8,singaporeRb9,singaporeRb10, radioButtonIran1, radioButtonIran2;
     RadioGroup radioGrpSingapore1, radioGrpSingapore2, radioGrpSingapore3, radioGrpSingapore4, radioGrpSingapore5, radioGroupIran;
     LinearLayout sponsorLayout, gccLayout, addressUaeLayout, addressSingaporeLayout,passportLayoutSingapore, otherCountrySingaporeLayout, layoutDuration, layoutPurpose, layoutIranConsult, layoutCompanyDetails, visitedIranLayout, visitedIranInfoLayout, layoutContactOther, layoutContactUsa, layoutApplicantOther, layoutApplicantUsa;
@@ -157,7 +157,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
     TextView  name1, name2, name3, name4, name5, name6;
     AutoCompleteTextView profession;
     ArrayAdapter<String> adapter;
-    int visaTypeId, selectedVisaId, selectedAddressType, selectedConsulateId, selectedCountryID, selectedIssueCountryID, age, selectedEmirateId, selectedGenderUsa;
+    int visaTypeId, selectedVisaId, selectedAddressType, selectedConsulateId, selectedCountryID, selectedIssueCountryID, age, selectedEmirateId, selectedGenderUsa, issueCountry;
     float govtFee, mngFee, serviceFee;
     private OkHttpClient client = new OkHttpClient();
     private List<String> allCountriesData = new ArrayList<>();
@@ -699,15 +699,21 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         previousNation = (TextInputLayout)view.findViewById(R.id.edt_previous_nation);
         previousNationality = (EditText)view.findViewById(R.id.previous_nationality);
         nationalityUsa = (EditText)view.findViewById(R.id.current_nationality);
+        nationalityUsa.setText(sharedPreferences.getString("nationality_name",""));
+        disableInput(nationalityUsa);
         addressApplicantUsa = (EditText)view.findViewById(R.id.current_address);
         cityApplicantUsa = (EditText)view.findViewById(R.id.current_city_form2);
         placeBirthUsa = (EditText)view.findViewById(R.id.place_of_birth_form2);
         stateUsa = (EditText)view.findViewById(R.id.current_state_form2);
+        disableInput(stateUsa);
+        stateUsa.setText(sharedPreferences.getString("state_name",""));
         postalUsa = (EditText)view.findViewById(R.id.postal_code_current);
         countryUsa = (EditText)view.findViewById(R.id.current_country);
+        disableInput(countryUsa);
+        countryUsa.setText(sharedPreferences.getString("living_country",""));
         passportNumberUsa = (EditText)view.findViewById(R.id.passport_number_form2);
         cityIssuedUsa = (EditText)view.findViewById(R.id.city_issued_form2);
-        countryIssuedUsa = (EditText)view.findViewById(R.id.country_issued_form2);
+        countryIssuedUsa = (Spinner)view.findViewById(R.id.country_issued_form2);
         issueDateUsa = (EditText)view.findViewById(R.id.issue_date_form2);
         disableInput(issueDateUsa);
         issueDateUsa.setOnClickListener(this);
@@ -1000,6 +1006,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         populateIssueCountrySpinner();
         populateGenderSpinner();
         populateReligionSpinner();
+        populateAllCountryUsa();
 
         if(selectedVisaId == 2){
             populateDurationSpinner();
@@ -1315,7 +1322,9 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 else if(i == 2){
                     sharedPreferences.edit().putString("stolen_passport_usa","No").apply();
                 }
-
+                break;
+            case R.id.country_issued_form2:
+                issueCountry = allcountry.get(i).getId();
 
         }
     }
@@ -1427,6 +1436,14 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
         dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnrAllCountries.setAdapter(dataAdapterCountries);
         spnrAllCountries.setOnItemSelectedListener(this);
+    }
+    private void populateAllCountryUsa(){
+        countryIssuedUsa = (Spinner)view.findViewById(R.id.country_issued_form2);
+        countryIssuedUsa.setOnItemSelectedListener(this);
+        ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allCountriesData);
+        dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        countryIssuedUsa.setAdapter(dataAdapterCountries);
+        countryIssuedUsa.setOnItemSelectedListener(this);
     }
     private void populatePortArrivalSpinner() {
         spnrPort = (Spinner)view.findViewById(R.id.spnr_port);
@@ -1963,7 +1980,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("zipcode", postalUsa.getText().toString())
                 .addFormDataPart("passportNumber", passportNumberUsa.getText().toString())
                 .addFormDataPart("placeOfIssue", cityIssuedUsa.getText().toString())
-                .addFormDataPart("issueCounrty", countryIssuedUsa.getText().toString())
+                .addFormDataPart("issueCounrty", String.valueOf(issueCountry))
                 .addFormDataPart("issueDate", issueDateUsa.getText().toString())
                 .addFormDataPart("expiryDate", expiryDateUsa.getText().toString())
                 .build();
@@ -1995,7 +2012,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                     sharedPreferences.edit().putString("country_usa",countryUsa.getText().toString()).apply();
                     sharedPreferences.edit().putString("passport_num_usa",passportNumberUsa.getText().toString()).apply();
                     sharedPreferences.edit().putString("city_issued_usa",cityIssuedUsa.getText().toString()).apply();
-                    sharedPreferences.edit().putString("country_issued_usa",countryIssuedUsa.getText().toString()).apply();
+                    sharedPreferences.edit().putString("country_issued_usa", String.valueOf(issueCountry)).apply();
                     sharedPreferences.edit().putString("issue_date_usa",issueDateUsa.getText().toString()).apply();
                     sharedPreferences.edit().putString("expiry_date_usa",expiryDateUsa.getText().toString()).apply();
                     //sendVerificationEmail(resp, edtEmailContact.getText().toString(), UAE_EMAIL_URL);

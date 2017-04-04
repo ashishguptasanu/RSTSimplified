@@ -45,7 +45,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FragmentServices extends android.support.v4.app.Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener{
     TextView tv1;
-    String title, urlNationality, urlLivingIn, urlVisaType, urlStates;
+    String title, urlNationality, urlLivingIn, urlVisaType, urlStates, selectedNationalityName;
     View view;
     LinearLayoutManager linearLayoutManager1;
     Button buttonSubmission;
@@ -62,7 +62,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
     private List<String> livingInData = new ArrayList<>();
     private List<String> stateData = new ArrayList<>();
     private List<String> nationalityData = new ArrayList<>();
-    public String selectedVisa, selectedLivingInCountry;
+    public String selectedVisa, selectedLivingInCountry, stateName;
     int selectedLivingIn, selectedNationality, selectedLiving;
     ImageView img1;
     SharedPreferences sharedPreferences;
@@ -337,10 +337,12 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
             case R.id.spnr_nationality:
                 int livingIn = spinnerNationality.getSelectedItemPosition();
                 selectedNationality = nationality.get(livingIn).getId();
+                selectedNationalityName = nationality.get(i).getName();
                 break;
             case R.id.spnr_state:
                 selectedStateId = states.get(i).get0();
                 stateItemNumber = i;
+                stateName = stateData.get(i);
 
         }
     }
@@ -386,6 +388,9 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
                         sharedPreferences.edit().putInt("visa_id", 1).apply();
                         sharedPreferences.edit().putInt("state_id", selectedStateId).apply();
                         sharedPreferences.edit().putInt("nationality", selectedNationality).apply();
+                        sharedPreferences.edit().putString("nationality_name", selectedNationalityName).apply();
+                        sharedPreferences.edit().putString("living_country",selectedLivingInCountry).apply();
+                        sharedPreferences.edit().putString("state_name",stateName).apply();
                         urlVisaType = ("https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=visaType&NationalityId=" + selectedNationality +"&LivingInId=" + selectedLivingIn+ "&StateId=" + selectedStateId);
                         sharedPreferences.edit().putString("url_usa_visa", urlVisaType).apply();
                         intent.putExtra("visa_type_url", urlVisaType);
