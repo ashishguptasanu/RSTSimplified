@@ -103,6 +103,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private List<String> consulateData = new ArrayList<>();
     private List<State> states = new ArrayList<>();
     private List<String>stateData = new ArrayList<>();
+    private List<State> statesByCountry = new ArrayList<>();
+    private List<String>stateDataByCountry = new ArrayList<>();
     private static final String BASE_URL_FORM3 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=personalinfo3";
     private static final String BASE_URL_FORM4 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=addressinfo";
     private static final String BASE_URL_FORM5 = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=familyinfo";
@@ -282,6 +284,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getActivity());
         birthCountrySpnr = (Spinner)view.findViewById(R.id.spnr_birth_country);
         nationalitySpnr = (Spinner)view.findViewById(R.id.country_origin);
+        birthStateSpnr = (Spinner)view.findViewById(R.id.spnr_birth_state);
         birthCountrySpnr.setOnItemSelectedListener(this);
         nationalitySpnr.setOnItemSelectedListener(this);
         loadAllCountries();
@@ -1384,6 +1387,9 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         switch (adapterView.getId()){
             case R.id.spnr_birth_country:
+                int countryId = allcountry.get(i).getId();
+                String urlStates = "https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=" + countryId;
+                loadStateByCountry(urlStates);
                 break;
             case R.id.country_origin:
                 break;
@@ -1438,6 +1444,9 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
 
         }
     }
+
+
+
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
@@ -1685,6 +1694,38 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             }
             @Override
             public void onFailure(retrofit2.Call<PurposeUs> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
+    private void loadStateByCountry(String urlStates) {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.usa-visahub.in")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        StateResponse request = retrofit.create(StateResponse.class);
+        Call<States> call = request.getState(urlStates);
+        //
+        call.enqueue(new Callback<States>() {
+            @Override
+            public void onResponse(Call<States> call, Response<States> response) {
+
+
+                States jsonResponse = response.body();
+                statesByCountry = jsonResponse.getState();
+                stateDataByCountry.clear();
+                for(int i=0;i<statesByCountry.size();i++){
+                    stateDataByCountry.add(statesByCountry.get(i).getStateName());
+                }
+                ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, stateDataByCountry);
+                dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                birthStateSpnr.setAdapter(dataAdapterCountries);
+            }
+            @Override
+            public void onFailure(Call<States> call, Throwable t) {
                 Log.v("Error",t.getMessage());
             }
         });
@@ -1957,7 +1998,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart("pre_inus_depart", preDepartureUs.getText().toString())
                 .addFormDataPart("pre_inus_licence", "")
                 .addFormDataPart("pre_inus_licence_state", "")
-                .addFormDataPart("pre_usvisa", selectedApplyingSameVisa)
+                //.addFormDataPart("pre_usvisa", selectedApplyingSameVisa)
                 .addFormDataPart("pre_usvisa_date", previousVisaIssueDate.getText().toString())
                 .addFormDataPart("pre_usvisa_sametype", "")
                 .addFormDataPart("pre_usvisa_samecountry", "")
