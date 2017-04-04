@@ -41,7 +41,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:id="@+id/layout_previous_date"
+            android:visibility="gone">
             <android.support.design.widget.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -134,21 +136,76 @@
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_previous_us_visa_date"
+                android:visibility="gone">
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Previous U.S. Visa issue Date"
                     android:id="@+id/previous_visa_issue_date"
-                    android:inputType="phone"
+                    android:inputType="date"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
             </android.support.design.widget.TextInputLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Do you or did you ever hold a U.S. Driver’s License?"/>
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:id="@+id/rg_hold_license"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rb_license1"
+                        android:hint="Yes"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rb_license2"
+                        android:hint="No"/>
+                </RadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:id="@+id/layout_hold_licence"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="State of Driver's License"
+                    android:textColor="@color/colorAccent"/>
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/spnr_state_license"
+                    android:layout_weight="1">
+                </android.support.v7.widget.AppCompatSpinner>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent"/>
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -267,23 +324,27 @@
             </LinearLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_year_stolen"
+                android:visibility="gone">
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Year in which visa was lost or stolen"
-                    android:id="@+id/group_name"
+                    android:id="@+id/year_stolen"
                     android:inputType="phone"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_explain_stolen"
+                android:visibility="gone">
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Explain"
-                    android:id="@+id/group_name"
+                    android:id="@+id/explain_stolen"
                     android:inputType="phone"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
             </android.support.design.widget.TextInputLayout>
@@ -319,38 +380,19 @@
             </LinearLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_revoked"
+                android:visibility="gone">
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Explain"
-                    android:id="@+id/group_name"
+                    android:id="@+id/revoked_explain"
                     android:inputType="phone"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="State of Driver's License"
-                android:textColor="@color/colorAccent"/>
-            <android.support.v7.widget.AppCompatSpinner
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:id="@+id/spnr_state_contact_us"
-                android:layout_weight="1">
-            </android.support.v7.widget.AppCompatSpinner>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorAccent"/>
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -381,6 +423,19 @@
                     android:hint="No"/>
             </RadioGroup>
         </LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_refused"
+            android:visibility="gone">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Explain"
+                android:id="@+id/refused_explain"
+                android:inputType="phone"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+        </android.support.design.widget.TextInputLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="28dp"
