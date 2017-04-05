@@ -85,11 +85,11 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     TextView attachFileName1, attachFileName2, attachFileName3, attchFileName4;
     SharedPreferences sharedPreferences;
     TextInputLayout otherPassportLayout, groupNameLayout, layoutTravelledOther, layoutContributed, layoutSpecialSkills, layoutParamilitary, layoutYearStolen, layoutExplainStolen, layoutRevoked, layoutRefused, layoutPreviousVisaIssueDate;
-    LinearLayout mailingLayout, otherNameLayout, telecodeLayout, otherNationalityLayout, permanentResidentLayout, personTravellingLayout, layoutOtherPerson, stolenPassportLayout, fatherUsLayout, motherUsLayout, layoutMilitary, layoutHoldLicense, layoutPreviousDates, layoutRgHoldLicense;
+    LinearLayout mailingLayout, otherNameLayout, telecodeLayout, otherNationalityLayout, permanentResidentLayout, personTravellingLayout, layoutOtherPerson, stolenPassportLayout, fatherUsLayout, motherUsLayout, layoutMilitary, layoutHoldLicense, layoutPreviousDates, layoutRgHoldLicense, personPayingLayout, organisationPayingLayout;
     String[] gender, martialStatus, documentType, stolen, contactPersonUs, relationPerson, indentedLength, payingTrip, status;
     Button buttonForm1, buttonForm2, buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15, uploadButton1, uploadButton2, uploadButton3, uploadButton4;
     EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality, otherSurName, otherGivenName, telecodeSurname, telecodeGivenName, otherNationality, otherPassportNumber, otherMailingAddress, otherCityMailing, otherStateMailing, otherPostalMailing, phoneCodeUsa, cityStayUs, stolenPassportForm6, preArrivalUs, preDepartureUs,issueCountryForm2, previousVisaIssueDate, issueCountry2, specialSkills, travelledOtherCountries, contributedOrganisation, explainParamilitary, branchService, rank, speciality_military, fromDateService, toDateService, yearStolen, explainStolen, revokedExplain, refusedExplain;
-    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital, stayLenght, personPaying, residentOtherCountry, purposeUS, stateStayUs, fatherStatus, motherStatus, countryEmployment, spnrMilitaryCountry, spnrMailingCountry, spnrStateLicense;
+    Spinner birthCountrySpnr, personPayingTripSpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital, stayLenght, personPaying, residentOtherCountry, purposeUS, stateStayUs, fatherStatus, motherStatus, countryEmployment, spnrMilitaryCountry, spnrMailingCountry, spnrStateLicense, spnrCountryStolenPassport, relationPayee;
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution, rgOtherPassport, rgOtherGroup, rgIssueUsVisa, rgHoldLicence, rgStolenVisa, rgRevoked;
     RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddress2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2, rbOtherPassport1, rbOtherPassport2, rbGroupName1, rbGroupName2, rbIssueUsVisa1, rbIssueUsVisa2, rbHoldUsLicense1,rbHoldLicense2, rbStolenVisa1, rbStolenVisa2, rbRevoked1, rbRevoked2  ;
     ImageView checked1, checked2, checked3, checked4,  attach1, attach2, attach3, attach4;
@@ -307,6 +307,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         loadAllCountriesOccupation(residentOtherCountry);
         residentOtherCountry.setOnItemSelectedListener(this);
         rgGender = (RadioGroup)view.findViewById(R.id.rg_gender);
+        rgGender.setEnabled(false);
         rbGender1 = (RadioButton)view.findViewById(R.id.rb_gender1);
         rbGender2 = (RadioButton)view.findViewById(R.id.rb_gender2);
         rgGender.setEnabled(false);
@@ -501,6 +502,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         buttonForm5 = (Button)view.findViewById(R.id.button_form5);
         stolenPassportForm6 = (EditText)view.findViewById(R.id.stolen_passport_form6);
         disableInput(stolenPassportForm6);
+        spnrCountryStolenPassport = (Spinner)view.findViewById(R.id.spnr_country_stolen_passport);
+        loadAllCountriesOccupation(spnrCountryStolenPassport);
         stolenPassportForm6.setText(sharedPreferences.getString("stolen_passport_usa",""));
         stolenPassportLayout = (LinearLayout)view.findViewById(R.id.stolen_passport_layout5);
         if(sharedPreferences.getInt("stolen_passport",0) == 1){
@@ -520,6 +523,13 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         cityStayUs = (EditText)view.findViewById(R.id.stay_us_city);
         stateStayUs  = (Spinner)view.findViewById(R.id.spnr_state_us);
         stateStayUs.setOnItemSelectedListener(this);
+        personPayingTripSpnr = (Spinner)view.findViewById(R.id.spnr_relation_payee_trip);
+        //populateRelationPersonSpinnerById(personPayingTripSpnr);
+        personPaying = (Spinner)view.findViewById(R.id.spnr_person_paying);
+        //populateRelationPersonSpinnerById(personPaying);
+        personPaying.setOnItemSelectedListener(this);
+        personPayingLayout = (LinearLayout)view.findViewById(R.id.person_paying_other_person_layout);
+        organisationPayingLayout = (LinearLayout)view.findViewById(R.id.organisation_paying_trip_layout);
         buttonForm6 = (Button)view.findViewById(R.id.button_form6);
         buttonForm6.setOnClickListener(this);
 
@@ -1511,6 +1521,14 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             case R.id.spnr_country_stolen_passport:
                 break;
             case R.id.spnr_person_paying:
+                if(i == 2){
+                    personPayingLayout.setVisibility(View.VISIBLE);
+                    organisationPayingLayout.setVisibility(View.GONE);
+                }
+                else if(i == 3){
+                    personPayingLayout.setVisibility(View.GONE);
+                    organisationPayingLayout.setVisibility(View.VISIBLE);
+                }
                 break;
             case R.id.spnr_relation_payee_trip:
                 break;
