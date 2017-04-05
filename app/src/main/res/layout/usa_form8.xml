@@ -308,17 +308,17 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:layout_weight="1"
-                    android:id="@+id/rg_issued_us_visa"
+                    android:id="@+id/rg_stolen_us_visa"
                     android:orientation="horizontal">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rb_issued_us_visa1"
+                        android:id="@+id/rb_stolen_us_visa1"
                         android:hint="Yes"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rb_issued_us_visa2"
+                        android:id="@+id/rb_stolen_us_visa2"
                         android:hint="No"/>
                 </RadioGroup>
             </LinearLayout>
@@ -364,17 +364,17 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:layout_weight="1"
-                    android:id="@+id/rg_issued_us_visa"
+                    android:id="@+id/rg_revoked_us_visa"
                     android:orientation="horizontal">
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rb_issued_us_visa1"
+                        android:id="@+id/rb_revoked_us_visa1"
                         android:hint="Yes"/>
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rb_issued_us_visa2"
+                        android:id="@+id/rb_revoked_us_visa2"
                         android:hint="No"/>
                 </RadioGroup>
             </LinearLayout>
