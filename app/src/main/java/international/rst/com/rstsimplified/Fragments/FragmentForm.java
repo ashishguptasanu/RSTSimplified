@@ -1932,6 +1932,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("consulate_status", "")
                 .addFormDataPart("visa_status","")
                 .addFormDataPart("created_date","")
+                .addFormDataPart("ip",getLocalIpAddress())
                 .addFormDataPart("dateOfArrival", arrivalDateUsa.getText().toString())
                 .addFormDataPart("dateOfDept", departureDateUsa.getText().toString())
                 .build();
@@ -1991,7 +1992,7 @@ public class FragmentForm extends android.support.v4.app.Fragment implements Ada
                 .addFormDataPart("issueDate", issueDateUsa.getText().toString())
                 .addFormDataPart("expiryDate", expiryDateUsa.getText().toString())
                 .build();
-        System.out.println("Hello Akash" + sharedPreferences.getString("response","") + selectedMaritalStatus + cityApplicantUsa.getText().toString());
+        System.out.println(cityApplicantUsa.getText().toString() + postalUsa.getText().toString());
         Request request = new Request.Builder().url(BASE_URL_USA_FORM2).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);
         call.enqueue(new okhttp3.Callback() {
