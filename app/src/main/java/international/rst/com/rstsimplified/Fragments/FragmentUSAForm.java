@@ -89,7 +89,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     String[] gender, martialStatus, documentType, stolen, contactPersonUs, relationPerson, indentedLength, payingTrip, status;
     Button buttonForm1, buttonForm2, buttonForm3, buttonForm4, buttonForm5, buttonForm6, buttonForm7, buttonForm8, buttonForm9, buttonForm10, buttonForm11, buttonForm12, buttonForm13, buttonForm14, buttonForm15, uploadButton1, uploadButton2, uploadButton3, uploadButton4;
     EditText arrivingDate, departureDate, currentAddress, currentCity, phoneCode, mobileNumberCurrent, countryCurrent, email, surName, givenName, nationalIdentificationNumber, usSecurityNumber, taxPayerId, maritalStatus, placeOfBirth, dateOfBirth, homeAddress, city, pinCode, state, country, countryCode, primaryPhoneNumber, secondaryPhoneNumber, emailAddress, passportNumber, passportBookNumber, issueCountry, issueCity, issueDate, noMonths, addressStayUS, personPayingTrip, nameContactUs, addressContactUs, codeContactUs, numberContactUs, fatherName, fatherDateBirth, motherName, motherDateBirth, employerName, addressEmployer, cityEmployment, codeEmployment, contactNumberEmployment, languageSpeaking, consulateCity, interviewPriority1, interviewPriority2, interviewPriority3, biometricPriority1, biometricPriority2, biometricPriority3, deliveryAddress, deliveryState, deliveryCity, deliveryPinCode, nameFirst, nameLast, placeOfBirthForm2, stateCurrent, postalCodeCurrent, passportNumberForm2, issuedCity, issuedCountry, issuedDate, expiryDate, expiryDateForm2, currentNationality, otherSurName, otherGivenName, telecodeSurname, telecodeGivenName, otherNationality, otherPassportNumber, otherMailingAddress, otherCityMailing, otherStateMailing, otherPostalMailing, phoneCodeUsa, cityStayUs, stolenPassportForm6, preArrivalUs, preDepartureUs,issueCountryForm2, previousVisaIssueDate, issueCountry2, specialSkills, travelledOtherCountries, contributedOrganisation, explainParamilitary, branchService, rank, speciality_military, fromDateService, toDateService, yearStolen, explainStolen, revokedExplain, refusedExplain;
-    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital, stayLenght, personPaying, residentOtherCountry, purposeUS, stateStayUs, fatherStatus, motherStatus, countryEmployment, spnrMilitaryCountry, spnrMailingCountry;
+    Spinner birthCountrySpnr, birthStateSpnr, nationalitySpnr, travelDocType, stolenPassport, contactUs, relationContactUs, stateContactUs, primaryOccupation, interViewState, interviewConsulate, spnrGender, spnrMarital, stayLenght, personPaying, residentOtherCountry, purposeUS, stateStayUs, fatherStatus, motherStatus, countryEmployment, spnrMilitaryCountry, spnrMailingCountry, spnrStateLicense;
     RadioGroup rgOtherName, rgTelecode, rgGender, rgOtherNationality, rgPermanentResident, rgMailAddress, rgotherPersonTravelling, rgTravelledUS, rgIssuedUsVisa, rgRefusedUsVisa, rgFatherUs, rgMotherUs, rgPriviousEmployed, rgTravelledCountries, rgContributedOrg, rgSpecializedSkill, rgServedMilitary, rgParamilitary, rgCommunicableDisease, rgMentalDisorder, rgdrugAbuser, rgArrested, rgViolated, rgMoneyLaundering, rgHumanTrafficing, rgHumanTrafficingAided, rgRelativeHumanTrafficing, rgIllegal, rgTerrorist, rgSupportTerrorist, rgTerroristMember, rgGenocide, rgTorture, rgKilling, rgChildSoldiers, rgReligiousFreedom, rgAbortion, rgTransplantation, rgFraudVisa, rgCustody, rgUsChild, rgViolatedLaw, rgAvoidingTaxation, rgProstitution, rgOtherPassport, rgOtherGroup, rgIssueUsVisa, rgHoldLicence, rgStolenVisa, rgRevoked;
     RadioButton rbOtherName1, rbOtherName2, rbTelecode1, rbTelecode2, rbGender1, rbGender2, rbotherNationality1, rbOtherNationality2, rbPermanentResident1, rbPermanentResident2, rbMailAddress1, rbMailAddress2, rbPersonTravelling1, rbPersonTravelling2, rbTravelledUs1, rbTravelledUs2, rbIssued1, rbIssued2, rbRefused1, rbRefused2, rbFatherUs1, rbFatherUs2, rbMotherUs1, rbMotherUs2, rbPriviousEmployed1, rbPreviousEmployed2, rbTravelledCountry1, rbTravelledCountry2, rbContributed1, rbContributed2, rbSpecializedSkill1, rbSpecializesSkill2, rbServedMilitary1, rbServedMilitary2, rbParamilitary1, rbParamilitary2, rbCommunicable1, rbCommunicable2, rbMental1, rbMental2, rbDrugAddict1, rbDrugAddict2, rbArrested1, rbArrested2, rbViolatedLaw1, rbViolatedLaw2, rbMoney1, rbMoney2, rbHumanTraffic1, rbHumanTraffic2, rbAidedHuman1, rbAidedHuman2, rbRelativeHuman1, rbRelativeHuman2, rbIllegalActivity1, rbIllegalActivity2, rbTerroristActivity1, rbTerroristActivity2, rbSupportTerrorist1, rbSupportTerrorist2, rbTerrorist1, rbTerrorist2, rbGenocide1, rbGenocide2, rbTorture1, rbTorture2, rbKilling1, rbKilling2, rbChildSoldier1, rbChildSoldier2, rbReligiousFreedom1, rbReligiousFreedom2, rbAbortion1, rbAbortion2, rbTransplant1, rbTransplant2, rbFraudVisa1, rbFraudVisa2, rbCustody1, rbCustody2, rbVoted1, rbVoted2, rbAvoidingTaxation1, rbAvoidingTaxation2, rbProstitution1, rbProstitution2, rbOtherPassport1, rbOtherPassport2, rbGroupName1, rbGroupName2, rbIssueUsVisa1, rbIssueUsVisa2, rbHoldUsLicense1,rbHoldLicense2, rbStolenVisa1, rbStolenVisa2, rbRevoked1, rbRevoked2  ;
     ImageView checked1, checked2, checked3, checked4,  attach1, attach2, attach3, attach4;
@@ -304,6 +304,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         otherNationality = (EditText)view.findViewById(R.id.other_country_nationality);
         otherPassportNumber = (EditText)view.findViewById(R.id.other_passport_number);
         residentOtherCountry = (Spinner)view.findViewById(R.id.spnr_resident_other_country);
+        loadAllCountriesOccupation(residentOtherCountry);
         residentOtherCountry.setOnItemSelectedListener(this);
         rgGender = (RadioGroup)view.findViewById(R.id.rg_gender);
         rbGender1 = (RadioButton)view.findViewById(R.id.rb_gender1);
@@ -606,6 +607,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         rgRevoked = (RadioGroup)view.findViewById(R.id.rg_revoked_us_visa);
         rbRevoked1 = (RadioButton)view.findViewById(R.id.rb_revoked_us_visa1);
         rbRevoked2 = (RadioButton)view.findViewById(R.id.rb_revoked_us_visa2);
+        spnrStateLicense = (Spinner)view.findViewById(R.id.spnr_state_license);
+        loadUsStatesById("https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=231");
         rgRevoked.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
@@ -700,6 +703,9 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         nameContactUs = (EditText)view.findViewById(R.id.full_name_contact_us);
         addressContactUs = (EditText) view.findViewById(R.id.address_contact_us);
         stateContactUs = (Spinner)view.findViewById(R.id.spnr_state_contact_us);
+        loadUsStates("https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=231");
+        relationContactUs = (Spinner)view.findViewById(R.id.spnr_relation_contact_us);
+        populateRelationPersonSpinnerById(relationContactUs);
         stateContactUs.setOnItemSelectedListener(this);
         codeContactUs = (EditText)view.findViewById(R.id.phone_code_contact_us);
         codeContactUs.setText("+1");
@@ -1615,6 +1621,14 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         relationContactUs.setAdapter(relationUsAdapter);
         relationContactUs.setOnItemSelectedListener(this);
     }
+    private void populateRelationPersonSpinnerById(Spinner relationContactUs){
+        relationContactUs = (Spinner)view.findViewById(R.id.spnr_relation_contact_us);
+        relationPerson = new String[]{"Select One", "Relative", "Spouse", "Friend", "Business Associate", "Employer", "School Official", "other"};
+        ArrayAdapter<String> relationUsAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, relationPerson);
+        relationUsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        relationContactUs.setAdapter(relationUsAdapter);
+        relationContactUs.setOnItemSelectedListener(this);
+    }
     private void populateIndentedLength(){
         stayLenght = (Spinner)view.findViewById(R.id.spnr_indented_length);
         indentedLength = new String[]{"Select One","Year(s)","Month(s)","Week(s)","Day(s)","Less than 24 hours"};
@@ -1728,6 +1742,37 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
             }
         });
     }
+    private void loadUsStates(String urlStates){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.usa-visahub.in")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        StateResponse request = retrofit.create(StateResponse.class);
+        Call<States> call = request.getState(urlStates);
+
+        call.enqueue(new Callback<States>() {
+            @Override
+            public void onResponse(Call<States> call, Response<States> response) {
+                States jsonResponse = response.body();
+                states = jsonResponse.getState();
+                for(int i=0;i<states.size();i++){
+                    stateData.add(states.get(i).getStateName());
+                }
+                if(stateData != null){
+                    ArrayAdapter<String> stateAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, stateData);
+                    stateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    stateContactUs.setAdapter(stateAdapter);
+                }
+            }
+            @Override
+            public void onFailure(Call<States> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
     private void loadConsulate(){
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -1829,6 +1874,38 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, stateDataByCountry);
                 dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 birthStateSpnr.setAdapter(dataAdapterCountries);
+            }
+            @Override
+            public void onFailure(Call<States> call, Throwable t) {
+                Log.v("Error",t.getMessage());
+            }
+        });
+    }
+    private void loadUsStatesById(String urlStates) {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.usa-visahub.in")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+        StateResponse request = retrofit.create(StateResponse.class);
+        Call<States> call = request.getState(urlStates);
+        //
+        call.enqueue(new Callback<States>() {
+            @Override
+            public void onResponse(Call<States> call, Response<States> response) {
+
+
+                States jsonResponse = response.body();
+                statesByCountry = jsonResponse.getState();
+                stateDataByCountry.clear();
+                for(int i=0;i<statesByCountry.size();i++){
+                    stateDataByCountry.add(statesByCountry.get(i).getStateName());
+                }
+                ArrayAdapter<String> dataAdapterCountries = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, stateDataByCountry);
+                dataAdapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spnrStateLicense.setAdapter(dataAdapterCountries);
             }
             @Override
             public void onFailure(Call<States> call, Throwable t) {
@@ -2335,7 +2412,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart("work_add_military_speciality", "")
                 .addFormDataPart("work_add_military_from", "")
                 .addFormDataPart("work_add_military_to", "")
-                .addFormDataPart("work_add_paramilitary", selectedParamilitary)
+//                .addFormDataPart("work_add_paramilitary", selectedParamilitary)
                 .addFormDataPart("work_add_paramilitary_explain", "")
                 .build();
         Request request = new Request.Builder().url(BASE_URL_FORM12).post(requestBody).build();
@@ -2370,8 +2447,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     private void sendForm13Data(){
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("ques_1", securityQuestion1)
-                .addFormDataPart("ques_2", securityQuestion2)
+                .addFormDataPart("ques_1", "")
+                /*.addFormDataPart("ques_2", securityQuestion2)
                 .addFormDataPart("ques_3", securityQuestion3)
                 .addFormDataPart("ques_4", securityQuestion4)
                 .addFormDataPart("ques_5", securityQuestion5)
@@ -2394,7 +2471,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                 .addFormDataPart("ques_22", securityQuestion22)
                 .addFormDataPart("ques_23", securityQuestion23)
                 .addFormDataPart("ques_24", securityQuestion24)
-                .addFormDataPart("ques_25", securityQuestion25)
+                .addFormDataPart("ques_25", securityQuestion25)*/
                 .build();
         Request request = new Request.Builder().url(BASE_URL_FORM13).post(requestBody).build();
         okhttp3.Call call = client.newCall(request);

@@ -111,6 +111,8 @@ public class SummaryPage extends AppCompatActivity
             }
             else if(selectedVisaId == 2){
                 singaporeApplicantData(responseVisa);
+                tvArrival.setText("Issue Date");
+                tvDeparture.setText("Expiry Date");
             }
             else if(selectedVisaId == 4){
                 sendIranApplicantData(responseVisa);

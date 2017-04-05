@@ -470,6 +470,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         spinnerStates = (Spinner)view.findViewById(R.id.spnr_state);
         dataAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, stateData);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataAdapter.setNotifyOnChange(true);
         spinnerStates.setAdapter(dataAdapter);
     }
     private void populateTravellingForSpinner() {
@@ -483,6 +484,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         spinnerLivingIn = (Spinner)view.findViewById(R.id.spnr_living_in);
         dataAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, livingInData);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataAdapter.setNotifyOnChange(true);
         if(getActivity() != null){
             spinnerLivingIn.setAdapter(dataAdapter);
         }
@@ -491,6 +493,7 @@ public class FragmentServices extends android.support.v4.app.Fragment implements
         spinnerNationality = (Spinner)view.findViewById(R.id.spnr_nationality);
         dataAdapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, nationalityData);
         dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dataAdapter2.setNotifyOnChange(true);
         if(getActivity() != null){
             spinnerNationality.setAdapter(dataAdapter2);
         }
