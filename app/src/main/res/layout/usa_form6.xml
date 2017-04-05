@@ -218,9 +218,44 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/phone_no"
-                    android:id="@+id/phone_no_payee"
+                    android:hint="Name of Company/Organisation paying for trip"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Telephone Number"
                     android:inputType="phone"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Address ofCompany/Organisation paying"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="City"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="State"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>

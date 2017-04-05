@@ -524,9 +524,9 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         stateStayUs  = (Spinner)view.findViewById(R.id.spnr_state_us);
         stateStayUs.setOnItemSelectedListener(this);
         personPayingTripSpnr = (Spinner)view.findViewById(R.id.spnr_relation_payee_trip);
-        //populateRelationPersonSpinnerById(personPayingTripSpnr);
+        populateRelationPersonSpinnerById(personPayingTripSpnr, R.id.spnr_relation_payee_trip);
         personPaying = (Spinner)view.findViewById(R.id.spnr_person_paying);
-        //populateRelationPersonSpinnerById(personPaying);
+        populatePersonPayingTrip();
         personPaying.setOnItemSelectedListener(this);
         personPayingLayout = (LinearLayout)view.findViewById(R.id.person_paying_other_person_layout);
         organisationPayingLayout = (LinearLayout)view.findViewById(R.id.organisation_paying_trip_layout);
@@ -715,7 +715,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         stateContactUs = (Spinner)view.findViewById(R.id.spnr_state_contact_us);
         loadUsStates("https://www.usa-visahub.in/api/getdata.php?secure_id=nAN9qJlcBAR%2Fzs0R%2BZHJmII0W7GFPuRzY%2BfyrT65Fyw%3D&gofor=state&LivingInId=231");
         relationContactUs = (Spinner)view.findViewById(R.id.spnr_relation_contact_us);
-        populateRelationPersonSpinnerById(relationContactUs);
+        populateRelationPersonSpinnerById(relationContactUs, R.id.spnr_relation_contact_us);
         stateContactUs.setOnItemSelectedListener(this);
         codeContactUs = (EditText)view.findViewById(R.id.phone_code_contact_us);
         codeContactUs.setText("+1");
@@ -1529,6 +1529,10 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
                     personPayingLayout.setVisibility(View.GONE);
                     organisationPayingLayout.setVisibility(View.VISIBLE);
                 }
+                else if(i==1 || i==0){
+                    personPayingLayout.setVisibility(View.GONE);
+                    organisationPayingLayout.setVisibility(View.GONE);
+                }
                 break;
             case R.id.spnr_relation_payee_trip:
                 break;
@@ -1639,8 +1643,8 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
         relationContactUs.setAdapter(relationUsAdapter);
         relationContactUs.setOnItemSelectedListener(this);
     }
-    private void populateRelationPersonSpinnerById(Spinner relationContactUs){
-        relationContactUs = (Spinner)view.findViewById(R.id.spnr_relation_contact_us);
+    private void populateRelationPersonSpinnerById(Spinner relationContactUs, int id){
+        relationContactUs = (Spinner)view.findViewById(id);
         relationPerson = new String[]{"Select One", "Relative", "Spouse", "Friend", "Business Associate", "Employer", "School Official", "other"};
         ArrayAdapter<String> relationUsAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, relationPerson);
         relationUsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -1657,7 +1661,7 @@ public class FragmentUSAForm extends android.support.v4.app.Fragment implements 
     }
     private void populatePersonPayingTrip(){
         personPaying = (Spinner)view.findViewById(R.id.spnr_person_paying);
-        payingTrip = new String[]{"Select One","Self","Other Person/Organisation"};
+        payingTrip = new String[]{"Select One","Self","Other Person","Other Company/Organisation"};
         ArrayAdapter<String> personPayingAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, payingTrip);
         personPayingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         personPaying.setAdapter(personPayingAdapter);
